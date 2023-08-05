@@ -25,7 +25,10 @@ function offsetHeight() {
     const targetElement = document.getElementById('project_main');
     const sourceHeight = sourceElement.offsetHeight;
     // Set the top margin
-    targetElement.style.marginTop = `${sourceHeight}px`;
+    if (targetElement) {
+        console.log('Element is set.');
+        targetElement.style.marginTop = '${sourceHeight}px';
+    }
 }
 document.addEventListener('DOMContentLoaded', offsetHeight);
 

@@ -2,7 +2,7 @@
     {
         "//comment//": "Project ID should be unique. Index order <=0 : hidden, index order <10 : show as featured card.",
         "id": 9,
-        "password": "",
+        "password": "123",
         "indexOrder": 2,
         "title": "Example Project No. 1",
         "date": "2023",

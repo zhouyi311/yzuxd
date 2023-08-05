@@ -1,39 +1,28 @@
 <?php
 
-require_once 'src/php/class_site_info.php';
+require_once __DIR__ . '/class_site_info.php';
 $site_info = SiteInfo::loadInfo();
 
-include_once 'src/php/class_project_info.php';
+include_once __DIR__ . '/class_project_info.php';
 
-if (!isset($_GET['project'])) {
-    header("HTTP/1.0 404 Not Found");
-    $_POST['error_title'] = 'No project specified';
-    $_POST['error_message'] = 'Please specify the project ID.';
-    if (!@include('src/php/page_404.php')) {
-        echo "<h1>Error 404</h1>";
-        echo "<h2>" . $_POST['error_title'] . "</h2>";
-        echo "<p>" . $_POST['error_message'] . "</p>";
-        echo "<p><a href='/'>Go to homepage</a></p>";
-    }
-    exit;
-}
-
-$projectId = $_GET['project']; // Retrieve the 'project' query parameter
-
-if (!ProjectInfo::doesProjectExist($projectId)) { // Check if the project with the given ID exists
-    header("HTTP/1.0 404 Not Found");
-    $_POST['error_title'] = 'Project does not exist';
-    $_POST['error_message'] = 'Please ensure that the project ID is valid.';
-    if (!@include('src/php/page_404.php')) {
-        echo "<h1>Error 404</h1>";
-        echo "<h2>" . $_POST['error_title'] . "</h2>";
-        echo "<p>" . $_POST['error_message'] . "</p>";
-        echo "<p><a href='/'>Go to homepage</a></p>";
-    }
-    exit;
-}
+$projectId = $_GET['project']; // Retrieve the 'project' query parameter.
 
 $project = ProjectInfo::loadById($projectId); // Load the project with the given ID
+
+echo $projectID;
+
+if ($project === null) { // No project found for the given ID
+    header("HTTP/1.0 404 Not Found");
+    $_POST['error_title'] = 'Project Does Not Exist';
+    $_POST['error_message'] = 'Please ensure that the project ID is valid.';
+    if (!@include(__DIR__ . '/page_404.php')) {
+        echo "<h1>Error 404</h1>";
+        echo "<h2>" . $_POST['error_title'] . "</h2>";
+        echo "<p>" . $_POST['error_message'] . "</p>";
+        echo "<p><a href='/'>Go to homepage</a></p>";
+    }
+    exit;
+}
 
 session_start();
 
@@ -48,7 +37,7 @@ if ($project->password !== 'no' && isset($_POST['password']) && $_POST['password
 
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'src/php/include_head.php'; ?>
+<?php include __DIR__ . '/include_head.php'; ?>
 
 <body class="project_page">
     <!-- header -->
@@ -160,7 +149,7 @@ if ($project->password !== 'no' && isset($_POST['password']) && $_POST['password
     <div class="high_holder">
         <p>1<br>2<br>3<br>4<br>5</p>
     </div>
-    <?php include 'src/php/include_footer.php'; ?>
+    <?php include __DIR__ . '/include_footer.php'; ?>
 </body>
 
 </html>

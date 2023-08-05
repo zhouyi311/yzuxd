@@ -1,9 +1,9 @@
 <?php
 
-require_once 'src/php/class_site_info.php';
+require_once __DIR__ . '/class_site_info.php';
 $site_info = SiteInfo::loadInfo();
 
-include_once 'src/php/class_project_info.php';
+include_once __DIR__ . '/class_project_info.php';
 $projects = ProjectInfo::loadAll();
 
 usort($projects, function ($a, $b) {
@@ -17,7 +17,7 @@ usort($projects, function ($a, $b) {
 
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'src/php/include_head.php'; ?>
+<?php include __DIR__ . '/include_head.php'; ?>
 
 <body class="">
     <!-- header -->
@@ -318,7 +318,7 @@ usort($projects, function ($a, $b) {
             </div>
         </section>
     </main>
-    <?php include 'src/php/include_footer.php'; ?>
+    <?php include __DIR__ . '/include_footer.php'; ?>
     <script src="src/js/canvas3.js" type="text/javascript"></script>
 
 </body>

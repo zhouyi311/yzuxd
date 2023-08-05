@@ -1,6 +1,10 @@
 @import 'css_keyframes', 'css_include';
 
 // nav ##################################################################
+html {
+    scroll-behavior: auto !important;
+    // display: none;
+}
 
 .page_navbar {
     font-family: $font-head;

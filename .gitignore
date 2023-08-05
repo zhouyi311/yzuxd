@@ -41,12 +41,13 @@ Thumbs.db
 *.sh
 *.bat
 .vscode
+.php_tmp
 *.code-workspace
-test.php
 /src/bootstrap-includes
 /src/img/example
+test.php
 
-# Project Data
+# Project Data #
 /src/page_data/projects/*
 !/src/page_data/projects/*_example
 !/src/page_data/projects/*_example.json
