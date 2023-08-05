@@ -38,11 +38,15 @@ Thumbs.db
 
 # Project Related #
 #######################
+*.sh
+*.bat
 .vscode
 *.code-workspace
+test.php
 /src/bootstrap-includes
 /src/img/example
 
+# Project Data
 /src/page_data/projects/*
-!/src/page_data/projects/*example
-!/src/page_data/projects/*example.json
+!/src/page_data/projects/*_example
+!/src/page_data/projects/*_example.json

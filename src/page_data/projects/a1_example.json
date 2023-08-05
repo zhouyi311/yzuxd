@@ -1,0 +1,65 @@
+[
+    {
+        "//comment//": "Project ID should be unique. Index order <=0 : hidden, index order <10 : show as featured card.",
+        "id": 9,
+        "password": "",
+        "indexOrder": 2,
+        "title": "Example Project No. 1",
+        "date": "2023",
+        "categories": [
+            "Branding",
+            "Digital Art",
+            "Graphic Design"
+        ],
+        "summary": {
+            "text": "Variables and maps determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.",
+            "summaryImage": "summary.png",
+            "thumbnail": "thumb.png"
+        },
+        "content": [
+            {
+                "headline": "Section 1 Introduction",
+                "content": [
+                    {
+                        "type": "text",
+                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    },
+                    {
+                        "type": "image",
+                        "content": "example-01.png"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    }
+                ]
+            },
+            {
+                "headline": "Section 2 Background",
+                "content": [
+                    {
+                        "type": "text",
+                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    },
+                    {
+                        "type": "image",
+                        "content": "example-02.png"
+                    }
+                ]
+            },
+            {
+                "headline": "Section 3 What we've learnt",
+                "content": [
+                    {
+                        "type": "text",
+                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    },
+                    {
+                        "type": "image",
+                        "content": "example-03.png"
+                    }
+                ]
+            }
+        ]
+    }
+]

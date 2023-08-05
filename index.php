@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 function getBaseUrl()
 {
@@ -27,9 +27,9 @@ $project = isset($_GET['project']) ? $_GET['project'] : null; // Check if $_GET[
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
     // Throw ErrorException only for severe errors
     //  || $errno === E_WARNING
-    if ($errno === E_ERROR) {
-        throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
-    }
+    // if ($errno === E_ERROR) {
+    //     throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
+    // }
     // For other types of errors, just return false to use PHP's default error handler
     return false;
 });
