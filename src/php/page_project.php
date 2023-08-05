@@ -64,8 +64,7 @@ if ($project->password !== 'no' && isset($_POST['password']) && $_POST['password
                             <?php echo htmlspecialchars($site_info->sitename); ?>
                         </a>
                         <span class="project_name text-secondary fw-light fs-6">
-                            <i class="bi bi-slash-lg"></i>
-                            <?php echo htmlspecialchars($project->title); ?>
+                            <?php echo $project->title ? '| ' . htmlspecialchars($project->title) : ''; ?>
                         </span>
                     </div>
                     <!-- nav btn -->
