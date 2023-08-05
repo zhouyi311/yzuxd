@@ -1,0 +1,23 @@
+{
+    "sitename": "YZuxd",
+    "information": {
+        "siteDisplayname": "YZuxd.com",
+        "siteTitle": "Yi Zhou's UX Design Portfolio",
+        "siteDescription": "Welcome to Yi's portfolio site. Yi is a seasoned UX and product Designer profoundly passionate about enhancing user experiences by solving complex design problems.",
+        "siteAddress": "http://yzuxd.com",
+        "siteCopyright": "2012-2023 Yi Zhou",
+        "myName": "Yi Zhou",
+        "myLocation": "Seattle, Washington USA",
+        "myEmail": "hello@yzuxd.com",
+        "myLinkedin": "https://www.linkedin.com/in/yi-zhou-a2a0b196/",
+        "myGithub": "https://www.github.com/zhouyi311/",
+        "myTwitter": "https://www.twitter.com/zhouyi311/"
+    },
+    "frontPageContent": {
+        "heroGreetings": "Oh là là!",
+        "heroHeadline": "You've Found Me",
+        "heroIntroduction": "My name is Yi Zhou, a product UX designer passionate for simplifying the complex.",
+        "heroSummaryHtml": "<p>With my meticulous eye for detail and my creative problem-solving mind, I am able to craft user experiences that are both effective and delightful.</p><p>With my strong skills in logical reasoning and front-end development, I am able to unearth users' true needs and find a balance between being a perfectionist and being practical.</p>",
+        "heroCallToAction": "VIEW PROJECTS"
+    }
+}

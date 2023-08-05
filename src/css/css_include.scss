@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+// @import '../bootstrap-icons-1.10.5/font/bootstrap-icons.min.css', "../bootstrap-5.3.0-dist/css/bootstrap.min.css";
+
+$font-normal: 'Source Sans 3',
+Helvetica,
+Arial,
+sans-serif;
+
+$font-head: 'Poppins',
+Verdana,
+Geneva,
+Tahoma,
+sans-serif;
+
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-xxl: 1400px;
+
+$unit-5: 3rem;
+$unit-4: 1.5rem;
+$unit-3: 1rem;
+$unit-2: 0.5rem;
+$unit-1: 0.25rem;
+
+html {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+body {
+    min-height: 100vh;
+    font-family: $font-normal;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: $font-head;
+        font-weight: 700;
+    }
+
+    .text_hero {
+        font-size: 6rem;
+
+        @media (max-width: $bp-xl) {
+            font-size: 4rem;
+        }
+
+        @media (max-width: 575px) {
+            font-size: 3rem;
+        }
+    }
+
+    .text_hero2 {
+        font-size: 3rem;
+
+        @media (max-width: $bp-xl) {
+            font-size: 2.5rem;
+        }
+
+        @media (max-width: $bp-sm) {
+            font-size: 2rem;
+        }
+    }
+
+    // utility class
+
+    .none_select {
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .high_holder {
+        height: 300px;
+        background-color: azure;
+        margin: 3rem auto;
+    }
+}

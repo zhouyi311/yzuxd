@@ -1,0 +1,256 @@
+<svg width="2048" height="2048" viewBox="0 0 2048 2048" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+
+    <g filter="url(#filter0_d_1055_17)">
+        <rect x="568" y="129" width="835" height="1793" rx="140" fill="white" />
+    </g>
+    <g>
+        <path
+            d="M966.079 1032.21L1041.48 891.767C1042.6 889.691 1044.76 888.396 1047.11 888.396L1072.84 888.396C1073.2 888.396 1073.43 888.785 1073.26 889.106L1010.32 1006.32C1001.61 1022.55 984.723 1032.67 966.353 1032.67C966.117 1032.67 965.967 1032.41 966.079 1032.21Z"
+            fill="#FF0073">
+            <animate attributeName="opacity" values="0.1;0.4;0.3;0.1;0.1" begin="0s"
+                dur="3.6s"
+                repeatCount="indefinite" calcMode="linear" keyTimes="0;0.15;0.3;0.85;1" />
+        </path>
+        <path
+            d="M1072.21 1032.87H1015.69C1015.69 1032.87 1036.74 1030.65 1053.37 1011.78C1069.99 992.918 1072.21 966.285 1072.21 966.285V1032.87Z"
+            fill="#FF0073">
+            <animate attributeName="opacity" values="0.1;0.4;0.3;0.1;0.1" begin="0s"
+                dur="3.6s"
+                repeatCount="indefinite" calcMode="linear" keyTimes="0;0.15;0.3;0.85;1" />
+        </path>
+        <path
+            d="M948.623 887.509L948.087 887.509C948.087 887.509 948.268 887.482 948.623 887.509L1006.82 887.509C1006.82 887.509 988.468 887.509 988.468 910.511C988.468 933.513 997.645 962.956 997.645 962.956C997.645 962.956 991.609 944.169 974.701 915.112C960.103 890.022 950.872 887.681 948.623 887.509Z"
+            fill="#FF0073">
+            <animate attributeName="opacity" values="0.1;0.4;0.3;0.1;0.1" begin="0s"
+                dur="3.6s"
+                repeatCount="indefinite" calcMode="linear" keyTimes="0;0.15;0.3;0.85;1" />
+        </path>
+    </g>
+
+    <g opacity="0.1" transform="translate(715 660) scale(6)">
+        <g filter="url(#ldio-27jrchkmlwb-filter)">
+            <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite"
+                dur="3.6s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="0" fill="undefined"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.7666666666666666 0 0.6666666666666666 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="1" fill="#ff3e10"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.7333333333333333 0 0.6333333333333333 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="2" fill="#ff3e10"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.7 0 0.6 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="3" fill="#ff3e10"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.6666666666666666 0 0.5666666666666667 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="4" fill="#ffc462"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.6333333333333333 0 0.5333333333333333 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="5" fill="#ffc462"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.6 0 0.5 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="6" fill="#ffc462"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.5666666666666667 0 0.4666666666666667 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="7" fill="#ffc462"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.5333333333333333 0 0.43333333333333335 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="8" fill="#db0651"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.5 0 0.4 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="9" fill="#db0651"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.4666666666666667 0 0.36666666666666664 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="10" fill="#db0651"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.43333333333333335 0 0.3333333333333333 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="11" fill="#db0651"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.4 0 0.3 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="12" fill="#ff798c"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.3666666666666667 0 0.26666666666666666 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="13" fill="#ff798c"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.33333333333333337 0 0.23333333333333334 1"
+                    repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="14" fill="#ff798c"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.30000000000000004 0 0.2 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="15" fill="#ff798c"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.26666666666666666 0 0.16666666666666666 1"
+                    repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="16" fill="#ff3e89"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.23333333333333334 0 0.13333333333333333 1"
+                    repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="17" fill="#ff3e89"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.2 0 0.1 1" repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="18" fill="#ff3e89"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.16666666666666669 0 0.06666666666666667 1"
+                    repeatCount="indefinite"></animateTransform>
+            </g>
+            <g>
+                <g transform="translate(50 16.6)">
+                    <circle cx="0" cy="0" r="19" fill="#ff3e89"
+                        transform="scale(0.33000000000000007)"></circle>
+                </g>
+                <animateTransform attributeName="transform" calcMode="spline" type="rotate"
+                    values="0 50 50;360 50 50" keyTimes="0;1" dur="3.6s"
+                    keySplines="0.13333333333333333 0 0.03333333333333333 1"
+                    repeatCount="indefinite"></animateTransform>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <filter id="filter0_d_1055_17" x="515" y="118" width="888" height="1841"
+            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha"
+                result="effect1_dropShadow_1055_17">
+            </feMorphology>
+            <feOffset dx="-29" dy="13" />
+            <feGaussianBlur stdDeviation="11" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1055_17">
+            </feBlend>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1055_17"
+                result="shape">
+            </feBlend>
+        </filter>
+        <filter id="ldio-pe0f3sycqe-filter" x="-100%" y="-100%" width="300%" height="300%"
+            color-interpolation-filters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3"></feGaussianBlur>
+            <feComponentTransfer result="cutoff">
+                <feFuncA type="linear" slope="60" intercept="-40"></feFuncA>
+            </feComponentTransfer>
+        </filter>
+        <filter id="ldio-27jrchkmlwb-filter" x="-100%" y="-100%" width="300%" height="300%"
+            color-interpolation-filters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3"></feGaussianBlur>
+            <feComponentTransfer result="cutoff">
+                <feFuncA type="linear" slope="60" intercept="-40"></feFuncA>
+            </feComponentTransfer>
+        </filter>
+    </defs>
+</svg>

@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>404 Error | zhouyiwork.com</title>
+		<meta name="Author" content="zhouyiwork.com"/>
+		<!-- <link href='http://fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'> -->
+		<style>
+
+			@-webkit-keyframes swing {
+				20% {
+					-webkit-transform: rotate3d(0, 0, 1, 0deg);
+					transform: rotate3d(0, 0, 1, 0deg);
+				}
+				22% {
+					-webkit-transform: rotate3d(0, 0, 1, 15deg);
+					transform: rotate3d(0, 0, 1, 15deg);
+				}
+
+				24% {
+					-webkit-transform: rotate3d(0, 0, 1, -10deg);
+					transform: rotate3d(0, 0, 1, -10deg);
+				}
+
+				26% {
+					-webkit-transform: rotate3d(0, 0, 1, 5deg);
+					transform: rotate3d(0, 0, 1, 5deg);
+				}
+
+				28% {
+					-webkit-transform: rotate3d(0, 0, 1, -5deg);
+					transform: rotate3d(0, 0, 1, -5deg);
+				}
+
+				30% {
+					-webkit-transform: rotate3d(0, 0, 1, 0deg);
+					transform: rotate3d(0, 0, 1, 0deg);
+				}
+			}
+
+			@keyframes swing {
+				20% {
+					-webkit-transform: rotate3d(0, 0, 1, 0deg);
+					transform: rotate3d(0, 0, 1, 0deg);
+				}
+				22% {
+					-webkit-transform: rotate3d(0, 0, 1, 15deg);
+					transform: rotate3d(0, 0, 1, 15deg);
+				}
+
+				24% {
+					-webkit-transform: rotate3d(0, 0, 1, -10deg);
+					transform: rotate3d(0, 0, 1, -10deg);
+				}
+
+				26% {
+					-webkit-transform: rotate3d(0, 0, 1, 5deg);
+					transform: rotate3d(0, 0, 1, 5deg);
+				}
+
+				28% {
+					-webkit-transform: rotate3d(0, 0, 1, -5deg);
+					transform: rotate3d(0, 0, 1, -5deg);
+				}
+
+				30% {
+					-webkit-transform: rotate3d(0, 0, 1, 0deg);
+					transform: rotate3d(0, 0, 1, 0deg);
+				}
+			}
+
+			.swing {
+				-webkit-transform-origin: top center;
+				transform-origin: top center;
+				-webkit-animation-name: swing;
+				animation-name: swing;
+				-webkit-animation-duration: 5s;
+				animation-duration: 5s;
+				-webkit-animation-iteration-count: infinite;
+				animation-iteration-count: infinite;
+			}
+
+
+			html, body{
+				height: 100%;
+				margin: 0; padding: 0;
+			}
+			body{
+
+				background-color: #fafafa;
+				color: #333;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-weight: 300;
+				position: relative;
+			}
+			section{
+				text-align: center;
+				box-sizing: border-box;
+				padding: 20px 0;
+				max-width: 600px;
+				margin: auto;
+				height: 100%;
+				display: table;
+			}
+			div.container{
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			h2{
+				color: #6f6f6f;
+				font-weight: 100;
+				font-size: 1.8em;
+				padding: 0; margin: 0;
+			}
+			h3{
+				color: black;
+				font-weight: 300;
+				padding: 0; margin: 0.5em;
+
+			}
+			p.back{
+				margin-top: 40px;
+			}
+			a{
+				color: rgb(51, 122, 183);
+				margin-top: 40px;
+			}
+
+
+			div#logo-border{
+				margin: 0 auto;
+				width: 100px;
+				height: 100px;
+				margin-bottom: 30px;
+			}
+			div#logo-border img{
+				width: 100%;
+			}
+
+			.footer{
+				position: fixed;
+				width: 100%;
+				bottom: 0;
+				text-align: center;
+			}
+
+		</style>
+	</head>
+	<body>
+		<section>
+			<div class="container">
+				<h2>Oops! Error 404</h2>
+				<h3>The page you were trying <br> to view does not exist</h3>
+				<p class="back">
+					<a href="http://zhouyiwork.com">
+						Back to Homepage
+					</a>
+				</p>
+			</div>
+		</section>
+		<h5 class="footer"> zhouyiwork.com </h5>
+
+	</body>
+</html>
