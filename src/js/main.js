@@ -26,11 +26,16 @@ function offsetHeight() {
     const sourceHeight = sourceElement.offsetHeight;
     // Set the top margin
     if (targetElement) {
-        console.log('Element is set.');
-        targetElement.style.marginTop = '${sourceHeight}px';
+        targetElement.style.marginTop = `${sourceHeight}px`; // Use backticks (`) here
+        console.log('offsetHeight - Element is set.');
+    } else {
+        console.log('offsetHeight - No target nav found');
+        return;
     }
 }
+
 document.addEventListener('DOMContentLoaded', offsetHeight);
+
 
 
 // interactive decoration
@@ -41,20 +46,23 @@ function applyInteractiveDecoration(e) {
     const moveable = document.getElementById('hero_moveable');
     const moveable2 = document.getElementById('contact_moveable');
 
-    if (window.innerWidth > 992) {
-        let xAxis = (window.innerWidth / 2 - e.clientX) / scale;
-        let yAxis = (window.innerHeight / 2 - e.clientY) / scale;
+    if (moveable && moveable2) {
+        if (window.innerWidth > 992) {
+            let xAxis = (window.innerWidth / 2 - e.clientX) / scale;
+            let yAxis = (window.innerHeight / 2 - e.clientY) / scale;
 
-        xAxis = Math.min(Math.max(xAxis, -maxRotation), maxRotation);
-        yAxis = Math.min(Math.max(yAxis, -maxRotation), maxRotation);
+            xAxis = Math.min(Math.max(xAxis, -maxRotation), maxRotation);
+            yAxis = Math.min(Math.max(yAxis, -maxRotation), maxRotation);
 
-        moveable.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        moveable2.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-    } else {
-        moveable.style.transform = `rotateY(0deg) rotateX(0deg)`;
-        moveable2.style.transform = `rotateY(0deg) rotateX(0deg)`;
+            moveable.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            moveable2.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        } else {
+            moveable.style.transform = `rotateY(0deg) rotateX(0deg)`;
+            moveable2.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        }
     }
 }
+
 document.addEventListener('mousemove', applyInteractiveDecoration);
 
 
@@ -90,26 +98,32 @@ function submitFormOnEvent(formID, emailInputID, messageInputID, outputElementID
     const form = document.getElementById(formID);
     const emailInput = document.getElementById(emailInputID);
     const messageInput = document.getElementById(messageInputID);
-    const outputElement = document.getElementById(outputElementID);
+    const outputElement = document.getElementById(outputElementID); 
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
+    if (form) {
+        console.log('form set')
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-        const fromEmail = emailInput.value;
-        const message = messageInput.value;
+            const fromEmail = emailInput.value;
+            const message = messageInput.value;
 
-        const formData = new FormData();
-        formData.append('fromEmail', fromEmail);
-        formData.append('message', message);
+            const formData = new FormData();
+            formData.append('fromEmail', fromEmail);
+            formData.append('message', message);
 
-        fetch(handlerURLfromRoot, {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.text())
-            .then(data => outputElement.innerHTML = data)
-            .catch((error) => console.error('Error:', error));
-    });
+            fetch(handlerURLfromRoot, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => outputElement.innerHTML = data)
+                .catch((error) => console.error('Error:', error));
+        });
+        
+    } else {
+        console.log('form not found')
+    }
 }
 
 submitFormOnEvent('contactForm', 'msg_submit_email', 'msg_submit_content', 'formOutput', 'src/php/handler_contact_form.php');

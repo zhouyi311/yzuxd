@@ -9,7 +9,7 @@ $projectId = $_GET['project']; // Retrieve the 'project' query parameter.
 
 $project = ProjectInfo::loadById($projectId); // Load the project with the given ID
 
-echo $projectID;
+// echo $projectId;
 
 if ($project === null) { // No project found for the given ID
     header("HTTP/1.0 404 Not Found");
@@ -94,6 +94,9 @@ if ($project->password !== 'no' && isset($_POST['password']) && $_POST['password
     <!-- Main -->
     <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%"
         data-bs-smooth-scroll="true">
+        <section>
+            
+        </section>
         <h1>
             <?php echo htmlspecialchars($project->title); ?>
         </h1>

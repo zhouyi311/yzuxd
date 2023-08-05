@@ -130,26 +130,26 @@ usort($projects, function ($a, $b) {
                                                         src="src/img/ui-dec-00.png?v=h_2"
                                                         alt="banner decoration image"></img>
                                                     <img class="hero_decoration extra_layer ztrans_1"
-                                                        src="src/img/ui-dec-01.png?v=h_2"
-                                                        alt="banner decoration image"></img>
+                                                        src="src/img/ui-dec-01.png?v=h_2" alt="banner decoration image"
+                                                        aria-hidden="true"></img>
                                                     <img class="hero_decoration extra_layer ztrans_2"
-                                                        src="src/img/ui-dec-02.png?v=h_2"
-                                                        alt="banner decoration image"></img>
+                                                        src="src/img/ui-dec-02.png?v=h_2" alt="banner decoration image"
+                                                        aria-hidden="true"></img>
                                                     <img class="hero_decoration extra_layer ztrans_3"
-                                                        src="src/img/ui-dec-03.png?v=h_2"
-                                                        alt="banner decoration image"></img>
+                                                        src="src/img/ui-dec-03.png?v=h_2" alt="banner decoration image"
+                                                        aria-hidden="true"></img>
                                                     <img class="hero_decoration extra_layer ztrans_4"
-                                                        src="src/img/ui-dec-04.png?v=h_2"
-                                                        alt="banner decoration image"></img>
+                                                        src="src/img/ui-dec-04.png?v=h_2" alt="banner decoration image"
+                                                        aria-hidden="true"></img>
                                                     <img class="hero_decoration extra_layer ztrans_5"
-                                                        src="src/img/ui-dec-05.png?v=h_2"
-                                                        alt="banner decoration image"></img>
+                                                        src="src/img/ui-dec-05.png?v=h_2" alt="banner decoration image"
+                                                        aria-hidden="true"></img>
                                                     <img class="hero_decoration extra_layer ztrans_6"
-                                                        src="src/img/ui-dec-06.png?v=h_2"
-                                                        alt="banner decoration image"></img>
+                                                        src="src/img/ui-dec-06.png?v=h_2" alt="banner decoration image"
+                                                        aria-hidden="true"></img>
                                                     <img class="hero_decoration extra_layer ztrans_7"
-                                                        src="src/img/ui-dec-07.png?v=h_2"
-                                                        alt="banner decoration image"></img>
+                                                        src="src/img/ui-dec-07.png?v=h_2" alt="banner decoration image"
+                                                        aria-hidden="true"></img>
                                                 </div>
                                             </div>
                                         </div>
@@ -189,7 +189,7 @@ usort($projects, function ($a, $b) {
                         echo "<div class='project_card " . ($isFeatured ? "featured_card" : "") . " card border-0 overflow-hidden rounded-5 bg-white h-100'>";
                         echo "<a class='card_thumb_link' href='$projectLink'>";
                         echo "<div class='card_thumbnail ratio ratio-1x1 rounded-5'>";
-                        echo "<img class='object-fit-cover' src='$thumbnailSrc' alt='$title Thumbnail'>";
+                        echo "<img class='object-fit-cover' src='$thumbnailSrc' alt='$title thumbnail'>";
                         echo "</div></a>";
                         echo "<div class='card_info h-100'>";
                         echo "<div class='card_info_headline text-nowrap text-truncate'>";
@@ -299,15 +299,20 @@ usort($projects, function ($a, $b) {
                                     <div class="contact_self_tilting">
                                         <div class="contact_tilting_group">
                                             <img class="contact_decoration none_select base_layer"
-                                                src="src/img/phone-base.png?v=z021" alt="image decoration">
+                                                src="src/img/phone-base.png?v=z021" alt="image decoration"
+                                                aria-hidden="true">
                                             <img class="contact_decoration none_select extra_layer extra_rise_btn"
-                                                src="src/img/phone-btn.png?v=z021" alt="image decoration">
+                                                src="src/img/phone-btn.png?v=z021" alt="image decoration"
+                                                aria-hidden="true">
                                             <img class="contact_decoration none_select extra_layer extra_rise_0"
-                                                src="src/img/phone-face.svg?v=z021" alt="image decoration">
+                                                src="src/img/phone-face.svg?v=z021" alt="image decoration"
+                                                aria-hidden="true">
                                             <img class="contact_decoration none_select extra_layer extra_rise_1 "
-                                                src="src/img/phone-icon.png?v=z021" alt="image decoration">
+                                                src="src/img/phone-icon.png?v=z021" alt="image decoration"
+                                                aria-hidden="true">
                                             <img class="contact_decoration none_select extra_layer extra_rise_2 "
-                                                src="src/img/phone-icon-1.svg?v=z021" alt="image decoration">
+                                                src="src/img/phone-icon-1.svg?v=z021" alt="image decoration"
+                                                aria-hidden="true">
                                         </div>
                                     </div>
                                 </div>
