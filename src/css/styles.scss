@@ -618,26 +618,43 @@ footer {
 // #######################################################################################################################
 
 main#project_main {
-    article{
+    article {}
 
-    }
+    .load_more_section {
+        background-color: $color-ash-gray;
 
-    .last_next_selector{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-
-        .project_cta{
+        .last_next_selector {
             display: flex;
-            align-items: center;
-            gap: 1em;
-        }
-        .last_cta{
-            justify-content: start;
-        }
-        .next_cta {
-            justify-content: end;
-        }
-    }
+            gap: $unit-2;
+            justify-content: space-between;
 
+            a {
+                display: flex;
+                flex-direction: column;
+                color: inherit;
+                text-decoration: none;
+                overflow: hidden;
+
+                &:last-child {
+                    text-align: right;
+                }
+
+                div {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .disabled {
+                div {
+                    color: rgba($color: #000000, $alpha: 0.3)
+                }
+
+                user-select: none;
+                pointer-events: none;
+            }
+        }
+
+    }
 }

@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="row mb-1">
-            <div class="d-flex justify-content-center gap-3 text-secondary">
+            <div class="d-flex justify-content-center gap-2 gap-md-3 text-secondary">
                 <div>
                     <a class="text-secondary text-decoration-none "
                         href="mailto:<?php echo htmlspecialchars($site_info->information["myEmail"]); ?>">Email</a>

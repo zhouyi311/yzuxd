@@ -218,7 +218,7 @@ $projects = ProjectInfo::loadAll();
                             echo "</div><div class='card_info_summary'>";
                             echo "<div class='summary_content fw-light'>";
                             foreach ($summaryText as $textItem) {
-                                echo "<p>" . htmlspecialchars($textItem) . "</p>";
+                                echo "<p class='mb-0'>" . htmlspecialchars($textItem) . "</p>";
                             }
                             echo "</div></div><div class='card_info_cta mt-1 mb-2'>";
                             echo "<a class='btn btn-dark rounded-pill px-4 fw-medium' href='$projectLink'>";

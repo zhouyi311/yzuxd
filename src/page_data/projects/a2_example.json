@@ -12,8 +12,12 @@
         ],
         "summary": {
             "text": [
-                    "Rules: Project ID should be unique.<br> For public projects (no password), set password = 'no' or ''.<br> Feature project: indexOrder 0-9. Hide project: set indexOrder to negative. indexOrder could be set redundant",
-                    "2322"
+                "Rules and useage: ",
+                "1. ID should be unique",
+                "2. For genral projects (no password), set password = '' or 'no'",
+                "3. Featured project: set indexOrder 0-9",
+                "4. Hide project: set indexOrder to negative",
+                "* indexOrder only matters of the order on home page. It could be set redundant, redundant order number will be sort by ID number"
             ],
             "summaryImage": "summary.png",
             "thumbnail": "thumb.png"
@@ -29,6 +33,10 @@
                     {
                         "type": "image",
                         "content": "example-01.png"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                     },
                     {
                         "type": "text",
@@ -59,6 +67,10 @@
                     {
                         "type": "image",
                         "content": "example-03.png"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                     }
                 ]
             }

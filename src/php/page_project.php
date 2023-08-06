@@ -208,7 +208,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                         <div class="col-12">
                             <div class="pw_form_container p-5 my-5 bg-light">
                                 <div class="row">
-                                    <div class="col-md-4 offset-md-4">
+                                    <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4 ">
                                         <form class="pw_form d-flex flex-column gap-3" method="POST">
                                             <h4>Enter Password</h4>
                                             <div class="form-floating">
@@ -234,51 +234,44 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
 
 
             <?php
-            $hasLastProject = isset($project->last->title);
-            $hasNextProject = isset($project->next->title);
+
             ?>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class='last_next_selector py-5 px-4'>
-                            <div class="last_cta project_cta">
-                                <i class='bi bi-arrow-left'></i>
-                                <?php if ($hasLastProject): ?>
-                                    <!-- If Last Project Exists -->
-                                    <a href="/?project=<?= $project->last->id ?>">
-                                        <div class="">
-                                            Last Case:<br>
-                                            <?= $project->last->title ?>
-                                        </div>
-                                    </a>
-                                <?php else: ?>
-                                    <!-- If Last Project Doesn't Exist -->
-                                    <div class="">
-                                        Last Case:<br>
-                                        None
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                            <div class="next_cta project_cta">
-                                <?php if ($hasNextProject): ?>
-                                    <!-- If Next Project Exists -->
-                                    <a href="/?project=<?= $project->next->id ?>">
-                                        <div class="">
-                                            Next Case:<br>
-                                            <?= $project->next->title ?>
-                                        </div>
-                                    </a>
-                                <?php else: ?>
-                                    <!-- If Next Project Doesn't Exist -->
-                                    <div class="">
-                                        Next Case:<br>
-                                        None
-                                    </div>
-                                <?php endif; ?>
-                                <i class='bi bi-arrow-right'></i>
-                            </div>
+            <div class="load_more_section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class='last_next_selector py-4'>
+                                <?php
+                                $hasLastProject = isset($project->last->title);
+                                $hasNextProject = isset($project->next->title);
+                                function generateCTAContent($hasProject, $targetProject, $type, $defaultMessage)
+                                {
+                                    $iconLast = $type === "Previous" ? '<i class="bi bi-chevron-left"></i>' : '';
+                                    $iconNext = $type === "Next" ? '<i class="bi bi-chevron-right"></i>' : '';
+                                    $lastNextClass = $type === "Previous" ? 'pre_case' : 'next_case';
+                                    $caseTitle = $type . " Case";
+                                    $projectPath = $targetProject ? '/?project=' . $targetProject->id : "#";
+                                    $projectTitle = $targetProject ? $targetProject->title : $defaultMessage;
+                                    $linkClass = $hasProject ? "btn-dark" : "btn-secondary disabled";
 
+                                    return "<a href='{$projectPath}' class='{$linkClass} {$lastNextClass}'>
+                                            <div class='cta_title fw-bold'>
+                                                {$iconLast}
+                                                {$caseTitle}
+                                                {$iconNext}
+                                            </div>
+                                            <div class='project_name fw-medium'>
+                                                {$projectTitle}
+                                            </div>
+                                        </a>";
+                                }
+                                ?>
+
+                                <?= generateCTAContent($hasLastProject, $project->last ?? null, "Previous", "You're at the top"); ?>
+                                <?= generateCTAContent($hasNextProject, $project->next ?? null, "Next", "You've reached the end"); ?>
+
+                            </div>
                         </div>
                     </div>
                 </div>
