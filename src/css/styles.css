@@ -188,7 +188,6 @@ html {
 }
 
 body {
-  min-height: 100vh;
   font-family: "Source Sans 3", Helvetica, Arial, sans-serif;
 }
 body h1,
@@ -199,6 +198,16 @@ body h5,
 body h6 {
   font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 700;
+}
+body .page_wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+body .page_wrapper main#project_main {
+  flex-grow: 1;
 }
 body .text_hero {
   font-size: 6rem;
@@ -712,4 +721,21 @@ footer {
   width: 100%;
   bottom: 0;
   font-size: 0.8em;
+}
+
+main#project_main .last_next_selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+main#project_main .last_next_selector .project_cta {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+main#project_main .last_next_selector .last_cta {
+  justify-content: start;
+}
+main#project_main .last_next_selector .next_cta {
+  justify-content: end;
 }/*# sourceMappingURL=styles.css.map */

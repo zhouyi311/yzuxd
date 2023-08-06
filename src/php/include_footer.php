@@ -4,7 +4,7 @@
         <div class="row mb-3">
             <div class="text-center text-dark">
                 <a class="text-dark text-decoration-none"
-                    href="<?php echo htmlspecialchars($site_info->information["siteAddress"]); ?>">
+                    href="<?php echo htmlspecialchars($site_root_url); ?>">
                     <img class="mb-2" src="src/img/favicon/logo.svg" alt="footer logo"
                         style="height:30px; filter: filter: contrast(10%);">
                     <div class="fw-bold text-uppercase fs-6">

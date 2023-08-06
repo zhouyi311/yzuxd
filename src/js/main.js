@@ -22,21 +22,18 @@ window.addEventListener('scroll', handleScrollForNavigation);
 // main margin setup
 function offsetHeight() {
     const sourceElement = document.getElementById('page_navbar');
-    const targetElement = document.getElementById('project_main');
+    const targetElement = document.getElementById('project_page_wrapper');
     const sourceHeight = sourceElement.offsetHeight;
     // Set the top margin
     if (targetElement) {
-        targetElement.style.marginTop = `${sourceHeight}px`; // Use backticks (`) here
+        targetElement.style.paddingTop = `${sourceHeight+16}px`; // Use backticks (`) here
         console.log('offsetHeight - Element is set.');
     } else {
         console.log('offsetHeight - No target nav found');
         return;
     }
 }
-
 document.addEventListener('DOMContentLoaded', offsetHeight);
-
-
 
 // interactive decoration
 function applyInteractiveDecoration(e) {

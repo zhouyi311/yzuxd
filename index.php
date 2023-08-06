@@ -1,37 +1,26 @@
 <?php
+// print error
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+// error_reporting(E_ALL & ~E_NOTICE);
 
-function getBaseUrl()
-{
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? "https://" : "http://";
-    $domainName = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
-    $folderPath = isset($_SERVER['SCRIPT_NAME']) ? dirname($_SERVER['SCRIPT_NAME']) : '';
-
-    // If the script is in the site root, do not append '/'
-    if ($folderPath === '/') {
-        return $protocol . $domainName;
-    }
-    return $protocol . $domainName . $folderPath . '/';
-}
-$baseUrl = getBaseUrl();
-// echo $baseUrl;
-
+// include site info
 require_once __DIR__ . '/src/php/class_site_info.php';
 $site_info = SiteInfo::loadInfo();
 
-$project = isset($_GET['project']) ? $_GET['project'] : null; // Check if $_GET['project'] is set
+// Check if $_GET['project'] is set
+$project = isset($_GET['project']) ? $_GET['project'] : null; 
 
-set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-    // If the error is severe, throw an ErrorException
-    if ($errno === E_ERROR) {
-        throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
-    }
-    // For other types of errors, just return false to use PHP's default error handler
-    return false;
-});
+// set error handeler
+// set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+//     if ($errno === E_ERROR) { // If the error is severe, throw an ErrorException
+//         throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
+//     } // For other types of errors, just return false to use PHP's default error handler
+//     return false;
+// });
 
+// load home or project page based on id
 try {
     if ($project) {
         if (file_exists(__DIR__ . '/src/php/page_project.php')) {

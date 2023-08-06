@@ -19,6 +19,9 @@ class ProjectInfo
         $this->date = $projectData['date'];
         $this->categories = $projectData['categories'];
         $this->summary = $projectData['summary'];
+        if (is_string($this->summary['text'])) {
+            $this->summary['text'] = array($this->summary['text']);
+        }
         $this->password = $projectData['password'];
         $this->indexOrder = $projectData['indexOrder'];
         $this->content = $projectData['content'];
@@ -35,26 +38,49 @@ class ProjectInfo
 
     public static function loadAll()
     {
-        $directory = __DIR__ . '/../page_data/projects'; // Absolute path for reading data
-
+        $directory = __DIR__ . '/../page_data/projects';
         $projects = [];
+
         foreach (glob($directory . '/*.json') as $file) {
             $projects[] = new ProjectInfo(self::getProjectDataFromFile($file));
         }
+
+        // Sort by indexOrder, then by ID if index orders are the same
+        usort($projects, function ($a, $b) {
+            if ($a->indexOrder == $b->indexOrder) {
+                return $a->id <=> $b->id; // Sort by ID
+            }
+            return $a->indexOrder <=> $b->indexOrder; // Sort by indexOrder
+        });
 
         return $projects;
     }
 
     public static function loadById($id)
     {
-        $directory = __DIR__ . '/../page_data/projects'; // Absolute path for reading data
-        foreach (glob($directory . '/*.json') as $file) {
-            $projectData = self::getProjectDataFromFile($file);
-            if ($projectData['id'] == $id) {
-                return new ProjectInfo($projectData);
-            }
+        // $directory = __DIR__ . '/../page_data/projects'; // Absolute path for reading data
+        $allProjects = self::loadAll(); // Get all projects sorted by order
+
+        $currentProjectIndex = array_search($id, array_column($allProjects, 'id'));
+
+        // If project with ID is not found
+        if ($currentProjectIndex === false) {
+            return null;
         }
-        return null;
+
+        $project = $allProjects[$currentProjectIndex];
+
+        // Get last project if it exists
+        if ($currentProjectIndex < count($allProjects) - 1) {
+            $project->last = $allProjects[$currentProjectIndex + 1];
+        }
+
+        // Get next project if it exists
+        if ($currentProjectIndex > 0) {
+            $project->next = $allProjects[$currentProjectIndex - 1];
+        }
+
+        return $project;
     }
 
     public static function doesProjectExist($id)
@@ -67,6 +93,7 @@ class ProjectInfo
         }
         return false;
     }
+
 }
 
 ?>

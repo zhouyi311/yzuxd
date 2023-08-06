@@ -1,9 +1,9 @@
 [
     {
-        "id": 9,
-        "password": "",
-        "indexOrder": 2,
-        "title": "Example Featured Project No. 1",
+        "id": 99,
+        "password": "123",
+        "indexOrder": 10,
+        "title": "Ex. Project No. 2 Non-Featured",
         "date": "2023",
         "categories": [
             "Branding",
@@ -11,7 +11,10 @@
             "Graphic Design"
         ],
         "summary": {
-            "text": "Variables and maps determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.",
+            "text": [
+                    "Rules: Project ID should be unique.<br> For public projects (no password), set password = 'no' or ''.<br> Feature project: indexOrder 0-9. Hide project: set indexOrder to negative. indexOrder could be set redundant",
+                    "2322"
+            ],
             "summaryImage": "summary.png",
             "thumbnail": "thumb.png"
         },

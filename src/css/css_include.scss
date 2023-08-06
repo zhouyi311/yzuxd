@@ -31,8 +31,8 @@ html {
 }
 
 body {
-    min-height: 100vh;
     font-family: $font-normal;
+
     h1,
     h2,
     h3,
@@ -41,6 +41,19 @@ body {
     h6 {
         font-family: $font-head;
         font-weight: 700;
+    }
+
+    .page_wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+        position: relative;
+
+        main#project_main {
+            flex-grow: 1;
+        }
+
     }
 
     .text_hero {

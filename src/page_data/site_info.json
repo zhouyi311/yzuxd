@@ -14,10 +14,13 @@
         "myTwitter": "https://www.twitter.com/zhouyi311/"
     },
     "frontPageContent": {
-        "heroGreetings": "Oh là là!",
+        "heroGreeting": "Oh là là!",
         "heroHeadline": "You've Found Me",
         "heroIntroduction": "My name is Yi Zhou, a product UX designer passionate for simplifying the complex.",
-        "heroSummaryHtml": "<p>With my meticulous eye for detail and my creative problem-solving mind, I am able to craft user experiences that are both effective and delightful.</p><p>With my strong skills in logical reasoning and front-end development, I am able to unearth users' true needs and find a balance between being a perfectionist and being practical.</p>",
+        "heroParagraphsArray": [
+            "With my meticulous eye for detail and my creative problem-solving mind, I am able to craft user experiences that are both effective and delightful.",
+            "With my strong skills in logical reasoning and front-end development, I am able to unearth users' true needs and find a balance between being a perfectionist and being practical."
+        ],
         "heroCallToAction": "VIEW PROJECTS"
     }
 }

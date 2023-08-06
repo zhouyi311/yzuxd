@@ -4,13 +4,18 @@ class SiteInfo
 {
     public $sitename;
     public $information;
-    public $fontPageContent;
+    public $frontPageContent;
 
-    public function __construct($sitename, $information, $fontPageContent)
+    public function __construct($sitename, $information, $frontPageContent)
     {
         $this->sitename = $sitename;
         $this->information = $information; // This will be an associative array
-        $this->fontPageContent = $fontPageContent; // This will be an associative array
+        $this->frontPageContent = $frontPageContent; // This will be an associative array
+        
+        // Ensure heroParagraphsArray is always an array
+        if (isset($this->frontPageContent['heroParagraphsArray']) && !is_array($this->frontPageContent['heroParagraphsArray'])) {
+            $this->frontPageContent['heroParagraphsArray'] = [$this->frontPageContent['heroParagraphsArray']];
+        }
     }
 
     public static function loadInfo()
@@ -42,4 +47,3 @@ class SiteInfo
 }
 
 ?>
-
