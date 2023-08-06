@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 // root url
 function getSiteRootUrl()
 {
@@ -13,13 +15,15 @@ function getSiteRootUrl()
 }
 $site_root_url = getSiteRootUrl();
 
+session_start();
+
+
 // load projects
 require_once __DIR__ . '/class_site_info.php';
 $site_info = SiteInfo::loadInfo();
 
 include_once __DIR__ . '/class_project_info.php';
 
-session_start();
 
 $projectId = $_GET['project']; // Retrieve the 'project' query parameter
 
@@ -47,12 +51,9 @@ if (isset($_POST['password']) && !isset($_SESSION['form_processed'])) {
         header("Location: ?project=$projectId");
         exit;
     } else {
-        // Optionally, you can set an error message here if the password is incorrect.
-        $_SESSION['error_message'] = "Incorrect password!";
+        $_SESSION['error_message'] = "Incorrect password!"; // Optionally, you can set an error message here if the password is incorrect.
     }
 }
-
-
 
 $project_pw = $project->password;
 
@@ -69,6 +70,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
     header("Location: ?project=$projectId");
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>

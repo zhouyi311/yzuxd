@@ -11,8 +11,15 @@
         ?>
     </title>
 
-    <meta name="description"
-        content="<?php echo isset($project) ? htmlspecialchars($project->summary['text']) : htmlspecialchars($site_info->information['siteDescription']); ?>">
+    <meta name="description" content="<?php
+    if (isset($project)) {
+        $summaryText = $project->summary['text'];
+        echo htmlspecialchars(is_array($summaryText) ? implode(' ', $summaryText) : $summaryText);
+    } else {
+        echo htmlspecialchars($site_info->information['siteDescription']);
+    }
+    ?>">
+
 
     <link rel="apple-touch-icon" sizes="180x180" href="src/img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="src/img/favicon/favicon-32x32.png">

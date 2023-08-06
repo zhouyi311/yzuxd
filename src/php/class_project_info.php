@@ -12,8 +12,8 @@ class ProjectInfo
     public $content;
     public $path;
 
-    public $next = null; // Declare the 'next' property
-    public $previous = null; // Declare the 'previous' property
+    public $last = null;
+    public $next = null;
 
     public function __construct($projectData)
     {
@@ -61,13 +61,14 @@ class ProjectInfo
 
     public static function loadById($id)
     {
-        // $directory = __DIR__ . '/../page_data/projects'; // Absolute path for reading data
-        $allProjects = self::loadAll(); // Get all projects sorted by order
+        // echo "Entered loadById<br>";
 
+        $allProjects = self::loadAll(); // Get all projects sorted by order
         $currentProjectIndex = array_search($id, array_column($allProjects, 'id'));
 
         // If project with ID is not found
         if ($currentProjectIndex === false) {
+            // echo "No match found for ID: $id<br>";
             return null;
         }
 
@@ -83,8 +84,88 @@ class ProjectInfo
             $project->next = $allProjects[$currentProjectIndex - 1];
         }
 
+        // echo "Successfully fetched ProjectInfo for ID: $id<br>";
         return $project;
     }
+
+
+    // public static function loadById($id)
+    // {
+    //     echo "Entered loadById<br>";
+
+    //     $directory = __DIR__ . '/../page_data/projects';
+
+    //     foreach (glob($directory . '/*.json') as $file) {
+    //         echo "Checking file: $file<br>";
+    //         $projectData = self::getProjectDataFromFile($file);
+    //         echo "Loaded data for file: $file<br>";
+    //         var_dump($projectData);
+
+    //         if ($projectData['id'] == $id) {
+    //             echo "Match found for ID: $id<br>";
+    //             try {
+    //                 $project = new ProjectInfo($projectData);
+    //                 echo "Successfully created ProjectInfo instance for ID: $id<br>";
+    //                 return $project;
+    //             } catch (Exception $e) {
+    //                 echo "Error while creating ProjectInfo instance: " . $e->getMessage() . "<br>";
+    //             }
+    //         }
+    //     }
+
+    //     echo "No match found<br>";
+    //     return null;
+    // }
+
+    // public static function loadById($id)
+    // {
+    //     echo "Entered loadById<br>"; // Debug statement
+
+    //     $directory = __DIR__ . '/../page_data/projects';
+
+    //     foreach (glob($directory . '/*.json') as $file) {
+    //         echo "Checking file: $file<br>"; // Debug statement
+
+    //         $projectData = self::getProjectDataFromFile($file);
+
+    //         if ($projectData['id'] == $id) {
+    //             echo "Match found for ID: $id<br>"; // Debug statement
+    //             return new ProjectInfo($projectData);
+    //         }
+    //     }
+    //     echo "No match found<br>"; // Debug statement
+    //     return null;
+    // }
+
+    // public static function loadById($id)
+    // {
+    //     $directory = __DIR__ . '/../page_data/projects'; // Absolute path for reading data
+    //     $allProjects = self::loadAll(); // Get all projects sorted by order
+
+    //     $currentProjectIndex = array_search($id, array_column($allProjects, 'id'));
+
+    //     // If project with ID is not found
+    //     if ($currentProjectIndex === false) {
+    //         return null;
+    //     }
+
+    //     $project = $allProjects[$currentProjectIndex];
+
+    //     // Get last project if it exists
+    //     if ($currentProjectIndex < count($allProjects) - 1) {
+    //         $project->last = $allProjects[$currentProjectIndex + 1];
+    //     }
+
+    //     // Get next project if it exists
+    //     if ($currentProjectIndex > 0) {
+    //         $project->next = $allProjects[$currentProjectIndex - 1];
+    //     }
+
+    //     return $project;
+    // }
+
+    
+
 
     public static function doesProjectExist($id)
     {
