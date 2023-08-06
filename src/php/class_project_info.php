@@ -12,6 +12,9 @@ class ProjectInfo
     public $content;
     public $path;
 
+    public $next = null; // Declare the 'next' property
+    public $previous = null; // Declare the 'previous' property
+
     public function __construct($projectData)
     {
         $this->id = $projectData['id'];
