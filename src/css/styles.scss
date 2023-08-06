@@ -624,35 +624,39 @@ main#project_main {
         background-color: $color-ash-gray;
 
         .last_next_selector {
-            display: flex;
-            gap: $unit-2;
             justify-content: space-between;
 
-            a {
+            a.case {
                 display: flex;
                 flex-direction: column;
                 color: inherit;
-                text-decoration: none;
                 overflow: hidden;
+                transition: background-color 0.3s;
+
+                &:hover{
+                    // .cta{
+                        background-color: $color-ash-gray;
+                    // }
+                }
 
                 &:last-child {
                     text-align: right;
                 }
 
-                div {
+                .cta {
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
                 }
             }
 
-            .disabled {
-                div {
-                    color: rgba($color: #000000, $alpha: 0.3)
+            a.disabled {
+                .cta {
+                    color: $color-medium-gray;
                 }
-
                 user-select: none;
                 pointer-events: none;
+                cursor: not-allowed;
             }
         }
 

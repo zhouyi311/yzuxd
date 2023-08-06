@@ -241,7 +241,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <div class='last_next_selector py-4'>
+                            <div class='last_next_selector gap-1 d-flex'>
                                 <?php
                                 $hasLastProject = isset($project->last->title);
                                 $hasNextProject = isset($project->next->title);
@@ -250,27 +250,25 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                     $iconLast = $type === "Previous" ? '<i class="bi bi-chevron-left"></i>' : '';
                                     $iconNext = $type === "Next" ? '<i class="bi bi-chevron-right"></i>' : '';
                                     $lastNextClass = $type === "Previous" ? 'pre_case' : 'next_case';
-                                    $caseTitle = $type . " Case";
-                                    $projectPath = $targetProject ? '/?project=' . $targetProject->id : "#";
+                                    $caseTitle = $type . "";
+                                    $projectPath = $targetProject ? '?project=' . $targetProject->id : "#";
                                     $projectTitle = $targetProject ? $targetProject->title : $defaultMessage;
-                                    $linkClass = $hasProject ? "btn-dark" : "btn-secondary disabled";
+                                    $linkClass = $hasProject ? "" : "disabled";
 
-                                    return "<a href='{$projectPath}' class='{$linkClass} {$lastNextClass}'>
-                                            <div class='cta_title fw-bold'>
+                                    return "<a href='{$projectPath}' class='case {$lastNextClass} {$linkClass} p-4 text-decoration-none'>
+                                            <div class='cta cta_title fw-bold'>
                                                 {$iconLast}
                                                 {$caseTitle}
                                                 {$iconNext}
                                             </div>
-                                            <div class='project_name fw-medium'>
+                                            <div class='cta cta_name fw-medium'>
                                                 {$projectTitle}
                                             </div>
                                         </a>";
                                 }
                                 ?>
-
                                 <?= generateCTAContent($hasLastProject, $project->last ?? null, "Previous", "You're at the top"); ?>
                                 <?= generateCTAContent($hasNextProject, $project->next ?? null, "Next", "You've reached the end"); ?>
-
                             </div>
                         </div>
                     </div>

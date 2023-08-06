@@ -727,31 +727,33 @@ main#project_main .load_more_section {
   background-color: rgba(0, 0, 0, 0.05);
 }
 main#project_main .load_more_section .last_next_selector {
-  display: flex;
-  gap: 0.5rem;
   justify-content: space-between;
 }
-main#project_main .load_more_section .last_next_selector a {
+main#project_main .load_more_section .last_next_selector a.case {
   display: flex;
   flex-direction: column;
   color: inherit;
-  text-decoration: none;
   overflow: hidden;
+  transition: background-color 0.3s;
 }
-main#project_main .load_more_section .last_next_selector a:last-child {
+main#project_main .load_more_section .last_next_selector a.case:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+main#project_main .load_more_section .last_next_selector a.case:last-child {
   text-align: right;
 }
-main#project_main .load_more_section .last_next_selector a div {
+main#project_main .load_more_section .last_next_selector a.case .cta {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-main#project_main .load_more_section .last_next_selector .disabled {
+main#project_main .load_more_section .last_next_selector a.disabled {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
   pointer-events: none;
+  cursor: not-allowed;
 }
-main#project_main .load_more_section .last_next_selector .disabled div {
-  color: rgba(0, 0, 0, 0.3);
+main#project_main .load_more_section .last_next_selector a.disabled .cta {
+  color: rgba(0, 0, 0, 0.5);
 }/*# sourceMappingURL=styles.css.map */
