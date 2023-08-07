@@ -17,6 +17,14 @@ body h6 {
   font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 700;
 }
+body .h1,
+body .h2,
+body .h3,
+body .h4,
+body .h5,
+body .h6 {
+  font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
+}
 body .page_wrapper {
   display: flex;
   flex-direction: column;
@@ -30,7 +38,7 @@ body .page_wrapper main#project_main {
 body .text_hero {
   font-size: 6rem;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   body .text_hero {
     font-size: 4rem;
   }
@@ -43,12 +51,12 @@ body .text_hero {
 body .text_hero2 {
   font-size: 3rem;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   body .text_hero2 {
     font-size: 2.5rem;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 575px) {
   body .text_hero2 {
     font-size: 2rem;
   }

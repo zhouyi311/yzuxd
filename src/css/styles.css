@@ -199,6 +199,14 @@ body h6 {
   font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 700;
 }
+body .h1,
+body .h2,
+body .h3,
+body .h4,
+body .h5,
+body .h6 {
+  font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
+}
 body .page_wrapper {
   display: flex;
   flex-direction: column;
@@ -212,7 +220,7 @@ body .page_wrapper main#project_main {
 body .text_hero {
   font-size: 6rem;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   body .text_hero {
     font-size: 4rem;
   }
@@ -225,12 +233,12 @@ body .text_hero {
 body .text_hero2 {
   font-size: 3rem;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   body .text_hero2 {
     font-size: 2.5rem;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 575px) {
   body .text_hero2 {
     font-size: 2rem;
   }
@@ -248,23 +256,26 @@ body .high_holder {
 }
 
 .page_navbar {
-  font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
   transition: background-color 0.5s;
   flex-wrap: nowrap;
 }
 .page_navbar .navbar-brand {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
   flex-shrink: 1;
   overflow: hidden;
+  align-items: center;
+  line-height: 1.5rem;
 }
 .page_navbar .navbar-brand a {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
+  align-items: center;
   text-decoration: none;
   color: inherit;
+}
+.page_navbar .navbar-brand a.logo {
+  align-self: center;
 }
 .page_navbar .navbar-brand.navbar-dark {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
@@ -297,7 +308,7 @@ section.page_section {
 section.page_section .section_headline {
   margin-bottom: 3rem;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   section.page_section {
     padding: 3rem 0 4rem 0;
   }
@@ -322,7 +333,7 @@ section.page_section#home {
   justify-content: center;
   position: relative;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   section.page_section#home {
     padding: 6rem 0 3rem 0;
   }
@@ -343,7 +354,7 @@ section.page_section#home .hero_card .hero_btn {
 section.page_section#home .hero_card .hero_btn:hover {
   background-color: rgba(255, 0, 84, 0.8);
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   section.page_section#home .hero_card {
     -webkit-backdrop-filter: blur(1rem);
             backdrop-filter: blur(1rem);
@@ -395,7 +406,7 @@ section.page_section#home .bg_container .hero_decoration_container .extra_wrappe
   justify-content: center;
   z-index: -1;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   section.page_section#home .bg_container .hero_decoration_container .extra_wrapper {
     opacity: 0.6;
     transform: scale(150%);
@@ -579,10 +590,10 @@ section.page_section#projects #projects_container .project_card.featured_card .c
   overflow: hidden;
 }
 section.page_section#projects #projects_container .project_card.featured_card .card_info .card_info_summary .summary_content {
-  max-height: unset;
+  max-height: 12rem;
   -webkit-line-clamp: unset;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   section.page_section#projects #projects_container .project_card.featured_card {
     gap: 1.5rem;
   }
@@ -590,7 +601,7 @@ section.page_section#projects #projects_container .project_card.featured_card .c
     padding-left: 0;
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   section.page_section#projects #projects_container .project_card.featured_card {
     grid-template-columns: 1fr 1fr;
   }
@@ -598,12 +609,12 @@ section.page_section#projects #projects_container .project_card.featured_card .c
     grid-column: span 1;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   section.page_section#projects #projects_container .project_card.featured_card {
     grid-template-columns: 3fr 2fr;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 575px) {
   section.page_section#projects #projects_container .project_card.featured_card {
     gap: 0;
     grid-template-columns: 1fr;
@@ -719,30 +730,50 @@ footer {
   font-size: 0.8em;
 }
 
-body.project_body {
-  padding-top: 4rem;
+main#project_main article.project_case .project_case_header {
+  padding-top: 1.5rem;
 }
-
-main#project_main article .project_header .project_intro_image {
+@media (max-width: 991px) {
+  main#project_main article.project_case .project_case_header .project_intro_summary {
+    box-shadow: 0 -1rem 1rem -1.5rem rgba(0, 0, 0, 0.3);
+  }
+}
+main#project_main article.project_case .project_case_header .project_intro_image {
   display: flex;
   flex-direction: column;
   justify-content: end;
   height: 100%;
   overflow: hidden;
 }
-main#project_main article .project_header .project_intro_image img {
+main#project_main article.project_case .project_case_header .project_intro_image img {
   flex: 1 1;
   -o-object-fit: contain;
      object-fit: contain;
   -o-object-position: 50% 100%;
      object-position: 50% 100%;
 }
-main#project_main article img {
+@media (max-width: 991px) {
+  main#project_main article.project_case .project_case_header .project_intro_image img {
+    max-height: 500px;
+  }
+}
+@media (max-width: 767px) {
+  main#project_main article.project_case .project_case_header .project_intro_image img {
+    max-height: 300px;
+  }
+}
+main#project_main article.project_case .article_section:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+main#project_main article.project_case img {
   width: 100%;
 }
 main#project_main .load_more_section .last_next_selector {
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.03);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 main#project_main .load_more_section .last_next_selector a.case {
   display: flex;
@@ -752,8 +783,8 @@ main#project_main .load_more_section .last_next_selector a.case {
   transition: background-color 0.3s, color 0.3s;
 }
 main#project_main .load_more_section .last_next_selector a.case:hover {
-  background-color: white;
-  color: #ff0054;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
 }
 main#project_main .load_more_section .last_next_selector a.case:last-child {
   text-align: right;
@@ -771,5 +802,5 @@ main#project_main .load_more_section .last_next_selector a.disabled {
   cursor: not-allowed;
 }
 main#project_main .load_more_section .last_next_selector a.disabled .cta {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.3);
 }/*# sourceMappingURL=styles.css.map */

@@ -28,7 +28,7 @@ $projects = ProjectInfo::loadAll();
 <html lang="en">
 <?php include __DIR__ . '/include_head.php'; ?>
 
-<body id="body_root">
+<body id="home_root">
     <div id="home_wrapper" class="page_wrapper">
         <!-- header -->
         <header class="index_header">
@@ -38,15 +38,18 @@ $projects = ProjectInfo::loadAll();
                     <nav class="page_navbar home_navbar navbar fixed-top px-4" id="page_navbar">
                         <!-- nav logo -->
                         <div class="navbar-brand nav_listen_target">
-                            <a class="" href='<?php echo $site_root_url ?>'>
+                            <a class="logo" href="<?php echo $site_root_url; ?>">
                                 <img src="src/img/favicon/logo.svg" alt="logo" height="24">
-                                <?php echo htmlspecialchars($site_info->information["siteDisplayname"]); ?>
+                            </a>
+                            <a class="h5 mb-0" href="<?php echo $site_root_url; ?>">
+                                <?php echo htmlspecialchars($site_info->sitename); ?>
                             </a>
                         </div>
                         <!-- nav btn -->
                         <button class="navbar-toggler nav_listen_target" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                             <span class="navbar-toggler-icon"></span>
                         </button>
+
                         <!-- drawer -->
                         <div class="offcanvas offcanvas-end px-4" data-bs-scroll="true" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                             <div class="offcanvas-header">
@@ -94,12 +97,12 @@ $projects = ProjectInfo::loadAll();
                                     </h1>
                                 </div>
                                 <div class='col-md-7 col-lg-5'>
-                                    <div class="text-light">
+                                    <div class="text-white">
                                         <p class="lead text-light">
                                             <?php echo htmlspecialchars($site_info->frontPageContent["heroIntroduction"]); ?>
                                         </p>
                                     </div>
-                                    <div class="text-light fw-light">
+                                    <div class="text-white-50">
                                         <?php
                                         foreach ($site_info->frontPageContent["heroParagraphsArray"] as $heroParagraph) {
                                             $heroParagraph = htmlspecialchars($heroParagraph);
@@ -108,7 +111,7 @@ $projects = ProjectInfo::loadAll();
                                         ?>
                                     </div>
                                     <div class="call_to_action_group mb-4 mt-5">
-                                        <a class="hero_btn btn btn-dark btn-lg border-0 rounded-pill px-4 fw-light" href="#projects">
+                                        <a class="hero_btn btn btn-dark btn-lg border-0 rounded-pill px-5" href="#projects">
                                             <?php echo htmlspecialchars($site_info->frontPageContent["heroCallToAction"]); ?>
                                             <i class="bi bi-arrow-down-short"></i>
                                         </a>
@@ -173,6 +176,7 @@ $projects = ProjectInfo::loadAll();
                             $projectLink = '?project=' . htmlspecialchars($project->id);
                             $thumbnailSrc = htmlspecialchars($project->path . $project->summary['thumbnail']);
                             $title = htmlspecialchars($project->title);
+                            $subhead = isset($project->summary['subhead']) ? $project->summary['subhead'] : null;
                             $categories = $project->categories;
                             $summaryText = $project->summary['text'];
                             if ($isFeatured) {
@@ -187,16 +191,19 @@ $projects = ProjectInfo::loadAll();
                             echo "</div></a>";
                             echo "<div class='card_info h-100'>";
                             echo "<div class='card_info_headline text-nowrap text-truncate'>";
-                            echo "<a class='h4 fw-bold' href='$projectLink'>$title</a>";
-                            echo "</div><div class='card_info_categories text-truncate'>";
+                            echo "<a href='$projectLink'><h4>$title</h4>";
+                            if (isset($subhead) && $isFeatured) {
+                                echo "<p class='h5 text-body-tertiary'>$subhead</p>";
+                            }
+                            echo "</a></div><div class='card_info_categories text-truncate'>";
                             foreach ($categories as $category) {
                                 $category = htmlspecialchars($category);
                                 echo "<span class='category-container badge rounded-pill text-secondary fw-normal'>$category</span> ";
                             }
                             echo "</div><div class='card_info_summary'>";
-                            echo "<div class='summary_content fw-light'>";
+                            echo "<div class='summary_content'>";
                             foreach ($summaryText as $textItem) {
-                                echo "<p class='mb-0'>" . htmlspecialchars($textItem) . "</p>";
+                                echo "<p class='mb-1 text-body-secondary'>" . htmlspecialchars($textItem) . "</p>";
                             }
                             echo "</div></div><div class='card_info_cta mt-1 mb-2'>";
                             echo "<a class='btn btn-dark rounded-pill px-4 fw-medium' href='$projectLink'>";

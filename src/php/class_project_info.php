@@ -21,14 +21,28 @@ class ProjectInfo
         $this->title = $projectData['title'];
         $this->date = $projectData['date'];
         $this->categories = $projectData['categories'];
+
+        if (is_string($this->categories)) {
+            $this->categories = array($this->categories);
+        }
         $this->summary = $projectData['summary'];
         if (is_string($this->summary['text'])) {
             $this->summary['text'] = array($this->summary['text']);
         }
         $this->password = $projectData['password'];
         $this->indexOrder = $projectData['indexOrder'];
+
+        if (!is_numeric($this->indexOrder)) {
+            $this->indexOrder = -abs(crc32($this->indexOrder));
+        }
+
         $this->content = $projectData['content'];
         $this->path = '/src/page_data/projects/' . basename($projectData['file'], '.json') . '/';
+        foreach ($this->content as $index => &$section) {
+            $headlineId = strtolower(preg_replace('/[^a-z0-9]/i', '_', $section['headline'])); // Replace all special characters with underscores and lowercase
+            $headlineId = 'section_' . ($index + 1) . '_' . $headlineId; // Add a prefix based on its position
+            $section['headlineId'] = $headlineId; // Store the ID in the data structure
+        }
     }
 
     private static function getProjectDataFromFile($file)
@@ -36,11 +50,11 @@ class ProjectInfo
         $json = file_get_contents($file);
         $projectData = json_decode($json, true)[0];
 
-        // Check if 'id' is not set or empty, and then assign a unique ID based on the file path
-        if (!isset($projectData['id']) || empty($projectData['id'])) {
+        if (!isset($projectData['id']) || empty($projectData['id'])) { // Check if 'id' is not set or empty, and then assign a unique ID based on the file path
             $projectData['id'] = basename($file) . "_" . substr(md5($file), 0, 8);
         }
 
+        $projectData['id'] = rawurlencode($projectData['id']);
         $projectData['file'] = $file;
         return $projectData;
     }
@@ -76,8 +90,8 @@ class ProjectInfo
             }
             return $a->indexOrder <=> $b->indexOrder; // Sort by indexOrder
         });
-
         return $projects;
+
     }
 
     public static function loadById($id)
@@ -109,17 +123,6 @@ class ProjectInfo
         }
         return $project;
     }
-
-    // public static function doesProjectExist($id)
-    // {
-    //     $directory = __DIR__ . '/../page_data/projects'; // Absolute path for reading data
-    //     foreach (glob($directory . '/*.json') as $file) {
-    //         if (basename($file, '.json') == $id) {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
 
 }
 

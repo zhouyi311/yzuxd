@@ -2,8 +2,8 @@
     {
         "id": 999,
         "password": "",
-        "indexOrder": 0,
-        "title": "Example Featured Project No. 1",
+        "indexOrder": 8,
+        "title": "Featured Phone UI Design Example Project",
         "date": "2023",
         "categories": [
             "Branding",
@@ -11,6 +11,7 @@
             "Graphic Design"
         ],
         "summary": {
+            "subhead": "Together we can achieve greatness!",
             "text": [
                 "Notes: you have to structrue each project josn files by following following rules: ",
                 "1) 'id' is for url querty selector, and will be shown in the url address, could be int or string.",

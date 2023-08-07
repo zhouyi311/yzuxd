@@ -12,11 +12,11 @@ Geneva,
 Tahoma,
 sans-serif;
 
-$bp-sm: 576px;
-$bp-md: 768px;
-$bp-lg: 992px;
-$bp-xl: 1200px;
-$bp-xxl: 1400px;
+$bp-sm: 575px;
+$bp-md: 767px;
+$bp-lg: 991px;
+$bp-xl: 1199px;
+$bp-xxl: 1399px;
 
 $unit-5: 3rem;
 $unit-4: 1.5rem;
@@ -25,9 +25,13 @@ $unit-2: 0.5rem;
 $unit-1: 0.25rem;
 
 $color-light-gray: rgba(0, 0, 0, 0.03);
-$color-sliver-gray: rgba(0, 0, 0, 0.1);
+$color-silver-gray: rgba(0, 0, 0, 0.1);
 $color-ash-gray: rgba(0, 0, 0, 0.3);
 $color-medium-gray: rgba(0, 0, 0, 0.5);
+$color-light-white: rgba(255, 255, 255, 0.1);
+$color-silver-white: rgba(255, 255, 255, 0.2);
+$color-cream-white: rgba(255, 255, 255, 0.4);
+$color-medium-white: rgba(255, 255, 255, 0.6);
 $color-theme-red-1: #ff0054;
 $color-theme-red-2: #ff0049;
 
@@ -49,6 +53,15 @@ body {
     h6 {
         font-family: $font-head;
         font-weight: 700;
+    }
+
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        font-family: $font-head;
     }
 
     .page_wrapper {

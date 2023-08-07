@@ -2,17 +2,23 @@
 function handleScrollForNavigation() {
     const homeNavbar = document.getElementById('page_navbar');
     const navElements = document.querySelectorAll('.nav_listen_target');
+    const projectName = document.querySelectorAll('.project_name');
 
     if (window.scrollY > 200) {
         homeNavbar.classList.add('bg-light');
         navElements.forEach((navElement) => {
             navElement.classList.remove('navbar-dark');
         });
-
+        projectName.forEach((projectName) => {
+            projectName.hidden = false;;
+        });
     } else {
         homeNavbar.classList.remove('bg-light');
         navElements.forEach((navElement) => {
             navElement.classList.add('navbar-dark');
+        });
+        projectName.forEach((projectName) => {
+            projectName.hidden = true;;
         });
     }
 }
@@ -22,18 +28,18 @@ window.addEventListener('scroll', handleScrollForNavigation);
 // main margin setup
 function offsetHeight() {
     const sourceElement = document.getElementById('page_navbar');
-    const targetElement = document.getElementById('project_page_wrapper');
+    const targetElement = document.getElementById('page_home');
     const sourceHeight = sourceElement.offsetHeight;
     // Set the top margin
     if (targetElement) {
         targetElement.style.paddingTop = `${sourceHeight+16}px`; // Use backticks (`) here
         // console.log('offsetHeight - Element is set.');
     } else {
-        // console.log('offsetHeight - No target nav found');
+        console.log('offsetHeight - No target nav found');
         return;
     }
 }
-// document.addEventListener('DOMContentLoaded', offsetHeight);
+document.addEventListener('DOMContentLoaded', offsetHeight);
 
 // interactive decoration
 function applyInteractiveDecoration(e) {
@@ -98,7 +104,7 @@ function submitFormOnEvent(formID, emailInputID, messageInputID, outputElementID
     const outputElement = document.getElementById(outputElementID); 
 
     if (form) {
-        console.log('form set')
+        console.log('contact form set')
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -119,7 +125,7 @@ function submitFormOnEvent(formID, emailInputID, messageInputID, outputElementID
         });
         
     } else {
-        console.log('form not found')
+        console.log('contact form not set')
     }
 }
 
