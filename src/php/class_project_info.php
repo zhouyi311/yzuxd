@@ -35,6 +35,12 @@ class ProjectInfo
     {
         $json = file_get_contents($file);
         $projectData = json_decode($json, true)[0];
+
+        // Check if 'id' is not set or empty, and then assign a unique ID based on the file path
+        if (!isset($projectData['id']) || empty($projectData['id'])) {
+            $projectData['id'] = basename($file) . "_" . substr(md5($file), 0, 8);
+        }
+
         $projectData['file'] = $file;
         return $projectData;
     }
@@ -43,12 +49,27 @@ class ProjectInfo
     {
         $directory = __DIR__ . '/../page_data/projects';
         $projects = [];
+        $seenIds = [];
 
+        // Load all projects and handle duplicates
         foreach (glob($directory . '/*.json') as $file) {
-            $projects[] = new ProjectInfo(self::getProjectDataFromFile($file));
+            $project = new ProjectInfo(self::getProjectDataFromFile($file));
+
+            // If the ID has been seen before, assign a unique ID based on the filename
+            if (in_array($project->id, $seenIds)) {
+                $basenameId = basename($project->path) . "_" . substr(md5($project->path), 4, 4);
+                if (in_array($basenameId, $seenIds)) {
+                    $project->id = $basenameId . "_" . random_int(0, 9999) . "_" . md5($project->path); // Hash the full path if basename is also redundant
+                } else {
+                    $project->id = $basenameId;
+                }
+            }
+
+            $seenIds[] = $project->id;
+            $projects[] = $project;
         }
 
-        // Sort by indexOrder, then by ID if index orders are the same
+        // Sort and return projects
         usort($projects, function ($a, $b) {
             if ($a->indexOrder == $b->indexOrder) {
                 return $a->id <=> $b->id; // Sort by ID
@@ -71,26 +92,34 @@ class ProjectInfo
 
         $project = $allProjects[$currentProjectIndex];
 
-        if ($currentProjectIndex < count($allProjects) - 1) {
-            $project->next = $allProjects[$currentProjectIndex + 1];
+        // Get next project excluding negative indexOrder
+        for ($i = $currentProjectIndex + 1; $i < count($allProjects); $i++) {
+            if ($allProjects[$i]->indexOrder >= 0) {
+                $project->next = $allProjects[$i];
+                break;
+            }
         }
 
-        if ($currentProjectIndex > 0) {
-            $project->last = $allProjects[$currentProjectIndex - 1];
+        // Get last project excluding negative indexOrder
+        for ($i = $currentProjectIndex - 1; $i >= 0; $i--) {
+            if ($allProjects[$i]->indexOrder >= 0) {
+                $project->last = $allProjects[$i];
+                break;
+            }
         }
         return $project;
     }
 
-    public static function doesProjectExist($id)
-    {
-        $directory = __DIR__ . '/../page_data/projects'; // Absolute path for reading data
-        foreach (glob($directory . '/*.json') as $file) {
-            if (basename($file, '.json') == $id) {
-                return true;
-            }
-        }
-        return false;
-    }
+    // public static function doesProjectExist($id)
+    // {
+    //     $directory = __DIR__ . '/../page_data/projects'; // Absolute path for reading data
+    //     foreach (glob($directory . '/*.json') as $file) {
+    //         if (basename($file, '.json') == $id) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
 
 }
 

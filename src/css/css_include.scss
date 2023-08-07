@@ -24,16 +24,18 @@ $unit-3: 1rem;
 $unit-2: 0.5rem;
 $unit-1: 0.25rem;
 
-$color-ash-gray: rgba(0, 0, 0, 0.05);
-$color-light-gray: rgba(0, 0, 0, 0.3);
+$color-light-gray: rgba(0, 0, 0, 0.03);
+$color-sliver-gray: rgba(0, 0, 0, 0.1);
+$color-ash-gray: rgba(0, 0, 0, 0.3);
 $color-medium-gray: rgba(0, 0, 0, 0.5);
-$color-theme-1: #ff0054;
-$color-theme-2: #ff0049;
+$color-theme-red-1: #ff0054;
+$color-theme-red-2: #ff0049;
 
 html {
     margin: 0;
     padding: 0;
     font-size: 16px;
+    // scroll-behavior: auto !important;
 }
 
 body {

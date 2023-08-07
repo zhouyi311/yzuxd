@@ -27,13 +27,13 @@ function offsetHeight() {
     // Set the top margin
     if (targetElement) {
         targetElement.style.paddingTop = `${sourceHeight+16}px`; // Use backticks (`) here
-        console.log('offsetHeight - Element is set.');
+        // console.log('offsetHeight - Element is set.');
     } else {
-        console.log('offsetHeight - No target nav found');
+        // console.log('offsetHeight - No target nav found');
         return;
     }
 }
-document.addEventListener('DOMContentLoaded', offsetHeight);
+// document.addEventListener('DOMContentLoaded', offsetHeight);
 
 // interactive decoration
 function applyInteractiveDecoration(e) {

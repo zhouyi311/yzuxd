@@ -17,7 +17,6 @@ $site_root_url = getSiteRootUrl();
 
 session_start();
 
-
 // load projects
 require_once __DIR__ . '/class_site_info.php';
 $site_info = SiteInfo::loadInfo();
@@ -77,7 +76,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
 <html lang="en">
 <?php include __DIR__ . '/include_head.php'; ?>
 
-<body id='body_root'>
+<body id='body_root' class="project_body">
     <div id="project_page_wrapper" class="page_wrapper">
         <!-- header -->
         <header class="project_header">
@@ -96,19 +95,16 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                             </span>
                         </div>
                         <!-- nav btn -->
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <!-- drawer -->
-                        <div class="offcanvas offcanvas-end px-4" data-bs-scroll="true" tabindex="-1"
-                            id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas offcanvas-end px-4" data-bs-scroll="true" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                             <div class="offcanvas-header">
                                 <h3 class="offcanvas-title h6 text-secondary" id="offcanvasNavbarLabel">
-                                    <?php echo htmlspecialchars($site_info->information['siteTitle']); ?>
+                                    <?php echo $project->title ? htmlspecialchars($project->title) : htmlspecialchars($site_info->information['siteTitle']); ?>
                                 </h3>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
                                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="navbar_target">
@@ -130,33 +126,41 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                 </div>
             </div>
         </header>
-
         <!-- Main -->
-        <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%"
-            data-bs-smooth-scroll="true">
-            <article class="project_case_study">
-                <header class="project_header">
+        <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
+            <article class="project_case_study" id="project_<?php echo $projectId ?>">
+                <header class="project_header" id="home">
                     <div class="container">
                         <div class="row">
                             <div class="col-12 project_header_container">
-                                <h1>
+                                <h1 class="py-5">
                                     <?php echo htmlspecialchars($project->title); ?>
                                 </h1>
-                                <p>
-                                    <?php echo htmlspecialchars($project->date); ?>
-                                </p>
-                                <p>Categories:
-                                    <?php echo htmlspecialchars(implode(', ', $project->categories)); ?>
-                                </p>
-                                <?php
-                                $summaryText = $project->summary['text'];
-                                foreach ($summaryText as $textItem) {
-                                    echo "<p>" . htmlspecialchars($textItem) . "</p>";
-                                }
-                                ?>
-                                <!-- <img src="<?php echo $project->path . htmlspecialchars($project->summary['summaryImage']); ?>"
-                                    alt="<?php echo htmlspecialchars($project->title); ?>"> -->
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="project_intro_summary">
+                                            <p>
+                                                <?php echo htmlspecialchars($project->date); ?>
+                                            </p>
+                                            <p>Categories:
+                                                <?php echo htmlspecialchars(implode(', ', $project->categories)); ?>
+                                            </p>
+                                            <?php
+                                            $summaryText = $project->summary['text'];
+                                            foreach ($summaryText as $textItem) {
+                                                echo "<p>" . htmlspecialchars($textItem) . "</p>";
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="project_intro_image">
 
+                                            <img src="<?php echo $project->path . htmlspecialchars($project->summary['summaryImage']); ?>" alt="<?php echo htmlspecialchars($project->title); ?>">
+
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -212,8 +216,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         <form class="pw_form d-flex flex-column gap-3" method="POST">
                                             <h4>Enter Password</h4>
                                             <div class="form-floating">
-                                                <input type="password" name="password" class="form-control"
-                                                    id="floatingPassword" placeholder="Password" required>
+                                                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                                                 <label for="floatingPassword">Password</label>
                                             </div>
                                             <?php
@@ -232,15 +235,10 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                 </div>
             <?php endif; ?>
 
-
-            <?php
-
-            ?>
-
-            <div class="load_more_section">
+            <div class="load_more_section my-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col">
+                        <div class="col ">
                             <div class='last_next_selector gap-1 d-flex'>
                                 <?php
                                 $hasLastProject = isset($project->last->title);
@@ -282,6 +280,6 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
 
 </html>
 <?php
-session_destroy();
+// session_destroy();
 // for development only
 ?>

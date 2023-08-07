@@ -2,7 +2,7 @@
 
 // nav ##################################################################
 html {
-    scroll-behavior: auto !important;
+    // scroll-behavior: auto !important;
     // display: none;
 }
 
@@ -617,26 +617,54 @@ footer {
 // project pages #########################################################################################################
 // #######################################################################################################################
 
+body.project_body{
+    padding-top: 4rem;
+}
+.project_header {
+    // display: none;
+}
+
 main#project_main {
-    article {}
+    
+
+    article {
+        .project_header {
+            .project_intro_image {
+                display: flex;
+                flex-direction: column;
+                justify-content: end;
+                height: 100%;
+                overflow: hidden;
+                img {
+                    flex: 1 1;
+                    object-fit: contain;
+                    object-position: 50% 100%;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+    }
 
     .load_more_section {
-        background-color: $color-ash-gray;
-
+        
         .last_next_selector {
             justify-content: space-between;
+            background-color: $color-light-gray;
+
 
             a.case {
                 display: flex;
                 flex-direction: column;
                 color: inherit;
                 overflow: hidden;
-                transition: background-color 0.3s;
+                transition: background-color 0.3s , color 0.3s;
 
-                &:hover{
-                    // .cta{
-                        background-color: $color-ash-gray;
-                    // }
+                &:hover {
+                    background-color: white;
+                    color: $color-theme-red-1;
                 }
 
                 &:last-child {
@@ -654,6 +682,7 @@ main#project_main {
                 .cta {
                     color: $color-medium-gray;
                 }
+
                 user-select: none;
                 pointer-events: none;
                 cursor: not-allowed;

@@ -1,8 +1,8 @@
 [
     {
-        "id": 9,
+        "id": 999,
         "password": "",
-        "indexOrder": 2,
+        "indexOrder": 0,
         "title": "Example Featured Project No. 1",
         "date": "2023",
         "categories": [
@@ -12,12 +12,13 @@
         ],
         "summary": {
             "text": [
-                "Rules and useage: ",
-                "1. ID should be unique",
-                "2. For genral projects (no password), set password = '' or 'no'",
-                "3. Featured project: set indexOrder 0-9",
-                "4. Hide project: set indexOrder to negative",
-                "* indexOrder only matters of the order on home page. It could be set redundant, redundant order number will be sort by ID number"
+                "Notes: you have to structrue each project josn files by following following rules: ",
+                "1) 'id' is for url querty selector, and will be shown in the url address, could be int or string.",
+                "1.1) Normally, id should be unique. Eventhough our system handles duplicated (and missing) id by assign them new id from json's filename and hash",
+                "2) For projects that do not want password protection, just set password = '' or 'no'",
+                "3) Projects have indexOrder 0-9 will be shown as featured project card on the home page",
+                "4) Projects that have negative indexOrder numbers will be hidden from the list (only accessable by it's URL)",
+                "4.1) indexOrder could be set redundant. Duplicated order number will be sort by id and other factors (generally randomly)"
             ],
             "summaryImage": "summary.png",
             "thumbnail": "thumb.png"

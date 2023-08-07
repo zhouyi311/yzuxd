@@ -247,10 +247,6 @@ body .high_holder {
   margin: 3rem auto;
 }
 
-html {
-  scroll-behavior: auto !important;
-}
-
 .page_navbar {
   font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
   transition: background-color 0.5s;
@@ -723,21 +719,41 @@ footer {
   font-size: 0.8em;
 }
 
-main#project_main .load_more_section {
-  background-color: rgba(0, 0, 0, 0.05);
+body.project_body {
+  padding-top: 4rem;
+}
+
+main#project_main article .project_header .project_intro_image {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  height: 100%;
+  overflow: hidden;
+}
+main#project_main article .project_header .project_intro_image img {
+  flex: 1 1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: 50% 100%;
+     object-position: 50% 100%;
+}
+main#project_main article img {
+  width: 100%;
 }
 main#project_main .load_more_section .last_next_selector {
   justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 main#project_main .load_more_section .last_next_selector a.case {
   display: flex;
   flex-direction: column;
   color: inherit;
   overflow: hidden;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 main#project_main .load_more_section .last_next_selector a.case:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: white;
+  color: #ff0054;
 }
 main#project_main .load_more_section .last_next_selector a.case:last-child {
   text-align: right;
