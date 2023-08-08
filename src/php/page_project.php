@@ -106,39 +106,53 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                         </button>
 
                         <!-- drawer -->
-                        <div class="offcanvas offcanvas-end px-4" data-bs-scroll="true" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas offcanvas-end px-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                             <div class="offcanvas-header mb-4">
-                                <h3 class="offcanvas-title h6" id="offcanvasNavbarLabel">
+                                <h3 class="offcanvas-title text-body-tertiary h6" id="offcanvasNavbarLabel">
                                     <?php echo htmlspecialchars($site_info->information['siteTitle']); ?>
                                 </h3>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
-                                <h4 class="list_title fw-medium h6 text-body-tertiary mb-4" id="offcanvasNavbarLabel">
-                                    <i class='bi bi-view-list'></i>
-                                    <?php echo $project->title ? htmlspecialchars($project->title) : htmlspecialchars($site_info->information['siteTitle']); ?>
-                                </h4>
-                                <!-- <div class="text-body-tertiary fw-medium mb-3"><i class='bi bi-view-list'></i> Content:</div> -->
-                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5" id="navbar_target">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#page_home"><span class="h5 fw-bold">Introduction</span></a>
-                                    </li>
-                                    <?php
-                                    if ($isAuthenticated || !$isPasswordRequired) {
-                                        foreach ($project->content as $section) {
-                                            $headline = htmlspecialchars($section['headline']);
-                                            $headlineId = htmlspecialchars($section['headlineId']);
-                                            echo '<li class="nav-item">';
-                                            echo '<a class="nav-link" href="#' . $headlineId . '"><span class="h5 fw-bold">' . $headline . '</span></a>';
+                                <div class="drawer_top_group">
+                                    <h4 class="list_title fw-medium text-body-secondary h6 mb-4" id="offcanvasNavbarLabel">
+                                        <i class='bi bi-list-ul pe-1 align-middle'></i>
+                                        <?php echo $project->title ? htmlspecialchars($project->title) : htmlspecialchars($site_info->information['siteTitle']); ?>
+                                    </h4>
+                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5" id="navbar_target">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#page_home"><span class="h5 fw-bold">Introduction</span></a>
+                                        </li>
+                                        <?php
+                                        if ($isAuthenticated || !$isPasswordRequired) {
+                                            foreach ($project->content as $section) {
+                                                $headline = htmlspecialchars($section['headline']);
+                                                $headlineId = htmlspecialchars($section['headlineId']);
+                                                echo '<li class="nav-item">';
+                                                echo '<a class="nav-link" href="#' . $headlineId . '"><span class="h5 fw-bold">' . $headline . '</span></a>';
+                                            }
+                                        } else {
+                                            echo '<li class="nav-item"><a class="nav-link" href="#enter_password"><span class="h5 fw-bold">Enter Password</span></a></li>';
                                         }
-                                    } else {
-                                        echo '<li class="nav-item"><a class="nav-link" href="#"><span class="h5 fw-bold">Enter Password</span></a></li>';
-                                    }
-                                    ?>
-
-
-                                </ul>
-                                <a class="btn btn-light rounded-pill px-4 fw-bold" href="<?php echo $site_root_url; ?>"><i class='bi bi-arrow-left'></i> BACK TO HOMEPAGE</a>
+                                        ?>
+                                    </ul>
+                                </div>
+                                <div class="drawer_btm_group d-flex flex-column gap-4 pb-5">
+                                    <div class="btn-group rounded-pill fw-bold overflow-hidden" role="group">
+                                        <?php
+                                        $existLastProject = isset($project->last->id);
+                                        $existNextProject = isset($project->next->id);
+                                        if ($existLastProject) {
+                                            echo "<a class='btn btn-light text-truncate px-4' href='?project={$project->last->id}'><span class='fw-bold me-1'>Prev:</span><span class='inner_text fw-normal w-100'>{$project->last->title}</span></a>";
+                                        }
+                                        if ($existNextProject) {
+                                            echo "<a class='btn btn-light text-truncate px-4' href='?project={$project->next->id}'><span class='fw-bold me-1'>Next:</span><span class='inner_text fw-normal w-100'>{$project->next->title}</span></a>";
+                                        }
+                                        ?>
+                                    </div>
+                                    <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $site_root_url; ?>"><i class="bi bi-arrow-left pe-2 align-middle"></i><span class="w-100">BACK TO
+                                            HOMEPAGE</span></a>
+                                </div>
                             </div>
                         </div>
                     </nav>
@@ -156,12 +170,11 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                     <?php echo htmlspecialchars($project->title); ?>
                                 </h1>
                                 <?php
-                                if (!empty($project->summary['subhead'])) {
+                                if (isset($project->summary['subhead'])) {
                                     echo '<p class="h5 article_subhead text-secondary">';
                                     echo htmlspecialchars($project->summary['subhead']) . "</p>";
                                 }
                                 ?>
-                                </h2>
                                 <div class="row">
                                     <div class="col-lg-6 order-lg-2 col-xl-4 offset-xl-1 pt-3">
                                         <div class="project_intro_image">
@@ -169,23 +182,32 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         </div>
                                     </div>
                                     <div class="col-lg-6 project_intro_summary">
-                                        <div class="pt-5 pt-lg-3 pb-5 pb-lg-3">
-                                            <p class="article_category">
-                                                <?php
-                                                foreach ($project->categories as $category) {
-                                                    $category = htmlspecialchars($category);
-                                                    echo "<span class='category-container badge text-bg-secondary rounded-pill '>$category</span> ";
-                                                }
-                                                ?>
-                                            </p>
-
-                                            <p class="text-body-tertiary">
-                                                <?php echo htmlspecialchars($project->date); ?>
-                                            </p class="text-body">
+                                        <div class="py-5 pt-lg-4">
                                             <?php
-                                            $summaryText = $project->summary['text'];
+                                            echo '<p class="text-body-tertiary d-flex align-items-center gap-3">';
+                                            echo isset($project->summary['caption']) ? '<span class="fst-italic">' . htmlspecialchars($project->summary['caption']) . '</span>' : "";
+                                            if (isset($project->summary['categories'])) {
+                                                // echo "<p class='d-flex gap-3 mt-4 article_category'>";
+                                                // echo "<span>|</span>";
+                                                foreach ($project->summary['categories'] as $category) {
+                                                    $category = htmlspecialchars($category);
+                                                    echo "<span class='category-container badge bg-light text-secondary rounded-pill '>$category</span> ";
+                                                }
+                                                // echo "</p>";
+                                            }
+
+                                            echo '</p class="text-body">';
+                                            $summaryText = isset($project->summary['text']) ? $project->summary['text'] : [];
                                             foreach ($summaryText as $textItem) {
                                                 echo "<p>" . htmlspecialchars($textItem) . "</p>";
+                                            }
+                                            if (isset($project->summary['demoLink'])) {
+                                                echo "<div class='d-flex gap-3 mt-4'>";
+                                                $demo_link = ($project->summary['demoLink']);
+                                                foreach ($demo_link as $name => $link) {
+                                                    echo "<a class='btn btn-secondary rounded-pill px-4' href='{$link}'>{$name}</a>";
+                                                }
+                                                echo '</div>';
                                             }
                                             ?>
                                         </div>
@@ -262,21 +284,21 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <div class='last_next_selector d-flex gap-1 text-dark'>
+                            <div class='last_next_selector overflow-hidden text-dark'>
                                 <?php
                                 $hasLastProject = isset($project->last->title);
                                 $hasNextProject = isset($project->next->title);
                                 function generateCTAContent($hasProject, $targetProject, $type, $defaultMessage)
                                 {
-                                    $iconLast = $type === "Previous" ? '<i class="bi bi-chevron-left"></i>' : '';
-                                    $iconNext = $type === "Next" ? '<i class="bi bi-chevron-right"></i>' : '';
+                                    $iconLast = $type === "Previous" ? '<i class="bi bi-chevron-bar-left align-middle"></i>' : '';
+                                    $iconNext = $type === "Next" ? '<i class="bi bi-chevron-bar-right align-middle"></i>' : '';
                                     $lastNextClass = $type === "Previous" ? 'pre_case' : 'next_case';
                                     $caseTitle = $type . "";
                                     $projectPath = $targetProject ? '?project=' . $targetProject->id : "#";
                                     $projectTitle = $targetProject ? $targetProject->title : $defaultMessage;
                                     $linkClass = $hasProject ? "" : "disabled";
 
-                                    return "<a href='{$projectPath}' class='case {$lastNextClass} {$linkClass} p-4 text-decoration-none'>
+                                    return "<a href='{$projectPath}' class='case {$lastNextClass} {$linkClass} px-5 py-4 text-decoration-none'>
                                             <div class='cta cta_title fw-bold'>
                                                 {$iconLast}
                                                 {$caseTitle}

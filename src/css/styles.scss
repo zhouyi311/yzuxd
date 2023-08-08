@@ -7,15 +7,6 @@ html {
 }
 
 .page_navbar {
-    .offcanvas {
-        .offcanvas-header {
-            // border-bottom: 1px solid $color-gray-silver;
-        }
-
-    }
-}
-
-.page_navbar {
     transition: background-color 0.5s;
     flex-wrap: nowrap;
 
@@ -71,17 +62,31 @@ html {
         }
     }
 
-    ul.navbar-nav {
-        // border-bottom: 1px solid $color-gray-ash;
-        li {
-            a {
-                padding-left: calc($unit-4 + 2px);
-                border-left: 1px solid $color-gray-medium;
 
-                // transition: border-left 0.4s;
-                &.active {
-                    padding-left: $unit-4;
-                    border-left: 3px solid black;
+    .offcanvas {
+        .offcanvas-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .drawer_top_group {
+                flex-grow: 1;
+            }
+
+            ul.navbar-nav {
+
+                // border-bottom: 1px solid $color-gray-ash;
+                li {
+                    a {
+                        padding-left: calc($unit-4 + 1px);
+                        border-left: 1px solid $color-gray-medium;
+
+                        // transition: border-left 0.4s;
+                        &.active {
+                            padding-left: $unit-4;
+                            border-left: 2px solid black;
+                        }
+                    }
                 }
             }
         }
@@ -647,7 +652,16 @@ footer {
 
 
 #project_page_wrapper {
-    .project_page_header {}
+    .project_page_header {
+        visibility: visible;
+        .drawer_btm_group {
+            .btn_group {
+                a {
+                    visibility: visible;
+                }
+            }
+        }
+    }
 
     .project_article {
         .project_article_header {
@@ -699,7 +713,9 @@ footer {
 
         .last_next_selector {
             justify-content: space-between;
-            background-color: $color-gray-light;
+            // background-color: $color-gray-light;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             // user-select: none;
 
             a.case {
@@ -710,7 +726,7 @@ footer {
                 transition: background-color 0.3s, color 0.3s;
 
                 &:hover {
-                    background-color: $color-white-medium;
+                    background-color: $color-gray-silver;
                     color: black;
                 }
 

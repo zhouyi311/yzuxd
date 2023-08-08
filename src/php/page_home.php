@@ -51,27 +51,35 @@ $projects = ProjectInfo::loadAll();
                         </button>
 
                         <!-- drawer -->
-                        <div class="offcanvas offcanvas-end px-4" data-bs-scroll="true" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas offcanvas-end px-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                             <div class="offcanvas-header mb-4">
-                                <h3 class="offcanvas-title h6" id="offcanvasNavbarLabel">
+                                <h3 class="offcanvas-title h6 text-body-tertiary" id="offcanvasNavbarLabel">
                                     <?php echo htmlspecialchars($site_info->information['siteTitle']); ?>
                                 </h3>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
-                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="navbar_target">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#home"><span class="h3 fw-bold">HOME</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#projects"><span class="h3 fw-bold">PROJECTS</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#contact"><span class="h3 fw-bold">CONTACT</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <div class="drawer_top_group">
+                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="navbar_target">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#home"><span class="h3 fw-bold">HOME</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#projects"><span class="h3 fw-bold">PROJECTS</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#contact"><span class="h3 fw-bold">CONTACT</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="drawer_btm_group">
+                                    <p class=" text-body-tertiary">
+                                        &copy;
+                                        <?php echo htmlspecialchars($site_info->information['siteCopyright']); ?>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </nav>
@@ -113,7 +121,7 @@ $projects = ProjectInfo::loadAll();
                                     <div class="call_to_action_group mb-4 mt-5">
                                         <a class="hero_btn btn btn-dark btn-lg border-0 rounded-pill px-5" href="#projects">
                                             <?php echo htmlspecialchars($site_info->frontPageContent["heroCallToAction"]); ?>
-                                            <i class="bi bi-arrow-down-short"></i>
+                                            <i class="bi bi-arrow-down-short align-middle"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -174,11 +182,11 @@ $projects = ProjectInfo::loadAll();
                         function createProjectCard($project, $isFeatured)
                         {
                             $projectLink = '?project=' . htmlspecialchars($project->id);
-                            $thumbnailSrc = htmlspecialchars($project->path . $project->summary['thumbnail']);
-                            $title = htmlspecialchars($project->title);
+                            $title = isset($project->title) ? htmlspecialchars($project->title) : "";
                             $subhead = isset($project->summary['subhead']) ? $project->summary['subhead'] : null;
-                            $categories = $project->categories;
-                            $summaryText = $project->summary['text'];
+                            $categories = isset($project->summary['categories']) ? $project->summary['categories'] : [];
+                            $thumbnailSrc = isset($project->summary['thumbnail']) ? htmlspecialchars($project->path . $project->summary['thumbnail']) : "";
+                            $summaryText = isset($project->summary['text']) ? $project->summary['text'] : [];
                             if ($isFeatured) {
                                 echo "<div class='col-12'>";
                             } else {
@@ -195,10 +203,13 @@ $projects = ProjectInfo::loadAll();
                             if (isset($subhead) && $isFeatured) {
                                 echo "<p class='h5 text-body-tertiary'>$subhead</p>";
                             }
+
                             echo "</a></div><div class='card_info_categories text-truncate'>";
-                            foreach ($categories as $category) {
-                                $category = htmlspecialchars($category);
-                                echo "<span class='category-container badge rounded-pill text-secondary fw-normal'>$category</span> ";
+                            if (!empty($categories)) {
+                                foreach ($categories as $category) {
+                                    $category = htmlspecialchars($category);
+                                    echo "<span class='category-container badge rounded-pill text-secondary fw-normal'>$category</span> ";
+                                }
                             }
                             echo "</div><div class='card_info_summary'>";
                             echo "<div class='summary_content'>";
@@ -207,7 +218,7 @@ $projects = ProjectInfo::loadAll();
                             }
                             echo "</div></div><div class='card_info_cta mt-1 mb-2'>";
                             echo "<a class='btn btn-dark rounded-pill px-4 fw-medium' href='$projectLink'>";
-                            echo "Learn More <i class='bi bi-arrow-right-short'></i>";
+                            echo "Learn More <i class='bi bi-arrow-right-short align-middle'></i>";
                             echo "</a></div></div></div></div>";
                         }
                         foreach ($projects as $project) {
@@ -270,17 +281,17 @@ $projects = ProjectInfo::loadAll();
                                     <div class="d-flex gap-4 mb-3">
                                         <div>
                                             <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($site_info->information['myLinkedin']); ?>">
-                                                <i class=" bi bi-linkedin" style="font-size: 1.5rem;"></i>
+                                                <i class=" bi bi-linkedin align-middle" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>
                                         <div>
                                             <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($site_info->information['myGithub']); ?>">
-                                                <i class=" bi bi-github" style="font-size: 1.5rem;"></i>
+                                                <i class=" bi bi-github align-middle" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>
                                         <div>
                                             <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($site_info->information['myTwitter']); ?>">
-                                                <i class=" bi bi-twitter" style="font-size: 1.5rem;"></i>
+                                                <i class=" bi bi-twitter align-middle" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>
                                     </div>

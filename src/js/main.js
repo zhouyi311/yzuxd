@@ -1,27 +1,28 @@
 // Scrolling Nav BG change
 function handleScrollForNavigation() {
-    const homeNavbar = document.getElementById('page_navbar');
-    const navElements = document.querySelectorAll('.nav_listen_target');
-    const projectName = document.querySelectorAll('.project_name');
+    const pageNavbar = document.getElementById('page_navbar');
+    const listenElements = document.querySelectorAll('.nav_listen_target');
+    const projectNavName = document.querySelectorAll('.project_name');
 
     if (window.scrollY > 200) {
-        homeNavbar.classList.add('bg-light');
-        navElements.forEach((navElement) => {
+        pageNavbar.classList.add('bg-light');
+        listenElements.forEach((navElement) => {
             navElement.classList.remove('navbar-dark');
         });
-        projectName.forEach((projectName) => {
-            projectName.hidden = false;;
+        projectNavName.forEach((projectNavName) => {
+            projectNavName.hidden = false;;
         });
     } else {
-        homeNavbar.classList.remove('bg-light');
-        navElements.forEach((navElement) => {
+        pageNavbar.classList.remove('bg-light');
+        listenElements.forEach((navElement) => {
             navElement.classList.add('navbar-dark');
         });
-        projectName.forEach((projectName) => {
-            projectName.hidden = true;;
+        projectNavName.forEach((projectNavName) => {
+            projectNavName.hidden = true;;
         });
     }
 }
+
 document.addEventListener('DOMContentLoaded', handleScrollForNavigation);
 window.addEventListener('scroll', handleScrollForNavigation);
 

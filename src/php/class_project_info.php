@@ -3,41 +3,37 @@
 class ProjectInfo
 {
     public $id;
-    public $title;
-    public $date;
-    public $categories;
-    public $summary;
-    public $password;
-    public $indexOrder;
-    public $content;
     public $path;
-
+    public $indexOrder;
+    public $password;
+    public $title;
+    // public $date;
+    // public $categories;
+    public $summary;
+    public $content;
     public $last = null;
     public $next = null;
 
     public function __construct($projectData)
     {
         $this->id = $projectData['id'];
-        $this->title = $projectData['title'];
-        $this->date = $projectData['date'];
-        $this->categories = $projectData['categories'];
-
-        if (is_string($this->categories)) {
-            $this->categories = array($this->categories);
-        }
-        $this->summary = $projectData['summary'];
-        if (is_string($this->summary['text'])) {
-            $this->summary['text'] = array($this->summary['text']);
-        }
-        $this->password = $projectData['password'];
+        $this->path = '/src/page_data/projects/' . basename($projectData['file'], '.json') . '/';
         $this->indexOrder = $projectData['indexOrder'];
-
         if (!is_numeric($this->indexOrder)) {
             $this->indexOrder = -abs(crc32($this->indexOrder));
         }
 
+        $this->password = $projectData['password'];
+        $this->title = $projectData['title'];
+        $this->summary = $projectData['summary'];
+        if (isset($this->summary['text']) && !is_array($this->summary['text'])) {
+            $this->summary['text'] = array($this->summary['text']);
+        }
+        if (isset($this->summary['categories']) && !is_array($this->summary['categories'])) {
+            $this->summary['categories'] = array($this->summary['categories']);
+        }
+
         $this->content = $projectData['content'];
-        $this->path = '/src/page_data/projects/' . basename($projectData['file'], '.json') . '/';
         foreach ($this->content as $index => &$section) {
             $headlineId = strtolower(preg_replace('/[^a-z0-9]/i', '_', $section['headline'])); // Replace all special characters with underscores and lowercase
             $headlineId = 'section_' . ($index + 1) . '_' . $headlineId; // Add a prefix based on its position

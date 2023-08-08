@@ -1,17 +1,10 @@
 [
     {
         "id": 999,
-        "password": "",
         "indexOrder": 8,
+        "password": "",
         "title": "Featured Phone UI Design Example Project",
-        "date": "2023",
-        "categories": [
-            "Branding",
-            "Digital Art",
-            "Graphic Design"
-        ],
         "summary": {
-            "subhead": "Together we can achieve greatness!",
             "text": [
                 "Notes: you have to structrue each project josn files by following following rules: ",
                 "1) 'id' is for url querty selector, and will be shown in the url address, could be int or string.",
@@ -22,7 +15,18 @@
                 "4.1) indexOrder could be set redundant. Duplicated order number will be sort by id and other factors (generally randomly)"
             ],
             "summaryImage": "summary.png",
-            "thumbnail": "thumb.png"
+            "thumbnail": "thumb.png",
+            "categories": [
+                "Branding",
+                "Digital Art",
+                "Graphic Design"
+            ],
+            "caption": "Date: 2023 / Incomplete / Award-winning",
+            "subhead": "Subhead is optional, together we can achieve greatness!",
+            "demoLink": {
+                "Demo Links": "http://zhouyiwork.com",
+                "Are Optional": "http://yzuxd.com"
+            }
         },
         "content": [
             {
