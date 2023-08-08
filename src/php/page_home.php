@@ -28,10 +28,10 @@ $projects = ProjectInfo::loadAll();
 <html lang="en">
 <?php include __DIR__ . '/include_head.php'; ?>
 
-<body id="home_root">
-    <div id="home_wrapper" class="page_wrapper">
+<body id="home_page_root">
+    <div id="home_page_wrapper" class="page_wrapper">
         <!-- header -->
-        <header class="index_header">
+        <header class="home_page_header">
             <div class="container-fluid">
                 <div class="row">
                     <!-- nav bar -->
@@ -52,8 +52,8 @@ $projects = ProjectInfo::loadAll();
 
                         <!-- drawer -->
                         <div class="offcanvas offcanvas-end px-4" data-bs-scroll="true" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                            <div class="offcanvas-header">
-                                <h3 class="offcanvas-title h6 text-secondary" id="offcanvasNavbarLabel">
+                            <div class="offcanvas-header mb-4">
+                                <h3 class="offcanvas-title h6" id="offcanvasNavbarLabel">
                                     <?php echo htmlspecialchars($site_info->information['siteTitle']); ?>
                                 </h3>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -274,12 +274,12 @@ $projects = ProjectInfo::loadAll();
                                             </a>
                                         </div>
                                         <div>
-                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($site_info->information['myLinkedin']); ?>">
+                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($site_info->information['myGithub']); ?>">
                                                 <i class=" bi bi-github" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>
                                         <div>
-                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($site_info->information['myLinkedin']); ?>">
+                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($site_info->information['myTwitter']); ?>">
                                                 <i class=" bi bi-twitter" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>

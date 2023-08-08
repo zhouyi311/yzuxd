@@ -76,10 +76,10 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
 <html lang="en">
 <?php include __DIR__ . '/include_head.php'; ?>
 
-<body id='proj_root'>
+<body id='proj_page_root'>
     <div id="project_page_wrapper" class="page_wrapper">
         <!-- header -->
-        <header class="project_header">
+        <header class="project_page_header">
             <div class="container-fluid">
                 <div class="row">
                     <!-- nav bar -->
@@ -107,27 +107,38 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
 
                         <!-- drawer -->
                         <div class="offcanvas offcanvas-end px-4" data-bs-scroll="true" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                            <div class="offcanvas-header">
-                                <h3 class="offcanvas-title h6 text-secondary" id="offcanvasNavbarLabel">
-                                    <?php echo $project->title ? htmlspecialchars($project->title) : htmlspecialchars($site_info->information['siteTitle']); ?>
+                            <div class="offcanvas-header mb-4">
+                                <h3 class="offcanvas-title h6" id="offcanvasNavbarLabel">
+                                    <?php echo htmlspecialchars($site_info->information['siteTitle']); ?>
                                 </h3>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
-                                <div class="text-body-tertiary fw-medium mb-2">Content:</div>
-                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="navbar_target">
+                                <h4 class="list_title fw-medium h6 text-body-tertiary mb-4" id="offcanvasNavbarLabel">
+                                    <i class='bi bi-view-list'></i>
+                                    <?php echo $project->title ? htmlspecialchars($project->title) : htmlspecialchars($site_info->information['siteTitle']); ?>
+                                </h4>
+                                <!-- <div class="text-body-tertiary fw-medium mb-3"><i class='bi bi-view-list'></i> Content:</div> -->
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5" id="navbar_target">
                                     <li class="nav-item">
                                         <a class="nav-link" href="#page_home"><span class="h5 fw-bold">Introduction</span></a>
                                     </li>
                                     <?php
-                                    foreach ($project->content as $section) {
-                                        $headline = htmlspecialchars($section['headline']);
-                                        $headlineId = htmlspecialchars($section['headlineId']);
-                                        echo '<li class="nav-item">';
-                                        echo '<a class="nav-link" href="#' . $headlineId . '"><span class="h5 fw-bold">' . $headline . '</span></a>';
+                                    if ($isAuthenticated || !$isPasswordRequired) {
+                                        foreach ($project->content as $section) {
+                                            $headline = htmlspecialchars($section['headline']);
+                                            $headlineId = htmlspecialchars($section['headlineId']);
+                                            echo '<li class="nav-item">';
+                                            echo '<a class="nav-link" href="#' . $headlineId . '"><span class="h5 fw-bold">' . $headline . '</span></a>';
+                                        }
+                                    } else {
+                                        echo '<li class="nav-item"><a class="nav-link" href="#"><span class="h5 fw-bold">Enter Password</span></a></li>';
                                     }
                                     ?>
+
+
                                 </ul>
+                                <a class="btn btn-light rounded-pill px-4 fw-bold" href="<?php echo $site_root_url; ?>"><i class='bi bi-arrow-left'></i> BACK TO HOMEPAGE</a>
                             </div>
                         </div>
                     </nav>
@@ -136,8 +147,8 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
         </header>
         <!-- Main -->
         <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
-            <article class="project_case" id="project_<?php echo $projectId ?>">
-                <header class="project_case_header" id="page_home">
+            <article class="project_article" id="project_<?php echo $projectId ?>">
+                <header class="project_article_header" id="page_home">
                     <div class="container">
                         <div class="row">
                             <div class="col-12 project_header_container">
@@ -219,7 +230,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                     }
                     ?>
                 <?php else: ?>
-                    <div class="container">
+                    <div class="container" id="enter_password">
                         <div class="row">
                             <div class="col-12">
                                 <div class="pw_form_container p-5 my-5 bg-light">

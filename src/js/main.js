@@ -35,7 +35,7 @@ function offsetHeight() {
         targetElement.style.paddingTop = `${sourceHeight+16}px`; // Use backticks (`) here
         // console.log('offsetHeight - Element is set.');
     } else {
-        console.log('offsetHeight - No target nav found');
+        // console.log('offset - no target');
         return;
     }
 }

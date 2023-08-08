@@ -259,6 +259,12 @@ body .high_holder {
   transition: background-color 0.5s;
   flex-wrap: nowrap;
 }
+.page_navbar.project_navbar {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.page_navbar.bg-light {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
+}
 .page_navbar .navbar-brand {
   display: flex;
   gap: 0.5rem;
@@ -293,11 +299,13 @@ body .high_holder {
 .page_navbar .navbar-toggler.navbar-dark span.navbar-toggler-icon {
   color: white;
 }
-.page_navbar.project_navbar {
-  background-color: rgba(255, 255, 255, 0.8);
+.page_navbar ul.navbar-nav li a {
+  padding-left: calc(1.5rem + 2px);
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
 }
-.page_navbar.bg-light {
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
+.page_navbar ul.navbar-nav li a.active {
+  padding-left: 1.5rem;
+  border-left: 3px solid black;
 }
 
 section.page_section {
@@ -730,22 +738,22 @@ footer {
   font-size: 0.8em;
 }
 
-main#project_main article.project_case .project_case_header {
+#project_page_wrapper .project_article .project_article_header {
   padding-top: 1.5rem;
 }
 @media (max-width: 991px) {
-  main#project_main article.project_case .project_case_header .project_intro_summary {
+  #project_page_wrapper .project_article .project_article_header .project_intro_summary {
     box-shadow: 0 -1rem 1rem -1.5rem rgba(0, 0, 0, 0.3);
   }
 }
-main#project_main article.project_case .project_case_header .project_intro_image {
+#project_page_wrapper .project_article .project_article_header .project_intro_image {
   display: flex;
   flex-direction: column;
   justify-content: end;
   height: 100%;
   overflow: hidden;
 }
-main#project_main article.project_case .project_case_header .project_intro_image img {
+#project_page_wrapper .project_article .project_article_header .project_intro_image img {
   flex: 1 1;
   -o-object-fit: contain;
      object-fit: contain;
@@ -753,54 +761,51 @@ main#project_main article.project_case .project_case_header .project_intro_image
      object-position: 50% 100%;
 }
 @media (max-width: 991px) {
-  main#project_main article.project_case .project_case_header .project_intro_image img {
+  #project_page_wrapper .project_article .project_article_header .project_intro_image img {
     max-height: 500px;
   }
 }
 @media (max-width: 767px) {
-  main#project_main article.project_case .project_case_header .project_intro_image img {
+  #project_page_wrapper .project_article .project_article_header .project_intro_image img {
     max-height: 300px;
   }
 }
-main#project_main article.project_case .article_section:nth-child(even) {
+#project_page_wrapper .project_article .article_section:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.03);
 }
-main#project_main article.project_case img {
+#project_page_wrapper .project_article img {
   width: 100%;
 }
-main#project_main .load_more_section .last_next_selector {
+#project_page_wrapper .load_more_section .last_next_selector {
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.03);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
 }
-main#project_main .load_more_section .last_next_selector a.case {
+#project_page_wrapper .load_more_section .last_next_selector a.case {
   display: flex;
   flex-direction: column;
   color: inherit;
   overflow: hidden;
   transition: background-color 0.3s, color 0.3s;
 }
-main#project_main .load_more_section .last_next_selector a.case:hover {
+#project_page_wrapper .load_more_section .last_next_selector a.case:hover {
   background-color: rgba(255, 255, 255, 0.6);
   color: black;
 }
-main#project_main .load_more_section .last_next_selector a.case:last-child {
+#project_page_wrapper .load_more_section .last_next_selector a.case:last-child {
   text-align: right;
 }
-main#project_main .load_more_section .last_next_selector a.case .cta {
+#project_page_wrapper .load_more_section .last_next_selector a.case .cta {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-main#project_main .load_more_section .last_next_selector a.disabled {
+#project_page_wrapper .load_more_section .last_next_selector a.disabled {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
   pointer-events: none;
   cursor: not-allowed;
 }
-main#project_main .load_more_section .last_next_selector a.disabled .cta {
+#project_page_wrapper .load_more_section .last_next_selector a.disabled .cta {
   color: rgba(0, 0, 0, 0.3);
 }/*# sourceMappingURL=styles.css.map */
