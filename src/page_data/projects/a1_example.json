@@ -3,34 +3,31 @@
         "id": 999,
         "indexOrder": 8,
         "password": "",
-        "title": "Featured Phone UI Design Example Project",
+        "title": "Phone Mobile UI Illustration - Featured Example Project",
         "summary": {
+            "thumbnail": "thumb.png",
+            "summaryImage": "summary.png",
+            "subhead": "Optional subhead, together we can achieve greatness!",
+            "caption": "Optional / Date: 2023 / Award-winning",
+            "categories": [
+                "Optinal",
+                "UX Design",
+                "Illustration"
+            ],
             "text": [
                 "Notes: you have to structrue each project josn files by following following rules: ",
-                "1) 'id' is for url querty selector, and will be shown in the url address, could be int or string.",
-                "1.1) Normally, id should be unique. Eventhough our system handles duplicated (and missing) id by assign them new id from json's filename and hash",
-                "2) For projects that do not want password protection, just set password = '' or 'no'",
-                "3) Projects have indexOrder 0-9 will be shown as featured project card on the home page",
-                "4) Projects that have negative indexOrder numbers will be hidden from the list (only accessable by it's URL)",
-                "4.1) indexOrder could be set redundant. Duplicated order number will be sort by id and other factors (generally randomly)"
+                "1) 'id' is for url querty selector, and will be shown in the url address, could be int or string. (Normally, id should be unique - but we handle duplicated and missing id cases by assign them temp ids)",
+                "2) For projects that do not want password protection, you can either set 'password' key to any empty values like null, '', or set to string 'no'",
+                "3) Projects have indexOrder 0-9 will be shown as featured project card on the home page. Negative indexOrder will hide project from navigation and card list (accessable by URL). Projects have same indexOrder will sort by filename"
             ],
-            "summaryImage": "summary.png",
-            "thumbnail": "thumb.png",
-            "categories": [
-                "Branding",
-                "Digital Art",
-                "Graphic Design"
-            ],
-            "caption": "Date: 2023 / Incomplete / Award-winning",
-            "subhead": "Subhead is optional, together we can achieve greatness!",
             "demoLink": {
                 "Demo Links": "http://zhouyiwork.com",
                 "Are Optional": "http://yzuxd.com"
             }
         },
-        "content": [
+        "article": [
             {
-                "headline": "Section 1 Introduction",
+                "headline": "Background",
                 "content": [
                     {
                         "type": "text",
@@ -47,7 +44,17 @@
                 ]
             },
             {
-                "headline": "Section 2 Background",
+                "leadingImgFixed": "bg-01.png",
+                "headline": "Early Research",
+                "subhead": "Great outdoor view",
+                "subheadCaption": "The \"property lookup\" form can be used to access methods and properties of an object literal's or class's [[Prototype]]. Within a class's body, the reference of super can be either the superclass's constructor itself, or the constructor's prototype, depending on whether the execution context is instance creation or class initialization. See the Examples section for more details.",
+                "subheadList": [
+                    "What I did",
+                    "Qualitative Research",
+                    "Quantiative Reserch",
+                    "User Survy",
+                    "Stakeholders' Meeting"
+                ],
                 "content": [
                     {
                         "type": "text",
@@ -60,7 +67,53 @@
                 ]
             },
             {
-                "headline": "Section 3 What we've learnt",
+                "leadingImg": "bg-01.png",
+                "leadingImgBgColor": "#A20048",
+                "headline": "Wireframes",
+                "content": [
+                    {
+                        "type": "text",
+                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    },
+                    {
+                        "type": "image",
+                        "content": "example-02.png"
+                    }
+                ]
+            },
+            {
+                "leadingImg": "bg-02.png",
+                "headline": "Prototype",
+                "content": [
+                    {
+                        "type": "text",
+                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    },
+                    {
+                        "type": "image",
+                        "content": "example-02.png"
+                    }
+                ]
+            },
+            {
+                "headline": "Result",
+                "content": [
+                    {
+                        "type": "text",
+                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    },
+                    {
+                        "type": "image",
+                        "content": "example-03.png"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    }
+                ]
+            },
+            {
+                "headline": "What We've Learnt",
                 "content": [
                     {
                         "type": "text",

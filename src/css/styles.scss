@@ -654,6 +654,7 @@ footer {
 #project_page_wrapper {
     .project_page_header {
         visibility: visible;
+
         .drawer_btm_group {
             .btn_group {
                 a {
@@ -681,7 +682,7 @@ footer {
                 height: 100%;
                 overflow: hidden;
 
-                img {
+                .intro_image {
                     flex: 1 1;
                     object-fit: contain;
                     object-position: 50% 100%;
@@ -697,16 +698,73 @@ footer {
             }
         }
 
+        .article_section_leading {
+            background-color: #333;
+            overflow: hidden;
+
+            &.bg_attach {
+                height: 512px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-attachment: fixed;
+            }
+
+            .image_wrapper {
+                margin: 0 auto;
+                max-width: 1300px;
+                overflow: hidden;
+
+                .leading_image {
+                    height: 100%;
+                    width: 100%;
+                    max-height: 512px;
+                    object-fit: cover;
+                    object-position: center center;
+                }
+            }
+        }
+
         .article_section {
+
             &:nth-child(even) {
                 background-color: $color-gray-light;
             }
 
+            .subhead_list {
+                padding: 0;
+
+                li {
+                    margin-bottom: $unit-1;
+                    list-style-type: none;
+                    position: relative;
+
+                    &::before {
+                        content: '\F199';
+                        font-family: 'Bootstrap-icons';
+                        display: inline-block;
+                        line-height: 100%;
+                        vertical-align: middle;
+                        font-size: 0.6em;
+                        margin-right: $unit-2;
+                    }
+
+                    &:first-child {
+                        padding-left: 0;
+                        margin-bottom: $unit-2;
+
+                        &::before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .article_image {
+                width: 100%;
+            }
         }
 
-        img {
-            width: 100%;
-        }
     }
 
     .load_more_section {
@@ -726,7 +784,7 @@ footer {
                 transition: background-color 0.3s, color 0.3s;
 
                 &:hover {
-                    background-color: $color-gray-silver;
+                    background-color: $color-gray-light;
                     color: black;
                 }
 

@@ -150,7 +150,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         }
                                         ?>
                                     </div>
-                                    <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $site_root_url; ?>"><i class="bi bi-arrow-left pe-2 align-middle"></i><span class="w-100">BACK TO
+                                    <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $site_root_url; ?>"><i class="bi bi-arrow-left pe-2 align-middle"></i><span class="w-100">
                                             HOMEPAGE</span></a>
                                 </div>
                             </div>
@@ -178,68 +178,102 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                 <div class="row">
                                     <div class="col-lg-6 order-lg-2 col-xl-4 offset-xl-1 pt-3">
                                         <div class="project_intro_image">
-                                            <img src="<?php echo $project->path . htmlspecialchars($project->summary['summaryImage']); ?>" alt="<?php echo htmlspecialchars($project->title); ?>">
+                                            <img class="intro_image" src="<?php echo $project->path . htmlspecialchars($project->summary['summaryImage']); ?>" alt="<?php echo htmlspecialchars($project->title); ?> headline image">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 project_intro_summary">
-                                        <div class="py-5 pt-lg-4">
-                                            <?php
-                                            echo '<p class="text-body-tertiary d-flex align-items-center gap-3">';
-                                            echo isset($project->summary['caption']) ? '<span class="fst-italic">' . htmlspecialchars($project->summary['caption']) . '</span>' : "";
-                                            if (isset($project->summary['categories'])) {
-                                                // echo "<p class='d-flex gap-3 mt-4 article_category'>";
-                                                // echo "<span>|</span>";
-                                                foreach ($project->summary['categories'] as $category) {
-                                                    $category = htmlspecialchars($category);
-                                                    echo "<span class='category-container badge bg-light text-secondary rounded-pill '>$category</span> ";
-                                                }
-                                                // echo "</p>";
+                                    <div class="col-lg-6 project_intro_summary py-5 pt-lg-3 mb-4 mb-lg-5">
+                                        <!-- <div class="project_intro_summary_wrapper "> -->
+                                        <?php
+                                        echo '<div class="text-body-tertiary d-flex flex-wrap align-items-center gap-3 mb-4 mb-lg-5">';
+                                        echo isset($project->summary['caption']) ? '<div class="fst-italic">' . htmlspecialchars($project->summary['caption']) . '</div>' : "";
+                                        if (isset($project->summary['categories'])) {
+                                            echo "<div class='article_category d-flex gap-2'>";
+                                            foreach ($project->summary['categories'] as $category) {
+                                                $category = htmlspecialchars($category);
+                                                echo "<span class='category-container badge bg-light text-secondary rounded-pill '>$category</span> ";
                                             }
-
-                                            echo '</p class="text-body">';
-                                            $summaryText = isset($project->summary['text']) ? $project->summary['text'] : [];
-                                            foreach ($summaryText as $textItem) {
-                                                echo "<p>" . htmlspecialchars($textItem) . "</p>";
+                                            echo "</div>";
+                                        }
+                                        echo '</div>';
+                                        $summaryText = isset($project->summary['text']) ? $project->summary['text'] : [];
+                                        foreach ($summaryText as $textItem) {
+                                            echo "<p class='text-body'>" . htmlspecialchars($textItem) . "</p>";
+                                        }
+                                        if (isset($project->summary['demoLink'])) {
+                                            echo "<div class='d-flex gap-3 mt-4'>";
+                                            $demo_link = ($project->summary['demoLink']);
+                                            foreach ($demo_link as $name => $link) {
+                                                echo "<a class='btn btn-secondary rounded-pill px-4' href='{$link}'>{$name}</a>";
                                             }
-                                            if (isset($project->summary['demoLink'])) {
-                                                echo "<div class='d-flex gap-3 mt-4'>";
-                                                $demo_link = ($project->summary['demoLink']);
-                                                foreach ($demo_link as $name => $link) {
-                                                    echo "<a class='btn btn-secondary rounded-pill px-4' href='{$link}'>{$name}</a>";
-                                                }
-                                                echo '</div>';
-                                            }
-                                            ?>
-                                        </div>
+                                            echo '</div>';
+                                        }
+                                        ?>
+                                        <!-- </div> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </header>
-                <!-- Main content goes here -->
-                <?php //////////////////////////////////////////////////////////////////////////// ?>
+                <!-- article sections content -->
                 <?php if ($isAuthenticated || !$isPasswordRequired): ?>
-                    <!-- // Display the project -->
                     <?php
-                    foreach ($project->content as $section) {
+                    // for each section render content
+                    foreach ($project->article as $section) {
+                        $projPath = $project->path;
                         $headline = htmlspecialchars($section['headline']);
                         $headlineId = htmlspecialchars($section['headlineId']);
+                        $leadingImg = isset($section['leadingImg']) ? htmlspecialchars($section['leadingImg']) : null;
+                        $leadingImgFixed = isset($section['leadingImgFixed']) ? htmlspecialchars($section['leadingImgFixed']) : null;
+                        $leadingImgBg = isset($section['leadingImgBgColor']) ? htmlspecialchars($section['leadingImgBgColor']) : null;
+                        $subhead = isset($section['subhead']) ? htmlspecialchars($section['subhead']) : null;
+                        $subheadCaption = isset($section['subheadCaption']) ? htmlspecialchars($section['subheadCaption']) : null;
+                        $subheadList = isset($section['subheadList']) ? ($section['subheadList']) : null;
 
-                        echo '<section class="page_section article_section" id="' . $headlineId . '"><div class="container">
-                        <div class="row"><div class="col-12">';
-                        echo "<h2 id='" . $headlineId . "' class='section_headline'>" . $headline . "</h2>";
+                        // a - leading image
+                        if (isset($leadingImgFixed)) {
+                            echo "<div style='background-image: url(" . $projPath . $leadingImgFixed . ")' class='article_section_leading bg_attach'></div>";
+                        } elseif (isset($leadingImg)) {
+                            echo "<div class='article_section_leading'" . (isset($leadingImgBg) ? "style='background-color:{$leadingImgBg}'" : null) . ">";
+                            echo "<div class='image_wrapper'><img class='leading_image' src='" . $projPath . $leadingImg . "' alt='{$headline} section leading image'>";
+                            echo "</div></div>";
+                        } // a - leading image end                        
 
-                        foreach ($section['content'] as $contentItem) {
+                        // b - container start
+                        echo "<section class='page_section article_section' id='{$headlineId}'>";
+                        echo "<div class='container'><div class='row'>";
+
+                        // 1 - headline
+                        echo "<div class='col-lg-4 pe-lg-5'>";
+                        if (isset($subhead)) {
+                            echo "<h6 class='text-secondary'>$subhead</h6>";
+                        }
+                        echo "<h2 id='{$headlineId}' class='section_headline'>{$headline}</h2>";
+                        if (isset($subheadCaption)) {
+                            echo "<p class='text-body-tertiary'>$subheadCaption</p>";
+                        }
+                        if (isset($subheadList)) {
+                            echo "<ul class='subhead_list'>";
+                            foreach ($subheadList as $i=>$item){
+                                $item = htmlspecialchars($item);
+                                echo $i===0 ? "<li class='fw-bold'> $item</li>" : "<li class=''>$item</li>";
+                            }
+                            echo "</ul>";
+                        }
+                        echo "</div>";
+
+                        // 2 - content
+                        echo "<div class='col-lg-8'>";
+                        foreach ($section['content'] as $index => $contentItem) {
+
                             $type = $contentItem['type'];
                             $content = $contentItem['content'];
-
                             if ($type === 'text') {
                                 echo "<p>" . htmlspecialchars($content) . "</p>";
                             } elseif ($type === 'image') {
-                                echo "<img src='" . $project->path . $content . "'>";
+                                echo "<img class='article_image' src='" . $projPath . $content . "'>";
                             } elseif ($type === 'full-bleed-image') {
-                                echo "<img class='full-bleed' src='" . $project->path . $content . "'>";
+                                echo "<img class='article_image full-bleed' src='" . $projPath . $content . "'>";
                             } elseif ($type === 'video') {
                                 // Handle video content
                             } elseif ($type === 'auto-play-video') {
@@ -247,8 +281,13 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                             } elseif ($type === 'code') {
                                 // Handle code content
                             }
+
                         }
-                        echo '</div></div></div></section>';
+                        echo "</div>";
+
+                        // b - container end
+                        echo "</div></div>";
+                        echo "</section>";
                     }
                     ?>
                 <?php else: ?>
@@ -270,7 +309,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                                     echo 'Wrong password';
                                                 }
                                                 ?>
-                                                <button type="submit" class="btn btn-dark">Submit</button>
+                                                <button type="submit" class="btn btn-dark rounded-pill">Submit</button>
                                             </form>
                                         </div>
                                     </div>
@@ -298,7 +337,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                     $projectTitle = $targetProject ? $targetProject->title : $defaultMessage;
                                     $linkClass = $hasProject ? "" : "disabled";
 
-                                    return "<a href='{$projectPath}' class='case {$lastNextClass} {$linkClass} px-5 py-4 text-decoration-none'>
+                                    return "<a href='{$projectPath}' class='case {$lastNextClass} {$linkClass} p-4 py-3 text-decoration-none'>
                                             <div class='cta cta_title fw-bold'>
                                                 {$iconLast}
                                                 {$caseTitle}

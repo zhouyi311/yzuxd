@@ -7,13 +7,10 @@ class ProjectInfo
     public $indexOrder;
     public $password;
     public $title;
-    // public $date;
-    // public $categories;
     public $summary;
-    public $content;
+    public $article;
     public $last = null;
     public $next = null;
-
     public function __construct($projectData)
     {
         $this->id = $projectData['id'];
@@ -33,8 +30,8 @@ class ProjectInfo
             $this->summary['categories'] = array($this->summary['categories']);
         }
 
-        $this->content = $projectData['content'];
-        foreach ($this->content as $index => &$section) {
+        $this->article = $projectData['article'];
+        foreach ($this->article as $index => &$section) {
             $headlineId = strtolower(preg_replace('/[^a-z0-9]/i', '_', $section['headline'])); // Replace all special characters with underscores and lowercase
             $headlineId = 'section_' . ($index + 1) . '_' . $headlineId; // Add a prefix based on its position
             $section['headlineId'] = $headlineId; // Store the ID in the data structure

@@ -201,7 +201,7 @@ $projects = ProjectInfo::loadAll();
                             echo "<div class='card_info_headline text-nowrap text-truncate'>";
                             echo "<a href='$projectLink'><h4>$title</h4>";
                             if (isset($subhead) && $isFeatured) {
-                                echo "<p class='h5 text-body-tertiary'>$subhead</p>";
+                                echo "<p class='h6 text-body-tertiary'>$subhead</p>";
                             }
 
                             echo "</a></div><div class='card_info_categories text-truncate'>";
