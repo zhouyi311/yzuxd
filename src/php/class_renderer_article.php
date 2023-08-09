@@ -33,7 +33,7 @@ class ArticleContentRenderer {
 
     private function renderSection($section) {
         // logic for rendering the section
-        $projPath = $this->projPath;
+        // $projPath = $this->projPath;
         $headline = $section['headline'];
         $headlineId = $section['headlineId'];
         $subhead = isset($section['subhead']) ? htmlspecialchars($section['subhead']) : null;
@@ -42,7 +42,7 @@ class ArticleContentRenderer {
 
         echo "<section class='page_section article_section' id='{$headlineId}'>";
         echo "<div class='container'><div class='row'>";
-        
+
         echo "<div class='section_headline col-lg-4 pe-lg-5'>";
         if (isset($subhead)) {
             echo "<h6 class='text-secondary'>$subhead</h6>";
@@ -79,7 +79,7 @@ class ArticleContentRenderer {
     }
 
     private function renderImage($content) {
-        echo "<img class='article_image' src='" . $this->projPath . $content . "'>";
+        echo "<img class='article_image lightbox-enabled' src='" . $this->projPath . $content . "'>";
     }
 
 }

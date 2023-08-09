@@ -127,7 +127,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         </li>
                                         <?php
                                         if ($isAuthenticated || !$isPasswordRequired) {
-                                            foreach ($project->content as $section) {
+                                            foreach ($project->article as $section) {
                                                 $headline = htmlspecialchars($section['headline']);
                                                 $headlineId = htmlspecialchars($section['headlineId']);
                                                 echo '<li class="nav-item">';
@@ -180,7 +180,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                 <div class="row">
                                     <div class="col-lg-6 order-lg-2 col-xl-4 offset-xl-1 pt-3">
                                         <div class="project_intro_image">
-                                            <img class="intro_image" src="<?php echo $project->path . htmlspecialchars($project->summary['summaryImage']); ?>" alt="<?php echo htmlspecialchars($project->title); ?> headline image">
+                                            <img class="intro_image none_select" src="<?php echo $project->path . htmlspecialchars($project->summary['summaryImage']); ?>" alt="<?php echo htmlspecialchars($project->title); ?> headline image">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 project_intro_summary py-5 pt-lg-3 mb-4 mb-lg-5">
@@ -230,14 +230,14 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                     //     $leadingImg = isset($section['leadingImg']) ? htmlspecialchars($section['leadingImg']) : null;
                     //     $leadingImgFixed = isset($section['leadingImgFixed']) ? htmlspecialchars($section['leadingImgFixed']) : null;
                     //     $leadingImgBg = isset($section['leadingImgBgColor']) ? htmlspecialchars($section['leadingImgBgColor']) : null;
-
+                
 
                     //     // $subhead = isset($section['subhead']) ? htmlspecialchars($section['subhead']) : null;
                     //     // $subheadCaption = isset($section['subheadCaption']) ? htmlspecialchars($section['subheadCaption']) : null;
                     //     // $subheadList = isset($section['subheadList']) ? ($section['subheadList']) : null;
-
+                
                     //     // a - leading image
-
+                
                     //     if (isset($leadingImgFixed)) {
                     //         echo "<div style='background-image: url(" . $projPath . $leadingImgFixed . ")' class='article_section_leading bg_attach'></div>";
                     //     } elseif (isset($leadingImg)) {
@@ -249,7 +249,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                     //     // b - container start
                     //     echo "<section class='page_section article_section' id='{$headlineId}'>";
                     //     echo "<div class='container'><div class='row'>";
-
+                
                     //     // 1 - headline
                     //     echo "<div class='section_headline col-lg-4 pe-lg-5'>";
                     //     if (isset($subhead)) {
@@ -268,11 +268,11 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                     //         echo "</ul>";
                     //     }
                     //     echo "</div>";
-
+                
                     //     // 2 - content
                     //     echo "<div class='col-lg-8'>";
                     //     foreach ($section['content'] as $index => $contentItem) {
-
+                
                     //         $type = $contentItem['type'];
                     //         $content = $contentItem['content'];
                     //         if ($type === 'text') {
@@ -288,10 +288,10 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                     //         } elseif ($type === 'code') {
                     //             // Handle code content
                     //         }
-
+                
                     //     }
                     //     echo "</div>";
-
+                
                     //     // b - container end
                     //     echo "</div></div>";
                     //     echo "</section>";
@@ -362,6 +362,10 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="lightbox-overlay" id="lightboxOverlay">
+                <img src="" id="lightboxImage">
+                <button class="lightbox-close" id="lightboxClose"><span class="bi bi-x align-middle" ></span></button>
             </div>
         </main>
         <?php include __DIR__ . '/include_footer.php'; ?>

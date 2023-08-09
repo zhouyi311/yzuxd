@@ -254,6 +254,47 @@ body .high_holder {
   background-color: azure;
   margin: 3rem auto;
 }
+body .lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1050;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+body .lightbox-overlay .lightbox-close {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+body .lightbox-overlay .lightbox-close .bi {
+  text-align: center;
+  vertical-align: middle;
+}
+body .lightbox-overlay .lightbox-close .bi::before {
+  font-size: 2rem;
+}
+body .lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  transition: transform 0.3s;
+  transform: scale(var(--img-scale, 1));
+  position: relative;
+  left: 0;
+  top: 0;
+  transform-origin: center center;
+}
 
 .page_navbar {
   transition: background-color 0.5s;
