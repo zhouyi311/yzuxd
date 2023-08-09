@@ -18,10 +18,10 @@ $site_root_url = getSiteRootUrl();
 session_start();
 
 // load projects
-require_once __DIR__ . '/class_site_info.php';
+require_once __DIR__ . '/class_info_site.php';
 $site_info = SiteInfo::loadInfo();
 
-include_once __DIR__ . '/class_project_info.php';
+include_once __DIR__ . '/class_info_project.php';
 
 
 $projectId = $_GET['project']; // Retrieve the 'project' query parameter
@@ -41,6 +41,8 @@ if (!$project) {
     }
     exit;
 }
+
+include_once __DIR__ . '/class_renderer_article.php';
 
 // Check form submission
 if (isset($_POST['password']) && !isset($_SESSION['form_processed'])) {
@@ -218,6 +220,9 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                 <!-- article sections content -->
                 <?php if ($isAuthenticated || !$isPasswordRequired): ?>
                     <?php
+                    $renderer = new ArticleContentRenderer($project);
+                    $renderer->render();
+                    echo "<hr><hr><hr>";
                     // for each section render content
                     foreach ($project->article as $section) {
                         $projPath = $project->path;
@@ -226,6 +231,8 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                         $leadingImg = isset($section['leadingImg']) ? htmlspecialchars($section['leadingImg']) : null;
                         $leadingImgFixed = isset($section['leadingImgFixed']) ? htmlspecialchars($section['leadingImgFixed']) : null;
                         $leadingImgBg = isset($section['leadingImgBgColor']) ? htmlspecialchars($section['leadingImgBgColor']) : null;
+
+
                         $subhead = isset($section['subhead']) ? htmlspecialchars($section['subhead']) : null;
                         $subheadCaption = isset($section['subheadCaption']) ? htmlspecialchars($section['subheadCaption']) : null;
                         $subheadList = isset($section['subheadList']) ? ($section['subheadList']) : null;
@@ -238,25 +245,25 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                             echo "<div class='image_wrapper'><img class='leading_image' src='" . $projPath . $leadingImg . "' alt='{$headline} section leading image'>";
                             echo "</div></div>";
                         } // a - leading image end                        
-
+                
                         // b - container start
                         echo "<section class='page_section article_section' id='{$headlineId}'>";
                         echo "<div class='container'><div class='row'>";
 
                         // 1 - headline
-                        echo "<div class='col-lg-4 pe-lg-5'>";
+                        echo "<div class='section_headline col-lg-4 pe-lg-5'>";
                         if (isset($subhead)) {
                             echo "<h6 class='text-secondary'>$subhead</h6>";
                         }
-                        echo "<h2 id='{$headlineId}' class='section_headline'>{$headline}</h2>";
+                        echo "<h2 id='{$headlineId}' class='mb-3'>{$headline}</h2>";
                         if (isset($subheadCaption)) {
                             echo "<p class='text-body-tertiary'>$subheadCaption</p>";
                         }
                         if (isset($subheadList)) {
                             echo "<ul class='subhead_list'>";
-                            foreach ($subheadList as $i=>$item){
+                            foreach ($subheadList as $i => $item) {
                                 $item = htmlspecialchars($item);
-                                echo $i===0 ? "<li class='fw-bold'> $item</li>" : "<li class=''>$item</li>";
+                                echo $i === 0 ? "<li class='fw-bold'> $item</li>" : "<li class=''>$item</li>";
                             }
                             echo "</ul>";
                         }

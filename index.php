@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 // error_reporting(E_ALL & ~E_NOTICE);
 
 // include site info
-require_once __DIR__ . '/src/php/class_site_info.php';
+require_once __DIR__ . '/src/php/class_info_site.php';
 $site_info = SiteInfo::loadInfo();
 
 // Check if $_GET['project'] is set

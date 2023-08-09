@@ -16,10 +16,10 @@ function getSiteRootUrl()
 $site_root_url = getSiteRootUrl();
 
 // load projects
-require_once __DIR__ . '/class_site_info.php';
+require_once __DIR__ . '/class_info_site.php';
 $site_info = SiteInfo::loadInfo();
 
-include_once __DIR__ . '/class_project_info.php';
+include_once __DIR__ . '/class_info_project.php';
 $projects = ProjectInfo::loadAll();
 
 ?>
