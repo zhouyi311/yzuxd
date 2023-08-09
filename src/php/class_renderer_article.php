@@ -25,8 +25,8 @@ class ArticleContentRenderer {
         if (isset($leadingImgFixed)) {
             echo "<div style='background-image: url(" . $projPath . $leadingImgFixed . ")' class='article_section_leading bg_attach'></div>";
         } elseif (isset($leadingImg)) {
-            echo "<div class='article_section_leading'" . (isset($leadingImgBg) ? "style='background-color:{$leadingImgBg}'" : null) . ">";
-            echo "<div class='image_wrapper'><img class='leading_image' src='" . $projPath . $leadingImg . "' alt='{$headline} section leading image'>";
+            echo "<div class='article_section_leading none_select'" . (isset($leadingImgBg) ? "style='background-color:{$leadingImgBg}'" : null) . ">";
+            echo "<div class='image_wrapper none_select'><img class='leading_image none_select' src='" . $projPath . $leadingImg . "' alt='{$headline} section leading image'>";
             echo "</div></div>";
         }
     }

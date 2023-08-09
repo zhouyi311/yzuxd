@@ -62,9 +62,11 @@ body .text_hero2 {
   }
 }
 body .none_select {
+  -moz-user-select: none;
+       user-select: none;
+  user-zoom: none;
+  -webkit-user-drag: none;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
   pointer-events: none;
 }
 body .lightbox-overlay {
@@ -107,4 +109,8 @@ body .lightbox-overlay img {
   left: 0;
   top: 0;
   transform-origin: center center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  user-zoom: none;
 }/*# sourceMappingURL=css_include.css.map */

@@ -179,7 +179,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                 ?>
                                 <div class="row">
                                     <div class="col-lg-6 order-lg-2 col-xl-4 offset-xl-1 pt-3">
-                                        <div class="project_intro_image">
+                                        <div class="project_intro_image none_select">
                                             <img class="intro_image none_select" src="<?php echo $project->path . htmlspecialchars($project->summary['summaryImage']); ?>" alt="<?php echo htmlspecialchars($project->title); ?> headline image">
                                         </div>
                                     </div>
@@ -222,80 +222,6 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                     <?php
                     $renderer = new ArticleContentRenderer($project);
                     $renderer->render();
-                    // for each section render content
-                    // foreach ($project->article as $section) {
-                    //     $projPath = $project->path;
-                    //     $headline = htmlspecialchars($section['headline']);
-                    //     $headlineId = htmlspecialchars($section['headlineId']);
-                    //     $leadingImg = isset($section['leadingImg']) ? htmlspecialchars($section['leadingImg']) : null;
-                    //     $leadingImgFixed = isset($section['leadingImgFixed']) ? htmlspecialchars($section['leadingImgFixed']) : null;
-                    //     $leadingImgBg = isset($section['leadingImgBgColor']) ? htmlspecialchars($section['leadingImgBgColor']) : null;
-                
-
-                    //     // $subhead = isset($section['subhead']) ? htmlspecialchars($section['subhead']) : null;
-                    //     // $subheadCaption = isset($section['subheadCaption']) ? htmlspecialchars($section['subheadCaption']) : null;
-                    //     // $subheadList = isset($section['subheadList']) ? ($section['subheadList']) : null;
-                
-                    //     // a - leading image
-                
-                    //     if (isset($leadingImgFixed)) {
-                    //         echo "<div style='background-image: url(" . $projPath . $leadingImgFixed . ")' class='article_section_leading bg_attach'></div>";
-                    //     } elseif (isset($leadingImg)) {
-                    //         echo "<div class='article_section_leading'" . (isset($leadingImgBg) ? "style='background-color:{$leadingImgBg}'" : null) . ">";
-                    //         echo "<div class='image_wrapper'><img class='leading_image' src='" . $projPath . $leadingImg . "' alt='{$headline} section leading image'>";
-                    //         echo "</div></div>";
-                    //     } // a - leading image end                        
-                
-                    //     // b - container start
-                    //     echo "<section class='page_section article_section' id='{$headlineId}'>";
-                    //     echo "<div class='container'><div class='row'>";
-                
-                    //     // 1 - headline
-                    //     echo "<div class='section_headline col-lg-4 pe-lg-5'>";
-                    //     if (isset($subhead)) {
-                    //         echo "<h6 class='text-secondary'>$subhead</h6>";
-                    //     }
-                    //     echo "<h2 id='{$headlineId}' class='mb-3'>{$headline}</h2>";
-                    //     if (isset($subheadCaption)) {
-                    //         echo "<p class='text-body-tertiary'>$subheadCaption</p>";
-                    //     }
-                    //     if (isset($subheadList)) {
-                    //         echo "<ul class='subhead_list'>";
-                    //         foreach ($subheadList as $i => $item) {
-                    //             $item = htmlspecialchars($item);
-                    //             echo $i === 0 ? "<li class='fw-bold'> $item</li>" : "<li class=''>$item</li>";
-                    //         }
-                    //         echo "</ul>";
-                    //     }
-                    //     echo "</div>";
-                
-                    //     // 2 - content
-                    //     echo "<div class='col-lg-8'>";
-                    //     foreach ($section['content'] as $index => $contentItem) {
-                
-                    //         $type = $contentItem['type'];
-                    //         $content = $contentItem['content'];
-                    //         if ($type === 'text') {
-                    //             echo "<p>" . htmlspecialchars($content) . "</p>";
-                    //         } elseif ($type === 'image') {
-                    //             echo "<img class='article_image' src='" . $projPath . $content . "'>";
-                    //         } elseif ($type === 'full-bleed-image') {
-                    //             echo "<img class='article_image full-bleed' src='" . $projPath . $content . "'>";
-                    //         } elseif ($type === 'video') {
-                    //             // Handle video content
-                    //         } elseif ($type === 'auto-play-video') {
-                    //             // Handle auto-play video content
-                    //         } elseif ($type === 'code') {
-                    //             // Handle code content
-                    //         }
-                
-                    //     }
-                    //     echo "</div>";
-                
-                    //     // b - container end
-                    //     echo "</div></div>";
-                    //     echo "</section>";
-                    // }
                     ?>
                 <?php else: ?>
                     <div class="container" id="enter_password">

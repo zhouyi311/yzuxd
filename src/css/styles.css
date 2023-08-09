@@ -244,15 +244,12 @@ body .text_hero2 {
   }
 }
 body .none_select {
+  -moz-user-select: none;
+       user-select: none;
+  user-zoom: none;
+  -webkit-user-drag: none;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
   pointer-events: none;
-}
-body .high_holder {
-  height: 300px;
-  background-color: azure;
-  margin: 3rem auto;
 }
 body .lightbox-overlay {
   display: none;
@@ -294,6 +291,10 @@ body .lightbox-overlay img {
   left: 0;
   top: 0;
   transform-origin: center center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  user-zoom: none;
 }
 
 .page_navbar {

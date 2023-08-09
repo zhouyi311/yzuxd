@@ -105,6 +105,9 @@ body {
 
     .none_select {
         user-select: none;
+        user-zoom: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
         pointer-events: none;
     }
 
@@ -152,6 +155,8 @@ body {
             top: 0;
 
             transform-origin: center center;
+            user-select: none;
+            user-zoom: none;
 
         }
 

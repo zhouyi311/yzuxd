@@ -97,7 +97,7 @@ function submitFormOnEvent(formID, emailInputID, messageInputID, outputElementID
     const outputElement = document.getElementById(outputElementID);
 
     if (form) {
-        console.log('contact form set')
+        console.log('Send me email if you have any questions.')
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -118,7 +118,7 @@ function submitFormOnEvent(formID, emailInputID, messageInputID, outputElementID
         });
 
     } else {
-        console.log('contact form not set')
+        console.log('Thank you for checking here :)')
     }
 }
 
@@ -146,12 +146,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const images = document.querySelectorAll('.lightbox-enabled');
         images.forEach(img => {
             img.addEventListener('click', function () {
-                openLightbox(img.src);
+                openLightbox(img);
             });
         });
 
-        lightboxImage.addEventListener('wheel', zoomImage);
-        lightboxOverlay.addEventListener('touchmove', zoomImage);
+        lightboxImage.addEventListener('wheel', zoomImage, { passive: true });
+        lightboxOverlay.addEventListener('touchmove', zoomImage, { passive: true }) ;
         lightboxOverlay.addEventListener('touchend', () => state.initialPinchDistance = null);
 
         lightboxImage.addEventListener('mousedown', startDrag);
@@ -165,28 +165,35 @@ document.addEventListener('DOMContentLoaded', function () {
         lightboxImage.addEventListener('dragstart', preventDefaultImageDrag);
     }
 
-    function openLightbox(src) {
-        // Check for a larger version of the image
-        const baseSrc = src.replace(/(\.[a-z]+)$/, ''); // Remove the extension
-        const largerImageSrc = `${baseSrc}_original$1`; // Add _original and the extension back
-
-        // Create a new Image object to test if the larger image exists
-        const testImage = new Image();
-        testImage.onload = function () {
-            // If the larger image loads successfully, set it as the source for the lightbox image
-            lightboxImage.src = largerImageSrc;
-        };
-        testImage.onerror = function () {
-            // If there's an error (e.g., the image doesn't exist), use the original source
-            lightboxImage.src = src;
-        };
-
-        // Start loading the larger image
-        testImage.src = largerImageSrc;
-
+    function openLightbox(img) {
+        document.body.style.overflow = 'hidden';
         lightboxOverlay.style.display = 'flex';
-    }
+        lightboxImage.src = 'src/img/local_icons/circle-loading.gif'; // Clear the current image
+        lightboxImage.alt = 'Loading...'; // You can also add a spinner or loading graphic here
 
+        const defaultSrc = img.src;
+        const largerImageSrc = img.getAttribute('data-larger-src');
+
+        // If there's no data-larger-src attribute, just use the default source
+        if (!largerImageSrc) {
+            lightboxImage.src = defaultSrc;
+            return;
+        }
+
+        // Try to fetch the larger image
+        fetch(largerImageSrc)
+            .then(response => {
+                if (response.ok) {
+                    lightboxImage.src = largerImageSrc;
+                    lightboxImage.alt = ''; // Clear the loading text
+                } else {
+                    lightboxImage.src = defaultSrc;
+                }
+            })
+            .catch(error => {
+                lightboxImage.src = defaultSrc;
+            });
+    }
 
     function closeLightbox() {
         lightboxOverlay.style.display = 'none';
@@ -194,6 +201,8 @@ document.addEventListener('DOMContentLoaded', function () {
         lightboxImage.style.setProperty('--img-scale', state.scale);
         lightboxImage.style.left = '0px';
         lightboxImage.style.top = '0px';
+        document.body.style.overflow = '';
+        
     }
 
     function zoomImage(event) {
@@ -249,143 +258,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
     initializeLightbox();
 });
-
-
-
-
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     const images = document.querySelectorAll('.lightbox-enabled');
-//     const lightboxOverlay = document.getElementById('lightboxOverlay');
-//     const lightboxImage = document.getElementById('lightboxImage');
-//     const lightboxClose = document.getElementById('lightboxClose');
-
-//     images.forEach(img => {
-//         img.addEventListener('click', function () {
-//             lightboxImage.src = img.src;
-//             lightboxOverlay.style.display = 'flex';
-//         });
-//     });
-
-//     let scale = 1;
-//     const scaleIncrement = 0.1;
-
-//     lightboxImage.addEventListener('wheel', function (event) {
-//         event.preventDefault();
-
-//         if (event.deltaY < 0) {
-//             // Zoom in
-//             scale += scaleIncrement;
-//         } else {
-//             // Zoom out
-//             scale -= scaleIncrement;
-//         }
-
-//         // Set a minimum and maximum scale level
-//         scale = Math.min(Math.max(scale, 0.5), 3);
-
-//         lightboxImage.style.setProperty('--img-scale', scale);
-//     });
-
-//     let initialPinchDistance = null;
-
-//     lightboxOverlay.addEventListener('touchmove', function (event) {
-//         if (event.touches.length === 2) {
-//             const dx = event.touches[0].clientX - event.touches[1].clientX;
-//             const dy = event.touches[0].clientY - event.touches[1].clientY;
-//             const distance = Math.sqrt(dx * dx + dy * dy);
-
-//             if (initialPinchDistance === null) {
-//                 initialPinchDistance = distance;
-//             }
-
-//             const difference = distance - initialPinchDistance;
-//             scale += difference * 0.01;
-
-//             // Set a minimum and maximum scale level
-//             scale = Math.min(Math.max(scale, 0.5), 3);
-
-//             lightboxImage.style.setProperty('--img-scale', scale);
-//             initialPinchDistance = distance;
-//         }
-//     });
-
-//     lightboxOverlay.addEventListener('touchend', function () {
-//         initialPinchDistance = null;
-//     });
-
-//     //more features
-
-//     let isDragging = false;
-//     let startX = 0;
-//     let startY = 0;
-//     let initialOffsetX = 0;
-//     let initialOffsetY = 0;
-
-//     lightboxImage.addEventListener('mousedown', function (event) {
-//         isDragging = true;
-//         startX = event.clientX;
-//         startY = event.clientY;
-//         initialOffsetX = parseFloat(lightboxImage.style.left || 0);
-//         initialOffsetY = parseFloat(lightboxImage.style.top || 0);
-//     });
-
-//     window.addEventListener('mousemove', function (event) {
-//         if (isDragging) {
-//             const dx = event.clientX - startX;
-//             const dy = event.clientY - startY;
-//             lightboxImage.style.left = `${initialOffsetX + dx}px`;
-//             lightboxImage.style.top = `${initialOffsetY + dy}px`;
-//         }
-//     });
-
-//     window.addEventListener('mouseup', function () {
-//         isDragging = false;
-//     });
-
-//     // Reset scale and position when closing the lightbox
-//     function closeLightbox() {
-//         lightboxOverlay.style.display = 'none';
-//         scale = 1;
-//         lightboxImage.style.setProperty('--img-scale', scale);
-//         lightboxImage.style.left = '0px';
-//         lightboxImage.style.top = '0px';
-//     }
-
-//     lightboxOverlay.addEventListener('click', closeLightbox);
-//     lightboxClose.addEventListener('click', closeLightbox);
-//     // lightboxImage.addEventListener('click', closeLightbox);
-
-//     // Prevent the lightbox from closing when the image is clicked
-//     lightboxImage.addEventListener('click', function (event) {
-//         event.stopPropagation();
-//     });
-
-// });
-
-// lightboxImage.addEventListener('dragstart', function (event) {
-//     event.preventDefault();
-// });
-
-
-// function openLightbox(imageSrc) {
-//     // Check for a larger version of the image
-//     const largerImageSrc = imageSrc.replace('.jpg', '_original.jpg');
-
-//     // Create a new Image object to test if the larger image exists
-//     const testImage = new Image();
-//     testImage.onload = function () {
-//         // If the larger image loads successfully, set it as the source for the lightbox image
-//         lightboxImage.src = largerImageSrc;
-//     };
-//     testImage.onerror = function () {
-//         // If there's an error (e.g., the image doesn't exist), use the original source
-//         lightboxImage.src = imageSrc;
-//     };
-
-//     // Start loading the larger image
-//     testImage.src = largerImageSrc;
-
-//     // Display the lightbox
-//     lightboxOverlay.style.display = 'block';
-// }
