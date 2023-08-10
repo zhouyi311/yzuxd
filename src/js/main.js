@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function zoomImage(event) {
-        event.preventDefault();
+        // event.preventDefault();
 
         if (event.type === 'wheel') {
             if (event.deltaY < 0) {

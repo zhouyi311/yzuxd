@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Example Page</title>
+	<meta name="Author" content="Yi Zhou" />
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	<style>
+
+		@keyframes swing {
+			20% {
+				-webkit-transform: rotate3d(0, 0, 1, 0deg);
+				transform: rotate3d(0, 0, 1, 0deg);
+			}
+
+			22% {
+				-webkit-transform: rotate3d(0, 0, 1, 15deg);
+				transform: rotate3d(0, 0, 1, 15deg);
+			}
+
+			24% {
+				-webkit-transform: rotate3d(0, 0, 1, -10deg);
+				transform: rotate3d(0, 0, 1, -10deg);
+			}
+
+			26% {
+				-webkit-transform: rotate3d(0, 0, 1, 5deg);
+				transform: rotate3d(0, 0, 1, 5deg);
+			}
+
+			28% {
+				-webkit-transform: rotate3d(0, 0, 1, -5deg);
+				transform: rotate3d(0, 0, 1, -5deg);
+			}
+
+			30% {
+				-webkit-transform: rotate3d(0, 0, 1, 0deg);
+				transform: rotate3d(0, 0, 1, 0deg);
+			}
+		}
+
+		.swing {
+			-webkit-transform-origin: top center;
+			transform-origin: top center;
+			-webkit-animation-name: swing;
+			animation-name: swing;
+			-webkit-animation-duration: 5s;
+			animation-duration: 5s;
+			-webkit-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+		}
+
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+
+		body {
+			background: linear-gradient(225deg, #322626 0%, #403338 100%);
+			color: #fafafa;
+			font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			/* justify-items: stretch; */
+		}
+
+		section {
+			text-align: center;
+			flex: 1 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		div.container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 24px;
+		}
+
+		div.container *{
+			margin: 0;
+		}
+
+		div.container a {
+			color: rgb(51, 122, 183);
+			padding:  6px 20px;
+			background-color: white;
+			border-radius: 8px;
+			font-weight: 700;
+			text-decoration: none;
+		}
+		div.container a:hover{
+			background-color:azure;
+			color: black;
+		}
+
+
+		div#logo-border {
+			width: 100px;
+			height: 100px;
+		}
+
+		div#logo-border img {
+			width: 100%;
+			overflow: hidden;
+			border-radius: 20px;
+		}
+
+		.footer {
+			/* position: fixed; */
+			/* width: 100%; */
+			bottom: 0;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div id="logo-border">
+				<img src="logo-social-media.png" alt="logo" class="swing">
+			</div>
+			<h1>What's Up!</h1>
+			<p>This is an Example Page</p>
+			<p>Awesome and Sweet</p>
+			<p>
+				<a href="#">
+					Do Not Click Me!
+				</a>
+			</p>
+		</div>
+	</section>
+	<h5 class="footer"> yzuxd.com </h5>
+</body>
+
+</html>

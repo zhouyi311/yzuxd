@@ -4,6 +4,10 @@ class ArticleContentRenderer
 
     private $project;
     private $projPath;
+    private $narrow = " col-lg-8 offset-lg-2 ";
+    private $narrow2 = " col-lg-10 offset-lg-1 ";
+    private $narrow3 = " col-lg-8 offset-lg-3 ";
+    private $narrow4 = " col-lg-8 offset-lg-4 ";
 
     public function __construct($project)
     {
@@ -18,6 +22,28 @@ class ArticleContentRenderer
             $this->renderSection($section);
         }
     }
+
+    private function sanitizeValue($array, $key, $sanitize = true)
+    {
+        if (!empty($array[$key])) {
+            if ($sanitize) {
+                if (is_string($array[$key])) {
+                    return htmlspecialchars($array[$key]);
+                } elseif (is_array($array[$key])) {
+                    foreach ($array[$key] as &$value) {
+                        if (is_string($value)) {
+                            $value = htmlspecialchars($value);
+                        }
+                    }
+                    unset($value); // To break the reference with the last element
+                    return $array[$key];
+                }
+            }
+            return $array[$key];
+        }
+        return null;
+    }
+
 
     private function findLargerImage($path, $filename)
     {
@@ -54,16 +80,18 @@ class ArticleContentRenderer
 
     private function renderLeadingImage($section)
     {
-        $projPath = $this->projPath . "/";
-        $headline = $section['headline'];
-        $leadingImg = !empty($section['leadingImg']) ? htmlspecialchars($section['leadingImg']) : null;
-        $leadingImgFixed = !empty($section['leadingImgFixed']) ? htmlspecialchars($section['leadingImgFixed']) : null;
-        $leadingImgBg = !empty($section['leadingImgBgColor']) ? htmlspecialchars($section['leadingImgBgColor']) : null;
+        $projPath = $this->projPath;
+        $headline = $this->sanitizeValue($section, 'headline');
+        $leadingImg = $this->sanitizeValue($section, 'leadingImg');
+        $leadingImgFixed = $this->sanitizeValue($section, 'leadingImgFixed');
+        $leadingImgBgColor = $this->sanitizeValue($section, 'leadingImgBgColor');
+        $leadingImgBgColor = !empty($leadingImgBgColor) ? "style='background-color: {$leadingImgBgColor}'" : null;
+
         if (!empty($leadingImgFixed)) {
-            echo "<div style='background-image: url(" . $projPath . $leadingImgFixed . ")' class='article_section_leading bg_attach'></div>";
+            echo "<div style='background-image: url({$projPath}/{$leadingImgFixed})' class='article_section_leading bg_attach'></div>";
         } elseif (!empty($leadingImg)) {
-            echo "<div class='article_section_leading none_select'" . (!empty($leadingImgBg) ? "style='background-color:{$leadingImgBg}'" : null) . ">";
-            echo "<div class='image_wrapper none_select'><img class='leading_image none_select' src='" . $projPath . $leadingImg . "' alt='{$headline} section leading image'>";
+            echo "<div class='article_section_leading none_select' $leadingImgBgColor>";
+            echo "<div class='image_wrapper none_select'><img class='leading_image none_select' src='{$projPath}/{$leadingImg}' alt='{$headline} section leading image'>";
             echo "</div></div>";
         }
     }
@@ -71,16 +99,18 @@ class ArticleContentRenderer
     private function renderSection($section)
     {
         // logic for rendering the section
-        $projPath = $this->projPath . "/";
-        $headline = $section['headline'];
-        $headlineId = $section['headlineId'];
-        $subhead = !empty($section['subhead']) ? htmlspecialchars($section['subhead']) : null;
-        $subheadCaption = !empty($section['subheadCaption']) ? htmlspecialchars($section['subheadCaption']) : null;
-        $subheadList = !empty($section['subheadList']) ? ($section['subheadList']) : null;
+        // $projPath = $this->projPath . "/";
+        $headline = $this->sanitizeValue($section, 'headline');
+        $headlineId = $this->sanitizeValue($section, 'headlineId');
+        $subhead = $this->sanitizeValue($section, 'subhead');
+        $subheadCaption = $this->sanitizeValue($section, 'subheadCaption');
+        // $subheadCaption = $section['subheadCaption'];
+        $subheadList = $this->sanitizeValue($section, 'subheadList', false);
 
         echo "<section class='page_section article_section' id='{$headlineId}'>";
         echo "<div class='container'><div class='row'>";
-        echo "<div class='section_headline col-lg-4 pe-lg-5'>";
+
+        echo "<div class='section_headline col-lg-3 pe-lg-4'>";
         if (isset($subhead)) {
             echo "<h6 class='text-secondary'>$subhead</h6>";
         }
@@ -99,19 +129,22 @@ class ArticleContentRenderer
         echo "</div>";
 
         // Depending on the content type, call the respective method
-        echo "<div class='col-lg-8'>";
+        echo "<div class='col-lg-9'>";
         foreach ($section['content'] as $index => $contentItem) {
             $type = $contentItem['type'];
             if (method_exists($this, "{$type}Render")) {
+                echo "<div class='row'>";
                 $this->{"{$type}Render"}($contentItem);
-            }else{
-                echo "<div class='media_block'>";
-                echo "<p>".var_dump($contentItem)."</p>";
+                echo "</div>";
+            } else {
+                echo "<div class='media_block col'>";
                 echo "<p>Error: section ({$section['headline']}): content index($index) missing ($type)render</p>";
+                echo "<p>" . var_dump($contentItem) . "</p>";
                 echo "</div>";
             }
         }
         echo "</div>";
+
         echo "</div></div>";
         echo "</section>";
     }
@@ -119,44 +152,75 @@ class ArticleContentRenderer
     private function textRender($content)
     {
         $data = $content['data'];
-        $iswide = !empty($content['wide']) ? "" : "col-lg-10 offset-lg-1";
+        is_string($data) ? $data = array($data) : null;
+        $headline = !empty($content['headline']) ? htmlspecialchars($content['headline']) : null;
+        $iswide = !empty($content['wide']) ? " col " : $this->narrow;
+        $lead = isset($content['lead']) && !empty($content['lead']) && !is_integer($content['lead']) ? 1 : ($content['lead'] ?? null);
+
 
         if (is_array($data)) {
-            foreach ($data as $index => $paragraph){
-                echo "<p class='article_paragraph p_group_index_$index'>" . htmlspecialchars($paragraph) . "</p>";
+            echo "<div class='media_block $iswide'>";
+            echo !empty($headline) ? "<h5 class='paragraph_headline'>$headline</h5>" : null;
+            foreach ($data as $index => $paragraph) {
+                // echo $index . "-" . $lead;
+                echo "<p class='article_paragraph ";
+                if ($index < $lead) {
+                    echo "lead ";
+                }
+                echo "p_group_index_$index'>" . htmlspecialchars($paragraph) . "</p>";
             }
-        } elseif (is_string($data)) {
-            echo "<div class='{$iswide} media_block'><p class='article_paragraph'>" . htmlspecialchars($content['data']) . "</p></div>";
+            echo "</div>";
         } else {
-            echo "<p>Empty Data</p>";
+            echo "<p>Empty data or none supported data:</p>";
+            echo "<p>" . var_dump($data) . "</p>";
         }
     }
 
     private function imageRender($content)
     {
-        $filename = !empty($content['data']) ? htmlspecialchars($content['data']) : null;
+        $filename = !empty($content['data']) ? $content['data'] : null;
         $caption = !empty($content['caption']) ? htmlspecialchars($content['caption']) : null;
         $headline = !empty($content['headline']) ? htmlspecialchars($content['headline']) : null;
         $lightbox = !empty($content['lightbox']) ? $content['lightbox'] : null;
-        $iswide = !empty($content['wide']) ? "" : " col-lg-10 offset-lg-1 ";
+        $iswide = !empty($content['wide']) ? " col " : $this->narrow;
         $path = $this->projPath;
 
         if (!empty($filename)) {
-            echo "<figure class='media_block article_image text-center $iswide'>";
-            echo !empty($headline) ? "<h6 class='media_headline $iswide'>$headline</h6>" : null;
-            echo "<img src='{$path}/{$filename}' class='article_image rounded-2";
-            if (isset($lightbox) && is_string($lightbox)) {
-                echo " lightbox-enabled' data-larger-src='" . htmlspecialchars($lightbox) . "'>";
-            } elseif (isset($lightbox)) {
-                $largerImage = $this->findLargerImage($path, $filename);
-                echo " lightbox-enabled' data-larger-src='" . htmlspecialchars($largerImage) . "'>";
-            } else {
-                echo "'>";
+
+            is_string($filename) ? $filename = array($filename) : null;
+            // $multiCol = count($filename) > 1 ? true : false;
+
+            echo "<figure class='media_block article_image $iswide'>";
+            echo !empty($headline) ? "<h6 class='media_headline'>$headline</h6>" : null;
+            echo "<div class='row gy-4'>";
+            foreach ($filename as $image) {
+
+                if (count($filename) % 2 == 0 && count($filename) <= 4) {
+                    echo "<div class='col-6'>";
+                } elseif (count($filename) == 3 || count($filename) > 4) {
+                    echo "<div class='col-4'>";
+                } else {
+                    echo "<div class='col'>";
+                }
+
+                echo "<img src='{$path}/" . htmlspecialchars($image) . "' class='article_image rounded-2";
+                if (isset($lightbox) && is_string($lightbox)) {
+                    echo " lightbox-enabled' data-larger-src='" . htmlspecialchars($lightbox) . "'>";
+                } elseif (isset($lightbox)) {
+                    $largerImage = $this->findLargerImage($path, $image);
+                    echo " lightbox-enabled' data-larger-src='" . htmlspecialchars($largerImage) . "'>";
+                } else {
+                    echo "'>";
+                }
+
+                echo "</div>";
             }
-            echo !empty($caption) ? "<figcaption class='media_caption text-body-tertiary fst-italic $iswide'>{$caption}</figcaption>" : null;
+            echo "</div>";
+            echo !empty($caption) ? "<figcaption class='media_caption text-body-tertiary fst-italic'>{$caption}</figcaption>" : null;
             echo "</figure>";
-        }else{
-            echo "<p>Empty Data</p>";
+        } else {
+            echo "<p>Empty data or none supported data:</p>";
+            echo "<p>" . var_dump($filename) . "</p>";
         }
 
 
@@ -166,17 +230,20 @@ class ArticleContentRenderer
         $urlpath = !empty($content['data']) ? htmlspecialchars($content['data']) : null;
         $headline = !empty($content['headline']) ? htmlspecialchars($content['headline']) : null;
         $caption = !empty($content['caption']) ? htmlspecialchars($content['caption']) : null;
-        $iswide = !empty($content['wide']) ? "" : " col-lg-10 offset-lg-1 ";
+        $iswide = !empty($content['wide']) ? " col " : $this->narrow;
 
         if (isset($urlpath)) {
-            echo "<div class='media_block iframe_container text-center {$iswide}'>";
+            $iFrameCrcId = crc32($urlpath);
+            echo "<div class='media_block iframe_container {$iswide}'>";
             echo !empty($headline) ? "<h6 class='media_headline'>{$headline}</h6>" : null;
-            echo "<iframe width='100%' height='600px' src='$urlpath'></iframe>";
+            echo "<div class='iframe_wrapper' id='wrapper_{$iFrameCrcId}'><iframe width='100%' height='100%' src='$urlpath' id='iframe_$iFrameCrcId'></iframe></div>";
             echo !empty($caption) ? "<div class='media_caption mt-0'>{$caption}</div></div>" : "</div>";
         } else {
-            echo "<p>Empty Data</p>";
+            echo "<p>Empty data or none supported data:</p>";
+            echo "<p>" . var_dump($$urlpath) . "</p>";
         }
     }
+
 }
 
 ?>

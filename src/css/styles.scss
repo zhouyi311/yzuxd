@@ -343,7 +343,8 @@ section.page_section#home {
 section.page_section#projects {
 
     padding-bottom: 7rem;
-    @media (max-width: $bp-md){
+
+    @media (max-width: $bp-md) {
         padding-bottom: 5rem;
     }
 
@@ -702,6 +703,7 @@ footer {
             }
         }
 
+        //sections ...............................
         .article_section_leading {
             background-color: #333;
             overflow: hidden;
@@ -764,18 +766,22 @@ footer {
                 }
             }
 
-
+            // media block..........................................
             .media_block {
                 margin-bottom: $unit-5;
-                .paragrah_headline {
-                    margin-bottom: $unit-2;
-                }
-                .media_headline {
-                    text-align: center;
+                overflow: hidden;
+
+                .paragraph_headline {
                     margin-bottom: $unit-3;
                 }
+
+                .media_headline {
+                    // text-align: center;
+                    margin-bottom: $unit-3;
+                }
+
                 .media_caption {
-                    text-align: center;
+                    // text-align: center;
                     margin-top: $unit-2;
                     color: $color-gray-ash;
                     font-style: italic;
@@ -783,28 +789,40 @@ footer {
             }
 
             figure {
-                // text-align: center;
-                // background-color: $color-gray-light;
                 .article_image {
                     max-width: 100%;
                     display: block;
                     margin: auto;
+
                     &.lightbox-enabled {
                         cursor: zoom-in;
                     }
                 }
-                figcaption{
+
+                figcaption {
                     visibility: visible;
 
                 }
             }
 
-            iframe{
-                border: 1px solid $color-gray-silver;
+            .iframe_container {
+                overflow: hidden;
+
+                .iframe_wrapper {
+                    // min-height: 400px;
+                    width: 100%;
+                    min-height: 400px;
+                    aspect-ratio: 3/2;
+
+                    iframe {
+                        border: 1px solid $color-gray-silver;
+                    }
+                }
             }
         }
     }
 
+    // load more .............
     .load_more_section {
 
         .last_next_selector {

@@ -13,11 +13,13 @@ class ProjectInfo
     public $next = null;
     public function __construct($projectData)
     {
+        // $projectData = $this->sanitizeData($projectData);
+
         $this->id = $projectData['id'];
-        $this->path = '/src/page_data/projects/' . basename($projectData['file'], '.json') ;
+        $this->path = '/src/page_data/projects/' . basename($projectData['file'], '.json');
         $this->indexOrder = $projectData['indexOrder'];
         if (!is_numeric($this->indexOrder)) {
-            $this->indexOrder = -abs(crc32($this->indexOrder));
+            $this->indexOrder = -1;
         }
 
         $this->password = $projectData['password'];
@@ -32,11 +34,34 @@ class ProjectInfo
 
         $this->article = $projectData['article'];
         foreach ($this->article as $index => &$section) {
+            empty($section['headline']) ? $section['headline'] = 'Part ' . $index + 1 : null;
             $headlineId = strtolower(preg_replace('/[^a-z0-9]/i', '_', $section['headline'])); // Replace all special characters with underscores and lowercase
-            $headlineId = 'section_' . ($index + 1) . '_' . $headlineId; // Add a prefix based on its position
+            $headlineId = 'sec_' . ($index + 1) . '_' . $headlineId; // Add a prefix based on its position
             $section['headlineId'] = $headlineId; // Store the ID in the data structure
         }
     }
+
+    // private function sanitizeData($data)
+    // {
+    //     if (is_string($data)) {
+    //         return htmlspecialchars($data);
+    //     }
+
+    //     if (is_array($data)) {
+    //         foreach ($data as $key => &$value) {
+    //             if ($key === 'type' && $value === 'code') {
+    //                 continue; // Skip code type
+    //             }
+
+    //             if ($key !== 'data' || ($key === 'data' && (!isset($data['type']) || $data['type'] !== 'code'))) {
+    //                 $value = $this->sanitizeData($value);
+    //             }
+    //         }
+    //         unset($value); // To break the reference
+    //     }
+
+    //     return $data;
+    // }
 
     private static function getProjectDataFromFile($file)
     {
@@ -44,10 +69,11 @@ class ProjectInfo
         $projectData = json_decode($json, true)[0];
 
         if (!isset($projectData['id']) || empty($projectData['id'])) { // Check if 'id' is not set or empty, and then assign a unique ID based on the file path
-            $projectData['id'] = basename($file) . "_" . substr(md5($file), 0, 8);
+            $projectData['id'] = basename($file) . "_" . crc32($file);
         }
 
         $projectData['id'] = rawurlencode($projectData['id']);
+
         $projectData['file'] = $file;
         return $projectData;
     }
@@ -64,7 +90,7 @@ class ProjectInfo
 
             // If the ID has been seen before, assign a unique ID based on the filename
             if (in_array($project->id, $seenIds)) {
-                $basenameId = basename($project->path) . "_" . substr(md5($project->path), 4, 4);
+                $basenameId = basename($project->path) . "_" . crc32($project->path);
                 if (in_array($basenameId, $seenIds)) {
                     $project->id = $basenameId . "_" . random_int(0, 9999) . "_" . md5($project->path); // Hash the full path if basename is also redundant
                 } else {
