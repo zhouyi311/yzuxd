@@ -180,7 +180,8 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                 <div class="row">
                                     <div class="col-lg-6 order-lg-2 col-xl-4 offset-xl-1 pt-3">
                                         <div class="project_intro_image none_select">
-                                            <img class="intro_image none_select" src="<?php echo $project->path . htmlspecialchars($project->summary['summaryImage']); ?>" alt="<?php echo htmlspecialchars($project->title); ?> headline image">
+                                            <img class="intro_image none_select" src="<?php echo $project->path ."/". htmlspecialchars($project->summary['summaryImage']); ?>"
+                                                alt="<?php echo htmlspecialchars($project->title); ?> headline image">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 project_intro_summary py-5 pt-lg-3 mb-4 mb-lg-5">
@@ -291,7 +292,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
             </div>
             <div class="lightbox-overlay" id="lightboxOverlay">
                 <img src="" id="lightboxImage">
-                <button class="lightbox-close" id="lightboxClose"><span class="bi bi-x align-middle" ></span></button>
+                <button class="lightbox-close" id="lightboxClose"><span class="bi bi-x align-middle"></span></button>
             </div>
         </main>
         <?php include __DIR__ . '/include_footer.php'; ?>

@@ -14,7 +14,7 @@ class ProjectInfo
     public function __construct($projectData)
     {
         $this->id = $projectData['id'];
-        $this->path = '/src/page_data/projects/' . basename($projectData['file'], '.json') . '/';
+        $this->path = '/src/page_data/projects/' . basename($projectData['file'], '.json') ;
         $this->indexOrder = $projectData['indexOrder'];
         if (!is_numeric($this->indexOrder)) {
             $this->indexOrder = -abs(crc32($this->indexOrder));

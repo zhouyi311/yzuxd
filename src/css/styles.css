@@ -258,8 +258,10 @@ body .lightbox-overlay {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1050;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
+  z-index: 1080;
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -359,7 +361,7 @@ body .lightbox-overlay img {
 }
 
 section.page_section {
-  padding: 5rem 0 7rem 0;
+  padding: 5rem 0;
   position: relative;
   overflow-x: hidden;
 }
@@ -562,6 +564,14 @@ section.page_section#home .bg_container .hero_decoration_container .extra_wrappe
   animation-delay: 0s;
 }
 
+section.page_section#projects {
+  padding-bottom: 7rem;
+}
+@media (max-width: 767px) {
+  section.page_section#projects {
+    padding-bottom: 5rem;
+  }
+}
 section.page_section#projects #projects_container .project_card {
   position: relative;
   transition: box-shadow 0.6s;
@@ -810,7 +820,7 @@ footer {
   overflow: hidden;
 }
 #project_page_wrapper .project_article .project_article_header .project_intro_image .intro_image {
-  flex: 1 1;
+  width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
   -o-object-position: 50% 100%;
@@ -878,8 +888,35 @@ footer {
 #project_page_wrapper .project_article .article_section .subhead_list li:first-child::before {
   display: none;
 }
-#project_page_wrapper .project_article .article_section .article_image {
-  width: 100%;
+#project_page_wrapper .project_article .article_section .media_block {
+  margin-bottom: 3rem;
+}
+#project_page_wrapper .project_article .article_section .media_block .paragrah_headline {
+  margin-bottom: 0.5rem;
+}
+#project_page_wrapper .project_article .article_section .media_block .media_headline {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#project_page_wrapper .project_article .article_section .media_block .media_caption {
+  text-align: center;
+  margin-top: 0.5rem;
+  color: rgba(0, 0, 0, 0.3);
+  font-style: italic;
+}
+#project_page_wrapper .project_article .article_section figure .article_image {
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
+#project_page_wrapper .project_article .article_section figure .article_image.lightbox-enabled {
+  cursor: zoom-in;
+}
+#project_page_wrapper .project_article .article_section figure figcaption {
+  visibility: visible;
+}
+#project_page_wrapper .project_article .article_section iframe {
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 #project_page_wrapper .load_more_section .last_next_selector {
   justify-content: space-between;

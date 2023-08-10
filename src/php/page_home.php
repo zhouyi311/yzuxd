@@ -181,11 +181,12 @@ $projects = ProjectInfo::loadAll();
                         <?php
                         function createProjectCard($project, $isFeatured)
                         {
+                            $projectPath = $project->path . "/";
                             $projectLink = '?project=' . htmlspecialchars($project->id);
                             $title = isset($project->title) ? htmlspecialchars($project->title) : "";
                             $subhead = isset($project->summary['subhead']) ? $project->summary['subhead'] : null;
                             $categories = isset($project->summary['categories']) ? $project->summary['categories'] : [];
-                            $thumbnailSrc = isset($project->summary['thumbnail']) ? htmlspecialchars($project->path . $project->summary['thumbnail']) : "";
+                            $thumbnailSrc = isset($project->summary['thumbnail']) ? htmlspecialchars($projectPath . $project->summary['thumbnail']) : "";
                             $summaryText = isset($project->summary['text']) ? $project->summary['text'] : [];
                             if ($isFeatured) {
                                 echo "<div class='col-12'>";

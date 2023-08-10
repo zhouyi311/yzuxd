@@ -28,24 +28,6 @@
         "article": [
             {
                 "headline": "Background",
-                "content": [
-                    {
-                        "type": "text",
-                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    },
-                    {
-                        "type": "image",
-                        "content": "example-01.png"
-                    },
-                    {
-                        "type": "text",
-                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    }
-                ]
-            },
-            {
-                "leadingImgFixed": "bg-01.png",
-                "headline": "Early Research",
                 "subhead": "Great outdoor view",
                 "subheadCaption": "The \"property lookup\" form can be used to access methods and properties of an object literal's or class's [[Prototype]]. Within a class's body, the reference of super can be either the superclass's constructor itself, or the constructor's prototype, depending on whether the execution context is instance creation or class initialization. See the Examples section for more details.",
                 "subheadList": [
@@ -58,11 +40,44 @@
                 "content": [
                     {
                         "type": "text",
-                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                     },
                     {
                         "type": "image",
-                        "content": "example-02.png"
+                        "wide": true,
+                        "lightbox": true,
+                        "headline": "A beautiful image example",
+                        "caption": "This is a demo image showing something",
+                        "data": "example-01.png"
+                    },
+                    {
+                        "type": "text",
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    },
+                    {
+                        "type": "iframe",
+                        "wide": false,
+                        "headline": "iFrame Example",
+                        "caption": "An iFrame example",
+                        "data": "https://www.zhouyiwork.com"
+                    },
+                    {
+                        "type": "text",
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    }
+                ]
+            },
+            {
+                "leadingImgFixed": "bg-01.png",
+                "headline": "Early Research",
+                "content": [
+                    {
+                        "type": "text",
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                    },
+                    {
+                        "type": "image",
+                        "data": "example-02.png"
                     }
                 ]
             },
@@ -73,11 +88,11 @@
                 "content": [
                     {
                         "type": "text",
-                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                     },
                     {
                         "type": "image",
-                        "content": "example-02.png"
+                        "data": "example-02.png"
                     }
                 ]
             },
@@ -87,11 +102,11 @@
                 "content": [
                     {
                         "type": "text",
-                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                     },
                     {
                         "type": "image",
-                        "content": "example-02.png"
+                        "data": "example-02.png"
                     }
                 ]
             },
@@ -100,15 +115,16 @@
                 "content": [
                     {
                         "type": "text",
-                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                     },
                     {
                         "type": "image",
-                        "content": "example-04.png"
+                        "data": "example-04.png",
+                        "lightbox": true
                     },
                     {
                         "type": "text",
-                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                     }
                 ]
             },
@@ -117,15 +133,15 @@
                 "content": [
                     {
                         "type": "text",
-                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                     },
                     {
                         "type": "image",
-                        "content": "example-03.png"
+                        "data": "example-03.png"
                     },
                     {
                         "type": "text",
-                        "content": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                     }
                 ]
             }

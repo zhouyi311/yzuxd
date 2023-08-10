@@ -97,7 +97,7 @@ html {
 // sections ###############################################################
 
 section.page_section {
-    padding: 5rem 0 7rem 0;
+    padding: 5rem 0;
     position: relative;
     overflow-x: hidden;
 
@@ -341,6 +341,11 @@ section.page_section#home {
 // project section
 
 section.page_section#projects {
+
+    padding-bottom: 7rem;
+    @media (max-width: $bp-md){
+        padding-bottom: 5rem;
+    }
 
     #projects_container {
 
@@ -649,8 +654,6 @@ footer {
 // project pages #########################################################################################################
 // #######################################################################################################################
 
-
-
 #project_page_wrapper {
     .project_page_header {
         visibility: visible;
@@ -683,7 +686,8 @@ footer {
                 overflow: hidden;
 
                 .intro_image {
-                    flex: 1 1;
+                    // flex: 1 1;
+                    width: 100%;
                     object-fit: contain;
                     object-position: 50% 100%;
 
@@ -760,11 +764,45 @@ footer {
                 }
             }
 
-            .article_image {
-                width: 100%;
+
+            .media_block {
+                margin-bottom: $unit-5;
+                .paragrah_headline {
+                    margin-bottom: $unit-2;
+                }
+                .media_headline {
+                    text-align: center;
+                    margin-bottom: $unit-3;
+                }
+                .media_caption {
+                    text-align: center;
+                    margin-top: $unit-2;
+                    color: $color-gray-ash;
+                    font-style: italic;
+                }
+            }
+
+            figure {
+                // text-align: center;
+                // background-color: $color-gray-light;
+                .article_image {
+                    max-width: 100%;
+                    display: block;
+                    margin: auto;
+                    &.lightbox-enabled {
+                        cursor: zoom-in;
+                    }
+                }
+                figcaption{
+                    visibility: visible;
+
+                }
+            }
+
+            iframe{
+                border: 1px solid $color-gray-silver;
             }
         }
-
     }
 
     .load_more_section {

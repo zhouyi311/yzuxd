@@ -172,28 +172,37 @@ document.addEventListener('DOMContentLoaded', function () {
         lightboxImage.alt = 'Loading...'; // You can also add a spinner or loading graphic here
 
         const defaultSrc = img.src;
-        const largerImageSrc = img.getAttribute('data-larger-src');
+        const largerImageFilename = img.getAttribute('data-larger-src');
 
         // If there's no data-larger-src attribute, just use the default source
-        if (!largerImageSrc) {
+        if (!largerImageFilename) {
             lightboxImage.src = defaultSrc;
+            console.log('default')
             return;
         }
 
+        // Extract the path from defaultSrc and append the largerImageFilename
+        const pathWithoutFilename = defaultSrc.substring(0, defaultSrc.lastIndexOf('/') + 1);
+        const fullLargerImageSrc = pathWithoutFilename + largerImageFilename;
+
         // Try to fetch the larger image
-        fetch(largerImageSrc)
+        fetch(fullLargerImageSrc)
             .then(response => {
                 if (response.ok) {
-                    lightboxImage.src = largerImageSrc;
+                    lightboxImage.src = fullLargerImageSrc;
                     lightboxImage.alt = ''; // Clear the loading text
+                    console.log('found')
                 } else {
                     lightboxImage.src = defaultSrc;
+                    console.log('not found')
                 }
             })
             .catch(error => {
                 lightboxImage.src = defaultSrc;
+                console.log('error throw')
             });
     }
+
 
     function closeLightbox() {
         lightboxOverlay.style.display = 'none';
