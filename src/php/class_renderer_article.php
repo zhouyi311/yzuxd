@@ -41,16 +41,27 @@ class ArticleContentRenderer
         return null;
     }
 
-    private function fluidProcessor($content)
+    private function returnUnsupportedData($block)
+    {
+        $mediaType = !empty($block['type']) ? $block['type'] : 'empty type';
+        $data = !empty($block['data']) ? $block['data'] : null;
+        $dataType = $data ? gettype($data) : null;
+        echo "<div class='media_block $this->narrowCol'><div class='alert alert-secondary' role='alert'>";
+        echo "<h5>Formater Error - " . ($data ? "Wrong data type:" : "Empty Data Value") . "</h5>";
+        echo $data ? "<p class='lead'>Data type: [$dataType] is invalid for [$mediaType] media formatter</p><p>Please use string type of data with \" \" for your data field</p><hr>" : "<hr>";
+        echo "<p>" . ($data ? var_dump($data) : "[EMPTY DATA]" ) . "</p></div></div>";
+    }
+
+    private function fluidProcessor($data)
     {
         $mainGrid = $colWithGutter = $this->narrowCol;
         $fixerGrid = $colAdaptive = " col ";
 
-        if (!empty($content['fluid'])) {
+        if (!empty($data['fluid'])) {
             $mainGrid = $colAdaptive;
             $fixerGrid = $colWithGutter;
 
-            if (!empty($content['fluidHeadline'])) {
+            if (!empty($data['fluidHeadline'])) {
                 $fixerGrid = $colAdaptive;
             }
         }
@@ -115,9 +126,10 @@ class ArticleContentRenderer
         $subheadCaption = $this->sanitizeValue($section, 'subheadCaption');
         $subheadList = $this->sanitizeValue($section, 'subheadList');
 
+        // section container
         echo "<section class='page_section article_section' id='{$headlineId}'>";
         echo "<div class='container'><div class='row'>";
-
+        // left col --
         echo "<div class='section_headline col-lg-3 pe-lg-4'>";
         if (isset($subhead)) {
             echo "<h6 class='text-secondary'>$subhead</h6>";
@@ -134,39 +146,43 @@ class ArticleContentRenderer
             echo "</ul>";
         }
         echo "</div>";
-
-        // Depending on the content type, call the respective method
+        // Right Col --
         echo "<div class='col-lg-9'>";
-        foreach ($section['content'] as $index => $contentItem) {
-            $type = $contentItem['type'];
-            if (method_exists($this, "{$type}Render")) {
+        // Depending on the content type, call the respective method
+        foreach ($section['content'] as $index => $blockItem) {
+            $type = !empty($blockItem['type']) ? strval($blockItem['type']) : "empty";
+            if (method_exists($this, "{$type}BlockFormatter")) {
                 echo "<div class='row'>";
-                $this->{"{$type}Render"}($contentItem);
+                $this->{"{$type}BlockFormatter"}($blockItem);
                 echo "</div>";
             } else {
-                echo "<div class='media_block col'>";
-                echo "<p>Error: section ({$section['headline']}): content index($index) missing ($type)render</p>";
-                echo "<p>" . var_dump($contentItem) . "</p>";
-                echo "</div>";
+                echo "<div class='media_block $this->narrowCol'><div class='alert alert-warning' role='alert'>";
+                echo "<h5>Media Type Error: {$section['headline']}->content[$index]</h5>";
+                echo "<p class='lead'>Missing formatter for media type: [$type]</p><hr>";
+                echo "<p>" . var_dump($blockItem) . "</p></div></div>";
             }
         }
         echo "</div>";
-
+        // end section container
         echo "</div></div>";
         echo "</section>";
     }
 
-    private function textRender($content)
+    private function textBlockFormatter($block)
     {
-        $fluid = $this->fluidProcessor($content);
-        $paragraphs = $this->sanitizeValue($content, 'data');
+        $fluid = $this->fluidProcessor($block);
+        $paragraphs = $this->sanitizeValue($block, 'data');
         is_string($paragraphs) ? $paragraphs = array($paragraphs) : null;
-        $headline = $this->sanitizeValue($content, 'headline');
-        $lead = !empty($content['lead']) && !is_integer($content['lead']) ? 1 : ($content['lead'] ?? null);
-
+        $headline = $this->sanitizeValue($block, 'headline');
+        $caption = $this->sanitizeValue($block, 'caption');
+        $cite = $this->sanitizeValue($block, 'cite');
+        $quote = !empty($block['quote']) ? true : null;
+        $lead = !empty($block['lead']) && !is_integer($block['lead']) ? 1 : ($block['lead'] ?? null);
+        
         if (is_array($paragraphs)) {
-            echo "<div class='media_block $fluid[0]'>";
+            echo "<div class='media_block $fluid[0]'>" . ( !empty($quote) ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-5'>" : null);
             echo !empty($headline) ? "<div class='row'><div class='$fluid[1]'><h5 class='paragraph_headline'>$headline</h5></div></div>" : null;
+            
             foreach ($paragraphs as $index => $paragraph) {
                 // echo $index . "-" . $lead;
                 echo "<p class='article_paragraph ";
@@ -175,27 +191,32 @@ class ArticleContentRenderer
                 }
                 echo "p_group_index_$index'>" . htmlspecialchars($paragraph) . "</p>";
             }
+
+            echo $caption ? "<footer class='block_footer paragraph_caption'>$caption<cite>$cite</cite></footer>" : null;
+            echo $quote ? "</blockquote>" : null;
             echo "</div>";
         } else {
-            echo "<p>Empty paragraph or none supported data:</p>";
-            echo "<p>" . var_dump($paragraphs) . "</p>";
+            $this->returnUnsupportedData($block);
         }
+        
     }
 
-    private function imageRender($content)
+    private function imageBlockFormatter($block)
     {
-        $fluid = $this->fluidProcessor($content);
-        $filename = $this->sanitizeValue($content, 'data');
+        $fluid = $this->fluidProcessor($block);
+        $filename = $this->sanitizeValue($block, 'data');
         is_string($filename) ? $filename = array($filename) : null;
-        $headline = $this->sanitizeValue($content, 'headline');
-        $caption = $this->sanitizeValue($content, 'caption');
-        $lightbox = $this->sanitizeValue($content, 'lightbox');
+        $headline = $this->sanitizeValue($block, 'headline');
+        $caption = $this->sanitizeValue($block, 'caption');
+        $cite = $this->sanitizeValue($block, 'cite');
+        $lightbox = $this->sanitizeValue($block, 'lightbox');
+        $quote = !empty($block['quote']) ? true : null;
         $path = $this->projPath;
-        $maintainSize = !empty($content['maintain']) ? 'maintain_size' : null;
+        $maintainSize = !empty($block['maintainSize']) ? 'maintain_size' : null;
 
         if (!empty($filename)) {
 
-            echo "<figure class='media_block article_image $fluid[0]'>";
+            echo "<figure class='media_block article_image $fluid[0]'>" . ( !empty($quote) ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-5'>" : null);
             echo !empty($headline) ? "<div class='row'><div class='$fluid[1]'><h6 class='media_headline'>$headline</h6></div></div>" : null;
             echo "<div class='row g-3 gy-3'>";
             foreach ($filename as $image) {
@@ -207,7 +228,6 @@ class ArticleContentRenderer
                 } else {
                     echo "<div class='col image_cell'>";
                 }
-
                 echo "<img src='{$path}/{$image}' class='article_image rounded-2 $maintainSize ";
                 if (isset($lightbox) && is_string($lightbox)) {
                     echo " lightbox-enabled' data-larger-src='$lightbox'>";
@@ -221,41 +241,48 @@ class ArticleContentRenderer
                 echo "</div>";
             }
             echo "</div>";
-            echo !empty($caption) ? "<div class='$fluid[1]'><figcaption class='media_caption text-body-tertiary fst-italic'>{$caption}</figcaption></div>" : null;
+            echo !empty($caption) ? "<footer class='block_footer media_caption $fluid[1]'><figcaption class=''>{$caption}<cite>$cite</cite></figcaption></footer>" : null;
+            echo $quote ? "</blockquote>" : null;
             echo "</figure>";
         } else {
-            echo "<p>Empty data or none supported data:</p>";
-            echo "<p>" . var_dump($filename) . "</p>";
+            $this->returnUnsupportedData($block);
         }
 
-
     }
-    private function iframeRender($content)
-    {
-        $fluid = $this->fluidProcessor($content);
-        $urlpath = $this->sanitizeValue($content, 'data');
-        $headline = $this->sanitizeValue($content, 'headline');
-        $caption = $this->sanitizeValue($content, 'caption');
 
-        if (isset($urlpath)) {
-            $iFrameCrcId = crc32($urlpath);
+    private function iframeBlockFormatter($block)
+    {
+        $fluid = $this->fluidProcessor($block);
+        $data = $this->sanitizeValue($block, 'data');
+        $headline = $this->sanitizeValue($block, 'headline');
+        $caption = $this->sanitizeValue($block, 'caption');
+        $cite = $this->sanitizeValue($block, 'cite');
+        $embedVideo = $this->sanitizeValue($block, 'embedVideo');
+
+        if (isset($data)) {
+            $iFrameCrcId = crc32($data);
             echo "<div class='media_block iframe_container {$fluid[0]}'>";
             echo !empty($headline) ? "<div class='$fluid[1]'><h6 class='media_headline'>{$headline}</h6></div>" : null;
-            echo "<div class='iframe_wrapper' id='wrapper_{$iFrameCrcId}'><iframe class='rounded-2' width='100%' height='100%' src='$urlpath' id='iframe_$iFrameCrcId'></iframe></div>";
-            echo !empty($caption) ? "<div class='media_caption $fluid[1]'>{$caption}</div>" : null;
+            echo "<div class='iframe_wrapper' id='wrapper_{$iFrameCrcId}'>";
+
+            if ($embedVideo){
+                include __DIR__ . "/../.." . $data;
+            }else{
+                echo "<iframe class='rounded-2' width='100%' height='100%' src='$data' id='iframe_$iFrameCrcId'></iframe>";
+            }
+            
+            echo "</div>";
+            echo !empty($caption) ? "<footer class='block_footer media_caption $fluid[1]'>{$caption}<cite>$cite</cite></footer>" : null;
             echo "</div>";
         } else {
-            echo "<p>Empty data or none supported data:</p>";
-            echo "<p>" . var_dump($$urlpath) . "</p>";
+            $this->returnUnsupportedData($block);
         }
     }
 
-    private function videoRender($content)
+    private function videoBlockFormatter($block)
     {
-        echo $content;
+        echo var_dump( $block);
     }
-
-
 
 }
 

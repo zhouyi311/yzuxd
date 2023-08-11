@@ -780,6 +780,10 @@ footer {
                 overflow: hidden;
 
                 .paragraph_headline {
+                    margin-bottom: $unit-4;
+                }
+
+                .media_headline {
                     margin-bottom: $unit-3;
                 }
 
@@ -787,19 +791,20 @@ footer {
                     line-height: 1.6em;
                 }
 
-                .media_headline {
-                    // text-align: center;
-                    margin-bottom: $unit-3;
+                blockquote.quote_container{
+                    visibility: visible;
+                    background-color: $color-gray-light;
                 }
 
-                .media_caption {
-                    // text-align: center;
+                .block_footer{
                     margin-top: $unit-2;
-                    color: $color-gray-ash;
-                    font-style: italic;
-                }
+                    color: $color-gray-medium;
+                    .media_caption {
+                    }
+                    .paragraph_caption{
 
-                
+                    }
+                }
 
             }
 

@@ -909,18 +909,21 @@ footer {
   overflow: hidden;
 }
 #project_page_wrapper .project_article .article_section .media_block .paragraph_headline {
+  margin-bottom: 1.5rem;
+}
+#project_page_wrapper .project_article .article_section .media_block .media_headline {
   margin-bottom: 1rem;
 }
 #project_page_wrapper .project_article .article_section .media_block .article_paragraph {
   line-height: 1.6em;
 }
-#project_page_wrapper .project_article .article_section .media_block .media_headline {
-  margin-bottom: 1rem;
+#project_page_wrapper .project_article .article_section .media_block blockquote.quote_container {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.03);
 }
-#project_page_wrapper .project_article .article_section .media_block .media_caption {
+#project_page_wrapper .project_article .article_section .media_block .block_footer {
   margin-top: 0.5rem;
-  color: rgba(0, 0, 0, 0.3);
-  font-style: italic;
+  color: rgba(0, 0, 0, 0.5);
 }
 #project_page_wrapper .project_article .article_section figure .article_image {
   width: 100%;
