@@ -213,10 +213,10 @@ class ArticleContentRenderer
             echo !empty($headline) ? "<div class='row'><div class='$fluid[1]'><h6 class='media_headline'>$headline</h6></div></div>" : null;
             foreach ($filename as $video) {
                 $videoCrcId = crc32($video);
-                echo "<video preload='auto' class='article_video rounded-2' id='article_video_{$videoCrcId}' $autoPlay $controls $loop>";
+                echo "<div class='video_wrapper'><video preload='auto' class='article_video' id='article_video_{$videoCrcId}' $autoPlay $controls $loop>";
                 echo "<source src='{$path}/{$video}' type='video/mp4'>";
                 echo "Your browser does not support the video tag.";
-                echo "</video>";
+                echo "</video></div>";
             }
             echo !empty($caption) ? "<footer class='block_footer media_caption $fluid[1]'><figcaption class=''>{$caption}<cite>$cite</cite></figcaption></footer>" : null;
             echo $quote ? "</blockquote>" : null;
@@ -245,7 +245,7 @@ class ArticleContentRenderer
             if ($embedVideo) {
                 include $dirPath . '/' . $source;
             } else {
-                echo "<iframe class='rounded-2' width='100%' height='100%' src='$source' id='iframe_$iFrameCrcId'></iframe>";
+                echo "<iframe class='' width='100%' height='100%' src='$source' id='iframe_$iFrameCrcId'></iframe>";
             }
 
             echo "</div>";

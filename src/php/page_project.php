@@ -96,7 +96,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                             </a>
                             <?php
                             if (isset($project->title)) {
-                                echo '<span class="project_name">|</span><span class="project_name text-secondary fs-6">';
+                                echo '<span class="project_name slideout">|</span><span class="project_name text-secondary fs-6 slideout">';
                                 echo htmlspecialchars($project->title) . '</span>';
                             }
                             ?>
@@ -294,7 +294,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
             </div>
         </main>
         <?php include __DIR__ . '/include_footer.php'; ?>
-        <script src="src/js/page_project.js" type="text/javascript"></script>
+        <script src="src/js/page_project.js?v=586" type="text/javascript"></script>
     </div>
 </body>
 

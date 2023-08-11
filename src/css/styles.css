@@ -922,15 +922,25 @@ footer {
 }
 #project_page_wrapper .project_article .article_section .media_block.article_images .article_image.lightbox-enabled {
   cursor: zoom-in;
+  transition-property: box-shadow transform;
+  transition-duration: 0.3s;
+}
+#project_page_wrapper .project_article .article_section .media_block.article_images .article_image.lightbox-enabled:hover {
+  box-shadow: var(--bs-box-shadow-sm);
+  transform: scale(100.5%);
 }
 #project_page_wrapper .project_article .article_section .media_block.article_images .article_image.maintain_size {
   width: unset;
   margin: auto;
 }
-#project_page_wrapper .project_article .article_section .media_block.article_videos .article_video {
+#project_page_wrapper .project_article .article_section .media_block.article_videos .video_wrapper {
+  background-color: #000;
+}
+#project_page_wrapper .project_article .article_section .media_block.article_videos .video_wrapper .article_video {
   width: 100%;
   display: block;
   margin-bottom: 0.5rem;
+  transition: opacity 0.3s;
 }
 #project_page_wrapper .project_article .article_section .media_block.iframe_container {
   overflow: hidden;

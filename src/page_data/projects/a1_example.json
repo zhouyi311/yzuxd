@@ -34,8 +34,8 @@
                 "subhead": "",
                 "subheadCaption": "",
                 "subheadList": [],
-                "leftCol": 2,
-                "rightCol": 10,
+                "leftCol": null,
+                "rightCol": null,
                 "leftColUnfluid": true,
                 "content": [
                     {

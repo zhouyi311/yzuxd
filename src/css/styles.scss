@@ -793,6 +793,12 @@ footer {
 
                         &.lightbox-enabled {
                             cursor: zoom-in;
+                            transition-property: box-shadow transform;
+                            transition-duration: 0.3s;
+                            &:hover{
+                                box-shadow: var(--bs-box-shadow-sm);
+                                transform: scale(100.5%);
+                            }
                         }
 
                         &.maintain_size {
@@ -803,10 +809,15 @@ footer {
                 }
 
                 &.article_videos {
-                    .article_video {
-                        width: 100%;
-                        display: block;
-                        margin-bottom: $unit-2;
+                    .video_wrapper {
+                        background-color: #000;
+                        // overflow: hidden;
+                        .article_video {
+                            width: 100%;
+                            display: block;
+                            margin-bottom: $unit-2;
+                            transition: opacity 0.3s;
+                        }
                     }
                 }
 
@@ -824,8 +835,10 @@ footer {
                         }
                     }
                 }
+
                 &.html_container {
                     overflow: hidden;
+
                     .html_wrapper {
                         width: 100%;
                     }
@@ -850,6 +863,7 @@ footer {
                     color: $color-gray-medium;
 
                     &.media_caption {}
+
                     &.paragraph_caption {}
                 }
 
