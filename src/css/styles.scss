@@ -824,6 +824,12 @@ footer {
                         }
                     }
                 }
+                &.html_container {
+                    overflow: hidden;
+                    .html_wrapper {
+                        width: 100%;
+                    }
+                }
 
 
                 .media_headline {

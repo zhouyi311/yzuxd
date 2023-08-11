@@ -27,14 +27,16 @@
         },
         "article": [
             {
-                "leadingImgFixed": "",
                 "headline": "Background",
+                "leadingImgFixed": "",
+                "leadingImg": "",
+                "leadingImgBgColor": "",
                 "subhead": "",
                 "subheadCaption": "",
                 "subheadList": [],
-                "leftCol" : 4,
-                "leftColUnfluidAlign" : true,
-                "rightCol" : 8, 
+                "leftCol": 2,
+                "rightCol": 10,
+                "leftColUnfluid": true,
                 "content": [
                     {
                         "type": "text",
@@ -73,7 +75,7 @@
                         "fluidHeadline": false,
                         "headline": "An Awesome Local Video Example",
                         "caption": "An iFrame example",
-                        "cite": " - 'We've done it'",
+                        "cite": " - 'An awesome book'",
                         "controls": false,
                         "autoPlay": true,
                         "loop": true,
@@ -83,21 +85,30 @@
                         "type": "iframe",
                         "fluid": false,
                         "fluidHeadline": false,
-                        "headline": "Embad iFrame Video Example",
+                        "headline": "iFrame Example",
                         "caption": "An iFrame example",
-                        "cite": " - 'We've done it'",
-                        "embedVideo": true,
-                        "data": "/src/static/example-embed-video.html"
+                        "cite": " - 'I said so'",
+                        "embedVideo": false,
+                        "data": "/src/static/example_usage/demo.html"
                     },
                     {
                         "type": "iframe",
                         "fluid": false,
                         "fluidHeadline": false,
-                        "headline": "iFrame Example",
+                        "headline": "Embad iFrame Video Example",
                         "caption": "An iFrame example",
-                        "cite": " - 'We've done it'",
-                        "embedVideo": false,
-                        "data": "/src/static/example.html"
+                        "cite": " - 'You've found it'",
+                        "embedVideo": true,
+                        "data": "embed-video.html"
+                    },
+                    {
+                        "type": "html",
+                        "fluid": false,
+                        "fluidHeadline": false,
+                        "headline": "HTML Code Direct Embed Example",
+                        "caption": "A HTML Code Direct Embed Example",
+                        "cite": " - 'Who else?'",
+                        "data": "embed-html.html"
                     },
                     {
                         "type": "text",
@@ -216,7 +227,7 @@
                         "fluidHeadline": false,
                         "headline": "iFrame Example",
                         "caption": "An iFrame example",
-                        "data": "/src/static/example.html"
+                        "data": "/src/static/example_usage/demo.html"
                     },
                     {
                         "type": "text",

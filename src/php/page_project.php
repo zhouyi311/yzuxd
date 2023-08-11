@@ -142,8 +142,8 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                 <div class="drawer_btm_group d-flex flex-column gap-4 pb-5">
                                     <div class="btn-group rounded-pill fw-bold overflow-hidden" role="group">
                                         <?php
-                                        $existLastProject = isset($project->last->id);
-                                        $existNextProject = isset($project->next->id);
+                                        $existLastProject = !empty($project->last->id);
+                                        $existNextProject = !empty($project->next->id);
                                         if ($existLastProject) {
                                             echo "<a class='btn btn-light text-truncate px-4' href='?project={$project->last->id}'><span class='fw-bold me-1'>Prev:</span><span class='inner_text fw-normal w-100'>{$project->last->title}</span></a>";
                                         }
@@ -172,7 +172,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                     <?php echo htmlspecialchars($project->title); ?>
                                 </h1>
                                 <?php
-                                if (isset($project->summary['subhead'])) {
+                                if (!empty($project->summary['subhead'])) {
                                     echo '<p class="h5 article_subhead text-secondary">';
                                     echo htmlspecialchars($project->summary['subhead']) . "</p>";
                                 }
@@ -180,7 +180,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                 <div class="row">
                                     <div class="col-lg-6 order-lg-2 col-xl-4 offset-xl-1 pt-3">
                                         <div class="project_intro_image none_select">
-                                            <img class="intro_image none_select" src="<?php echo $project->path ."/". htmlspecialchars($project->summary['summaryImage']); ?>"
+                                            <img class="intro_image none_select" src="<?php echo $project->path . "/" . htmlspecialchars($project->summary['summaryImage']); ?>"
                                                 alt="<?php echo htmlspecialchars($project->title); ?> headline image">
                                         </div>
                                     </div>
@@ -188,8 +188,8 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         <!-- <div class="project_intro_summary_wrapper "> -->
                                         <?php
                                         echo '<div class="text-body-tertiary d-flex flex-wrap align-items-center gap-3 mb-4 mb-lg-5">';
-                                        echo isset($project->summary['caption']) ? '<div class="fst-italic">' . htmlspecialchars($project->summary['caption']) . '</div>' : "";
-                                        if (isset($project->summary['categories'])) {
+                                        echo !empty($project->summary['caption']) ? '<div class="fst-italic">' . htmlspecialchars($project->summary['caption']) . '</div>' : "";
+                                        if (!empty($project->summary['categories'])) {
                                             echo "<div class='article_category d-flex gap-2'>";
                                             foreach ($project->summary['categories'] as $category) {
                                                 $category = htmlspecialchars($category);
@@ -202,11 +202,11 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         foreach ($summaryText as $textItem) {
                                             echo "<p class='text-body'>" . htmlspecialchars($textItem) . "</p>";
                                         }
-                                        if (isset($project->summary['demoLink'])) {
+                                        if (!empty($project->summary['demoLink'])) {
                                             echo "<div class='d-flex gap-3 mt-4'>";
                                             $demo_link = ($project->summary['demoLink']);
                                             foreach ($demo_link as $name => $link) {
-                                                echo "<a class='btn btn-secondary rounded-pill px-4' href='{$link}'>{$name}</a>";
+                                                echo "<a class='btn btn-light rounded-pill px-4' href='{$link}'>{$name}</a>";
                                             }
                                             echo '</div>';
                                         }
@@ -220,10 +220,8 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                 </header>
                 <!-- article sections content -->
                 <?php if ($isAuthenticated || !$isPasswordRequired): ?>
-                    <?php
-                    $renderer = new ArticleContentRenderer($project);
-                    $renderer->render();
-                    ?>
+                    <?php $renderer = new ArticleContentRenderer($project);
+                    $renderer->render(); ?>
                 <?php else: ?>
                     <div class="container" id="enter_password">
                         <div class="row">

@@ -943,6 +943,12 @@ footer {
 #project_page_wrapper .project_article .article_section .media_block.iframe_container .iframe_wrapper iframe {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+#project_page_wrapper .project_article .article_section .media_block.html_container {
+  overflow: hidden;
+}
+#project_page_wrapper .project_article .article_section .media_block.html_container .html_wrapper {
+  width: 100%;
+}
 #project_page_wrapper .project_article .article_section .media_block .media_headline {
   margin-bottom: 1rem;
 }

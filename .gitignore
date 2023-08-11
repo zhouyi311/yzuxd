@@ -50,5 +50,6 @@ test.php
 # Project Data #
 /src/page_data/projects/*
 /src/static/html_includes/*
+/src/static/iframe_includes/*
 !/src/page_data/projects/*_example
 !/src/page_data/projects/*_example.json

@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (video.paused) {
                 video.play();
                 video.muted = false;
+                video.style.opacity = 1;
             } else {
                 video.pause();
+                video.style.opacity = 0.6;
             }
         });
     });
