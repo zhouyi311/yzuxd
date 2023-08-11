@@ -256,6 +256,11 @@ body .none_select {
   -webkit-user-select: none;
   pointer-events: none;
 }
+body .hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
 body .lightbox-overlay {
   display: none;
   position: fixed;
@@ -908,14 +913,41 @@ footer {
   margin-bottom: 3rem;
   overflow: hidden;
 }
-#project_page_wrapper .project_article .article_section .media_block .paragraph_headline {
-  margin-bottom: 1.5rem;
+#project_page_wrapper .project_article .article_section .media_block.article_paragraphs .article_paragraph {
+  line-height: 1.6em;
+}
+#project_page_wrapper .project_article .article_section .media_block.article_images .article_image {
+  width: 100%;
+  display: block;
+}
+#project_page_wrapper .project_article .article_section .media_block.article_images .article_image.lightbox-enabled {
+  cursor: zoom-in;
+}
+#project_page_wrapper .project_article .article_section .media_block.article_images .article_image.maintain_size {
+  width: unset;
+  margin: auto;
+}
+#project_page_wrapper .project_article .article_section .media_block.article_videos .article_video {
+  width: 100%;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+#project_page_wrapper .project_article .article_section .media_block.iframe_container {
+  overflow: hidden;
+}
+#project_page_wrapper .project_article .article_section .media_block.iframe_container .iframe_wrapper {
+  width: 100%;
+  min-height: 400px;
+  aspect-ratio: 3/2;
+}
+#project_page_wrapper .project_article .article_section .media_block.iframe_container .iframe_wrapper iframe {
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 #project_page_wrapper .project_article .article_section .media_block .media_headline {
   margin-bottom: 1rem;
 }
-#project_page_wrapper .project_article .article_section .media_block .article_paragraph {
-  line-height: 1.6em;
+#project_page_wrapper .project_article .article_section .media_block .paragraph_headline {
+  margin-bottom: 1.5rem;
 }
 #project_page_wrapper .project_article .article_section .media_block blockquote.quote_container {
   visibility: visible;
@@ -924,31 +956,6 @@ footer {
 #project_page_wrapper .project_article .article_section .media_block .block_footer {
   margin-top: 0.5rem;
   color: rgba(0, 0, 0, 0.5);
-}
-#project_page_wrapper .project_article .article_section figure .article_image {
-  width: 100%;
-  display: block;
-}
-#project_page_wrapper .project_article .article_section figure .article_image.lightbox-enabled {
-  cursor: zoom-in;
-}
-#project_page_wrapper .project_article .article_section figure .article_image.maintain_size {
-  width: unset;
-  margin: auto;
-}
-#project_page_wrapper .project_article .article_section figure figcaption {
-  visibility: visible;
-}
-#project_page_wrapper .project_article .article_section .iframe_container {
-  overflow: hidden;
-}
-#project_page_wrapper .project_article .article_section .iframe_container .iframe_wrapper {
-  width: 100%;
-  min-height: 400px;
-  aspect-ratio: 3/2;
-}
-#project_page_wrapper .project_article .article_section .iframe_container .iframe_wrapper iframe {
-  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 #project_page_wrapper .load_more_section .last_next_selector {
   justify-content: space-between;

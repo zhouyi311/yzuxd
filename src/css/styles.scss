@@ -52,7 +52,8 @@ html {
 
             transition-property: opacity transform;
             transition-duration: 0.3s;
-            &.slideout{
+
+            &.slideout {
                 opacity: 0;
                 transform: translateY(12px);
                 user-select: none;
@@ -779,73 +780,73 @@ footer {
                 margin-bottom: $unit-5;
                 overflow: hidden;
 
-                .paragraph_headline {
-                    margin-bottom: $unit-4;
+                &.article_paragraphs {
+                    .article_paragraph {
+                        line-height: 1.6em;
+                    }
                 }
+
+                &.article_images {
+                    .article_image {
+                        width: 100%;
+                        display: block;
+
+                        &.lightbox-enabled {
+                            cursor: zoom-in;
+                        }
+
+                        &.maintain_size {
+                            width: unset;
+                            margin: auto;
+                        }
+                    }
+                }
+
+                &.article_videos {
+                    .article_video {
+                        width: 100%;
+                        display: block;
+                        margin-bottom: $unit-2;
+                    }
+                }
+
+                &.iframe_container {
+                    overflow: hidden;
+
+                    .iframe_wrapper {
+                        // min-height: 400px;
+                        width: 100%;
+                        min-height: 400px;
+                        aspect-ratio: 3/2;
+
+                        iframe {
+                            border: 1px solid $color-gray-silver;
+                        }
+                    }
+                }
+
 
                 .media_headline {
                     margin-bottom: $unit-3;
                 }
 
-                .article_paragraph {
-                    line-height: 1.6em;
+                .paragraph_headline {
+                    margin-bottom: $unit-4;
                 }
 
-                blockquote.quote_container{
+                blockquote.quote_container {
                     visibility: visible;
                     background-color: $color-gray-light;
                 }
 
-                .block_footer{
+                .block_footer {
                     margin-top: $unit-2;
                     color: $color-gray-medium;
-                    .media_caption {
-                    }
-                    .paragraph_caption{
 
-                    }
+                    &.media_caption {}
+                    &.paragraph_caption {}
                 }
 
-            }
-
-            figure {
-                .image_cell{
-                    // background-color: $color-gray-silver;
-                }
-                .article_image {
-                    width: 100%;
-                    display: block;
-                    // margin: auto;
-
-                    &.lightbox-enabled {
-                        cursor: zoom-in;
-                    }
-
-                    &.maintain_size{
-                        width: unset;
-                        margin: auto;
-                    }
-                }
-
-                figcaption {
-                    visibility: visible;
-
-                }
-            }
-
-            .iframe_container {
-                overflow: hidden;
-
-                .iframe_wrapper {
-                    // min-height: 400px;
-                    width: 100%;
-                    min-height: 400px;
-                    aspect-ratio: 3/2;
-
-                    iframe {
-                        border: 1px solid $color-gray-silver;
-                    }
-                }
             }
         }
     }

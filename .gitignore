@@ -49,6 +49,6 @@ test.php
 
 # Project Data #
 /src/page_data/projects/*
-/src/static/embed/*
+/src/static/html_includes/*
 !/src/page_data/projects/*_example
 !/src/page_data/projects/*_example.json

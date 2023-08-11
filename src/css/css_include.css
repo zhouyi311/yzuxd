@@ -74,6 +74,11 @@ body .none_select {
   -webkit-user-select: none;
   pointer-events: none;
 }
+body .hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
 body .lightbox-overlay {
   display: none;
   position: fixed;

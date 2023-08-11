@@ -119,6 +119,12 @@ body {
         pointer-events: none;
     }
 
+    .hidden{
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+    }
+
     .lightbox-overlay {
         display: none;
         position: fixed;

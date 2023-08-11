@@ -296,6 +296,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
             </div>
         </main>
         <?php include __DIR__ . '/include_footer.php'; ?>
+        <script src="src/js/page_project.js" type="text/javascript"></script>
     </div>
 </body>
 

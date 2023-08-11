@@ -1,3 +1,87 @@
+// interactive decoration
+function applyInteractiveDecoration(e) {
+    const scale = 80; // movement scale, larger -> smaller movement
+    const maxRotation = 15; // maximum rotation in degrees
+
+    const moveable = document.getElementById('hero_moveable');
+    const moveable2 = document.getElementById('contact_moveable');
+
+    if (moveable && moveable2) {
+        if (window.innerWidth > 992) {
+            let xAxis = (window.innerWidth / 2 - e.clientX) / scale;
+            let yAxis = (window.innerHeight / 2 - e.clientY) / scale;
+
+            xAxis = Math.min(Math.max(xAxis, -maxRotation), maxRotation);
+            yAxis = Math.min(Math.max(yAxis, -maxRotation), maxRotation);
+
+            moveable.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            moveable2.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        } else {
+            moveable.style.transform = `rotateY(0deg) rotateX(0deg)`;
+            moveable2.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        }
+    }
+}
+
+document.addEventListener('mousemove', applyInteractiveDecoration);
+
+
+// check card summary size with gradient blur fade out
+function applyGradientForLargeHeight() {
+    const cardInfoSummaries = document.querySelectorAll('.card_info_summary');
+    const desiredHeight = 3 * 24 - 1; // Set the desired height
+
+    cardInfoSummaries.forEach((cardInfoSummary) => {
+        const actualHeight = cardInfoSummary.scrollHeight;
+
+        if (actualHeight > desiredHeight) {
+            cardInfoSummary.classList.add('large-height');
+        } else {
+            cardInfoSummary.classList.remove('large-height');
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', applyGradientForLargeHeight);
+window.addEventListener('resize', applyGradientForLargeHeight);
+
+
+// Submit Message
+function submitFormOnEvent(formID, emailInputID, messageInputID, outputElementID, handlerURLfromRoot) {
+    const form = document.getElementById(formID);
+    const emailInput = document.getElementById(emailInputID);
+    const messageInput = document.getElementById(messageInputID);
+    const outputElement = document.getElementById(outputElementID);
+
+    if (form) {
+        console.log('Send me email if you have any questions.')
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const fromEmail = emailInput.value;
+            const message = messageInput.value;
+
+            const formData = new FormData();
+            formData.append('fromEmail', fromEmail);
+            formData.append('message', message);
+
+            fetch(handlerURLfromRoot, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => outputElement.innerHTML = data)
+                .catch((error) => console.error('Error:', error));
+        });
+
+    } else {
+        console.log('Thank you for checking here :)')
+    }
+}
+
+submitFormOnEvent('contactForm', 'msg_submit_email', 'msg_submit_content', 'formOutput', 'src/php/handler_contact_form.php');
+
+
+
 let resizeReset = function () {
     w = canvasBody.width = window.innerWidth;
     h = canvasBody.height = window.innerHeight;
@@ -109,3 +193,4 @@ let delay = 200, tid,
     rgb = opts.lineColor.match(/\d+/g);
 resizeReset();
 setup();
+

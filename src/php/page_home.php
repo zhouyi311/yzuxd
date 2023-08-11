@@ -321,7 +321,7 @@ $projects = ProjectInfo::loadAll();
             </section>
         </main>
         <?php include __DIR__ . '/include_footer.php'; ?>
-        <script src="src/js/canvas3.js" type="text/javascript"></script>
+        <script src="src/js/page_home.js" type="text/javascript"></script>
     </div>
 </body>
 

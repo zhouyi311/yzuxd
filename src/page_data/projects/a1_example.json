@@ -32,62 +32,15 @@
                 "subhead": "",
                 "subheadCaption": "",
                 "subheadList": [],
+                "leftCol" : 4,
+                "leftColUnfluidAlign" : true,
+                "rightCol" : 8, 
                 "content": [
                     {
                         "type": "text",
                         "headline": "Paragraph Headline",
                         "caption": "",
                         "ciate": "",
-                        "fluid": "",
-                        "fluidHeadline": "",
-                        "lead": "",
-                        "quote": "",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. "
-                    },
-                    {
-                        "type": "image",
-                        "headline": "A beautiful image grid example",
-                        "caption": "This is a demo image showing something",
-                        "ciate": "",
-                        "lightbox": true,
-                        "data": [
-                            "example-01.png",
-                            "example-02.png",
-                            "example-03.png",
-                            "example-04.png"
-                        ]
-                    },
-                    {
-                        "type": "video",
-                        "fluid": false,
-                        "fluidHeadline": false,
-                        "headline": "iFrame Example",
-                        "caption": "An iFrame example",
-                        "cite": " - 'We've done it'",
-                        "data": "/src/static/example.html"
-                    },
-                    {
-                        "type": "iframe",
-                        "fluid": false,
-                        "fluidHeadline": false,
-                        "headline": "embad Video",
-                        "caption": "An iFrame example",
-                        "cite": " - 'We've done it'",
-                        "embedVideo": true,
-                        "data": "/src/static/embed-video-1.html"
-                    },
-                    {
-                        "type": "iframe",
-                        "fluid": false,
-                        "fluidHeadline": false,
-                        "headline": "iFrame Example",
-                        "caption": "An iFrame example",
-                        "cite": " - 'We've done it'",
-                        "data": "/src/static/example.html"
-                    },
-                    {
-                        "type": "text",
-                        "headline": "Paragraph Headline",
                         "fluid": "",
                         "fluidHeadline": "",
                         "lead": 2,
@@ -99,6 +52,61 @@
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
                             " Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. "
                         ]
+                    },
+                    {
+                        "type": "image",
+                        "headline": "A Nice Image Grid Example",
+                        "caption": "This is a demo image showing something",
+                        "ciate": "",
+                        "lightbox": true,
+                        "quote": "",
+                        "data": [
+                            "example-01.png",
+                            "example-02.png",
+                            "example-03.png",
+                            "example-04.png"
+                        ]
+                    },
+                    {
+                        "type": "video",
+                        "fluid": false,
+                        "fluidHeadline": false,
+                        "headline": "An Awesome Local Video Example",
+                        "caption": "An iFrame example",
+                        "cite": " - 'We've done it'",
+                        "controls": false,
+                        "autoPlay": true,
+                        "loop": true,
+                        "data": "video-1.mp4"
+                    },
+                    {
+                        "type": "iframe",
+                        "fluid": false,
+                        "fluidHeadline": false,
+                        "headline": "Embad iFrame Video Example",
+                        "caption": "An iFrame example",
+                        "cite": " - 'We've done it'",
+                        "embedVideo": true,
+                        "data": "/src/static/example-embed-video.html"
+                    },
+                    {
+                        "type": "iframe",
+                        "fluid": false,
+                        "fluidHeadline": false,
+                        "headline": "iFrame Example",
+                        "caption": "An iFrame example",
+                        "cite": " - 'We've done it'",
+                        "embedVideo": false,
+                        "data": "/src/static/example.html"
+                    },
+                    {
+                        "type": "text",
+                        "headline": "Paragraph Headline",
+                        "fluid": "",
+                        "fluidHeadline": "",
+                        "lead": false,
+                        "quote": "",
+                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. "
                     }
                 ]
             },
@@ -117,12 +125,12 @@
                 "content": [
                     {
                         "type": null,
-                        "headline": "This should be an error too",
+                        "headline": "A media type error example",
                         "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci."
                     },
                     {
                         "type": "text",
-                        "headline": "This should be an Error",
+                        "headline": "This is another Error",
                         "fluid": true,
                         "fluidHeadline": true,
                         "lead": null,
