@@ -4,10 +4,7 @@ class ArticleContentRenderer
 
     private $project;
     private $projPath;
-    private $narrow = " col-lg-8 offset-lg-2 ";
-    private $narrow2 = " col-lg-10 offset-lg-1 ";
-    private $narrow3 = " col-lg-8 offset-lg-3 ";
-    private $narrow4 = " col-lg-8 offset-lg-4 ";
+    public $narrowCol = " col-lg-8 offset-lg-2 ";
 
     public function __construct($project)
     {
@@ -44,6 +41,22 @@ class ArticleContentRenderer
         return null;
     }
 
+    private function fluidProcessor($content)
+    {
+        $mainGrid = $colWithGutter = $this->narrowCol;
+        $fixerGrid = $colAdaptive = " col ";
+
+        if (!empty($content['fluid'])) {
+            $mainGrid = $colAdaptive;
+            $fixerGrid = $colWithGutter;
+
+            if (!empty($content['fluidHeadline'])) {
+                $fixerGrid = $colAdaptive;
+            }
+        }
+        return [$mainGrid, $fixerGrid];
+    }
+
 
     private function findLargerImage($path, $filename)
     {
@@ -54,16 +67,13 @@ class ArticleContentRenderer
         // $extension = $info['extension'];
 
         // Construct the pattern to search for
-        $pattern = $dirPath . "/" . $baseName . '*.' . "*";
-
-        // Use glob to find matching files
+        $pattern = $dirPath . '/' . $baseName . '*.*';
         $matchingFiles = glob($pattern);
 
         if (!$matchingFiles) {
             return null; // No matching files found
         }
 
-        // If there are matching files, find the largest by file size
         $largestFile = '';
         $largestSize = 0;
         foreach ($matchingFiles as $file) {
@@ -73,8 +83,7 @@ class ArticleContentRenderer
                 $largestFile = $file;
             }
         }
-        return basename($largestFile);
-        // return $largestFile;
+        return htmlspecialchars(basename($largestFile));
     }
 
 
@@ -85,7 +94,7 @@ class ArticleContentRenderer
         $leadingImg = $this->sanitizeValue($section, 'leadingImg');
         $leadingImgFixed = $this->sanitizeValue($section, 'leadingImgFixed');
         $leadingImgBgColor = $this->sanitizeValue($section, 'leadingImgBgColor');
-        $leadingImgBgColor = !empty($leadingImgBgColor) ? "style='background-color: {$leadingImgBgColor}'" : null;
+        $leadingImgBgColor = $leadingImgBgColor ? "style='background-color: {$leadingImgBgColor}'" : null;
 
         if (!empty($leadingImgFixed)) {
             echo "<div style='background-image: url({$projPath}/{$leadingImgFixed})' class='article_section_leading bg_attach'></div>";
@@ -104,8 +113,7 @@ class ArticleContentRenderer
         $headlineId = $this->sanitizeValue($section, 'headlineId');
         $subhead = $this->sanitizeValue($section, 'subhead');
         $subheadCaption = $this->sanitizeValue($section, 'subheadCaption');
-        // $subheadCaption = $section['subheadCaption'];
-        $subheadList = $this->sanitizeValue($section, 'subheadList', false);
+        $subheadList = $this->sanitizeValue($section, 'subheadList');
 
         echo "<section class='page_section article_section' id='{$headlineId}'>";
         echo "<div class='container'><div class='row'>";
@@ -121,7 +129,6 @@ class ArticleContentRenderer
         if (isset($subheadList)) {
             echo "<ul class='subhead_list'>";
             foreach ($subheadList as $i => $item) {
-                $item = htmlspecialchars($item);
                 echo $i === 0 ? "<li class='fw-bold'> $item</li>" : "<li class=''>$item</li>";
             }
             echo "</ul>";
@@ -151,17 +158,16 @@ class ArticleContentRenderer
 
     private function textRender($content)
     {
-        $data = $content['data'];
-        is_string($data) ? $data = array($data) : null;
-        $headline = !empty($content['headline']) ? htmlspecialchars($content['headline']) : null;
-        $iswide = !empty($content['wide']) ? " col " : $this->narrow;
-        $lead = isset($content['lead']) && !empty($content['lead']) && !is_integer($content['lead']) ? 1 : ($content['lead'] ?? null);
+        $fluid = $this->fluidProcessor($content);
+        $paragraphs = $this->sanitizeValue($content, 'data');
+        is_string($paragraphs) ? $paragraphs = array($paragraphs) : null;
+        $headline = $this->sanitizeValue($content, 'headline');
+        $lead = !empty($content['lead']) && !is_integer($content['lead']) ? 1 : ($content['lead'] ?? null);
 
-
-        if (is_array($data)) {
-            echo "<div class='media_block $iswide'>";
-            echo !empty($headline) ? "<h5 class='paragraph_headline'>$headline</h5>" : null;
-            foreach ($data as $index => $paragraph) {
+        if (is_array($paragraphs)) {
+            echo "<div class='media_block $fluid[0]'>";
+            echo !empty($headline) ? "<div class='row'><div class='$fluid[1]'><h5 class='paragraph_headline'>$headline</h5></div></div>" : null;
+            foreach ($paragraphs as $index => $paragraph) {
                 // echo $index . "-" . $lead;
                 echo "<p class='article_paragraph ";
                 if ($index < $lead) {
@@ -171,44 +177,43 @@ class ArticleContentRenderer
             }
             echo "</div>";
         } else {
-            echo "<p>Empty data or none supported data:</p>";
-            echo "<p>" . var_dump($data) . "</p>";
+            echo "<p>Empty paragraph or none supported data:</p>";
+            echo "<p>" . var_dump($paragraphs) . "</p>";
         }
     }
 
     private function imageRender($content)
     {
-        $filename = !empty($content['data']) ? $content['data'] : null;
-        $caption = !empty($content['caption']) ? htmlspecialchars($content['caption']) : null;
-        $headline = !empty($content['headline']) ? htmlspecialchars($content['headline']) : null;
-        $lightbox = !empty($content['lightbox']) ? $content['lightbox'] : null;
-        $iswide = !empty($content['wide']) ? " col " : $this->narrow;
+        $fluid = $this->fluidProcessor($content);
+        $filename = $this->sanitizeValue($content, 'data');
+        is_string($filename) ? $filename = array($filename) : null;
+        $headline = $this->sanitizeValue($content, 'headline');
+        $caption = $this->sanitizeValue($content, 'caption');
+        $lightbox = $this->sanitizeValue($content, 'lightbox');
         $path = $this->projPath;
+        $maintainSize = !empty($content['maintain']) ? 'maintain_size' : null;
 
         if (!empty($filename)) {
 
-            is_string($filename) ? $filename = array($filename) : null;
-            // $multiCol = count($filename) > 1 ? true : false;
-
-            echo "<figure class='media_block article_image $iswide'>";
-            echo !empty($headline) ? "<h6 class='media_headline'>$headline</h6>" : null;
-            echo "<div class='row gy-4'>";
+            echo "<figure class='media_block article_image $fluid[0]'>";
+            echo !empty($headline) ? "<div class='row'><div class='$fluid[1]'><h6 class='media_headline'>$headline</h6></div></div>" : null;
+            echo "<div class='row g-3 gy-3'>";
             foreach ($filename as $image) {
 
                 if (count($filename) % 2 == 0 && count($filename) <= 4) {
-                    echo "<div class='col-6'>";
+                    echo "<div class='col-6 image_cell'>";
                 } elseif (count($filename) == 3 || count($filename) > 4) {
-                    echo "<div class='col-4'>";
+                    echo "<div class='col-6 col-lg-4 image_cell'>";
                 } else {
-                    echo "<div class='col'>";
+                    echo "<div class='col image_cell'>";
                 }
 
-                echo "<img src='{$path}/" . htmlspecialchars($image) . "' class='article_image rounded-2";
+                echo "<img src='{$path}/{$image}' class='article_image rounded-2 $maintainSize ";
                 if (isset($lightbox) && is_string($lightbox)) {
-                    echo " lightbox-enabled' data-larger-src='" . htmlspecialchars($lightbox) . "'>";
+                    echo " lightbox-enabled' data-larger-src='$lightbox'>";
                 } elseif (isset($lightbox)) {
                     $largerImage = $this->findLargerImage($path, $image);
-                    echo " lightbox-enabled' data-larger-src='" . htmlspecialchars($largerImage) . "'>";
+                    echo " lightbox-enabled' data-larger-src='$largerImage'>";
                 } else {
                     echo "'>";
                 }
@@ -216,7 +221,7 @@ class ArticleContentRenderer
                 echo "</div>";
             }
             echo "</div>";
-            echo !empty($caption) ? "<figcaption class='media_caption text-body-tertiary fst-italic'>{$caption}</figcaption>" : null;
+            echo !empty($caption) ? "<div class='$fluid[1]'><figcaption class='media_caption text-body-tertiary fst-italic'>{$caption}</figcaption></div>" : null;
             echo "</figure>";
         } else {
             echo "<p>Empty data or none supported data:</p>";
@@ -227,22 +232,30 @@ class ArticleContentRenderer
     }
     private function iframeRender($content)
     {
-        $urlpath = !empty($content['data']) ? htmlspecialchars($content['data']) : null;
-        $headline = !empty($content['headline']) ? htmlspecialchars($content['headline']) : null;
-        $caption = !empty($content['caption']) ? htmlspecialchars($content['caption']) : null;
-        $iswide = !empty($content['wide']) ? " col " : $this->narrow;
+        $fluid = $this->fluidProcessor($content);
+        $urlpath = $this->sanitizeValue($content, 'data');
+        $headline = $this->sanitizeValue($content, 'headline');
+        $caption = $this->sanitizeValue($content, 'caption');
 
         if (isset($urlpath)) {
             $iFrameCrcId = crc32($urlpath);
-            echo "<div class='media_block iframe_container {$iswide}'>";
-            echo !empty($headline) ? "<h6 class='media_headline'>{$headline}</h6>" : null;
-            echo "<div class='iframe_wrapper' id='wrapper_{$iFrameCrcId}'><iframe width='100%' height='100%' src='$urlpath' id='iframe_$iFrameCrcId'></iframe></div>";
-            echo !empty($caption) ? "<div class='media_caption mt-0'>{$caption}</div></div>" : "</div>";
+            echo "<div class='media_block iframe_container {$fluid[0]}'>";
+            echo !empty($headline) ? "<div class='$fluid[1]'><h6 class='media_headline'>{$headline}</h6></div>" : null;
+            echo "<div class='iframe_wrapper' id='wrapper_{$iFrameCrcId}'><iframe class='rounded-2' width='100%' height='100%' src='$urlpath' id='iframe_$iFrameCrcId'></iframe></div>";
+            echo !empty($caption) ? "<div class='media_caption $fluid[1]'>{$caption}</div>" : null;
+            echo "</div>";
         } else {
             echo "<p>Empty data or none supported data:</p>";
             echo "<p>" . var_dump($$urlpath) . "</p>";
         }
     }
+
+    private function videoRender($content)
+    {
+        echo $content;
+    }
+
+
 
 }
 

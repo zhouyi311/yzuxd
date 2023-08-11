@@ -270,6 +270,8 @@ body .lightbox-overlay {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
 }
 body .lightbox-overlay .lightbox-close {
   position: absolute;
@@ -341,6 +343,15 @@ body .lightbox-overlay img {
 .page_navbar .navbar-brand .project_name {
   text-overflow: ellipsis;
   overflow: hidden;
+  transition-property: opacity transform;
+  transition-duration: 0.3s;
+}
+.page_navbar .navbar-brand .project_name.slideout {
+  opacity: 0;
+  transform: translateY(12px);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .page_navbar .navbar-toggler {
   border: none;
@@ -900,6 +911,9 @@ footer {
 #project_page_wrapper .project_article .article_section .media_block .paragraph_headline {
   margin-bottom: 1rem;
 }
+#project_page_wrapper .project_article .article_section .media_block .article_paragraph {
+  line-height: 1.6em;
+}
 #project_page_wrapper .project_article .article_section .media_block .media_headline {
   margin-bottom: 1rem;
 }
@@ -909,12 +923,15 @@ footer {
   font-style: italic;
 }
 #project_page_wrapper .project_article .article_section figure .article_image {
-  max-width: 100%;
+  width: 100%;
   display: block;
-  margin: auto;
 }
 #project_page_wrapper .project_article .article_section figure .article_image.lightbox-enabled {
   cursor: zoom-in;
+}
+#project_page_wrapper .project_article .article_section figure .article_image.maintain_size {
+  width: unset;
+  margin: auto;
 }
 #project_page_wrapper .project_article .article_section figure figcaption {
   visibility: visible;

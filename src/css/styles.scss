@@ -49,6 +49,14 @@ html {
         .project_name {
             text-overflow: ellipsis;
             overflow: hidden;
+
+            transition-property: opacity transform;
+            transition-duration: 0.3s;
+            &.slideout{
+                opacity: 0;
+                transform: translateY(12px);
+                user-select: none;
+            }
         }
     }
 
@@ -775,6 +783,10 @@ footer {
                     margin-bottom: $unit-3;
                 }
 
+                .article_paragraph {
+                    line-height: 1.6em;
+                }
+
                 .media_headline {
                     // text-align: center;
                     margin-bottom: $unit-3;
@@ -786,16 +798,27 @@ footer {
                     color: $color-gray-ash;
                     font-style: italic;
                 }
+
+                
+
             }
 
             figure {
+                .image_cell{
+                    // background-color: $color-gray-silver;
+                }
                 .article_image {
-                    max-width: 100%;
+                    width: 100%;
                     display: block;
-                    margin: auto;
+                    // margin: auto;
 
                     &.lightbox-enabled {
                         cursor: zoom-in;
+                    }
+
+                    &.maintain_size{
+                        width: unset;
+                        margin: auto;
                     }
                 }
 

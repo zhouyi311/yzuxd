@@ -41,7 +41,7 @@
                     {
                         "type": "text",
                         "headline": "Paragraph Headline",
-                        "lead": 4,
+                        "lead": 2,
                         "data": [
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum.",
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum.",
@@ -53,8 +53,10 @@
                     },
                     {
                         "type": "image",
-                        "wide": false,
+                        "fluid": true,
+                        "fluidHeadline": true,
                         "lightbox": true,
+                        "maintain": false,
                         "headline": "A beautiful image example",
                         "caption": "This is a demo image showing something",
                         "data": "example-01.png"
@@ -65,7 +67,8 @@
                     },
                     {
                         "type": "iframe",
-                        "wide": true,
+                        "fluid": true,
+                        "fluidHeadline": true,
                         "headline": "iFrame Example",
                         "caption": "An iFrame example",
                         "data": "/src/static/example.html"
@@ -87,12 +90,12 @@
                     {
                         "type": "image",
                         "headline": "An image grid showing several images",
-                        "wide": false,
+                        "fluid": false,
                         "lightbox": false,
                         "data": [
-                            "example-04.png",
-                            "example-04.png",
-                            "example-04.png",
+                            "example-01.png",
+                            "example-02.png",
+                            "example-03.png",
                             "example-04.png"
                         ]
                     },
@@ -113,7 +116,7 @@
                     },
                     {
                         "type": "image",
-                        "wide": true,
+                        "fluid": true,
                         "lightbox": true,
                         "headline": "Gallery",
                         "caption": "This is a list of phone face",
@@ -146,7 +149,8 @@
                     },
                     {
                         "type": "image",
-                        "data": "example-02.png"
+                        "maintain": true,
+                        "data": "example-a1.png"
                     },
                     {
                         "type": "text",

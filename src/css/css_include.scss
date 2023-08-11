@@ -132,6 +132,8 @@ body {
         align-items: center;
         justify-content: center;
         overflow: hidden;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0;
 
         .lightbox-close {
             position: absolute;

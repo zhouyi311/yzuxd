@@ -10,7 +10,7 @@ function handleScrollForNavigation() {
             navElement.classList.remove('navbar-dark');
         });
         projectNavName.forEach((projectNavName) => {
-            projectNavName.hidden = false;;
+            projectNavName.classList.remove('slideout');
         });
     } else {
         pageNavbar.classList.remove('bg-light');
@@ -18,7 +18,7 @@ function handleScrollForNavigation() {
             navElement.classList.add('navbar-dark');
         });
         projectNavName.forEach((projectNavName) => {
-            projectNavName.hidden = true;;
+            projectNavName.classList.add('slideout');
         });
     }
 }
@@ -125,7 +125,7 @@ function submitFormOnEvent(formID, emailInputID, messageInputID, outputElementID
 submitFormOnEvent('contactForm', 'msg_submit_email', 'msg_submit_content', 'formOutput', 'src/php/handler_contact_form.php');
 
 
-// lightbox
+// lightbox ////////////////////////////////////////////////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', function () {
     const state = {
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         lightboxImage.addEventListener('wheel', zoomImage, { passive: true });
-        lightboxOverlay.addEventListener('touchmove', zoomImage, { passive: true }) ;
+        lightboxOverlay.addEventListener('touchmove', zoomImage, { passive: true });
         lightboxOverlay.addEventListener('touchend', () => state.initialPinchDistance = null);
 
         lightboxImage.addEventListener('mousedown', startDrag);
@@ -168,8 +168,15 @@ document.addEventListener('DOMContentLoaded', function () {
     function openLightbox(img) {
         document.body.style.overflow = 'hidden';
         lightboxOverlay.style.display = 'flex';
+        void lightboxOverlay.offsetWidth;
+        lightboxOverlay.style.opacity = '1';
         lightboxImage.src = 'src/img/local_icons/circle-loading.gif'; // Clear the current image
         lightboxImage.alt = 'Loading...'; // You can also add a spinner or loading graphic here
+
+        lightboxOverlay.addEventListener('transitionend', function onEnd() {
+            lightboxOverlay.removeEventListener('transitionend', onEnd);
+            
+        })
 
         const defaultSrc = img.src;
         const largerImageFilename = img.getAttribute('data-larger-src');
@@ -205,13 +212,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function closeLightbox() {
-        lightboxOverlay.style.display = 'none';
-        state.scale = 1;
-        lightboxImage.style.setProperty('--img-scale', state.scale);
-        lightboxImage.style.left = '0px';
-        lightboxImage.style.top = '0px';
-        document.body.style.overflow = '';
-        
+        lightboxOverlay.style.opacity = '0';
+        lightboxOverlay.addEventListener('transitionend', function onEnd() {
+            lightboxOverlay.style.display = 'none';
+            lightboxOverlay.removeEventListener('transitionend', onEnd);
+            state.scale = 1;
+            lightboxImage.style.setProperty('--img-scale', state.scale);
+            lightboxImage.style.left = '0px';
+            lightboxImage.style.top = '0px';
+            document.body.style.overflow = '';
+        });
     }
 
     function zoomImage(event) {

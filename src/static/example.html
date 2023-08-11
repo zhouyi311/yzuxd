@@ -9,50 +9,88 @@
 	<meta name="Author" content="Yi Zhou" />
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 	<style>
-
 		@keyframes swing {
 			20% {
-				-webkit-transform: rotate3d(0, 0, 1, 0deg);
 				transform: rotate3d(0, 0, 1, 0deg);
 			}
 
-			22% {
-				-webkit-transform: rotate3d(0, 0, 1, 15deg);
+			21% {
 				transform: rotate3d(0, 0, 1, 15deg);
 			}
 
-			24% {
-				-webkit-transform: rotate3d(0, 0, 1, -10deg);
+			22% {
 				transform: rotate3d(0, 0, 1, -10deg);
 			}
 
-			26% {
-				-webkit-transform: rotate3d(0, 0, 1, 5deg);
+			23% {
 				transform: rotate3d(0, 0, 1, 5deg);
 			}
 
-			28% {
-				-webkit-transform: rotate3d(0, 0, 1, -5deg);
+			24% {
+
 				transform: rotate3d(0, 0, 1, -5deg);
 			}
 
-			30% {
-				-webkit-transform: rotate3d(0, 0, 1, 0deg);
+			25% {
 				transform: rotate3d(0, 0, 1, 0deg);
 			}
 		}
 
 		.swing {
-			-webkit-transform-origin: top center;
 			transform-origin: top center;
-			-webkit-animation-name: swing;
 			animation-name: swing;
-			-webkit-animation-duration: 5s;
-			animation-duration: 5s;
-			-webkit-animation-iteration-count: infinite;
+			animation-duration: 10s;
 			animation-iteration-count: infinite;
+			animation-delay: 0s;
 		}
 
+		@keyframes bounce {
+			0% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(-10px);
+			}
+
+			100% {
+				transform: translateY(0);
+			}
+		}
+
+		.bounce {
+			animation: bounce 1s;
+		}
+
+		@keyframes shake {
+			0% {
+				transform: translateX(0);
+			}
+
+			10% {
+				transform: translateX(10px);
+			}
+
+			20% {
+				transform: translateX(-10px);
+			}
+
+			30% {
+				transform: translateX(10px);
+			}
+
+			40% {
+				transform: translateX(-10px);
+			}
+
+			50% {
+				transform: translateX(0);
+			}
+		}
+
+		.shake {
+			animation: shake 1s;
+		}
 
 		html,
 		body {
@@ -76,51 +114,70 @@
 			flex: 1 1;
 			display: flex;
 			flex-direction: column;
+			align-items: center;
 			justify-content: center;
+
 		}
 
-		div.container {
+		section .container {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			gap: 24px;
+			max-width: 80%;
 		}
 
-		div.container *{
-			margin: 0;
+		section .container h1 {
+			font-size: 40px;
+			font-weight: 300;
+			margin-bottom: 0;
 		}
 
-		div.container a {
-			color: rgb(51, 122, 183);
-			padding:  6px 20px;
-			background-color: white;
-			border-radius: 8px;
+		section .container a {
+			padding: 10px 20px;
+			color: rgb(255, 255, 255);
+			background-color: rgb(255, 68, 111);
+			/* border-radius: 8px; */
 			font-weight: 700;
 			text-decoration: none;
+			display: inline-block;
+			transition: 0.5s;
+			margin: 0 10px;
+			border: 1px solid transparent;
 		}
-		div.container a:hover{
-			background-color:azure;
-			color: black;
+
+		section .container a.secondary {
+			background-color: unset;
+			border: 1px solid rgb(255, 68, 111);
+		}
+
+		section .container a:hover {
+			color: rgb(255, 0, 144);
+			background-color: rgb(247, 242, 242);
+			border: 1px solid transparent;
+		}
+
+		section .container p {
+			line-height: 1.5em;
+			max-width: 600px;
 		}
 
 
 		div#logo-border {
-			width: 100px;
-			height: 100px;
+			width: 80px;
+			height: 80px;
 		}
 
 		div#logo-border img {
 			width: 100%;
 			overflow: hidden;
-			border-radius: 20px;
+			/* border-radius: 8px; */
 		}
 
 		.footer {
-			/* position: fixed; */
-			/* width: 100%; */
 			bottom: 0;
 			text-align: center;
+			margin-top: 0;
 		}
 	</style>
 </head>
@@ -131,17 +188,49 @@
 			<div id="logo-border">
 				<img src="logo-social-media.png" alt="logo" class="swing">
 			</div>
-			<h1>What's Up!</h1>
-			<p>This is an Example Page</p>
-			<p>Awesome and Sweet</p>
+			<h1>An Example Page 😊</h1>
+			<p>We know that you have the potential to do great things, and we
+				want to help you achieve your goals. We are here to support you every step of the way.</p>
 			<p>
 				<a href="#">
-					Do Not Click Me!
+					Small Button!
+				</a>
+				<a class="secondary" href="#">
+					Giant Button!
 				</a>
 			</p>
 		</div>
 	</section>
-	<h5 class="footer"> yzuxd.com </h5>
 </body>
+
+<script>
+	var headline = document.querySelector("h1");
+	var text = document.querySelector("p");
+
+	var leftButton = document.querySelector("a");
+	var rightButton = document.querySelector("a.secondary");
+
+	leftButton.onclick = function () {
+		headline.classList.add("bounce");
+		setTimeout(function () {
+			headline.classList.remove("bounce");
+		}, 1000);
+	};
+
+	rightButton.onclick = function () {
+		text.classList.add("shake");
+		setTimeout(function () {
+			text.classList.remove("shake");
+		}, 1000);
+	};
+
+	leftButton.addEventListener("click", function (event) {
+		event.preventDefault();
+	});
+
+	rightButton.addEventListener("click", function (event) {
+		event.preventDefault();
+	});
+</script>
 
 </html>
