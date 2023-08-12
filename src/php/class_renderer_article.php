@@ -42,7 +42,7 @@ class ArticleContentRenderer
     }
     private function fluidProcessor($data)
     {
-        $mainGrid = $colWithGutter = $this->narrowCol;
+        $mainGrid = $colWithGutter = " $this->narrowCol ";
         $fixerGrid = $colAdaptive = " col ";
 
         if (!empty($data['fluid'])) {
@@ -112,7 +112,31 @@ class ArticleContentRenderer
     }
 
     // formater ////////////////////////////////////////////////
-    private function textBlockFormatter($block)
+
+    private function writeHeadline($headline, $fluid)
+    {
+        $fluid ?? $fluid = [" $this->narrowCol ", " col "];
+        if (!empty($headline)) {
+            echo "<div class='row'><div class='$fluid[1]'>";
+            echo "<h5 class='block_headline'>$headline</h5>";
+            echo "</div></div>";
+        }
+    }
+    private function writeCaption($caption, $cite, $fluid)
+    {
+        if (!empty($caption)) {
+            echo "<div class='block_caption $fluid[1]'>";
+            echo "<div>$caption<cite>$cite</cite></div>";
+            echo "</div>";
+        }
+    }
+
+    private function writeFigureCaption($fitureCaption, $index)
+
+    {
+    }
+
+    private function paragraphBlockFormatter($block)
     {
         $fluid = $this->fluidProcessor($block);
         $paragraphs = $this->sanitizeValue($block, 'data');
@@ -126,17 +150,17 @@ class ArticleContentRenderer
         if (is_array($paragraphs)) {
             echo "<div class='media_block article_paragraphs $fluid[0]'>";
             echo !empty($quote) ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-5'>" : null;
-            echo !empty($headline) ? "<div class='row'><div class='$fluid[1]'><h5 class='paragraph_headline'>$headline</h5></div></div>" : null;
+            $this->writeHeadline($headline, $fluid);
+
+            // echo !empty($headline) ? "<div class='row'><div class='$fluid[1]'><h5 class='paragraph_headline'>$headline</h5></div></div>" : null;
 
             foreach ($paragraphs as $index => $paragraph) {
-                echo "<p class='article_paragraph ";
-                if ($index < $lead) {
-                    echo "lead ";
-                }
-                echo "p_group_index_$index'>" . htmlspecialchars($paragraph) . "</p>";
+                echo "<p class='article_paragraph " . ($index < $lead ? "lead" : null) . "'>$paragraph</p>";
             }
 
-            echo $caption ? "<footer class='block_footer paragraph_caption'>$caption<cite>$cite</cite></footer>" : null;
+            $this->writeCaption($caption, $cite, $fluid);
+
+            // echo $caption ? "<div class='block_caption paragraph_caption $fluid[1]'>$caption<cite>$cite</cite></div>" : null;
             echo $quote ? "</blockquote>" : null;
             echo "</div>";
         } else {
@@ -271,7 +295,7 @@ class ArticleContentRenderer
             echo !empty($headline) ? "<div class='$fluid[1]'><h6 class='media_headline'>{$headline}</h6></div>" : null;
             echo "<div class='html_wrapper' id='wrapper_{$iFrameCrcId}'>";
 
-            include $dirPath .'/'.$source;
+            include $dirPath . '/' . $source;
 
             echo "</div>";
             echo !empty($caption) ? "<footer class='block_footer media_caption $fluid[1]'>{$caption}<cite>$cite</cite></footer>" : null;

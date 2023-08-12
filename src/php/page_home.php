@@ -181,7 +181,7 @@ $site_root_url = getSiteRootUrl(); // root url
                         function createProjectCard($project, $isFeatured)
                         {
                             $projectPath = $project->path . "/";
-                            $projectLink = '?project=' . htmlspecialchars($project->id);
+                            $projectLink = '?page=' . htmlspecialchars($project->id);
                             $title = isset($project->title) ? htmlspecialchars($project->title) : "";
                             $subhead = isset($project->summary['subhead']) ? $project->summary['subhead'] : null;
                             $categories = isset($project->summary['categories']) ? $project->summary['categories'] : [];

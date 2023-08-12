@@ -1,7 +1,10 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-$projectId = $_GET['project'];
+
+$queryKey = 'page';
+$urlQueryKey = "?{$queryKey}=";
+$projectId = $_GET[$queryKey];
 
 require_once __DIR__ . '/class_info_site.php';
 include_once __DIR__ . '/class_info_project.php';
@@ -45,7 +48,7 @@ if (isset($_POST['password']) && !isset($_SESSION['form_processed'])) {
     if ($_POST['password'] === $project->password) {
         $_SESSION['authenticated'] = true;
         $_SESSION['form_processed'] = true; // Set a flag to indicate form processed
-        header("Location: ?project=$projectId");
+        header("Location: {$urlQueryKey}{$projectId}");
         exit;
     } else {
         $_SESSION['error_message'] = "Incorrect password!"; // Optionally, you can set an error message here if the password is incorrect.
@@ -61,7 +64,7 @@ $isAuthenticated = isset($_SESSION['authenticated']) && $_SESSION['authenticated
 if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_POST['password'] === $project_pw) {
     $_SESSION['authenticated'] = true;
     $isAuthenticated = true;
-    header("Location: ?project=$projectId");
+    header("Location: {$urlQueryKey}{$projectId}");
     exit;
 }
 
@@ -138,10 +141,10 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         $existLastProject = !empty($project->last->id);
                                         $existNextProject = !empty($project->next->id);
                                         if ($existLastProject) {
-                                            echo "<a class='btn btn-light text-truncate px-4' href='?project={$project->last->id}'><span class='fw-bold me-1'>Prev:</span><span class='inner_text fw-normal w-100'>{$project->last->title}</span></a>";
+                                            echo "<a class='btn btn-light text-truncate px-4' href='{$urlQueryKey}{$project->last->id}'><span class='fw-bold me-1'>Prev:</span><span class='inner_text fw-normal w-100'>{$project->last->title}</span></a>";
                                         }
                                         if ($existNextProject) {
-                                            echo "<a class='btn btn-light text-truncate px-4' href='?project={$project->next->id}'><span class='fw-bold me-1'>Next:</span><span class='inner_text fw-normal w-100'>{$project->next->title}</span></a>";
+                                            echo "<a class='btn btn-light text-truncate px-4' href='{$urlQueryKey}{$project->next->id}'><span class='fw-bold me-1'>Next:</span><span class='inner_text fw-normal w-100'>{$project->next->title}</span></a>";
                                         }
                                         ?>
                                     </div>
@@ -251,13 +254,13 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                 <?php
                                 $hasLastProject = isset($project->last->title);
                                 $hasNextProject = isset($project->next->title);
-                                function generateCTAContent($hasProject, $targetProject, $type, $defaultMessage)
+                                function generateCTAContent($hasProject, $urlQueryKey, $targetProject, $type, $defaultMessage)
                                 {
-                                    $iconLast = $type === "Previous" ? '<i class="bi bi-chevron-bar-left align-middle"></i>' : '';
-                                    $iconNext = $type === "Next" ? '<i class="bi bi-chevron-bar-right align-middle"></i>' : '';
+                                    $iconLast = $type === "Previous" ? '<i class="bi bi-chevron-bar-left align-middle"></i>' : null;
+                                    $iconNext = $type === "Next" ? '<i class="bi bi-chevron-bar-right align-middle"></i>' : null;
                                     $lastNextClass = $type === "Previous" ? 'pre_case' : 'next_case';
                                     $caseTitle = $type . "";
-                                    $projectPath = $targetProject ? '?project=' . $targetProject->id : "#";
+                                    $projectPath = $targetProject ? $urlQueryKey . $targetProject->id : "#";
                                     $projectTitle = $targetProject ? $targetProject->title : $defaultMessage;
                                     $linkClass = $hasProject ? "" : "disabled";
 
@@ -273,8 +276,8 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         </a>";
                                 }
                                 ?>
-                                <?= generateCTAContent($hasLastProject, $project->last ?? null, "Previous", "You're at the top"); ?>
-                                <?= generateCTAContent($hasNextProject, $project->next ?? null, "Next", "You've reached the end"); ?>
+                                <?= generateCTAContent($hasLastProject, $urlQueryKey, $project->last ?? null, "Previous", "You're at the top"); ?>
+                                <?= generateCTAContent($hasNextProject, $urlQueryKey, $project->next ?? null, "Next", "You've reached the end"); ?>
                             </div>
                         </div>
                     </div>

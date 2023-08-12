@@ -913,6 +913,20 @@ footer {
   margin-bottom: 3rem;
   overflow: hidden;
 }
+#project_page_wrapper .project_article .article_section .media_block blockquote.quote_container {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+#project_page_wrapper .project_article .article_section .media_block .block_headline {
+  margin-bottom: 1rem;
+}
+#project_page_wrapper .project_article .article_section .media_block .block_caption {
+  margin-top: 0.5rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+#project_page_wrapper .project_article .article_section .media_block.article_paragraphs .block_headline {
+  margin-bottom: 1.5rem;
+}
 #project_page_wrapper .project_article .article_section .media_block.article_paragraphs .article_paragraph {
   line-height: 1.6em;
 }
@@ -958,20 +972,6 @@ footer {
 }
 #project_page_wrapper .project_article .article_section .media_block.html_container .html_wrapper {
   width: 100%;
-}
-#project_page_wrapper .project_article .article_section .media_block .media_headline {
-  margin-bottom: 1rem;
-}
-#project_page_wrapper .project_article .article_section .media_block .paragraph_headline {
-  margin-bottom: 1.5rem;
-}
-#project_page_wrapper .project_article .article_section .media_block blockquote.quote_container {
-  visibility: visible;
-  background-color: rgba(0, 0, 0, 0.03);
-}
-#project_page_wrapper .project_article .article_section .media_block .block_footer {
-  margin-top: 0.5rem;
-  color: rgba(0, 0, 0, 0.5);
 }
 #project_page_wrapper .load_more_section .last_next_selector {
   justify-content: space-between;

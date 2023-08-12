@@ -779,8 +779,27 @@ footer {
             .media_block {
                 margin-bottom: $unit-5;
                 overflow: hidden;
+                
+                blockquote.quote_container {
+                    visibility: visible;
+                    background-color: $color-gray-light;
+                }
+
+                .block_headline {
+                    margin-bottom: $unit-3;
+                }
+
+                .block_caption {
+                    margin-top: $unit-2;
+                    color: $color-gray-medium;
+                    &.media_caption {}
+                    &.paragraph_caption {}
+                }
 
                 &.article_paragraphs {
+                    .block_headline {
+                        margin-bottom: $unit-4;
+                    }
                     .article_paragraph {
                         line-height: 1.6em;
                     }
@@ -843,29 +862,7 @@ footer {
                         width: 100%;
                     }
                 }
-
-
-                .media_headline {
-                    margin-bottom: $unit-3;
-                }
-
-                .paragraph_headline {
-                    margin-bottom: $unit-4;
-                }
-
-                blockquote.quote_container {
-                    visibility: visible;
-                    background-color: $color-gray-light;
-                }
-
-                .block_footer {
-                    margin-top: $unit-2;
-                    color: $color-gray-medium;
-
-                    &.media_caption {}
-
-                    &.paragraph_caption {}
-                }
+                
 
             }
         }

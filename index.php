@@ -10,7 +10,7 @@ require_once __DIR__ . '/src/php/class_info_site.php';
 $site_info = SiteInfo::loadInfo();
 
 // Check if $_GET['project'] is set
-$project = isset($_GET['project']) ? $_GET['project'] : null;
+$project = isset($_GET['page']) ? $_GET['page'] : null;
 
 // set error handeler
 // set_error_handler(function ($errno, $errstr, $errfile, $errline) {
