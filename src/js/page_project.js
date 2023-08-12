@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const lightboxOverlay = document.getElementById('lightboxOverlay');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxReset = document.getElementById('lightboxReset');
+    const zoomInButton = document.getElementById('lightboxZoomIn');
+    const zoomOutButton = document.getElementById('lightboxZoomOut');
 
     function initializeLightbox() {
         const images = document.querySelectorAll('.lightbox-enabled');
@@ -52,16 +55,32 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
+
         lightboxImage.addEventListener('wheel', zoomImage, { passive: true });
         lightboxOverlay.addEventListener('touchmove', zoomImage, { passive: true });
         lightboxOverlay.addEventListener('touchend', () => state.initialPinchDistance = null);
 
         lightboxImage.addEventListener('mousedown', startDrag);
         window.addEventListener('mousemove', dragImage);
-        window.addEventListener('mouseup', () => state.isDragging = false);
+        window.addEventListener('mouseup', function () { 
+            if (state.isDragging) {
+                lightboxImage.style.transitionProperty = 'left, top, transform';
+            }
+            state.isDragging = false
+        });
 
-        lightboxOverlay.addEventListener('click', closeLightbox);
+        zoomInButton.addEventListener('click', function (event) {
+            event.stopPropagation(); // Prevent the click event from reaching any parent elements
+            zoomByAmount(0.3); // Zoom in by 10%
+        });
+        zoomOutButton.addEventListener('click', function (event) {
+            event.stopPropagation(); // Prevent the click event from reaching any parent elements
+            zoomByAmount(-0.3); // Zoom out by 10%
+        });
+
+        // lightboxOverlay.addEventListener('click', closeLightbox);
         lightboxClose.addEventListener('click', closeLightbox);
+        lightboxReset.addEventListener('click', resetLightbox);
         lightboxImage.addEventListener('click', event => event.stopPropagation());
 
         lightboxImage.addEventListener('dragstart', preventDefaultImageDrag);
@@ -126,18 +145,35 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.style.overflow = '';
         });
     }
+    function resetLightbox() {
+        state.scale = 1;
+        lightboxImage.style.setProperty('--img-scale', state.scale);
+        lightboxImage.style.left = '0px';
+        lightboxImage.style.top = '0px';
+    }
+
+
+    function zoomByAmount(amount) {
+        state.scale += amount;
+        // Set a minimum and maximum scale level
+        state.scale = Math.min(Math.max(state.scale, 0.5), 3);
+        lightboxImage.style.setProperty('--img-scale', state.scale);
+    }
 
     function zoomImage(event) {
-        // event.preventDefault();
+        event.preventDefault();
+
+        // // Get mouse position relative to the image
+        // const offsetX = event.clientX / 2;
+        // const offsetY = event.clientY / 2;
+
+        // // Set transform origin to the mouse position
+        // lightboxImage.style.transformOrigin = `${offsetX}px ${offsetY}px`;
 
         if (event.type === 'wheel') {
-            if (event.deltaY < 0) {
-                // Zoom in
-                state.scale += 0.1;
-            } else {
-                // Zoom out
-                state.scale -= 0.1;
-            }
+
+            zoomByAmount(event.deltaY < 0 ? 0.1 : -0.1);
+
         } else if (event.touches.length === 2) {
             const dx = event.touches[0].clientX - event.touches[1].clientX;
             const dy = event.touches[0].clientY - event.touches[1].clientY;
@@ -148,8 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const difference = distance - state.initialPinchDistance;
-            state.scale += difference * 0.01;
-            state.initialPinchDistance = distance;
+            zoomByAmount(difference * 0.01);
         }
 
         // Set a minimum and maximum scale level
@@ -163,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
         state.startY = event.clientY;
         state.initialOffsetX = parseFloat(lightboxImage.style.left || 0);
         state.initialOffsetY = parseFloat(lightboxImage.style.top || 0);
+        lightboxImage.style.transitionProperty = 'transform';
     }
 
     function dragImage(event) {

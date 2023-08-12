@@ -79,7 +79,10 @@ body .hidden {
   visibility: hidden;
   opacity: 0;
 }
-body .lightbox-overlay {
+body .lightbox-enabled {
+  cursor: pointer;
+}
+body .lightbox_overlay {
   display: none;
   position: fixed;
   top: 0;
@@ -96,7 +99,21 @@ body .lightbox-overlay {
   transition: opacity 0.5s ease-in-out;
   opacity: 0;
 }
-body .lightbox-overlay .lightbox-close {
+body .lightbox_overlay .lightbox_controls {
+  position: absolute;
+  bottom: 1rem;
+  margin: 0 auto;
+}
+body .lightbox_overlay .lightbox_controls button {
+  font-size: small;
+  background-color: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
+}
+body .lightbox_overlay .lightbox_controls button:hover {
+  background: white;
+}
+body .lightbox_overlay .lightbox_close {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -107,17 +124,19 @@ body .lightbox-overlay .lightbox-close {
   border-radius: 50%;
   cursor: pointer;
 }
-body .lightbox-overlay .lightbox-close .bi {
+body .lightbox_overlay .lightbox_close .bi {
   text-align: center;
   vertical-align: middle;
 }
-body .lightbox-overlay .lightbox-close .bi::before {
+body .lightbox_overlay .lightbox_close .bi::before {
   font-size: 2rem;
 }
-body .lightbox-overlay img {
-  max-width: 90%;
-  max-height: 90%;
-  transition: transform 0.3s;
+body .lightbox_overlay img {
+  max-width: 95%;
+  max-height: 95%;
+  transition: transform, left, top;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
   transform: scale(var(--img-scale, 1));
   position: relative;
   left: 0;

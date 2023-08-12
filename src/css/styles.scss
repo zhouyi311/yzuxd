@@ -753,24 +753,29 @@ footer {
                     margin-bottom: $unit-1;
                     list-style-type: none;
                     position: relative;
+                    padding-left: 1.5rem;
 
                     &::before {
+                        position: absolute;
                         content: '\F199';
                         font-family: 'Bootstrap-icons';
                         display: inline-block;
-                        line-height: 100%;
                         vertical-align: middle;
-                        font-size: 0.6em;
+                        line-height: 100%;
+                        font-size: 0.9rem;
                         margin-right: $unit-2;
+                        left: 0;
+                        top: 0.25em;
+                        color: $color-gray-medium-dark;
                     }
 
                     &:first-child {
-                        padding-left: 0;
-                        margin-bottom: $unit-2;
+                        // padding-left: 0;
+                        // margin-bottom: $unit-2;
 
-                        &::before {
-                            display: none;
-                        }
+                        // &::before {
+                        //     display: none;
+                        // }
                     }
                 }
             }
@@ -798,10 +803,21 @@ footer {
                 figure {
                     margin: 0;
                     width: 100%;
+
                     figcaption {
                         color: $color-gray-ash;
-                        font-weight: 500;;
-                        text-align: center;
+                        font-weight: 500;
+                        // text-align: center;
+                        &::before{
+                            margin: 0 $unit-1;
+                            font-family: 'Bootstrap-icons';
+                            content: '\F4C9';
+                            font-size: 0.8em;
+                            vertical-align: baseline;
+                            // color: $color-gray-ash;
+                            // line-height: 100%;
+                            // color: $color-gray-silver;
+                        }
                     }
                 }
 
@@ -820,6 +836,46 @@ footer {
 
                 }
 
+                &.article_lists {
+                    .block_headline {
+                        margin-bottom: $unit-4;
+                    }
+
+                    .article_list {
+                        &.regular {
+                            padding: 0;
+
+                            .regular-item {
+                                &.lead {
+                                    &::before {
+                                        content: '\F46C';
+                                    }
+                                }
+
+                                position: relative;
+                                list-style: none;
+                                padding-left: 2rem;
+                                margin-bottom: $unit-2;
+
+                                &::before {
+                                    position: absolute;
+                                    content: '\F5C8';
+                                    font-family: 'Bootstrap-icons';
+                                    display: inline-block;
+                                    vertical-align: baseline;
+                                    margin-right: $unit-2;
+                                    left: 0;
+                                    color: $color-gray-medium;
+                                    // line-height: 100%;
+                                    // top: 0.25em;
+                                    // font-size: 1em;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
                 &.article_images {
                     .image_wrapper {
                         display: flex;
@@ -832,6 +888,12 @@ footer {
                         &.maintain_size {
                             max-width: 100%;
                             width: fit-content;
+                            figcaption{
+                                text-align: center;
+                                &::before{
+                                    content: none;
+                                }
+                            }
                         }
                     }
 
@@ -839,14 +901,28 @@ footer {
                         width: 100%;
 
                         &.lightbox-enabled {
-                            cursor: zoom-in;
+                            cursor: pointer;
                             transition-property: box-shadow transform;
                             transition-duration: 0.3s;
 
                             &:hover {
-                                box-shadow: var(--bs-box-shadow-sm);
-                                transform: scale(100.5%);
+                                box-shadow: var(--bs-box-shadow);
+                                transform: scale(101%);
                             }
+                        }
+                    }
+                }
+
+                &.article_carousel {
+
+                    .carousel-caption {
+                        text-shadow: 1px 3px 5px rgba($color: #000000, $alpha: 0.5);
+                        .carousel_image_headline {
+                            font-weight: 500;
+                        }
+
+                        .carousel_image_caption {
+                            font-size: 0.8rem;
                         }
                     }
                 }
@@ -858,6 +934,7 @@ footer {
                     }
 
                     .video_wrapper {
+
                         // overflow: hidden;
                         .article_video {
                             width: 100%;
@@ -872,14 +949,20 @@ footer {
                 &.iframe_container {
 
                     .iframe_wrapper {
-                        // min-height: 400px;
+                        padding: 0;
+                        margin: 0;
                         width: 100%;
                         min-height: 400px;
                         aspect-ratio: 3/2;
                         overflow: hidden;
+                        // border: 1px solid $color-gray-silver;
 
                         iframe {
-                            border: 1px solid $color-gray-silver;
+                            padding: 0;
+                            margin: 0;
+                            height: 100%;
+                            width: 100%;
+                            // border: 0px;
                         }
                     }
                 }

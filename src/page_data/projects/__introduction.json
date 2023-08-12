@@ -66,7 +66,7 @@
                 "headline": "Media Type Showcase",
                 "leadImgFixed": "",
                 "leadImgFixedHeight": null,
-                "leadImg": "/images/bg-01.png",
+                "leadImg": "images/bg-01.png",
                 "leadImgBgColor": "pink",
                 "subhead": "With full optional stup enabled",
                 "subheadCaption": "This is a caption for the section title",
@@ -112,13 +112,14 @@
                         ]
                     },
                     {
-                        "type": "paragraph",
-                        "headline": "Paragraph Headline 3",
-                        "caption": "- Caption here",
+                        "type": "List",
+                        "headline": "List headline",
+                        "caption": "Some Caption here",
                         "cite": " I like myself",
                         "isQuote": false,
                         "isFluid": false,
                         "isFluidHeadline": false,
+                        "isListGroup": false,
                         "leadCount": true,
                         "data": [
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
@@ -143,10 +144,42 @@
                             "forth image"
                         ],
                         "data": [
-                            "/images/example-01.png",
-                            "/images/example-02.png",
-                            "/images/example-03.png",
-                            "/images/example-04.png"
+                            "images/example-01.png",
+                            "images/example-02.png",
+                            "images/example-03.png",
+                            "images/example-04.png"
+                        ]
+                    },
+                    {
+                        "type": "carousel",
+                        "headline": "A Carousel Example",
+                        "caption": "This is a demo image showing something",
+                        "cite": "",
+                        "isQuote": "",
+                        "isFluid": false,
+                        "isFluidHeadline": false,
+                        "isMaintainSize": false,
+                        "isLightbox": true,
+                        "isIndicators": true,
+                        "isControls": true,
+                        "isAutoPlay": true,
+                        "imgHeadlines": [
+                            "First image",
+                            "Second image",
+                            "Third image",
+                            "Forth image"
+                        ],
+                        "imgCaptions": [
+                            "The first image caption, nice beautiful view",
+                            "Second image is a large stunning Illustration",
+                            "Third image has nonthing to say",
+                            "Forth image is interesting and great"
+                        ],
+                        "data": [
+                            "images/example-01.png",
+                            "images/example-02.png",
+                            "images/example-03.png",
+                            "images/example-04.png"
                         ]
                     },
                     {
@@ -164,10 +197,17 @@
                             "second video"
                         ],
                         "data": [
-                            "/videos/video-1.mp4",
-                            "/videos/video-1.mp4"
+                            "videos/v3.mp4",
+                            "videos/v2.mp4"
                         ]
-                    },
+                    }
+                ]
+            },
+            {
+                "leadImg": "images/bg-02.png",
+                "leadImgFixedHeight": "70vh",
+                "headline": "Direct Embed",
+                "content": [
                     {
                         "type": "iframe",
                         "isFluid": false,
@@ -186,7 +226,7 @@
                         "caption": "An iFrame example",
                         "cite": " - 'You've found it'",
                         "isEmbedVideo": true,
-                        "data": "/embeds/embed-video.html"
+                        "data": "embeds/embed-video.html"
                     },
                     {
                         "type": "html",
@@ -195,39 +235,12 @@
                         "headline": "HTML Code Direct Embed Example",
                         "caption": "A HTML Code Direct Embed Example",
                         "cite": " - 'Who else?'",
-                        "data": "/embeds/embed-html.html"
+                        "data": "embeds/embed-html.html"
                     }
                 ]
             },
             {
-                "leadImg": "/images/bg-02.png",
-                "leadImgFixedHeight": "70vh",
-                "headline": "Prototype",
-                "content": [
-                    {
-                        "type": "paragraph",
-                        "data": [
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. ",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                        ]
-                    },
-                    {
-                        "type": "image",
-                        "caption": "image",
-                        "figCaption": "image",
-                        "isQuote": "image",
-                        "headline": "image",
-                        "isMaintainSize": true,
-                        "data": "/images/example-a1.png"
-                    },
-                    {
-                        "type": "paragraph",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    }
-                ]
-            },
-            {
-                "leadImgFixed": "/images/bg-01.png",
+                "leadImgFixed": "images/bg-01.png",
                 "leadImgFixedHeight": "70vh",
                 "headline": "Edge Testing",
                 "content": [
@@ -236,9 +249,10 @@
                         "headline": "Headline",
                         "caption": "block caption here",
                         "figCaption": "figCaption here",
+                        "isLightbox": true,
                         "isQuote": true,
                         "isMaintainSize": true,
-                        "data": "/images/example-a1.png"
+                        "data": "images/example-a1.png"
                     },
                     {
                         "type": "image",
@@ -247,7 +261,7 @@
                         "figCaption": 0,
                         "isQuote": true,
                         "isMaintainSize": true,
-                        "data": "/images/example-a1.png"
+                        "data": "images/example-a1.png"
                     },
                     {
                         "type": "awesomeHeadline",

@@ -283,9 +283,15 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                     </div>
                 </div>
             </div>
-            <div class="lightbox-overlay" id="lightboxOverlay">
+            <div class="lightbox_overlay" id="lightboxOverlay">
                 <img src="" id="lightboxImage">
-                <button class="lightbox-close" id="lightboxClose"><span class="bi bi-x align-middle"></span></button>
+                <button class="lightbox_close" id="lightboxClose"><span class="bi bi-x-lg align-middle"></span></button>
+                <div class="btn-group shadow lightbox_controls rounded-pill overflow-hidden">
+                    <button class="btn fw-medium px-4 border-0" id="lightboxZoomOut"><span class="bi bi-zoom-out align-middle"><span class="ms-2">Zoom Out</span></button>
+                    <button class="btn fw-medium px-4 border-0" id="lightboxReset"><span class="bi bi-arrow-counterclockwise align-middle"><span class="ms-2">Reset</span></button>
+                    <button class="btn fw-medium px-4 border-0" id="lightboxZoomIn"><span class="bi bi-zoom-in align-middle"><span class="ms-2">Zoom In</span></button>
+                </div>
+
             </div>
         </main>
         <?php include __DIR__ . '/include_footer.php'; ?>
