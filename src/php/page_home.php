@@ -1,7 +1,13 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-// root url
+
+require_once __DIR__ . '/class_info_site.php';
+include_once __DIR__ . '/class_info_project.php';
+
+$site_info = SiteInfo::loadInfo();
+$projects = ProjectInfo::loadAll();
+
 function getSiteRootUrl()
 {
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? "https://" : "http://";
@@ -13,14 +19,7 @@ function getSiteRootUrl()
     }
     return $protocol . $domainName . $folderPath . '/';
 }
-$site_root_url = getSiteRootUrl();
-
-// load projects
-require_once __DIR__ . '/class_info_site.php';
-$site_info = SiteInfo::loadInfo();
-
-include_once __DIR__ . '/class_info_project.php';
-$projects = ProjectInfo::loadAll();
+$site_root_url = getSiteRootUrl(); // root url
 
 ?>
 

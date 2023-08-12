@@ -1,7 +1,16 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-// root url
+$projectId = $_GET['project'];
+
+require_once __DIR__ . '/class_info_site.php';
+include_once __DIR__ . '/class_info_project.php';
+include_once __DIR__ . '/class_renderer_article.php';
+
+$site_info = SiteInfo::loadInfo();
+$project = ProjectInfo::loadById($projectId);
+$renderer = new ArticleContentRenderer($project);
+
 function getSiteRootUrl()
 {
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? "https://" : "http://";
@@ -13,21 +22,7 @@ function getSiteRootUrl()
     }
     return $protocol . $domainName . $folderPath . '/';
 }
-$site_root_url = getSiteRootUrl();
-
-session_start();
-
-// load projects
-require_once __DIR__ . '/class_info_site.php';
-$site_info = SiteInfo::loadInfo();
-
-include_once __DIR__ . '/class_info_project.php';
-
-
-$projectId = $_GET['project']; // Retrieve the 'project' query parameter
-
-$project = ProjectInfo::loadById($projectId); // Load the project with the given ID
-
+$site_root_url = getSiteRootUrl(); // root url
 
 if (!$project) {
     header("HTTP/1.0 404 Not Found");
@@ -42,7 +37,8 @@ if (!$project) {
     exit;
 }
 
-include_once __DIR__ . '/class_renderer_article.php';
+session_start();
+$project_pw = $project->password;
 
 // Check form submission
 if (isset($_POST['password']) && !isset($_SESSION['form_processed'])) {
@@ -56,9 +52,6 @@ if (isset($_POST['password']) && !isset($_SESSION['form_processed'])) {
     }
 }
 
-$project_pw = $project->password;
-
-// Check if the password is required for this project
 $isPasswordRequired = isset($project_pw) && $project_pw !== '' && $project_pw !== 'no';
 
 // Check if the user is authenticated for this project
@@ -220,8 +213,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                 </header>
                 <!-- article sections content -->
                 <?php if ($isAuthenticated || !$isPasswordRequired): ?>
-                    <?php $renderer = new ArticleContentRenderer($project);
-                    $renderer->render(); ?>
+                    <?php $renderer->render(); ?>
                 <?php else: ?>
                     <div class="container" id="enter_password">
                         <div class="row">
