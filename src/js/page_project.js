@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Extract the path from defaultSrc and append the largerImageFilename
         const pathWithoutFilename = defaultSrc.substring(0, defaultSrc.lastIndexOf('/') + 1);
+        console.log(pathWithoutFilename);
         const fullLargerImageSrc = pathWithoutFilename + largerImageFilename;
 
         // Try to fetch the larger image

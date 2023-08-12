@@ -718,7 +718,7 @@ footer {
             overflow: hidden;
 
             &.bg_attach {
-                height: 512px;
+                min-height: 300px;
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center center;
@@ -779,7 +779,7 @@ footer {
             .media_block {
                 margin-bottom: $unit-5;
                 overflow: hidden;
-                
+
                 blockquote.quote_container {
                     visibility: visible;
                     background-color: $color-gray-light;
@@ -791,63 +791,92 @@ footer {
 
                 .block_caption {
                     margin-top: $unit-2;
-                    color: $color-gray-medium;
-                    &.media_caption {}
-                    &.paragraph_caption {}
+                    color: $color-gray-medium-dark;
+                    font-size: 0.9em;
+                }
+
+                figure {
+                    margin: 0;
+                    width: 100%;
+                    figcaption {
+                        color: $color-gray-ash;
+                        font-weight: 500;;
+                        text-align: center;
+                    }
                 }
 
                 &.article_paragraphs {
                     .block_headline {
                         margin-bottom: $unit-4;
                     }
+
                     .article_paragraph {
                         line-height: 1.6em;
                     }
+
+                    .block_caption {
+                        // font-weight: 500;
+                    }
+
                 }
 
                 &.article_images {
+                    .image_wrapper {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    figure {
+                        &.maintain_size {
+                            max-width: 100%;
+                            width: fit-content;
+                        }
+                    }
+
                     .article_image {
                         width: 100%;
-                        display: block;
 
                         &.lightbox-enabled {
                             cursor: zoom-in;
                             transition-property: box-shadow transform;
                             transition-duration: 0.3s;
-                            &:hover{
+
+                            &:hover {
                                 box-shadow: var(--bs-box-shadow-sm);
                                 transform: scale(100.5%);
                             }
-                        }
-
-                        &.maintain_size {
-                            width: unset;
-                            margin: auto;
                         }
                     }
                 }
 
                 &.article_videos {
+                    figure {
+                        margin-bottom: 0;
+                        // background-color: #000;
+                    }
+
                     .video_wrapper {
-                        background-color: #000;
                         // overflow: hidden;
                         .article_video {
                             width: 100%;
                             display: block;
-                            margin-bottom: $unit-2;
+                            // background-color: #000;
+                            // margin-bottom: $unit-2;
                             transition: opacity 0.3s;
                         }
                     }
                 }
 
                 &.iframe_container {
-                    overflow: hidden;
 
                     .iframe_wrapper {
                         // min-height: 400px;
                         width: 100%;
                         min-height: 400px;
                         aspect-ratio: 3/2;
+                        overflow: hidden;
 
                         iframe {
                             border: 1px solid $color-gray-silver;
@@ -856,13 +885,13 @@ footer {
                 }
 
                 &.html_container {
-                    overflow: hidden;
 
                     .html_wrapper {
                         width: 100%;
+                        overflow: hidden;
                     }
                 }
-                
+
 
             }
         }

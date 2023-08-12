@@ -4,7 +4,7 @@ class ArticleContentRenderer
 
     private $project;
     private $projPath;
-    public $narrowCol = " col-lg-8 offset-lg-2 ";
+    public $colFixer = [" col-lg-8 offset-lg-2 ", " col-12 "];
 
     public function __construct($project)
     {
@@ -42,18 +42,22 @@ class ArticleContentRenderer
     }
     private function fluidProcessor($data)
     {
-        $mainGrid = $colWithGutter = " $this->narrowCol ";
-        $fixerGrid = $colAdaptive = " col ";
+        $gutter = $this->colFixer[0];
+        $full = $this->colFixer[1];
 
-        if (!empty($data['fluid'])) {
-            $mainGrid = $colAdaptive;
-            $fixerGrid = $colWithGutter;
+        if (empty($data['isFluid'])) {
+            $containerGrid = $gutter;
+            $innerFixerGrid = $full;
 
-            if (!empty($data['fluidHeadline'])) {
-                $fixerGrid = $colAdaptive;
+        } else {
+            $containerGrid = $full;
+            $innerFixerGrid = $gutter;
+
+            if (!empty($data['isFluidHeadline'])) {
+                $innerFixerGrid = $full;
             }
         }
-        return [$mainGrid, $fixerGrid];
+        return [$containerGrid, $innerFixerGrid];
     }
 
 
@@ -88,21 +92,22 @@ class ArticleContentRenderer
     private function reportMediaTypeError($section, $block, $index)
     {
         $type = !empty($block['type']) ? strval($block['type']) : "empty";
-        echo "<div class='media_block $this->narrowCol'><div class='alert alert-dark' role='alert'>";
+        echo "<div class='media_block {$this->colFixer[0]}'><div class='alert alert-dark' role='alert'>";
         echo "<h5 class='mb-4'>Media Type Error - Wrong Media Type:</h5>";
-        echo "<p class='lead hidden'>Check block: {$section['headline']}->content[$index]</p>";
-        echo "<p>[$type] media type is not valid for formating; dumping affected data fields:</p><hr>";
+        echo "<p class='lead'>{$section['headline']} -> content[$index]</p>";
+        echo "<p>type->\"$type\" is not a valid type</p><hr>";
         echo "<p>" . var_dump($block) . "</p></div></div>";
     }
-    private function reportDataError($block)
+    private function reportDataError($section, $block, $index)
     {
-        $mediaType = !empty($block['type']) ? $block['type'] : 'empty';
-        $data = !empty($block['data']) ? $block['data'] : null;
-        $dataType = $data ? gettype($data) : null;
-        echo "<div class='media_block $this->narrowCol'><div class='alert alert-secondary' role='alert'>";
+        $mediaType = $block['type'] ?? 'empty';
+        $data = $block['data'] ?? null;
+        $dataType = gettype($data) ?? null;
+        echo "<div class='media_block {$this->colFixer[0]}'><div class='alert alert-secondary' role='alert'>";
         echo "<h5 class='mb-3'>Data Type Error - " . ($data ? "Wrong Data Type:" : "Empty Data Field") . "</h5>";
+        echo "<p class='lead'>{$section['headline']} -> content[$index]</p>";
         if ($data) {
-            echo "<p'>[$mediaType] media type is not supporting \"data\" field in type [$dataType]; dumping affected data fields:</p><hr>";
+            echo "<p'>for type->\"$mediaType\": \"data\" can't be \"$dataType\"</p><hr>";
             echo var_dump($block);
         } else {
             echo "<hr>";
@@ -113,195 +118,208 @@ class ArticleContentRenderer
 
     // formater ////////////////////////////////////////////////
 
-    private function writeHeadline($headline, $fluid)
+    private function writeHeadline($headline, $isFluid, $htag = "h6")
     {
-        $fluid ?? $fluid = [" $this->narrowCol ", " col "];
+        $isFluid ?? $isFluid = [$this->colFixer[0], $this->colFixer[1]];
         if (!empty($headline)) {
-            echo "<div class='row'><div class='$fluid[1]'>";
-            echo "<h5 class='block_headline'>$headline</h5>";
+            echo "<div class='row'><div class='$isFluid[1]'>";
+            echo "<$htag class='block_headline'>$headline</$htag>";
             echo "</div></div>";
         }
     }
-    private function writeCaption($caption, $cite, $fluid)
+    private function writeCaption($caption, $isFluid, $cite)
     {
         if (!empty($caption)) {
-            echo "<div class='block_caption $fluid[1]'>";
+            echo "<div class='block_caption $isFluid[1]'>";
             echo "<div>$caption<cite>$cite</cite></div>";
             echo "</div>";
         }
     }
 
-    private function writeFigureCaption($fitureCaption, $index)
-
+    private function writefigCaption($fitureCaption, $index)
     {
     }
 
-    private function paragraphBlockFormatter($block)
+    private function paragraphBlockFormatter($section, $block, $index)
     {
-        $fluid = $this->fluidProcessor($block);
-        $paragraphs = $this->sanitizeValue($block, 'data');
-        is_string($paragraphs) ? $paragraphs = array($paragraphs) : null;
+        $isFluid = $this->fluidProcessor($block);
+        $mainData = $this->sanitizeValue($block, 'data');
+        is_string($mainData) ? $mainData = array($mainData) : null;
+
         $headline = $this->sanitizeValue($block, 'headline');
         $caption = $this->sanitizeValue($block, 'caption');
         $cite = $this->sanitizeValue($block, 'cite');
-        $quote = !empty($block['quote']) ? true : null;
-        $lead = !empty($block['lead']) && !is_integer($block['lead']) ? 1 : ($block['lead'] ?? null);
+        $isQuote = !empty($block['isQuote']) ? true : null;
+        $leadCount = !empty($block['leadCount']) && !is_integer($block['leadCount']) ? 1 : ($block['leadCount'] ?? null);
 
-        if (is_array($paragraphs)) {
-            echo "<div class='media_block article_paragraphs $fluid[0]'>";
-            echo !empty($quote) ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-5'>" : null;
-            $this->writeHeadline($headline, $fluid);
+        if (is_array($mainData)) {
+            echo "<div class='media_block article_paragraph {$isFluid[0]}'>";
+            echo $isQuote ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-5'>" : null;
 
-            // echo !empty($headline) ? "<div class='row'><div class='$fluid[1]'><h5 class='paragraph_headline'>$headline</h5></div></div>" : null;
+            $this->writeHeadline($headline, $isFluid, 'h5');
 
-            foreach ($paragraphs as $index => $paragraph) {
-                echo "<p class='article_paragraph " . ($index < $lead ? "lead" : null) . "'>$paragraph</p>";
+            foreach ($mainData as $index => $paragraph) {
+                echo "<p class='article_paragraph " . ($index < $leadCount ? "lead" : null) . "'>$paragraph</p>";
             }
 
-            $this->writeCaption($caption, $cite, $fluid);
+            $this->writeCaption($caption, $isFluid, $cite);
 
-            // echo $caption ? "<div class='block_caption paragraph_caption $fluid[1]'>$caption<cite>$cite</cite></div>" : null;
-            echo $quote ? "</blockquote>" : null;
+            echo $isQuote ? "</blockquote>" : null;
             echo "</div>";
         } else {
-            $this->reportDataError($block);
+            $this->reportDataError($section, $block, $index);
         }
 
     }
 
-    private function imageBlockFormatter($block)
+    private function imageBlockFormatter($section, $block, $index)
     {
-        $fluid = $this->fluidProcessor($block);
-        $filename = $this->sanitizeValue($block, 'data');
-        is_string($filename) ? $filename = array($filename) : null;
+        $projPath = $this->projPath;
+        $isFluid = $this->fluidProcessor($block);
+        $mainData = $this->sanitizeValue($block, 'data');
+        is_string($mainData) ? $mainData = array($mainData) : null;
+        $figCaption = $this->sanitizeValue($block, 'figCaption');
+        is_string($figCaption) ? $figCaption = array($figCaption) : null;
+
         $headline = $this->sanitizeValue($block, 'headline');
         $caption = $this->sanitizeValue($block, 'caption');
         $cite = $this->sanitizeValue($block, 'cite');
-        $lightbox = $this->sanitizeValue($block, 'lightbox');
-        $quote = !empty($block['quote']) ? true : null;
-        $path = $this->projPath;
-        $maintainSize = !empty($block['maintainSize']) ? 'maintain_size' : null;
+        $isLightbox = $this->sanitizeValue($block, 'isLightbox');
+        $isQuote = !empty($block['isQuote']) ? true : null;
+        $isMaintainSize = !empty($block['isMaintainSize']) ? 'maintain_size' : null;
 
-        if (!empty($filename)) {
+        if (!empty($mainData)) {
 
-            echo "<figure class='media_block article_images $fluid[0]'>";
-            echo !empty($quote) ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-5'>" : null;
-            echo !empty($headline) ? "<div class='row'><div class='$fluid[1]'><h6 class='media_headline'>$headline</h6></div></div>" : null;
-            echo "<div class='row g-3 gy-3'>";
-            foreach ($filename as $image) {
-                if (count($filename) % 2 == 0 && count($filename) <= 4) {
-                    echo "<div class='col-6 image_cell'>";
-                } elseif (count($filename) == 3 || count($filename) > 4) {
-                    echo "<div class='col-6 col-lg-4 image_cell'>";
+            echo "<div class='media_block article_images $isFluid[0]'>";
+            echo $isQuote ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-5'>" : null;
+            $this->writeHeadline($headline, $isFluid);
+            echo "<div class='row g-3'>";
+            foreach ($mainData as $index => $image) {
+                if (count($mainData) % 2 == 0 && count($mainData) <= 4) {
+                    echo "<div class='image_wrapper col-6'>";
+                } elseif (count($mainData) == 3 || count($mainData) > 4) {
+                    echo "<div class='image_wrapper col-6 col-lg-4 '>";
                 } else {
-                    echo "<div class='col image_cell'>";
+                    echo "<div class='image_wrapper col-12'>";
                 }
-                echo "<img src='{$path}/{$image}' class='article_image rounded-2 $maintainSize ";
-                if (isset($lightbox) && is_string($lightbox)) {
-                    echo " lightbox-enabled' data-larger-src='$lightbox'>";
-                } elseif (isset($lightbox)) {
-                    $largerImage = $this->findLargerImage($path, $image);
+                echo "<figure class='figure $isMaintainSize'>";
+                echo "<img src='{$projPath}/{$image}' alt='article image: ";
+                echo ($headline ?? "showcase") . " - " . ($caption ?? "project") . ($figCaption ?? "image");
+                echo "' class='article_image rounded  ";
+                if (isset($isLightbox) && is_string($isLightbox)) {
+                    echo " isLightbox-enabled' data-larger-src='$isLightbox'>";
+                } elseif (isset($isLightbox)) {
+                    $largerImage = $this->findLargerImage($projPath, $image);
                     echo " lightbox-enabled' data-larger-src='$largerImage'>";
                 } else {
                     echo "'>";
                 }
+                echo !empty($figCaption[$index]) ? "<figcaption class='figure-caption mt-1'>{$figCaption[$index]}</figcaption>" : null;
+                echo "</figure>";
                 echo "</div>";
             }
             echo "</div>";
-            echo !empty($caption) ? "<footer class='block_footer media_caption $fluid[1]'><figcaption class=''>{$caption}<cite>$cite</cite></figcaption></footer>" : null;
-            echo $quote ? "</blockquote>" : null;
-            echo "</figure>";
+            $this->writeCaption($caption, $isFluid, $cite);
+            echo $isQuote ? "</blockquote>" : null;
+            echo "</div>";
         } else {
-            $this->reportDataError($block);
+            $this->reportDataError($section, $block, $index);
         }
 
     }
 
-    private function videoBlockFormatter($block)
+    private function videoBlockFormatter($section, $block, $index)
     {
-        $fluid = $this->fluidProcessor($block);
-        $filename = $this->sanitizeValue($block, 'data');
-        is_string($filename) ? $filename = array($filename) : null;
+        $projPath = $this->projPath;
+        $isFluid = $this->fluidProcessor($block);
+        $mainData = $this->sanitizeValue($block, 'data');
+        is_string($mainData) ? $mainData = array($mainData) : null;
+        $figCaption = $this->sanitizeValue($block, 'figCaption');
+        is_string($figCaption) ? $figCaption = array($figCaption) : null;
+
         $headline = $this->sanitizeValue($block, 'headline');
         $caption = $this->sanitizeValue($block, 'caption');
         $cite = $this->sanitizeValue($block, 'cite');
-        $quote = !empty($block['quote']) ? true : null;
-        $path = $this->projPath;
-        $autoPlay = !empty($block['autoPlay']) ? "muted data-autoplay-on-scroll" : null;
-        $controls = !empty($block['controls']) ? "controls" : null;
-        $loop = !empty($block['loop']) ? "loop" : null;
+        $isQuote = !empty($block['isQuote']) ? true : null;
+        $isAutoPlay = !empty($block['isAutoPlay']) ? "muted data-autoplay-on-scroll" : null;
+        $isControls = !empty($block['isControls']) ? "controls" : null;
+        $isLoop = !empty($block['isLoop']) ? "loop" : null;
 
-        if (!empty($filename)) {
-            echo "<figure class='media_block article_videos $fluid[0]'>";
-            echo !empty($quote) ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-5'>" : null;
-            echo !empty($headline) ? "<div class='row'><div class='$fluid[1]'><h6 class='media_headline'>$headline</h6></div></div>" : null;
-            foreach ($filename as $video) {
+        if (!empty($mainData)) {
+            echo "<div class='media_block article_videos $isFluid[0]'>";
+            echo !empty($isQuote) ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-5'>" : null;
+            $this->writeHeadline($headline, $isFluid);
+            echo "<div class='row g-3'>";
+            foreach ($mainData as $index => $video) {
+                echo "<div class='col-12 video_wrapper'>";
                 $videoCrcId = crc32($video);
-                echo "<div class='video_wrapper'><video preload='auto' class='article_video' id='article_video_{$videoCrcId}' $autoPlay $controls $loop>";
-                echo "<source src='{$path}/{$video}' type='video/mp4'>";
-                echo "Your browser does not support the video tag.";
-                echo "</video></div>";
+                echo "<figure class='figure'><video preload='auto' class='article_video rounded' id='article_video_{$videoCrcId}' $isAutoPlay $isControls $isLoop>";
+                echo "<source src='{$projPath}/{$video}' type='video/mp4'> Please Update Your Browser.</video>";
+                echo !empty($figCaption[$index]) ? "<figcaption class='figure-caption mt-1'>{$figCaption[$index]}</figcaption>" : null;
+                echo "</figure>";
+                echo "</div>";
             }
-            echo !empty($caption) ? "<footer class='block_footer media_caption $fluid[1]'><figcaption class=''>{$caption}<cite>$cite</cite></figcaption></footer>" : null;
-            echo $quote ? "</blockquote>" : null;
-            echo "</figure>";
+            echo "</div>";
+            $this->writeCaption($caption, $isFluid, $cite);
+            echo $isQuote ? "</blockquote>" : null;
+            echo "</div>";
         } else {
-            $this->reportDataError($block);
+            $this->reportDataError($section, $block, $index);
         }
     }
 
-    private function iframeBlockFormatter($block)
+    private function iframeBlockFormatter($section, $block, $index)
     {
         $dirPath = __DIR__ . '/../..' . $this->projPath;
-        $fluid = $this->fluidProcessor($block);
-        $source = $this->sanitizeValue($block, 'data');
+        $isFluid = $this->fluidProcessor($block);
+        $mainData = $this->sanitizeValue($block, 'data');
         $headline = $this->sanitizeValue($block, 'headline');
         $caption = $this->sanitizeValue($block, 'caption');
         $cite = $this->sanitizeValue($block, 'cite');
-        $embedVideo = $this->sanitizeValue($block, 'embedVideo');
+        $isEmbedVideo = $this->sanitizeValue($block, 'isEmbedVideo');
 
-        if (isset($source)) {
-            $iFrameCrcId = crc32($source);
-            echo "<div class='media_block iframe_container {$fluid[0]}'>";
-            echo !empty($headline) ? "<div class='$fluid[1]'><h6 class='media_headline'>{$headline}</h6></div>" : null;
-            echo "<div class='iframe_wrapper' id='wrapper_{$iFrameCrcId}'>";
+        if (isset($mainData)) {
+            $iFrameCrcId = crc32($mainData);
+            echo "<div class='media_block iframe_container {$isFluid[0]}'>";
+            $this->writeHeadline($headline, $isFluid, 'h6');
+            echo "<div class='iframe_wrapper rounded' id='wrapper_{$iFrameCrcId}'>";
 
-            if ($embedVideo) {
-                include $dirPath . '/' . $source;
+            if ($isEmbedVideo) {
+                @include $dirPath . '/' . $mainData;
             } else {
-                echo "<iframe class='' width='100%' height='100%' src='$source' id='iframe_$iFrameCrcId'></iframe>";
+                echo "<iframe class='' width='100%' height='100%' src='$mainData' id='iframe_$iFrameCrcId'></iframe>";
             }
 
             echo "</div>";
-            echo !empty($caption) ? "<footer class='block_footer media_caption $fluid[1]'>{$caption}<cite>$cite</cite></footer>" : null;
+            $this->writeCaption($caption, $isFluid, $cite);
             echo "</div>";
         } else {
-            $this->reportDataError($block);
+            $this->reportDataError($section, $block, $index);
         }
     }
-    private function htmlBlockFormatter($block)
+    private function htmlBlockFormatter($section, $block, $index)
     {
         $dirPath = __DIR__ . '/../..' . $this->projPath;
-        $fluid = $this->fluidProcessor($block);
-        $source = $this->sanitizeValue($block, 'data');
+        $isFluid = $this->fluidProcessor($block);
+        $mainData = $this->sanitizeValue($block, 'data');
         $headline = $this->sanitizeValue($block, 'headline');
         $caption = $this->sanitizeValue($block, 'caption');
         $cite = $this->sanitizeValue($block, 'cite');
 
 
-        if (isset($source)) {
-            $iFrameCrcId = crc32($source);
-            echo "<div class='media_block html_container {$fluid[0]}'>";
-            echo !empty($headline) ? "<div class='$fluid[1]'><h6 class='media_headline'>{$headline}</h6></div>" : null;
-            echo "<div class='html_wrapper' id='wrapper_{$iFrameCrcId}'>";
+        if (isset($mainData)) {
+            $htmlBlockCrcId = crc32($mainData);
+            echo "<div class='media_block html_container {$isFluid[0]}'>";
+            $this->writeHeadline($headline, $isFluid);
 
-            include $dirPath . '/' . $source;
-
+            echo "<div class='html_wrapper rounded' id='wrapper_{$htmlBlockCrcId}'>";
+            @include $dirPath . '/' . $mainData;
             echo "</div>";
-            echo !empty($caption) ? "<footer class='block_footer media_caption $fluid[1]'>{$caption}<cite>$cite</cite></footer>" : null;
+
+            $this->writeCaption($caption, $isFluid, $cite);
             echo "</div>";
         } else {
-            $this->reportDataError($block);
+            $this->reportDataError($section, $block, $index);
         }
     }
 
@@ -310,16 +328,18 @@ class ArticleContentRenderer
     {
         $projPath = $this->projPath;
         $headline = $this->sanitizeValue($section, 'headline');
-        $leadingImg = $this->sanitizeValue($section, 'leadingImg');
-        $leadingImgFixed = $this->sanitizeValue($section, 'leadingImgFixed');
-        $leadingImgBgColor = $this->sanitizeValue($section, 'leadingImgBgColor');
-        $leadingImgBgColor = $leadingImgBgColor ? "style='background-color: {$leadingImgBgColor}'" : null;
+        $leadImg = $this->sanitizeValue($section, 'leadImg');
+        $leadImgBgColor = $this->sanitizeValue($section, 'leadImgBgColor');
+        $leadImgBgColor = $leadImgBgColor ? "style='background-color: {$leadImgBgColor}'" : null;
+        $leadImgFixed = $this->sanitizeValue($section, 'leadImgFixed');
+        $leadImgFixedHeight = $this->sanitizeValue($section, 'leadImgFixedHeight');
 
-        if (!empty($leadingImgFixed)) {
-            echo "<div style='background-image: url({$projPath}/{$leadingImgFixed})' class='article_section_leading bg_attach'></div>";
-        } elseif (!empty($leadingImg)) {
-            echo "<div class='article_section_leading none_select' $leadingImgBgColor>";
-            echo "<div class='image_wrapper none_select'><img class='leading_image none_select' src='{$projPath}/{$leadingImg}' alt='{$headline} section leading image'>";
+        if (!empty($leadImgFixed)) {
+            echo "<div style='background-image: url({$projPath}/{$leadImgFixed}); height: $leadImgFixedHeight'";
+            echo " class='article_section_leading bg_attach'></div>";
+        } elseif (!empty($leadImg)) {
+            echo "<div class='article_section_leading none_select' $leadImgBgColor>";
+            echo "<div class='image_wrapper none_select'><img class='leading_image none_select' src='{$projPath}/{$leadImg}' alt='{$headline} section leading image'>";
             echo "</div></div>";
         }
     }
@@ -337,16 +357,17 @@ class ArticleContentRenderer
         $rightCol = $this->sanitizeValue($section, 'rightCol');
         $leftColUnfluid = isset($section['leftColUnfluid']) ? $section['leftColUnfluid'] : null;
         $leftCol + $rightCol > 12 ? $leftCol = $rightCol = 12 : null;
-        $leftCol > 0 && $leftCol < 12 ? $leftCol .= " pe-lg-4" : null;
-        $leftCol = $leftCol ? "col-lg-$leftCol" : "col-lg-3 pe-lg-4";
+        // $leftCol > 0 && $leftCol < 12 ? $leftCol .= " pe-lg-4" : null;
+        $leftCol = $leftCol ? "col-lg-$leftCol" : "col-lg-3";
         $rightCol = $rightCol ? "col-lg-$rightCol" : "col-lg-9";
 
         // section container
         echo "<section class='page_section article_section' id='{$headlineId}'>";
-        echo "<div class='container'><div class='row'>";
+        echo "<div class='container'><div class='row gx-5'>";
+
         // left col --
         echo "<div class='section_headline $leftCol'>";
-        echo $leftColUnfluid ? "<div class='row'><div class='$this->narrowCol'>" : null;
+        echo $leftColUnfluid ? "<div class='row'><div class='{$this->colFixer[0]}'>" : null;
 
         if (isset($subhead)) {
             echo "<h6 class='text-secondary'>$subhead</h6>";
@@ -362,8 +383,10 @@ class ArticleContentRenderer
             }
             echo "</ul>";
         }
+
         echo $leftColUnfluid ? "</div></div>" : null;
         echo "</div>";
+
         // Right Col --
         echo "<div class='$rightCol'>";
         // Depending on the content type, call the respective method
@@ -371,7 +394,7 @@ class ArticleContentRenderer
             $type = !empty($block['type']) ? strval($block['type']) : null;
             if (method_exists($this, "{$type}BlockFormatter")) {
                 echo "<div class='row'>";
-                $this->{"{$type}BlockFormatter"}($block);
+                $this->{"{$type}BlockFormatter"}($section, $block, $index);
                 echo "</div>";
             } else {
                 echo "<div class='row'>";
@@ -380,6 +403,7 @@ class ArticleContentRenderer
             }
         }
         echo "</div>";
+
         // end section container
         echo "</div></div>";
         echo "</section>";

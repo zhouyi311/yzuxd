@@ -12,7 +12,7 @@ include_once __DIR__ . '/class_renderer_article.php';
 
 $site_info = SiteInfo::loadInfo();
 $project = ProjectInfo::loadById($projectId);
-$renderer = new ArticleContentRenderer($project);
+$articleRenderer = new ArticleContentRenderer($project);
 
 function getSiteRootUrl()
 {
@@ -216,7 +216,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                 </header>
                 <!-- article sections content -->
                 <?php if ($isAuthenticated || !$isPasswordRequired): ?>
-                    <?php $renderer->render(); ?>
+                    <?php $articleRenderer->render(); ?>
                 <?php else: ?>
                     <div class="container" id="enter_password">
                         <div class="row">

@@ -14,7 +14,7 @@
                 "UX Design",
                 "Illustration"
             ],
-            "paragraph": [
+            "text": [
                 "Notes: you have to structrue each project josn files by following following rules: ",
                 "1) 'id' is for url querty selector, and will be shown in the url address, could be int or string. (Normally, id should be unique - but we handle duplicated and missing id cases by assign them temp ids)",
                 "2) For projects that do not want password protection, you can either set 'password' key to any empty values like null, '', or set to string 'no'",
@@ -28,57 +28,66 @@
         "article": [
             {
                 "headline": "Data Guidence",
-                "leadingImgFixed": null,
-                "leadingImg": null,
-                "leadingImgBgColor": null,
                 "subhead": "subhead is optional, and has to be string",
                 "subheadCaption": "subheadCaption is optinal, and has to be string",
                 "subheadList": [
                     "subheadList is optional, and suppose to be an array",
                     "put string in subheadList will be converted to an one element array",
                     "First item in the list will be leading",
-                    "leadingImgFixed/leadingImg/leadingImgBgColor are optinal and should all be string",
-                    "leadingImgFixed/leadingImg should be file name or path as string",
+                    "leadImgFixed / leadImg / leadImgBgColor are optinal and should all be string",
+                    "leadImgFixed / leadImg should be file name or path as string",
                     "enter only file name is targeting [current project]'s resource foler",
                     "a relative path is allowd, any path will be  relative to current project folder",
-                    "leadingImgBgColor should be a valid html color code (hex, rgb, hsl, etc.) as string"
+                    "leadImgBgColor should be a valid html color code (hex, rgb, hsl, etc.) as string"
                 ],
-                "leftCol": 12,
-                "rightCol": 12,
-                "leftColUnfluid": true,
                 "content": [
                     {
                         "type": "paragraph",
+                        "isFluid": true,
                         "data": [
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci."
                         ]
                     }
                 ]
-                
             },
             {
-                "headline": "Background",
-                "leadingImgFixed": "",
-                "leadingImg": "",
-                "leadingImgBgColor": "",
-                "subhead": "",
-                "subheadCaption": "",
-                "subheadList": [],
+                "headline": "Media Type Showcase",
+                "leadImgFixed": "",
+                "leadImgFixedHeight": null,
+                "leadImg": "/images/bg-01.png",
+                "leadImgBgColor": "pink",
+                "subhead": "With full optional stup enabled",
+                "subheadCaption": "This is a caption for the section title",
+                "subheadList": [
+                    "we want some text dont we",
+                    "First item in the list will be leading",
+                    "put string in subheadList will be converted to an one element array"
+                ],
                 "leftCol": null,
                 "rightCol": null,
-                "leftColUnfluid": true,
+                "leftColUnfluid": false,
                 "content": [
                     {
                         "type": "paragraph",
                         "headline": "Paragraph Headline",
-                        "caption": "",
-                        "cite": "",
-                        "fluid": "",
-                        "fluidHeadline": "",
-                        "lead": 2,
-                        "quote": "",
+                        "caption": "A paragraph caption",
+                        "cite": " - I dont want this",
+                        "isQuote": false,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
+                        "leadCount": 2,
                         "data": [
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
                             "Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh.",
@@ -88,237 +97,128 @@
                         ]
                     },
                     {
+                        "type": "paragraph",
+                        "headline": "Paragraph Headline 2",
+                        "caption": "- Caption here",
+                        "cite": "",
+                        "isQuote": true,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
+                        "leadCount": true,
+                        "data": [
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh.",
+                            "Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. "
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "headline": "Paragraph Headline 3",
+                        "caption": "- Caption here",
+                        "cite": " I like myself",
+                        "isQuote": false,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
+                        "leadCount": true,
+                        "data": [
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh.",
+                            "Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. "
+                        ]
+                    },
+                    {
                         "type": "image",
                         "headline": "A Nice Image Grid Example",
                         "caption": "This is a demo image showing something",
                         "cite": "",
-                        "lightbox": true,
-                        "quote": "",
-                        "data": [
-                            "example-01.png",
-                            "example-02.png",
-                            "example-03.png",
-                            "example-04.png"
-                        ],
-                        "figureCaptions": [
+                        "isQuote": "",
+                        "isFluid": false,
+                        "isFluidHeadline": false,
+                        "isMaintainSize": false,
+                        "isLightbox": true,
+                        "figCaption": [
                             "first image",
                             "second image",
                             "third image",
                             "forth image"
+                        ],
+                        "data": [
+                            "/images/example-01.png",
+                            "/images/example-02.png",
+                            "/images/example-03.png",
+                            "/images/example-04.png"
                         ]
                     },
                     {
                         "type": "video",
-                        "fluid": false,
-                        "fluidHeadline": false,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
                         "headline": "An Awesome Local Video Example",
                         "caption": "An iFrame example",
                         "cite": " - 'An awesome book'",
-                        "controls": false,
-                        "autoPlay": true,
-                        "loop": true,
-                        "data": "video-1.mp4"
+                        "isControls": false,
+                        "isAutoPlay": true,
+                        "isLoop": true,
+                        "figCaption": [
+                            "first video",
+                            "second video"
+                        ],
+                        "data": [
+                            "/videos/video-1.mp4",
+                            "/videos/video-1.mp4"
+                        ]
                     },
                     {
                         "type": "iframe",
-                        "fluid": false,
-                        "fluidHeadline": false,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
                         "headline": "iFrame Example",
                         "caption": "An iFrame example",
                         "cite": " - 'I said so'",
-                        "embedVideo": false,
-                        "data": "/src/static/example_usage/demo.html"
+                        "isEmbedVideo": false,
+                        "data": "/src/static/demos/demo1.html"
                     },
                     {
                         "type": "iframe",
-                        "fluid": false,
-                        "fluidHeadline": false,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
                         "headline": "Embad iFrame Video Example",
                         "caption": "An iFrame example",
                         "cite": " - 'You've found it'",
-                        "embedVideo": true,
-                        "data": "embed-video.html"
+                        "isEmbedVideo": true,
+                        "data": "/embeds/embed-video.html"
                     },
                     {
                         "type": "html",
-                        "fluid": false,
-                        "fluidHeadline": false,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
                         "headline": "HTML Code Direct Embed Example",
                         "caption": "A HTML Code Direct Embed Example",
                         "cite": " - 'Who else?'",
-                        "data": "embed-html.html"
-                    },
-                    {
-                        "type": "paragraph",
-                        "headline": "Paragraph Headline",
-                        "fluid": "",
-                        "fluidHeadline": "",
-                        "lead": false,
-                        "quote": "",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. "
+                        "data": "/embeds/embed-html.html"
                     }
                 ]
             },
             {
-                "leadingImgFixed": "bg-01.png",
-                "headline": "Research",
-                "subhead": "Great outdoor view",
-                "subheadCaption": "The \"property lookup\" form can be used to access methods and properties of an object literal's or class's [[Prototype]]. Within a class's body, the reference of super can be either the superclass's constructor itself, or the constructor's prototype, depending on whether the execution context is instance creation or class initialization. See the Examples section for more details.",
-                "subheadList": [
-                    "What I did",
-                    "Qualitative Research",
-                    "Quantiative Reserch",
-                    "User Survy",
-                    "Stakeholders' Meeting"
-                ],
-                "content": [
-                    {
-                        "type": null,
-                        "headline": "A media type error example",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci."
-                    },
-                    {
-                        "type": "paragraph",
-                        "headline": "This is another Error",
-                        "fluid": true,
-                        "fluidHeadline": true,
-                        "lead": null,
-                        "quote": null,
-                        "data": 1221313
-                    },
-                    {
-                        "type": "paragraph",
-                        "headline": "Paragraph Headline",
-                        "fluid": null,
-                        "fluidHeadline": null,
-                        "lead": 2,
-                        "quote": null,
-                        "data": [
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum.",
-                            "Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                        ]
-                    },
-                    {
-                        "type": "image",
-                        "headline": "An image grid showing several images",
-                        "fluid": false,
-                        "lightbox": true,
-                        "data": [
-                            "example-01.png",
-                            "example-02.png",
-                            "example-03.png",
-                            "example-04.png"
-                        ]
-                    },
-                    {
-                        "type": "paragraph",
-                        "headline": "This is a paragrah headline too",
-                        "fluid": false,
-                        "fluidHeadline": false,
-                        "lead": null,
-                        "quote": null,
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    },
-                    {
-                        "type": "image",
-                        "fluid": true,
-                        "fluidHeadline": true,
-                        "lightbox": true,
-                        "maintainSize": false,
-                        "quote": null,
-                        "headline": "Fluid headline and content",
-                        "caption": "This is a demo image showing something",
-                        "data": "example-01.png"
-                    },
-                    {
-                        "type": "paragraph",
-                        "headline": "This is a paragrah headline too",
-                        "fluid": false,
-                        "fluidHeadline": false,
-                        "lead": null,
-                        "quote": null,
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    },
-                    {
-                        "type": "paragraph",
-                        "quote": true,
-                        "caption": "This is the block footer - ",
-                        "cite": "\"I said so\"",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    },
-                    {
-                        "type": "paragraph",
-                        "headline": "This is a paragrah headline too",
-                        "fluid": false,
-                        "fluidHeadline": false,
-                        "lead": null,
-                        "quote": null,
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    },
-                    {
-                        "type": "iframe",
-                        "fluid": true,
-                        "fluidHeadline": false,
-                        "headline": "iFrame Example",
-                        "caption": "An iFrame example",
-                        "data": "/src/static/example_usage/demo.html"
-                    },
-                    {
-                        "type": "paragraph",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    }
-                ]
-            },
-            {
-                "leadingImg": "bg-01.png",
-                "leadingImgBgColor": "#A20048",
-                "headline": "",
-                "content": [
-                    {
-                        "type": "paragraph",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    },
-                    {
-                        "type": "image",
-                        "fluid": true,
-                        "lightbox": true,
-                        "headline": "Gallery",
-                        "caption": "This is a list of phone face",
-                        "data": [
-                            "phone-1.png",
-                            "phone-1.png",
-                            "phone-1.png",
-                            "phone-1.png",
-                            "phone-1.png",
-                            "phone-1.png"
-                        ]
-                    },
-                    {
-                        "type": "paragraph",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    }
-                ]
-            },
-            {
-                "leadingImg": "bg-02.png",
+                "leadImg": "/images/bg-02.png",
+                "leadImgFixedHeight": "70vh",
                 "headline": "Prototype",
                 "content": [
                     {
                         "type": "paragraph",
                         "data": [
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. ",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                         ]
                     },
                     {
                         "type": "image",
-                        "maintainSize": true,
-                        "data": "example-a1.png"
+                        "caption": "image",
+                        "figCaption": "image",
+                        "isQuote": "image",
+                        "headline": "image",
+                        "isMaintainSize": true,
+                        "data": "/images/example-a1.png"
                     },
                     {
                         "type": "paragraph",
@@ -327,41 +227,39 @@
                 ]
             },
             {
-                "headline": "Result",
+                "leadImgFixed": "/images/bg-01.png",
+                "leadImgFixedHeight": "70vh",
+                "headline": "Edge Testing",
                 "content": [
                     {
-                        "type": "paragraph",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
+                        "type": "image",
+                        "headline": "Headline",
+                        "caption": "block caption here",
+                        "figCaption": "figCaption here",
+                        "isQuote": true,
+                        "isMaintainSize": true,
+                        "data": "/images/example-a1.png"
                     },
                     {
                         "type": "image",
-                        "data": "example-04.png",
-                        "lightbox": true
+                        "headline": 0,
+                        "caption": 0,
+                        "figCaption": 0,
+                        "isQuote": true,
+                        "isMaintainSize": true,
+                        "data": "/images/example-a1.png"
+                    },
+                    {
+                        "type": "awesomeHeadline",
+                        "data": 121344
+                    },
+                    {
+                        "type": "paragraph",
+                        "data": 121344
                     },
                     {
                         "type": "paragraph",
                         "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    }
-                ]
-            },
-            {
-                "headline": "What We've Learnt",
-                "content": [
-                    {
-                        "type": "paragraph",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                    },
-                    {
-                        "type": "image",
-                        "data": "example-03.png"
-                    },
-                    {
-                        "type": "paragraph",
-                        "data": [
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
-                        ]
                     }
                 ]
             }
