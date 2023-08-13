@@ -1,27 +1,42 @@
-// Scrolling Nav BG change
 function handleScrollForNavigation() {
     const pageNavbar = document.getElementById('page_navbar');
-    const projectNavName = document.querySelectorAll('.project_name');
-    const listenElements = document.querySelectorAll('.nav_listen_target');
+    const homeNavList = document.querySelectorAll('.home_page_navbar');
+
+    // Check if pageNavbar exists
+    if (!pageNavbar) {
+        console.warn('page_navbar element not found!');
+        return;
+    }
+
+    const navSubheads = pageNavbar.querySelectorAll('.project_name');
 
     if (window.scrollY > 200) {
-        pageNavbar.classList.add('bg-light');
-        listenElements.forEach((navElement) => {
-            navElement.classList.remove('navbar-dark');
+        pageNavbar.classList.add('bg-light', 'shadow-sm');
+
+        homeNavList.forEach(homeNav => {
+            homeNav.removeAttribute('data-bs-theme');
         });
-        projectNavName.forEach((projectNavName) => {
-            projectNavName.classList.remove('slideout');
+
+        navSubheads.forEach((subhead) => {
+            subhead.classList.remove('slideout');
         });
+
+        console.log('offset - no target');
     } else {
-        pageNavbar.classList.remove('bg-light');
-        listenElements.forEach((navElement) => {
-            navElement.classList.add('navbar-dark');
+        pageNavbar.classList.remove('bg-light', 'shadow-sm');
+
+        homeNavList.forEach(homeNav => {
+            homeNav.setAttribute('data-bs-theme', 'dark');
         });
-        projectNavName.forEach((projectNavName) => {
-            projectNavName.classList.add('slideout');
+
+        navSubheads.forEach((subhead) => {
+            subhead.classList.add('slideout');
         });
     }
 }
+
+
+
 
 document.addEventListener('DOMContentLoaded', handleScrollForNavigation);
 window.addEventListener('scroll', handleScrollForNavigation);

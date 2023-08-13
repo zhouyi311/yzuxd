@@ -9,7 +9,7 @@ include_once __DIR__ . '/class_renderer_article.php';
 
 $siteInfo = SiteInfo::loadInfo();
 
-$projectKey = $siteInfo->siteStructureInfo['projectPageQueryKey'];
+$projectKey = $siteInfo->pageKeys['projectKey'];
 $projectId = $_GET[$projectKey];
 
 $project = ProjectInfo::loadById($projectId);
@@ -55,7 +55,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
 
 //setup renderer
 $articleRenderer = new ArticleContentRenderer($project);
-$siteHeaderRenderer = new HeaderRenderer('project', $siteInfo, $project, $projectKey, $isPasswordRequired, $isAuthenticated);
+$siteHeaderRenderer = new HeaderRenderer('project', $project, $isPasswordRequired, $isAuthenticated);
 
 ?>
 
@@ -71,7 +71,7 @@ $siteHeaderRenderer = new HeaderRenderer('project', $siteInfo, $project, $projec
         ?>
 
         <!-- Main -->
-        <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
+        <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -25%" data-bs-smooth-scroll="true">
             <article class="project_article" id="project_<?php echo $projectId ?>">
                 <header class="project_article_header" id="page_home">
                     <div class="container">

@@ -10,10 +10,10 @@ require __DIR__ . '/src/php/class_info_site.php';
 $siteInfo = SiteInfo::loadInfo();
 
 // Check if $_GET['project'] is set
-$projectKey = $siteInfo->siteStructureInfo['projectPageQueryKey'];
+$projectKey = $siteInfo->pageKeys['projectKey'];
 $project = isset($_GET[$projectKey]) ? $_GET[$projectKey] : null;
 
-$archiveKey = $siteInfo->siteStructureInfo['archivePageQueryKey'];
+$archiveKey = $siteInfo->pageKeys['archiveKey'];
 $archive = isset($_GET[$archiveKey]) ?? null;
 
 // set error handeler

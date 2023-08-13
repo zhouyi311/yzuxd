@@ -10,8 +10,8 @@ include_once __DIR__ . '/class_renderer_cards.php';
 $siteInfo = SiteInfo::loadInfo();
 $projects = ProjectInfo::loadAll();
 
-$siteHeaderRenderer = new HeaderRenderer('home', $siteInfo);
-$projectCardsRenderer = new ProjectCardsRenderer($projects);
+$siteHeaderRenderer = new HeaderRenderer('home');
+$projectCardsRenderer = new ProjectCardsRenderer();
 
 ?>
 
@@ -24,7 +24,7 @@ $projectCardsRenderer = new ProjectCardsRenderer($projects);
         <!-- header -->
         <?php echo $siteHeaderRenderer->render(); ?>
         <!-- Main -->
-        <main id="home_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
+        <main id="home_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -25%" data-bs-smooth-scroll="true">
             <!-- hero -->
             <section class="homepage_home page_section" id="home">
                 <div class="container">

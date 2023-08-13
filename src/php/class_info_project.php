@@ -3,6 +3,7 @@
 class ProjectInfo
 {
     public $id;
+    public $anchorId;
     public $path;
     public $indexOrder;
     public $password;
@@ -36,39 +37,17 @@ class ProjectInfo
         foreach ($this->article as $index => &$section) {
             empty($section['headline']) ? $section['headline'] = 'Section ' . $index + 1 : null;
             $headlineId = strtolower(preg_replace('/[^a-z0-9]/i', '_', $section['headline'])); // Replace all special characters with underscores and lowercase
-            $headlineId = 'sec_' . ($index + 1) . '_' . $headlineId; // Add a prefix based on its position
-            $section['headlineId'] = $headlineId; // Store the ID in the data structure
+            $headlineId = 'sec_' . ($index + 1) . '_' . $headlineId; 
+            $section['headlineId'] = $headlineId; 
         }
     }
-
-    // private function sanitizeData($data)
-    // {
-    //     if (is_string($data)) {
-    //         return htmlspecialchars($data);
-    //     }
-
-    //     if (is_array($data)) {
-    //         foreach ($data as $key => &$value) {
-    //             if ($key === 'type' && $value === 'code') {
-    //                 continue; // Skip code type
-    //             }
-
-    //             if ($key !== 'data' || ($key === 'data' && (!isset($data['type']) || $data['type'] !== 'code'))) {
-    //                 $value = $this->sanitizeData($value);
-    //             }
-    //         }
-    //         unset($value); // To break the reference
-    //     }
-
-    //     return $data;
-    // }
 
     private static function getProjectDataFromFile($file)
     {
         $json = file_get_contents($file);
         $projectData = json_decode($json, true)[0];
 
-        if (!isset($projectData['id']) || empty($projectData['id'])) { // Check if 'id' is not set or empty, and then assign a unique ID based on the file path
+        if (empty($projectData['id'])) { // Check if 'id' is not set or empty, and then assign a unique ID based on the file path
             $projectData['id'] = basename($file) . "_" . crc32($file);
         }
 
@@ -97,6 +76,7 @@ class ProjectInfo
                     $project->id = $basenameId;
                 }
             }
+            $project->anchorId = 'p_' . substr(md5($project->id), 0, 8);
 
             $seenIds[] = $project->id;
             $projects[] = $project;

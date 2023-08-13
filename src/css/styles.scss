@@ -112,49 +112,29 @@ body {
     transition: background-color 0.5s;
     flex-wrap: nowrap;
 
-    &.project_navbar {
+    &.home_page_navbar {}
+
+    &.project_page_navbar {
         background-color: rgba($color: #fff, $alpha: 0.8);
     }
 
-    &.bg-light {
-        box-shadow: 0 0 1rem 0 rgba($color: #000000, $alpha: 0.1);
+    &.archive_page_navbar {
+        background-color: rgba($color: #fff, $alpha: 0.8);
     }
 
     .navbar-brand {
-        display: flex;
-        gap: 0.5rem;
-        flex-shrink: 1;
         overflow: hidden;
-        align-items: center;
-        line-height: 1.5rem;
-
-        a {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
-
-            &.logo {
-                align-self: center;
+        .site_title{
+            white-space: nowrap;
+            .site_logo{
+            }
+            .site_name{
             }
         }
-
-        &.navbar-dark {
-            text-shadow: 1px 1px 3px rgba($color: #000000, $alpha: 0.2);
-
-            img {
-                filter: invert(100%);
-            }
-        }
-
         .project_name {
-            text-overflow: ellipsis;
-            overflow: hidden;
-
             transition-property: opacity transform;
             transition-duration: 0.3s;
-
+            vertical-align: center;
             &.slideout {
                 opacity: 0;
                 transform: translateY(12px);
@@ -162,40 +142,48 @@ body {
             }
         }
     }
-
-    .navbar-toggler {
-        border: none;
-
-        &.navbar-dark {
-            span.navbar-toggler-icon {
-                color: white;
-            }
-        }
+    .navbar-toggler{
+        // box-shadow:none;
     }
 
-
     .offcanvas {
+        transition: 0.3s;
+        
         .offcanvas-body {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            .drawer_top_group {
-                flex-grow: 1;
-            }
-
             ul.navbar-nav {
-
-                // border-bottom: 1px solid $color-gray-ash;
                 li {
                     a {
                         padding-left: calc($unit-4 + 1px);
                         border-left: 1px solid $color-gray-medium;
-
-                        // transition: border-left 0.4s;
                         &.active {
                             padding-left: $unit-4;
                             border-left: 2px solid black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &[data-bs-theme="dark"] {
+        .navbar-brand {
+            text-shadow: 1px 1px 3px rgba($color: #000000, $alpha: 0.2);
+            .site_logo {
+                filter: invert(100%);
+            }
+        }
+
+        .offcanvas {
+            background-color: #0b0209;
+            border-left: 1px solid #1b1019;
+            .offcanvas-body {
+                ul.navbar-nav {
+                    li {
+                        a {
+                            border-left: 1px solid $color-white-medium;
+                            &.active {
+                                border-left: 2px solid white;
+                            }
                         }
                     }
                 }

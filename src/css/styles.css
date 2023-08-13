@@ -1028,41 +1028,22 @@ body a.no_deco {
   transition: background-color 0.5s;
   flex-wrap: nowrap;
 }
-.page_navbar.project_navbar {
+.page_navbar.project_page_navbar {
   background-color: rgba(255, 255, 255, 0.8);
 }
-.page_navbar.bg-light {
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
+.page_navbar.archive_page_navbar {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .page_navbar .navbar-brand {
-  display: flex;
-  gap: 0.5rem;
-  flex-shrink: 1;
   overflow: hidden;
-  align-items: center;
-  line-height: 1.5rem;
 }
-.page_navbar .navbar-brand a {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-}
-.page_navbar .navbar-brand a.logo {
-  align-self: center;
-}
-.page_navbar .navbar-brand.navbar-dark {
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
-.page_navbar .navbar-brand.navbar-dark img {
-  filter: invert(100%);
+.page_navbar .navbar-brand .site_title {
+  white-space: nowrap;
 }
 .page_navbar .navbar-brand .project_name {
-  text-overflow: ellipsis;
-  overflow: hidden;
   transition-property: opacity transform;
   transition-duration: 0.3s;
+  vertical-align: center;
 }
 .page_navbar .navbar-brand .project_name.slideout {
   opacity: 0;
@@ -1071,19 +1052,8 @@ body a.no_deco {
      -moz-user-select: none;
           user-select: none;
 }
-.page_navbar .navbar-toggler {
-  border: none;
-}
-.page_navbar .navbar-toggler.navbar-dark span.navbar-toggler-icon {
-  color: white;
-}
-.page_navbar .offcanvas .offcanvas-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.page_navbar .offcanvas .offcanvas-body .drawer_top_group {
-  flex-grow: 1;
+.page_navbar .offcanvas {
+  transition: 0.3s;
 }
 .page_navbar .offcanvas .offcanvas-body ul.navbar-nav li a {
   padding-left: calc(1.5rem + 1px);
@@ -1092,6 +1062,22 @@ body a.no_deco {
 .page_navbar .offcanvas .offcanvas-body ul.navbar-nav li a.active {
   padding-left: 1.5rem;
   border-left: 2px solid black;
+}
+.page_navbar[data-bs-theme=dark] .navbar-brand {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+.page_navbar[data-bs-theme=dark] .navbar-brand .site_logo {
+  filter: invert(100%);
+}
+.page_navbar[data-bs-theme=dark] .offcanvas {
+  background-color: #0b0209;
+  border-left: 1px solid #1b1019;
+}
+.page_navbar[data-bs-theme=dark] .offcanvas .offcanvas-body ul.navbar-nav li a {
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+}
+.page_navbar[data-bs-theme=dark] .offcanvas .offcanvas-body ul.navbar-nav li a.active {
+  border-left: 2px solid white;
 }
 
 section.page_section {

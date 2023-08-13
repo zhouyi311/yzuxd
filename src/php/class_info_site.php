@@ -4,15 +4,15 @@ class SiteInfo
 {
     public $sitename;
     public $information;
-    public $siteStructureInfo;
+    public $pageKeys;
     public $frontPageContent;
     public $rootUrl; // Declare the rootUrl property
 
-    public function __construct($sitename, $information, $siteStructureInfo, $frontPageContent)
+    public function __construct($sitename, $information, $pageKeys, $frontPageContent)
     {
         $this->sitename = $sitename;
         $this->information = $information; // This will be an associative array
-        $this->siteStructureInfo = $siteStructureInfo;
+        $this->pageKeys = $pageKeys;
         $this->frontPageContent = $frontPageContent; // This will be an associative array
         $this->rootUrl = $this->getSiteRootUrl(); // Set the rootUrl property
 
@@ -44,7 +44,7 @@ class SiteInfo
         return new SiteInfo(
             $data['sitename'],
             $data['information'], // Pass the entire 'information' object
-            $data['siteStructureInfo'],
+            $data['pageKeys'],
             $data['frontPageContent']
         );
     }

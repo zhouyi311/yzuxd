@@ -10,8 +10,8 @@ include_once __DIR__ . '/class_renderer_cards.php';
 $siteInfo = SiteInfo::loadInfo();
 $projects = ProjectInfo::loadAll();
 
-$siteHeaderRenderer = new HeaderRenderer('archive', $siteInfo);
-$projectCardsRendererWithHidden = new ProjectCardsRenderer($projects, true);
+$siteHeaderRenderer = new HeaderRenderer('archive');
+$projectCardsRendererWithHidden = new ProjectCardsRenderer(true);
 
 ?>
 
@@ -27,7 +27,7 @@ $projectCardsRendererWithHidden = new ProjectCardsRenderer($projects, true);
         ?>
         </header>
         <!-- Main -->
-        <main id="archive_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
+        <main id="archive_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -25%" data-bs-smooth-scroll="true">
             <!-- hero -->
             <section class="archive_page_home bg-white pt-5" id="home">
                 <div class="container">
