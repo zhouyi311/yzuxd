@@ -14,6 +14,10 @@
         "myGithub": "https://www.github.com/zhouyi311/",
         "myTwitter": "https://www.twitter.com/zhouyi311/"
     },
+    "siteStructureInfo": {
+        "archivePageQueryKey": "archive",
+        "projectPageQueryKey": "page"
+    },
     "frontPageContent": {
         "heroGreeting": "Oh là là!",
         "heroHeadline": "You've Found Me",

@@ -2,30 +2,18 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$queryKey = 'page';
-$urlQueryKey = "?{$queryKey}=";
-$projectId = $_GET[$queryKey];
-
-require_once __DIR__ . '/class_info_site.php';
+include_once __DIR__ . '/class_info_site.php';
 include_once __DIR__ . '/class_info_project.php';
+include_once __DIR__ . '/class_renderer_header.php';
 include_once __DIR__ . '/class_renderer_article.php';
 
-$site_info = SiteInfo::loadInfo();
+$siteInfo = SiteInfo::loadInfo();
+
+$projectKey = $siteInfo->siteStructureInfo['projectPageQueryKey'];
+$projectId = $_GET[$projectKey];
+
 $project = ProjectInfo::loadById($projectId);
 $articleRenderer = new ArticleContentRenderer($project);
-
-function getSiteRootUrl()
-{
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? "https://" : "http://";
-    $domainName = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
-    $folderPath = isset($_SERVER['SCRIPT_NAME']) ? dirname($_SERVER['SCRIPT_NAME']) : '';
-
-    if ($folderPath === '/' || $folderPath === '\\') {
-        return $protocol . $domainName . '/';
-    }
-    return $protocol . $domainName . $folderPath . '/';
-}
-$siteRootUrl = getSiteRootUrl(); // root url
 
 if (!$project) {
     header("HTTP/1.0 404 Not Found");
@@ -40,31 +28,29 @@ if (!$project) {
     exit;
 }
 
+// pw check process
 session_start();
 $project_pw = $project->password;
-
 // Check form submission
 if (isset($_POST['password']) && !isset($_SESSION['form_processed'])) {
     if ($_POST['password'] === $project->password) {
         $_SESSION['authenticated'] = true;
         $_SESSION['form_processed'] = true; // Set a flag to indicate form processed
-        header("Location: {$urlQueryKey}{$projectId}");
+        header("Location: ?{$projectKey}={$projectId}");
         exit;
     } else {
         $_SESSION['error_message'] = "Incorrect password!"; // Optionally, you can set an error message here if the password is incorrect.
     }
 }
-
-$isPasswordRequired = isset($project_pw) && $project_pw !== '' && $project_pw !== 'no';
-
-// Check if the user is authenticated for this project
+// Check pw requirement and if the user is authenticated for this project
+$isPasswordRequired = !empty($project_pw) && $project_pw !== 'no';
 $isAuthenticated = isset($_SESSION['authenticated']) && $_SESSION['authenticated'] === true;
 
 // If a password is posted and it matches the project password, set the authentication session
 if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_POST['password'] === $project_pw) {
     $_SESSION['authenticated'] = true;
     $isAuthenticated = true;
-    header("Location: {$urlQueryKey}{$projectId}");
+    header("Location: ?{$projectKey}={$projectId}");
     exit;
 }
 
@@ -84,11 +70,11 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                     <nav class="page_navbar project_navbar navbar fixed-top px-4" id="page_navbar">
                         <!-- nav logo -->
                         <div class="navbar-brand">
-                            <a class="logo" href="<?php echo $siteRootUrl; ?>">
+                            <a class="logo" href="<?php echo $siteInfo->rootUrl; ?>">
                                 <img src="src/img/favicon/logo.svg" alt="logo" height="24">
                             </a>
-                            <a class="h5 mb-0" href="<?php echo $siteRootUrl; ?>">
-                                <?php echo htmlspecialchars($site_info->sitename); ?>
+                            <a class="h5 mb-0" href="<?php echo $siteInfo->rootUrl; ?>">
+                                <?php echo htmlspecialchars($siteInfo->sitename); ?>
                             </a>
                             <?php
                             if (isset($project->title)) {
@@ -107,7 +93,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                         <div class="offcanvas offcanvas-end px-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                             <div class="offcanvas-header mb-4">
                                 <h3 class="offcanvas-title text-body-tertiary h6" id="offcanvasNavbarLabel">
-                                    <?php echo htmlspecialchars($site_info->information['siteTitle']); ?>
+                                    <?php echo htmlspecialchars($siteInfo->information['siteTitle']); ?>
                                 </h3>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
@@ -115,7 +101,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                 <div class="drawer_top_group">
                                     <h4 class="list_title fw-medium text-body-secondary h6 mb-4" id="offcanvasNavbarLabel">
                                         <i class='bi bi-list-ul pe-1 align-middle'></i>
-                                        <?php echo $project->title ? htmlspecialchars($project->title) : htmlspecialchars($site_info->information['siteTitle']); ?>
+                                        <?php echo $project->title ? htmlspecialchars($project->title) : htmlspecialchars($siteInfo->information['siteTitle']); ?>
                                     </h4>
                                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5" id="navbar_target">
                                         <li class="nav-item">
@@ -141,14 +127,14 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         $existLastProject = !empty($project->last->id);
                                         $existNextProject = !empty($project->next->id);
                                         if ($existLastProject) {
-                                            echo "<a class='btn btn-light text-truncate px-4' href='{$urlQueryKey}{$project->last->id}'><span class='fw-bold me-1'>Prev:</span><span class='inner_text fw-normal w-100'>{$project->last->title}</span></a>";
+                                            echo "<a class='btn btn-light text-truncate px-4' href='?{$projectKey}={$project->last->id}'><span class='fw-bold me-1'>Prev:</span><span class='inner_text fw-normal w-100'>{$project->last->title}</span></a>";
                                         }
                                         if ($existNextProject) {
-                                            echo "<a class='btn btn-light text-truncate px-4' href='{$urlQueryKey}{$project->next->id}'><span class='fw-bold me-1'>Next:</span><span class='inner_text fw-normal w-100'>{$project->next->title}</span></a>";
+                                            echo "<a class='btn btn-light text-truncate px-4' href='?{$projectKey}={$project->next->id}'><span class='fw-bold me-1'>Next:</span><span class='inner_text fw-normal w-100'>{$project->next->title}</span></a>";
                                         }
                                         ?>
                                     </div>
-                                    <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $siteRootUrl; ?>"><i class="bi bi-arrow-left pe-2 align-middle"></i><span class="w-100">
+                                    <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $siteInfo->rootUrl; ?>"><i class="bi bi-arrow-left pe-2 align-middle"></i><span class="w-100">
                                             HOMEPAGE</span></a>
                                 </div>
                             </div>
@@ -254,13 +240,14 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                 <?php
                                 $hasLastProject = isset($project->last->title);
                                 $hasNextProject = isset($project->next->title);
-                                function generateCTAContent($hasProject, $urlQueryKey, $targetProject, $type, $defaultMessage)
+                                $urlQueryKeyStatement = "?{$projectKey}=";
+                                function generateCTAContent($hasProject, $urlQueryKeyStatement, $targetProject, $type, $defaultMessage)
                                 {
                                     $iconLast = $type === "Previous" ? '<i class="bi bi-chevron-bar-left align-middle"></i>' : null;
                                     $iconNext = $type === "Next" ? '<i class="bi bi-chevron-bar-right align-middle"></i>' : null;
                                     $lastNextClass = $type === "Previous" ? 'pre_case' : 'next_case';
                                     $caseTitle = $type . "";
-                                    $projectPath = $targetProject ? $urlQueryKey . $targetProject->id : "#";
+                                    $projectPath = $targetProject ? $urlQueryKeyStatement . $targetProject->id : "#";
                                     $projectTitle = $targetProject ? $targetProject->title : $defaultMessage;
                                     $linkClass = $hasProject ? "" : "disabled";
 
@@ -276,8 +263,8 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         </a>";
                                 }
                                 ?>
-                                <?= generateCTAContent($hasLastProject, $urlQueryKey, $project->last ?? null, "Previous", "You're at the top"); ?>
-                                <?= generateCTAContent($hasNextProject, $urlQueryKey, $project->next ?? null, "Next", "You've reached the end"); ?>
+                                <?= generateCTAContent($hasLastProject, $urlQueryKeyStatement, $project->last ?? null, "Previous", "You're at the top"); ?>
+                                <?= generateCTAContent($hasNextProject, $urlQueryKeyStatement, $project->next ?? null, "Next", "You've reached the end"); ?>
                             </div>
                         </div>
                     </div>

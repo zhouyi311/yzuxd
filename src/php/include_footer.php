@@ -6,28 +6,28 @@
 
                 <img class="mb-2" src="src/img/favicon/logo.svg" alt="footer logo" style="height:30px; filter: filter: contrast(10%);">
                 <div class="fw-bold text-uppercase fs-6">
-                    <a class="text-dark text-decoration-none" href="<?php echo htmlspecialchars($siteRootUrl); ?>">
-                        <?php echo htmlspecialchars($site_info->sitename); ?>
+                    <a class="text-dark text-decoration-none" href="<?php echo $siteInfo->rootUrl; ?>">
+                        <?php echo htmlspecialchars($siteInfo->sitename); ?>
                     </a>
                 </div>
                 <div class="fw-medium">
-                    <?php echo htmlspecialchars($site_info->information['siteTitle']); ?>
+                    <?php echo htmlspecialchars($siteInfo->information['siteTitle']); ?>
                 </div>
             </div>
         </div>
         <div class="row mb-1">
             <div class="d-flex justify-content-center gap-2 gap-md-3 text-secondary">
                 <div>
-                    <a class="text-secondary text-decoration-none " href="mailto:<?php echo htmlspecialchars($site_info->information["myEmail"]); ?>">Email</a>
+                    <a class="text-secondary text-decoration-none " href="mailto:<?php echo htmlspecialchars($siteInfo->information["myEmail"]); ?>">Email</a>
                 </div>|
                 <div>
-                    <a class="text-secondary text-decoration-none " href="<?php echo htmlspecialchars($site_info->information["myLinkedin"]); ?>" target="_blank">LinkedIn</a>
+                    <a class="text-secondary text-decoration-none " href="<?php echo htmlspecialchars($siteInfo->information["myLinkedin"]); ?>" target="_blank">LinkedIn</a>
                 </div>|
                 <div>
-                    <a class="text-secondary text-decoration-none " href="<?php echo htmlspecialchars($site_info->information["myGithub"]); ?>" target="_blank">GitHub</a>
+                    <a class="text-secondary text-decoration-none " href="<?php echo htmlspecialchars($siteInfo->information["myGithub"]); ?>" target="_blank">GitHub</a>
                 </div>|
                 <div>
-                    <a class="text-secondary text-decoration-none " href="<?php echo htmlspecialchars($site_info->information["myTwitter"]); ?>" target="_blank">Twitter</a>
+                    <a class="text-secondary text-decoration-none " href="<?php echo htmlspecialchars($siteInfo->information["myTwitter"]); ?>" target="_blank">Twitter</a>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="col">
                 <div class="text-center">
                     Copyright &copy;
-                    <?php echo htmlspecialchars($site_info->information["siteCopyright"]); ?>
+                    <?php echo htmlspecialchars($siteInfo->information["siteCopyright"]); ?>
                 </div>
             </div>
         </div>
@@ -51,14 +51,14 @@ $allowed_hosts = ['zhouyiwork.com', 'yzuxd.com'];
 $http_host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
 if (in_array($http_host, $allowed_hosts)): ?>
     <!-- Google tag (gtag.js) -->
-    <script async src='https://www.googletagmanager.com/gtag/js?id=<?php echo htmlspecialchars($site_info->information["siteGaTag"]); ?>'></script>
+    <script async src='https://www.googletagmanager.com/gtag/js?id=<?php echo htmlspecialchars($siteInfo->information["siteGaTag"]); ?>'></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
-        gtag('config', '<?php echo htmlspecialchars($site_info->information["siteGaTag"]); ?>');
+        gtag('config', '<?php echo htmlspecialchars($siteInfo->information["siteGaTag"]); ?>');
     </script>
-<?php
+    <?php
 endif;
 ?>

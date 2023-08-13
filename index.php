@@ -7,10 +7,14 @@ error_reporting(E_ALL);
 
 // include site info
 require __DIR__ . '/src/php/class_info_site.php';
-$site_info = SiteInfo::loadInfo();
+$siteInfo = SiteInfo::loadInfo();
 
 // Check if $_GET['project'] is set
-$page = isset($_GET['page']) ? $_GET['page'] : null;
+$projectKey = $siteInfo->siteStructureInfo['projectPageQueryKey'];
+$project = isset($_GET[$projectKey]) ? $_GET[$projectKey] : null;
+
+$archiveKey = $siteInfo->siteStructureInfo['archivePageQueryKey'];
+$archive = isset($_GET[$archiveKey]) ?? null;
 
 // set error handeler
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
@@ -22,13 +26,13 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 
 // load home or project page based on id
 try {
-    if ($page === 'sitemap') {
-        if (file_exists(__DIR__ . '/src/php/page_sitemap.php')) {
-            include __DIR__ . '/src/php/page_sitemap.php';
+    if ( $archive ) {
+        if (file_exists(__DIR__ . '/src/php/page_archive.php')) {
+            include __DIR__ . '/src/php/page_archive.php';
         } else {
-            throw new Exception('The sitemap page error.');
+            throw new Exception('The archive page error.');
         }
-    } elseif (!empty($page)) {
+    } elseif (!empty($project)) {
         if (file_exists(__DIR__ . '/src/php/page_project.php')) {
             include __DIR__ . '/src/php/page_project.php';
         } else {

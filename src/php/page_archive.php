@@ -4,22 +4,10 @@ ini_set('display_errors', 1);
 
 include_once __DIR__ . '/class_info_site.php';
 include_once __DIR__ . '/class_info_project.php';
+include_once __DIR__ . '/class_renderer_header.php';
 
-$site_info = SiteInfo::loadInfo();
+$siteInfo = SiteInfo::loadInfo();
 $projects = ProjectInfo::loadAll();
-
-function getSiteRootUrl()
-{
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? "https://" : "http://";
-    $domainName = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
-    $folderPath = isset($_SERVER['SCRIPT_NAME']) ? dirname($_SERVER['SCRIPT_NAME']) : '';
-
-    if ($folderPath === '/' || $folderPath === '\\') {
-        return $protocol . $domainName . '/';
-    }
-    return $protocol . $domainName . $folderPath . '/';
-}
-$siteRootUrl = getSiteRootUrl(); // root url
 
 ?>
 
@@ -37,11 +25,11 @@ $siteRootUrl = getSiteRootUrl(); // root url
                     <nav class="page_navbar sitemap_navbar navbar fixed-top px-4" id="page_navbar" data-bs-theme="light">
                         <!-- nav logo -->
                         <div class="navbar-brand">
-                            <a class="logo" href="<?php echo $siteRootUrl; ?>">
+                            <a class="logo" href="<?php echo $siteInfo->rootUrl; ?>">
                                 <img src="src/img/favicon/logo.svg" alt="logo" height="24">
                             </a>
-                            <a class="h5 mb-0" href="<?php echo $siteRootUrl; ?>">
-                                <?php echo htmlspecialchars($site_info->sitename); ?>
+                            <a class="h5 mb-0" href="<?php echo $siteInfo->rootUrl; ?>">
+                                <?php echo htmlspecialchars($siteInfo->sitename); ?>
                             </a>
                         </div>
                         <!-- nav btn -->
@@ -53,11 +41,10 @@ $siteRootUrl = getSiteRootUrl(); // root url
                         <div class="offcanvas offcanvas-end px-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                             <div class="offcanvas-header mb-4">
                                 <h3 class="offcanvas-title h6 text-body-tertiary" id="offcanvasNavbarLabel">
-                                    <?php echo htmlspecialchars($site_info->information['siteTitle']); ?>
+                                    <?php echo htmlspecialchars($siteInfo->information['siteTitle']); ?>
                                 </h3>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
-                            <a class="link link-dark p-3" href="<?php echo $siteRootUrl ?>"><span class="h6"><i class="bi bi-arrow-left me-2"></i>RETURN HOME PAGE</span></a>
                             <div class="offcanvas-body">
                                 <div class="drawer_top_group">
                                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="navbar_target">
@@ -66,11 +53,13 @@ $siteRootUrl = getSiteRootUrl(); // root url
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="drawer_btm_group">
-                                    <p class=" text-body-tertiary">
-                                        &copy;
-                                        <?php echo htmlspecialchars($site_info->information['siteCopyright']); ?>
-                                    </p>
+                                <div class="drawer_btm_group d-flex flex-column gap-4 pb-5">
+                                    <div class="btn-group rounded-pill fw-bold overflow-hidden" role="group">
+                                    </div>
+                                    <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $siteInfo->rootUrl; ?>">
+                                        <i class="bi bi-arrow-left pe-2 align-middle"></i>
+                                        <span class="w-100">HOMEPAGE</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +67,6 @@ $siteRootUrl = getSiteRootUrl(); // root url
                 </div>
             </div>
         </header>
-
         <!-- Main -->
         <main id="sitemap_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
             <!-- hero -->
@@ -87,9 +75,10 @@ $siteRootUrl = getSiteRootUrl(); // root url
                     <div class="row">
                         <div class='col-12'>
                             <h1 class="text-uppercase my-5">
-                                All Pages
+                                Site Archive
                             </h1>
-                            <img src="src/img/all-page-dec-01.png" alt="head banner decoration" class="w-100">
+                            <img src="src/img/all-page-deco-01.png" alt="head banner decoration" class="w-100 rounded-5">
+                            <!-- <div class='col-12 text-body-tertiary'><hr></div> -->
                         </div>
                     </div>
                 </div>
@@ -100,14 +89,13 @@ $siteRootUrl = getSiteRootUrl(); // root url
                 <div class="container">
                     <div class="row">
                         <div class="section_headline">
-                            <h2 class="text-black">Showcase Projects</h2>
+                            <h2 class="text-black h3 fw-bold">Showcase Pages</h2>
                         </div>
                     </div>
                 </div>
                 <div class="container" id="projects_container">
                     <div class="row gy-4 gy-lg-5 gx-xl-5">
-                        <?php
-                        function createProjectCard($project, $isFeatured = true)
+                        <?php function createProjectCard($project, $isFeatured = true)
                         {
                             $projectPath = $project->path . "/";
                             $projectLink = '?page=' . htmlspecialchars($project->id);
@@ -143,8 +131,9 @@ $siteRootUrl = getSiteRootUrl(); // root url
                                 }
                                 echo "</div>";
                             }
-                            echo "<a href='$projectLink' class='link link-secondary'>";
-                            echo "<div class='card_info_summary" . ($isFeatured ? null : "_alt") . "'>";
+                            echo "<a href='$projectLink' class='link link-secondary p_a_summary_link'>";
+                            echo "<div class='card_info_summary" . "'>";
+                            //  . ($isFeatured ? null : "_alt")
                             echo "<div class='summary_content no_mask'>";
                             foreach ($summaryText as $textItem) {
                                 echo "<p class='mb-1 text-body-secondary'>" . htmlspecialchars($textItem) . "</p>";
@@ -154,29 +143,33 @@ $siteRootUrl = getSiteRootUrl(); // root url
                         }
                         function renderProjects($projects)
                         {
+                            $count = 0;
                             foreach ($projects as $project) {
                                 if ($project->indexOrder >= 0 && $project->indexOrder < 10) {
                                     createProjectCard($project);
+                                    $count++;
                                 } elseif ($project->indexOrder >= 10) {
                                     createProjectCard($project);
+                                    $count++;
                                 }
                             }
-                            echo "<div class='col-12'><hr></div>";
-                            echo "<h3>Other Pages</h3>";
+                            if ($count===0){
+                                echo "<p>Empty :)</p>";
+                            }
+                            echo "<div class='col-12 text-body-tertiary'><hr></div>";
+                            echo "<h3 class='fw-bold'>Archived Pages</h3>";
+
                             foreach ($projects as $project) {
                                 if ($project->indexOrder < 0) {
                                     createProjectCard($project, false);
                                 }
                             }
                         }
-
-                        renderProjects($projects)
-                            ?>
-
+                        renderProjects($projects) ?>
                     </div>
                 </div>
                 <h6 class="text-center mt-5 pt-5 mx-5">
-                    Thanks for visiting, have a nice day and evening.
+                    Thanks for visiting my site, I hope you have a lovely day and evening.
                 </h6>
 
             </section>

@@ -434,22 +434,38 @@ section.page_section#projects {
                     .summary_content {
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        max-height: calc(1.5rem * 3);
                         display: -webkit-box;
                         -webkit-line-clamp: 3;
                         -webkit-box-orient: vertical;
+                        max-height: calc(1.5rem * 3);
                     }
                 }
 
-                .card_info_summary_alt {
-                    max-height: 6em;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+                .p_a_summary_link {
+                    text-decoration: none;
+                    grid-row: span 2;
 
-                    .summary_content {
+                    .card_info_summary {
+                        max-height: 24em;
                         overflow: hidden;
+                        text-overflow: ellipsis;
+
+                        .summary_content {
+                            overflow: hidden;
+                            -webkit-line-clamp: 6;
+                            max-height: calc(1.5rem * 6);
+                            p {
+                                padding: 0;
+                                margin: 0;
+                                line-height: 1.2em;
+                                text-decoration: none;
+                            }
+                        }
                     }
+
                 }
+
+
             }
 
             &.featured_card {

@@ -16,7 +16,7 @@ class ArticleContentRenderer
     public function render()
     {
         foreach ($this->project->article as $section) {
-            $this->leadingImageFormatter($section);
+            $this->renderLeadImg($section);
             $this->renderSection($section);
         }
     }
@@ -147,7 +147,7 @@ class ArticleContentRenderer
         }
     }
 
-    private function leadingImageFormatter($section)
+    private function renderLeadImg($section)
     {
         $projPath = $this->projPath;
         $headline = $this->sanitizeValue($section, 'headline');

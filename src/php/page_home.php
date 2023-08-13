@@ -4,22 +4,12 @@ ini_set('display_errors', 1);
 
 include_once __DIR__ . '/class_info_site.php';
 include_once __DIR__ . '/class_info_project.php';
+include_once __DIR__ . '/class_renderer_header.php';
 
-$site_info = SiteInfo::loadInfo();
+$siteInfo = SiteInfo::loadInfo();
 $projects = ProjectInfo::loadAll();
 
-function getSiteRootUrl()
-{
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? "https://" : "http://";
-    $domainName = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
-    $folderPath = isset($_SERVER['SCRIPT_NAME']) ? dirname($_SERVER['SCRIPT_NAME']) : '';
-
-    if ($folderPath === '/' || $folderPath === '\\') {
-        return $protocol . $domainName . '/';
-    }
-    return $protocol . $domainName . $folderPath . '/';
-}
-$siteRootUrl = getSiteRootUrl(); // root url
+$siteHeaderRenderer = new HeaderRenderer('home', $siteInfo);
 
 ?>
 
@@ -37,11 +27,11 @@ $siteRootUrl = getSiteRootUrl(); // root url
                     <nav class="page_navbar homepage_navbar navbar fixed-top px-4" id="page_navbar">
                         <!-- nav logo -->
                         <div class="navbar-brand nav_listen_target">
-                            <a class="logo" href="<?php echo $siteRootUrl; ?>">
+                            <a class="logo" href="<?php echo $siteInfo->rootUrl; ?>">
                                 <img src="src/img/favicon/logo.svg" alt="logo" height="24">
                             </a>
-                            <a class="h5 mb-0" href="<?php echo $siteRootUrl; ?>">
-                                <?php echo htmlspecialchars($site_info->sitename); ?>
+                            <a class="h5 mb-0" href="<?php echo $siteInfo->rootUrl; ?>">
+                                <?php echo htmlspecialchars($siteInfo->sitename); ?>
                             </a>
                         </div>
                         <!-- nav btn -->
@@ -53,7 +43,7 @@ $siteRootUrl = getSiteRootUrl(); // root url
                         <div class="offcanvas offcanvas-end px-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                             <div class="offcanvas-header mb-4">
                                 <h3 class="offcanvas-title h6 text-body-tertiary" id="offcanvasNavbarLabel">
-                                    <?php echo htmlspecialchars($site_info->information['siteTitle']); ?>
+                                    <?php echo htmlspecialchars($siteInfo->information['siteTitle']); ?>
                                 </h3>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
@@ -74,10 +64,12 @@ $siteRootUrl = getSiteRootUrl(); // root url
                                     </ul>
                                 </div>
                                 <div class="drawer_btm_group">
-                                    <p class=" text-body-tertiary">
-                                        <span class="me-3">
-                                        &copy;
-                                        <?php echo htmlspecialchars($site_info->information['siteCopyright']); ?></span> | <span class="ms-3"><a class="link link-secondary link-underline-light link-opacity-25" href="<?php echo $siteRootUrl ?>?page=sitemap">Sitemap</a></span>
+                                    <p class="fw-medium d-flex justify-content-between w-100">
+                                        <span class="text-body-tertiary"> &copy;
+                                            <?php echo htmlspecialchars($siteInfo->information['siteCopyright']); ?>
+                                        </span>
+                                        <!-- <span class="text_subtle mx-3">|</span> -->
+                                        <span class=""><a class="link text_subtle" href="<?php echo $siteInfo->rootUrl ?>?archive">Archive</a></span>
                                     </p>
                                 </div>
                             </div>
@@ -98,21 +90,21 @@ $siteRootUrl = getSiteRootUrl(); // root url
                                 <!-- hero card -->
                                 <div class="col-12">
                                     <h2 class="text-white display-4 mt-3">
-                                        <?php echo htmlspecialchars($site_info->frontPageContent["heroGreeting"]); ?>
+                                        <?php echo htmlspecialchars($siteInfo->frontPageContent["heroGreeting"]); ?>
                                     </h2>
                                     <h1 class="text-white text_hero">
-                                        <?php echo $site_info->frontPageContent["heroHeadline"]; ?>
+                                        <?php echo $siteInfo->frontPageContent["heroHeadline"]; ?>
                                     </h1>
                                 </div>
                                 <div class='col-md-7 col-lg-5'>
                                     <div class="text-white">
                                         <p class="lead text-light">
-                                            <?php echo htmlspecialchars($site_info->frontPageContent["heroIntroduction"]); ?>
+                                            <?php echo htmlspecialchars($siteInfo->frontPageContent["heroIntroduction"]); ?>
                                         </p>
                                     </div>
                                     <div class="text-white-50">
                                         <?php
-                                        foreach ($site_info->frontPageContent["heroParagraphsArray"] as $heroParagraph) {
+                                        foreach ($siteInfo->frontPageContent["heroParagraphsArray"] as $heroParagraph) {
                                             $heroParagraph = htmlspecialchars($heroParagraph);
                                             echo "<p>$heroParagraph</p> ";
                                         }
@@ -120,7 +112,7 @@ $siteRootUrl = getSiteRootUrl(); // root url
                                     </div>
                                     <div class="call_to_action_group mb-4 mt-5">
                                         <a class="hero_btn btn btn-dark btn-lg border-0 rounded-pill px-5" href="#projects">
-                                            <?php echo htmlspecialchars($site_info->frontPageContent["heroCallToAction"]); ?>
+                                            <?php echo htmlspecialchars($siteInfo->frontPageContent["heroCallToAction"]); ?>
                                             <i class="bi bi-arrow-down-short align-middle"></i>
                                         </a>
                                     </div>
@@ -222,12 +214,20 @@ $siteRootUrl = getSiteRootUrl(); // root url
                             echo "Learn More <i class='bi bi-arrow-right-short align-middle'></i>";
                             echo "</a></div></div></div></div>";
                         }
+
+                        $countProjs = 0;
+
                         foreach ($projects as $project) {
                             if ($project->indexOrder >= 0 && $project->indexOrder < 10) {
                                 createProjectCard($project, true);
+                                $countProjs++;
                             } elseif ($project->indexOrder >= 10) {
                                 createProjectCard($project, false);
+                                $countProjs++;
                             }
+                        }
+                        if ($countProjs === 0) {
+                            echo "<div class='col'>Not enough projects, please check data</div>";
                         }
                         ?>
                     </div>
@@ -268,30 +268,30 @@ $siteRootUrl = getSiteRootUrl(); // root url
 
                                     <h4>EMAIL</h4>
                                     <div class="mb-4">
-                                        <a class="text-dark link-offset-3 text-decoration-none" href="mailto:<?php echo htmlspecialchars($site_info->information['myEmail']); ?>">
-                                            <?php echo htmlspecialchars($site_info->information['myEmail']); ?>
+                                        <a class="text-dark link-offset-3 text-decoration-none" href="mailto:<?php echo htmlspecialchars($siteInfo->information['myEmail']); ?>">
+                                            <?php echo htmlspecialchars($siteInfo->information['myEmail']); ?>
                                         </a>
                                     </div>
 
                                     <h4>LOCATION</h4>
                                     <div class="mb-4">
-                                        <?php echo htmlspecialchars($site_info->information['myLocation']); ?>
+                                        <?php echo htmlspecialchars($siteInfo->information['myLocation']); ?>
                                     </div>
 
                                     <h4>SOCIAL NETWORK</h4>
                                     <div class="d-flex gap-4 mb-3">
                                         <div>
-                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($site_info->information['myLinkedin']); ?>">
+                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($siteInfo->information['myLinkedin']); ?>">
                                                 <i class=" bi bi-linkedin align-middle" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>
                                         <div>
-                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($site_info->information['myGithub']); ?>">
+                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($siteInfo->information['myGithub']); ?>">
                                                 <i class=" bi bi-github align-middle" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>
                                         <div>
-                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($site_info->information['myTwitter']); ?>">
+                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($siteInfo->information['myTwitter']); ?>">
                                                 <i class=" bi bi-twitter align-middle" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>

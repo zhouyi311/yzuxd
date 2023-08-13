@@ -256,17 +256,24 @@ body .none_select {
   -webkit-user-select: none;
   pointer-events: none;
 }
-body .bg_subtle {
-  background-color: rgba(0, 0, 0, 0.07);
-}
-body .text_subtle {
-  color: rgba(0, 0, 0, 0.03);
-  text-decoration: none;
-}
 body .hidden {
   display: none;
   visibility: hidden;
   opacity: 0;
+}
+body .bg_subtle {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+body .text_fade {
+  color: rgba(0, 0, 0, 0.03);
+  text-decoration: none;
+}
+body .text_subtle {
+  color: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+body a.no_deco {
+  text-decoration: none;
 }
 body .lightbox-enabled {
   cursor: pointer;
@@ -678,18 +685,30 @@ section.page_section#projects #projects_container .project_card .card_info .card
 section.page_section#projects #projects_container .project_card .card_info .card_info_summary .summary_content {
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 4.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  max-height: 4.5rem;
 }
-section.page_section#projects #projects_container .project_card .card_info .card_info_summary_alt {
-  max-height: 6em;
+section.page_section#projects #projects_container .project_card .card_info .p_a_summary_link {
+  text-decoration: none;
+  grid-row: span 2;
+}
+section.page_section#projects #projects_container .project_card .card_info .p_a_summary_link .card_info_summary {
+  max-height: 24em;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-section.page_section#projects #projects_container .project_card .card_info .card_info_summary_alt .summary_content {
+section.page_section#projects #projects_container .project_card .card_info .p_a_summary_link .card_info_summary .summary_content {
   overflow: hidden;
+  -webkit-line-clamp: 6;
+  max-height: 9rem;
+}
+section.page_section#projects #projects_container .project_card .card_info .p_a_summary_link .card_info_summary .summary_content p {
+  padding: 0;
+  margin: 0;
+  line-height: 1.2em;
+  text-decoration: none;
 }
 section.page_section#projects #projects_container .project_card.featured_card {
   display: grid;

@@ -4,9 +4,9 @@
     <title>
         <?php
         if (isset($project)) {
-            echo htmlspecialchars($project->title) . " | " . htmlspecialchars($site_info->sitename);
+            echo htmlspecialchars($project->title) . " | " . htmlspecialchars($siteInfo->sitename);
         } else {
-            echo ($site_info->sitename) . " | " . ($site_info->information['siteTitle']);
+            echo ($siteInfo->sitename) . " | " . ($siteInfo->information['siteTitle']);
         }
         ?>
     </title>
@@ -16,7 +16,7 @@
         $summaryText = $project->summary['text'];
         echo htmlspecialchars(is_array($summaryText) ? implode(' ', $summaryText) : $summaryText);
     } else {
-        echo htmlspecialchars($site_info->information['siteDescription']);
+        echo htmlspecialchars($siteInfo->information['siteDescription']);
     }
     ?>">
 
