@@ -256,6 +256,13 @@ body .none_select {
   -webkit-user-select: none;
   pointer-events: none;
 }
+body .bg_subtle {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+body .text_subtle {
+  color: rgba(0, 0, 0, 0.03);
+  text-decoration: none;
+}
 body .hidden {
   display: none;
   visibility: hidden;
@@ -424,7 +431,7 @@ section.page_section .bg_container {
   height: 100%;
 }
 
-section.page_section#home {
+section.homepage_home {
   padding: 10rem 0 8rem 0;
   min-height: 100vh;
   overflow: hidden;
@@ -434,28 +441,28 @@ section.page_section#home {
   position: relative;
 }
 @media (max-width: 991px) {
-  section.page_section#home {
+  section.homepage_home {
     padding: 6rem 0 3rem 0;
   }
 }
-section.page_section#home .hero_card {
+section.homepage_home .hero_card {
   position: relative;
   z-index: 1;
 }
-section.page_section#home .hero_card .text_hero {
+section.homepage_home .hero_card .text_hero {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
-section.page_section#home .hero_card .hero_btn {
+section.homepage_home .hero_card .hero_btn {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   background-color: rgba(255, 0, 84, 0.3);
   color: white;
   transition: background-color 0.4s;
 }
-section.page_section#home .hero_card .hero_btn:hover {
+section.homepage_home .hero_card .hero_btn:hover {
   background-color: rgba(255, 0, 84, 0.8);
 }
 @media (max-width: 767px) {
-  section.page_section#home .hero_card {
+  section.homepage_home .hero_card {
     -webkit-backdrop-filter: blur(1rem);
             backdrop-filter: blur(1rem);
     background-color: rgba(15, 15, 15, 0.25);
@@ -463,7 +470,7 @@ section.page_section#home .hero_card .hero_btn:hover {
     margin-bottom: 4rem;
   }
 }
-section.page_section#home .bg_container {
+section.homepage_home .bg_container {
   position: absolute;
   display: flex;
   align-items: center;
@@ -476,19 +483,19 @@ section.page_section#home .bg_container {
   background-image: linear-gradient(317deg, #120512 0%, #3F001E 100%);
 }
 @media (max-width: 1200px) {
-  section.page_section#home .bg_container {
+  section.homepage_home .bg_container {
     min-width: 100%;
     min-height: 100%;
   }
 }
-section.page_section#home .bg_container .hero_decoration_container {
+section.homepage_home .bg_container .hero_decoration_container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-section.page_section#home .bg_container .hero_decoration_container canvas {
+section.homepage_home .bg_container .hero_decoration_container canvas {
   width: 100%;
   height: 100%;
   top: 0;
@@ -497,7 +504,7 @@ section.page_section#home .bg_container .hero_decoration_container canvas {
   position: absolute;
   z-index: -2;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper {
   height: 100%;
   width: 100%;
   position: relative;
@@ -507,19 +514,19 @@ section.page_section#home .bg_container .hero_decoration_container .extra_wrappe
   z-index: -1;
 }
 @media (max-width: 767px) {
-  section.page_section#home .bg_container .hero_decoration_container .extra_wrapper {
+  section.homepage_home .bg_container .hero_decoration_container .extra_wrapper {
     opacity: 0.6;
     transform: scale(150%);
     transform-origin: center;
   }
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner {
   transform-style: preserve-3d;
   perspective: 1000px;
   position: relative;
   --transform-initial: rotateX(10deg) rotateY(-24deg) rotateZ(8deg);
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_bg {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_bg {
   position: absolute;
   top: 0%;
   left: 0%;
@@ -532,25 +539,25 @@ section.page_section#home .bg_container .hero_decoration_container .extra_wrappe
   transform-origin: 10% 35%;
   transform: scale(110%);
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items {
   transform-style: preserve-3d;
   transform-origin: center;
   transform: scale(70%);
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable {
   transform-style: preserve-3d;
   transition: transform 0.2s ease-out;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting {
   position: relative;
   transform-style: preserve-3d;
   animation: decTilt 17s infinite linear;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .hero_tilting_group {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .hero_tilting_group {
   transform-style: preserve-3d;
   transform: var(--transform-initial);
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .hero_decoration {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .hero_decoration {
   position: relative;
   transform-style: preserve-3d;
   -webkit-user-select: none;
@@ -562,44 +569,44 @@ section.page_section#home .bg_container .hero_decoration_container .extra_wrappe
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .hero_decoration.extra_layer {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .hero_decoration.extra_layer {
   position: absolute;
   top: 0;
   left: 0;
   filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.1)) drop-shadow(0px 10px 16px rgba(0, 0, 0, 0.4));
   animation-duration: 5.7s;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_0 {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_0 {
   animation-name: ztrans-0;
   animation-duration: 6.1s;
   animation-delay: -1s;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_1 {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_1 {
   animation-name: ztrans-1;
   animation-duration: 9.1s;
   animation-delay: -3.7s;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_2 {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_2 {
   animation-name: ztrans-2;
   animation-delay: -5s;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_3 {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_3 {
   animation-name: ztrans-3;
   animation-delay: -4s;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_4 {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_4 {
   animation-name: ztrans-4;
   animation-delay: -3s;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_5 {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_5 {
   animation-name: ztrans-5;
   animation-delay: -2s;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_6 {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_6 {
   animation-name: ztrans-6;
   animation-delay: -1s;
 }
-section.page_section#home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_7 {
+section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .bg_positioner .dec_items #hero_moveable .hero_self_tilting .ztrans_7 {
   animation-name: ztrans-7;
   animation-delay: 0s;
 }
@@ -675,6 +682,14 @@ section.page_section#projects #projects_container .project_card .card_info .card
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+section.page_section#projects #projects_container .project_card .card_info .card_info_summary_alt {
+  max-height: 6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+section.page_section#projects #projects_container .project_card .card_info .card_info_summary_alt .summary_content {
+  overflow: hidden;
 }
 section.page_section#projects #projects_container .project_card.featured_card {
   display: grid;

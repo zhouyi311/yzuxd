@@ -25,12 +25,12 @@ function getSiteRootUrl()
     }
     return $protocol . $domainName . $folderPath . '/';
 }
-$site_root_url = getSiteRootUrl(); // root url
+$siteRootUrl = getSiteRootUrl(); // root url
 
 if (!$project) {
     header("HTTP/1.0 404 Not Found");
-    $_POST['error_title'] = 'Project does not exist';
-    $_POST['error_message'] = 'Please ensure that the project ID is valid.';
+    $_POST['error_title'] = 'Page does not exist';
+    $_POST['error_message'] = 'Please ensure that the page ID is valid.';
     if (!@include(__DIR__ . '/page_404.php')) {
         echo "<h1>Error 404</h1>";
         echo "<h2>" . $_POST['error_title'] . "</h2>";
@@ -84,10 +84,10 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                     <nav class="page_navbar project_navbar navbar fixed-top px-4" id="page_navbar">
                         <!-- nav logo -->
                         <div class="navbar-brand">
-                            <a class="logo" href="<?php echo $site_root_url; ?>">
+                            <a class="logo" href="<?php echo $siteRootUrl; ?>">
                                 <img src="src/img/favicon/logo.svg" alt="logo" height="24">
                             </a>
-                            <a class="h5 mb-0" href="<?php echo $site_root_url; ?>">
+                            <a class="h5 mb-0" href="<?php echo $siteRootUrl; ?>">
                                 <?php echo htmlspecialchars($site_info->sitename); ?>
                             </a>
                             <?php
@@ -148,7 +148,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                         }
                                         ?>
                                     </div>
-                                    <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $site_root_url; ?>"><i class="bi bi-arrow-left pe-2 align-middle"></i><span class="w-100">
+                                    <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $siteRootUrl; ?>"><i class="bi bi-arrow-left pe-2 align-middle"></i><span class="w-100">
                                             HOMEPAGE</span></a>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                             echo "<div class='article_category d-flex gap-2'>";
                                             foreach ($project->summary['categories'] as $category) {
                                                 $category = htmlspecialchars($category);
-                                                echo "<span class='category-container badge bg-light text-secondary rounded-pill '>$category</span> ";
+                                                echo "<span class='category-container badge bg_subtle text-secondary rounded-pill '>$category</span> ";
                                             }
                                             echo "</div>";
                                         }
@@ -202,7 +202,7 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
                                             echo "<div class='d-flex gap-3 mt-4'>";
                                             $demo_link = ($project->summary['demoLink']);
                                             foreach ($demo_link as $name => $link) {
-                                                echo "<a class='btn btn-light rounded-pill px-4' href='{$link}'>{$name}</a>";
+                                                echo "<a class='btn btn-light bg_subtle rounded-pill px-4' href='{$link}'>{$name}</a>";
                                             }
                                             echo '</div>';
                                         }

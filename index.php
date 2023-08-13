@@ -6,23 +6,29 @@ error_reporting(E_ALL);
 // error_reporting(E_ALL & ~E_NOTICE);
 
 // include site info
-require_once __DIR__ . '/src/php/class_info_site.php';
+require __DIR__ . '/src/php/class_info_site.php';
 $site_info = SiteInfo::loadInfo();
 
 // Check if $_GET['project'] is set
-$project = isset($_GET['page']) ? $_GET['page'] : null;
+$page = isset($_GET['page']) ? $_GET['page'] : null;
 
 // set error handeler
-// set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-//     if ($errno === E_ERROR) { // If the error is severe, throw an ErrorException
-//         throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
-//     } // For other types of errors, just return false to use PHP's default error handler
-//     return false;
-// });
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+    if ($errno === E_ERROR) { // If the error is severe, throw an ErrorException
+        throw new ErrorException($errstr, $errno, 0, $errfile, $errline);
+    } // For other types of errors, just return false to use PHP's default error handler
+    return false;
+});
 
 // load home or project page based on id
 try {
-    if ($project) {
+    if ($page === 'sitemap') {
+        if (file_exists(__DIR__ . '/src/php/page_sitemap.php')) {
+            include __DIR__ . '/src/php/page_sitemap.php';
+        } else {
+            throw new Exception('The sitemap page error.');
+        }
+    } elseif (!empty($page)) {
         if (file_exists(__DIR__ . '/src/php/page_project.php')) {
             include __DIR__ . '/src/php/page_project.php';
         } else {

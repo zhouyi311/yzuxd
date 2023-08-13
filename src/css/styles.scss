@@ -133,7 +133,7 @@ section.page_section {
 
 // hero section
 
-section.page_section#home {
+section.homepage_home {
     padding: 10rem 0 8rem 0;
     min-height: 100vh;
     overflow: hidden;
@@ -438,6 +438,16 @@ section.page_section#projects {
                         display: -webkit-box;
                         -webkit-line-clamp: 3;
                         -webkit-box-orient: vertical;
+                    }
+                }
+
+                .card_info_summary_alt {
+                    max-height: 6em;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    .summary_content {
+                        overflow: hidden;
                     }
                 }
             }
@@ -807,8 +817,9 @@ footer {
                     figcaption {
                         color: $color-gray-ash;
                         font-weight: 500;
+
                         // text-align: center;
-                        &::before{
+                        &::before {
                             margin: 0 $unit-1;
                             font-family: 'Bootstrap-icons';
                             content: '\F4C9';
@@ -888,9 +899,11 @@ footer {
                         &.maintain_size {
                             max-width: 100%;
                             width: fit-content;
-                            figcaption{
+
+                            figcaption {
                                 text-align: center;
-                                &::before{
+
+                                &::before {
                                     content: none;
                                 }
                             }
@@ -917,6 +930,7 @@ footer {
 
                     .carousel-caption {
                         text-shadow: 1px 3px 5px rgba($color: #000000, $alpha: 0.5);
+
                         .carousel_image_headline {
                             font-weight: 500;
                         }

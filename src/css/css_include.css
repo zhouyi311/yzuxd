@@ -74,6 +74,13 @@ body .none_select {
   -webkit-user-select: none;
   pointer-events: none;
 }
+body .bg_subtle {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+body .text_subtle {
+  color: rgba(0, 0, 0, 0.03);
+  text-decoration: none;
+}
 body .hidden {
   display: none;
   visibility: hidden;

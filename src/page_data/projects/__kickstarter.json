@@ -1,24 +1,21 @@
 [
     {
-        "id": 888,
-        "indexOrder": 1,
+        "id": 999,
+        "indexOrder": -1,
         "password": "",
-        "title": "Phone Mobile UI Illustration - Featured Example Project",
+        "title": "Kick Starter Template",
         "summary": {
-            "thumbnail": "thumb.png",
-            "summaryImage": "summary.png",
-            "subhead": "Optional subhead, together we can achieve greatness!",
-            "caption": "Optional / Date: 2023 / Award-winning",
+            "thumbnail": "images/demo6.jpg",
+            "summaryImage": "images/demo6.jpg",
+            "subhead": "",
+            "caption": "",
             "categories": [
                 "Optinal",
-                "UX Design",
-                "Illustration"
+                "Tags"
             ],
             "text": [
-                "Notes: you have to structrue each project josn files by following following rules: ",
-                "1) 'id' is for url querty selector, and will be shown in the url address, could be int or string. (Normally, id should be unique - but we handle duplicated and missing id cases by assign them temp ids)",
-                "2) For projects that do not want password protection, you can either set 'password' key to any empty values like null, '', or set to string 'no'",
-                "3) Projects have indexOrder 0-9 will be shown as featured project card on the home page. Negative indexOrder will hide project from navigation and card list (accessable by URL). Projects have same indexOrder will sort by filename"
+                "This is a quick template json for start a new page. including all data and data_fields in a short placeholder stats",
+                "Simply duplicate this json file and folder to start a new page."
             ],
             "demoLink": {
                 "Demo Links": "http://zhouyiwork.com",
@@ -27,9 +24,9 @@
         },
         "article": [
             {
-                "headline": "Data Guidence",
-                "subhead": "subhead is optional, and has to be string",
-                "subheadCaption": "subheadCaption is optinal, and has to be string",
+                "headline": "Section Headline",
+                "subhead": "optional subhead, must be string",
+                "subheadCaption": "caption is optinal, must be string",
                 "subheadList": [
                     "subheadList is optional, and suppose to be an array",
                     "put string in subheadList will be converted to an one element array",
@@ -43,7 +40,7 @@
                 "content": [
                     {
                         "type": "paragraph",
-                        "isFluid": true,
+                        "isFluid": false,
                         "data": [
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",

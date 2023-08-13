@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require_once __DIR__ . '/class_info_site.php';
+include_once __DIR__ . '/class_info_site.php';
 include_once __DIR__ . '/class_info_project.php';
 
 $site_info = SiteInfo::loadInfo();
@@ -19,7 +19,7 @@ function getSiteRootUrl()
     }
     return $protocol . $domainName . $folderPath . '/';
 }
-$site_root_url = getSiteRootUrl(); // root url
+$siteRootUrl = getSiteRootUrl(); // root url
 
 ?>
 
@@ -34,13 +34,13 @@ $site_root_url = getSiteRootUrl(); // root url
             <div class="container-fluid">
                 <div class="row">
                     <!-- nav bar -->
-                    <nav class="page_navbar home_navbar navbar fixed-top px-4" id="page_navbar">
+                    <nav class="page_navbar homepage_navbar navbar fixed-top px-4" id="page_navbar">
                         <!-- nav logo -->
                         <div class="navbar-brand nav_listen_target">
-                            <a class="logo" href="<?php echo $site_root_url; ?>">
+                            <a class="logo" href="<?php echo $siteRootUrl; ?>">
                                 <img src="src/img/favicon/logo.svg" alt="logo" height="24">
                             </a>
-                            <a class="h5 mb-0" href="<?php echo $site_root_url; ?>">
+                            <a class="h5 mb-0" href="<?php echo $siteRootUrl; ?>">
                                 <?php echo htmlspecialchars($site_info->sitename); ?>
                             </a>
                         </div>
@@ -75,8 +75,9 @@ $site_root_url = getSiteRootUrl(); // root url
                                 </div>
                                 <div class="drawer_btm_group">
                                     <p class=" text-body-tertiary">
+                                        <span class="me-3">
                                         &copy;
-                                        <?php echo htmlspecialchars($site_info->information['siteCopyright']); ?>
+                                        <?php echo htmlspecialchars($site_info->information['siteCopyright']); ?></span> | <span class="ms-3"><a class="link link-secondary link-underline-light link-opacity-25" href="<?php echo $siteRootUrl ?>?page=sitemap">Sitemap</a></span>
                                     </p>
                                 </div>
                             </div>
@@ -89,7 +90,7 @@ $site_root_url = getSiteRootUrl(); // root url
         <!-- Main -->
         <main id="home_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
             <!-- hero -->
-            <section class="page_section" id="home">
+            <section class="homepage_home page_section" id="home">
                 <div class="container">
                     <div class="row">
                         <div class='col-12'>
@@ -208,7 +209,7 @@ $site_root_url = getSiteRootUrl(); // root url
                             if (!empty($categories)) {
                                 foreach ($categories as $category) {
                                     $category = htmlspecialchars($category);
-                                    echo "<span class='category-container badge rounded-pill text-secondary fw-normal'>$category</span> ";
+                                    echo "<span class='category-container badge rounded-pill text-body-secondary fw-normal'>$category</span> ";
                                 }
                             }
                             echo "</div><div class='card_info_summary'>";

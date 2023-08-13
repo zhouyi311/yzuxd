@@ -6,7 +6,7 @@
 
                 <img class="mb-2" src="src/img/favicon/logo.svg" alt="footer logo" style="height:30px; filter: filter: contrast(10%);">
                 <div class="fw-bold text-uppercase fs-6">
-                    <a class="text-dark text-decoration-none" href="<?php echo htmlspecialchars($site_root_url); ?>">
+                    <a class="text-dark text-decoration-none" href="<?php echo htmlspecialchars($siteRootUrl); ?>">
                         <?php echo htmlspecialchars($site_info->sitename); ?>
                     </a>
                 </div>
