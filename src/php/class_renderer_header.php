@@ -16,7 +16,7 @@ class HeaderRenderer
         $this->project = $project;
         $this->isPasswordRequired = $isPasswordRequired;
         $this->isAuthenticated = $isAuthenticated;
-        $this->$projectKey = $projectKey;
+        $this->projectKey = $projectKey;
     }
 
     public function render()
@@ -271,7 +271,7 @@ class HeaderRenderer
 // Example usage:
 // $siteInfo = SiteInfo::loadInfo();
 // 
-// echo $siteHeaderRenderer->render();
+// 
 
 // $project = ...; // Some way of loading your project data
 // $siteHeaderRenderer = new HeaderRenderer('project', $siteInfo, $project);

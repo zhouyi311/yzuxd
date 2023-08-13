@@ -1,8 +1,8 @@
 // Scrolling Nav BG change
 function handleScrollForNavigation() {
     const pageNavbar = document.getElementById('page_navbar');
-    const listenElements = document.querySelectorAll('.nav_listen_target');
     const projectNavName = document.querySelectorAll('.project_name');
+    const listenElements = document.querySelectorAll('.nav_listen_target');
 
     if (window.scrollY > 200) {
         pageNavbar.classList.add('bg-light');

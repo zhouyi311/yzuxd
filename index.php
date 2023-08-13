@@ -26,17 +26,17 @@ set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 
 // load home or project page based on id
 try {
-    if ( $archive ) {
-        if (file_exists(__DIR__ . '/src/php/page_archive.php')) {
-            include __DIR__ . '/src/php/page_archive.php';
-        } else {
-            throw new Exception('The archive page error.');
-        }
-    } elseif (!empty($project)) {
+    if (!empty($project)) {
         if (file_exists(__DIR__ . '/src/php/page_project.php')) {
             include __DIR__ . '/src/php/page_project.php';
         } else {
             throw new Exception('The project page error.');
+        }
+    } elseif ($archive) {
+        if (file_exists(__DIR__ . '/src/php/page_archive.php')) {
+            include __DIR__ . '/src/php/page_archive.php';
+        } else {
+            throw new Exception('The archive page error.');
         }
     } else {
         if (file_exists(__DIR__ . '/src/php/page_home.php')) {

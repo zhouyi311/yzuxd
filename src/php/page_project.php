@@ -13,7 +13,6 @@ $projectKey = $siteInfo->siteStructureInfo['projectPageQueryKey'];
 $projectId = $_GET[$projectKey];
 
 $project = ProjectInfo::loadById($projectId);
-$articleRenderer = new ArticleContentRenderer($project);
 
 if (!$project) {
     header("HTTP/1.0 404 Not Found");
@@ -54,6 +53,10 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
     exit;
 }
 
+//setup renderer
+$articleRenderer = new ArticleContentRenderer($project);
+$siteHeaderRenderer = new HeaderRenderer('project', $siteInfo, $project, $projectKey, $isPasswordRequired, $isAuthenticated);
+
 ?>
 
 <!DOCTYPE html>
@@ -63,86 +66,10 @@ if (!$isAuthenticated && $isPasswordRequired && isset($_POST['password']) && $_P
 <body id='proj_page_root'>
     <div id="project_page_wrapper" class="page_wrapper">
         <!-- header -->
-        <header class="project_page_header">
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- nav bar -->
-                    <nav class="page_navbar project_navbar navbar fixed-top px-4" id="page_navbar">
-                        <!-- nav logo -->
-                        <div class="navbar-brand">
-                            <a class="logo" href="<?php echo $siteInfo->rootUrl; ?>">
-                                <img src="src/img/favicon/logo.svg" alt="logo" height="24">
-                            </a>
-                            <a class="h5 mb-0" href="<?php echo $siteInfo->rootUrl; ?>">
-                                <?php echo htmlspecialchars($siteInfo->sitename); ?>
-                            </a>
-                            <?php
-                            if (isset($project->title)) {
-                                echo '<span class="project_name slideout">|</span><span class="project_name text-secondary fs-6 slideout">';
-                                echo htmlspecialchars($project->title) . '</span>';
-                            }
-                            ?>
+        <?php
+        echo $siteHeaderRenderer->render();
+        ?>
 
-                        </div>
-                        <!-- nav btn -->
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-
-                        <!-- drawer -->
-                        <div class="offcanvas offcanvas-end px-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                            <div class="offcanvas-header mb-4">
-                                <h3 class="offcanvas-title text-body-tertiary h6" id="offcanvasNavbarLabel">
-                                    <?php echo htmlspecialchars($siteInfo->information['siteTitle']); ?>
-                                </h3>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body">
-                                <div class="drawer_top_group">
-                                    <h4 class="list_title fw-medium text-body-secondary h6 mb-4" id="offcanvasNavbarLabel">
-                                        <i class='bi bi-list-ul pe-1 align-middle'></i>
-                                        <?php echo $project->title ? htmlspecialchars($project->title) : htmlspecialchars($siteInfo->information['siteTitle']); ?>
-                                    </h4>
-                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5" id="navbar_target">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#page_home"><span class="h5 fw-bold">Introduction</span></a>
-                                        </li>
-                                        <?php
-                                        if ($isAuthenticated || !$isPasswordRequired) {
-                                            foreach ($project->article as $section) {
-                                                $headline = htmlspecialchars($section['headline']);
-                                                $headlineId = htmlspecialchars($section['headlineId']);
-                                                echo '<li class="nav-item">';
-                                                echo '<a class="nav-link" href="#' . $headlineId . '"><span class="h5 fw-bold">' . $headline . '</span></a>';
-                                            }
-                                        } else {
-                                            echo '<li class="nav-item"><a class="nav-link" href="#enter_password"><span class="h5 fw-bold">Enter Password</span></a></li>';
-                                        }
-                                        ?>
-                                    </ul>
-                                </div>
-                                <div class="drawer_btm_group d-flex flex-column gap-4 pb-5">
-                                    <div class="btn-group rounded-pill fw-bold overflow-hidden" role="group">
-                                        <?php
-                                        $existLastProject = !empty($project->last->id);
-                                        $existNextProject = !empty($project->next->id);
-                                        if ($existLastProject) {
-                                            echo "<a class='btn btn-light text-truncate px-4' href='?{$projectKey}={$project->last->id}'><span class='fw-bold me-1'>Prev:</span><span class='inner_text fw-normal w-100'>{$project->last->title}</span></a>";
-                                        }
-                                        if ($existNextProject) {
-                                            echo "<a class='btn btn-light text-truncate px-4' href='?{$projectKey}={$project->next->id}'><span class='fw-bold me-1'>Next:</span><span class='inner_text fw-normal w-100'>{$project->next->title}</span></a>";
-                                        }
-                                        ?>
-                                    </div>
-                                    <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $siteInfo->rootUrl; ?>"><i class="bi bi-arrow-left pe-2 align-middle"></i><span class="w-100">
-                                            HOMEPAGE</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
         <!-- Main -->
         <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
             <article class="project_article" id="project_<?php echo $projectId ?>">

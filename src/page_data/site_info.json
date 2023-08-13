@@ -15,8 +15,8 @@
         "myTwitter": "https://www.twitter.com/zhouyi311/"
     },
     "siteStructureInfo": {
-        "archivePageQueryKey": "archive",
-        "projectPageQueryKey": "page"
+        "projectPageQueryKey": "page",
+        "archivePageQueryKey": "archive"
     },
     "frontPageContent": {
         "heroGreeting": "Oh là là!",
