@@ -1,12 +1,12 @@
 [
     {
         "id": 999,
-        "indexOrder": -1,
+        "indexOrder": 3,
         "password": "",
         "title": "Kick Starter Template",
         "summary": {
-            "thumbnail": "images/demo6.jpg",
-            "summaryImage": "images/demo6.jpg",
+            "thumbnail": "images/thumb.jpg",
+            "summaryImage": "images/demo.jpg",
             "subhead": "",
             "caption": "",
             "categories": [
@@ -30,12 +30,7 @@
                 "subheadList": [
                     "subheadList is optional, and suppose to be an array",
                     "put string in subheadList will be converted to an one element array",
-                    "First item in the list will be leading",
-                    "leadImgFixed / leadImg / leadImgBgColor are optinal and should all be string",
-                    "leadImgFixed / leadImg should be file name or path as string",
-                    "enter only file name is targeting [current project]'s resource foler",
-                    "a relative path is allowd, any path will be  relative to current project folder",
-                    "leadImgBgColor should be a valid html color code (hex, rgb, hsl, etc.) as string"
+                    "First item in the list will be leading"
                 ],
                 "content": [
                     {
@@ -46,15 +41,8 @@
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci."
+
                         ]
                     }
                 ]
@@ -63,7 +51,7 @@
                 "headline": "Media Type Showcase",
                 "leadImgFixed": "",
                 "leadImgFixedHeight": null,
-                "leadImg": "images/bg-01.png",
+                "leadImg": "images/thumb.jpg",
                 "leadImgBgColor": "pink",
                 "subhead": "With full optional stup enabled",
                 "subheadCaption": "This is a caption for the section title",
@@ -141,10 +129,10 @@
                             "forth image"
                         ],
                         "data": [
-                            "images/example-01.png",
-                            "images/example-02.png",
-                            "images/example-03.png",
-                            "images/example-04.png"
+                            "images/demo.jpg",
+                            "images/demo.jpg",
+                            "images/demo.jpg",
+                            "images/demo.jpg"
                         ]
                     },
                     {
@@ -173,10 +161,10 @@
                             "Forth image is interesting and great"
                         ],
                         "data": [
-                            "images/example-01.png",
-                            "images/example-02.png",
-                            "images/example-03.png",
-                            "images/example-04.png"
+                            "images/demo.jpg",
+                            "images/demo.jpg",
+                            "images/demo.jpg",
+                            "images/demo.jpg"
                         ]
                     },
                     {
@@ -190,12 +178,10 @@
                         "isAutoPlay": true,
                         "isLoop": true,
                         "figCaption": [
-                            "first video",
-                            "second video"
+                            "first video"
                         ],
                         "data": [
-                            "videos/v3.mp4",
-                            "videos/v2.mp4"
+                            "videos/v5.mp4"
                         ]
                     }
                 ]
@@ -213,7 +199,7 @@
                         "caption": "An iFrame example",
                         "cite": " - 'I said so'",
                         "isEmbedVideo": false,
-                        "data": "/src/static/demos/demo1.html"
+                        "data": "http://example.net"
                     },
                     {
                         "type": "iframe",
@@ -223,7 +209,7 @@
                         "caption": "An iFrame example",
                         "cite": " - 'You've found it'",
                         "isEmbedVideo": true,
-                        "data": "embeds/embed-video.html"
+                        "data": "embeds/embed-iframe-video.html"
                     },
                     {
                         "type": "html",
@@ -233,44 +219,6 @@
                         "caption": "A HTML Code Direct Embed Example",
                         "cite": " - 'Who else?'",
                         "data": "embeds/embed-html.html"
-                    }
-                ]
-            },
-            {
-                "leadImgFixed": "images/bg-01.png",
-                "leadImgFixedHeight": "70vh",
-                "headline": "Edge Testing",
-                "content": [
-                    {
-                        "type": "image",
-                        "headline": "Headline",
-                        "caption": "block caption here",
-                        "figCaption": "figCaption here",
-                        "isLightbox": true,
-                        "isQuote": true,
-                        "isMaintainSize": true,
-                        "data": "images/example-a1.png"
-                    },
-                    {
-                        "type": "image",
-                        "headline": 0,
-                        "caption": 0,
-                        "figCaption": 0,
-                        "isQuote": true,
-                        "isMaintainSize": true,
-                        "data": "images/example-a1.png"
-                    },
-                    {
-                        "type": "awesomeHeadline",
-                        "data": 121344
-                    },
-                    {
-                        "type": "paragraph",
-                        "data": 121344
-                    },
-                    {
-                        "type": "paragraph",
-                        "data": "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non."
                     }
                 ]
             }
