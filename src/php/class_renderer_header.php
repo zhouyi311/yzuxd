@@ -85,7 +85,7 @@ class HeaderRenderer
                         <!-- nav logo -->
                         <div class="navbar-brand d-flex align-items-center gap-2">
                             <a class="h5 mb-0 no_deco site_title d-flex align-items-center gap-2" href="<?php echo $siteInfo->rootUrl; ?>">
-                                <img src="src/img/favicon/logo.svg" alt="logo" height="24" class='site_logo'>
+                                <img src="src/img/favicon/logo.svg" alt="logo" height="26" class='site_logo'>
                                 <span class="site_name">
                                     <?php echo htmlspecialchars($siteInfo->sitename); ?>
                                 </span>
@@ -224,11 +224,24 @@ class HeaderRenderer
                     <a class="nav-link" href="#home"><span class="h6">HOME</span></a>
                 </li>
                 <?php
+
                 foreach ($projects as $navitems) {
-                    $id = htmlspecialchars($navitems->id);
-                    $headline = htmlspecialchars($navitems->title);
-                    echo '<li class="nav-item">';
-                    echo '<a class="nav-link" href="#' . $navitems->anchorId . '"><span class="h6">' . $headline . '</span></a>';
+                    if ($navitems->indexOrder >= 0) {
+                        $headline = htmlspecialchars($navitems->title);
+                        $anchor = $navitems->anchorId;
+                        echo "<li class='nav-item'>";
+                        echo "<a class='nav-link' href='#$anchor'><span class='h6'>$headline</span></a>";
+                        echo "</li>";
+                    }
+                }
+                foreach ($projects as $navitems) {
+                    if ($navitems->indexOrder < 0) {
+                        $headline = htmlspecialchars($navitems->title);
+                        $anchor = $navitems->anchorId;
+                        echo "<li class='nav-item'>";
+                        echo "<a class='nav-link' href='#$anchor'><span class='h6'>$headline";
+                        echo "</span></a></li>";
+                    }
                 }
                 ?>
             </ul>

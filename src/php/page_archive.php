@@ -27,7 +27,7 @@ $projectCardsRendererWithHidden = new ProjectCardsRenderer(true);
         ?>
         </header>
         <!-- Main -->
-        <main id="archive_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -25%" data-bs-smooth-scroll="true">
+        <main id="archive_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -90%" data-bs-smooth-scroll="true">
             <!-- hero -->
             <section class="archive_page_home bg-white pt-5" id="home">
                 <div class="container">
@@ -36,24 +36,15 @@ $projectCardsRendererWithHidden = new ProjectCardsRenderer(true);
                             <h1 class="text-uppercase my-5">
                                 Site Archive
                             </h1>
-                            <img src="src/img/all-page-deco-01.png" alt="head banner decoration" class="w-100 rounded-5">
+                            <img src="src/img/all-page-deco-01.png" alt="head banner decoration" class="w-100 rounded-4">
                             <!-- <div class='col-12 text-body-tertiary'><hr></div> -->
                         </div>
                     </div>
                 </div>
             </section>
             <!-- projects -->
-            <section class="page_section bg-white" id="projects">
-                <div class="container">
-                    <div class="row">
-                        <div class="section_headline">
-                            <h2 class="text-black h3 fw-bold">Showcase Pages</h2>
-                        </div>
-                    </div>
-                </div>
-
-
-                <?php
+            <section class="page_section projects_section archive_projects bg-white" id="projects" >
+                 <?php
                 $projectCardsRendererWithHidden->render();
                 ?>
                 <h6 class="text-center pt-5 mt-5 mx-5">
@@ -63,7 +54,7 @@ $projectCardsRendererWithHidden = new ProjectCardsRenderer(true);
             <!-- contact -->
         </main>
         <?php include __DIR__ . '/include_footer.php'; ?>
-        <script src="src/js/page_home.js?v=429" type="text/javascript"></script>
+        <script src="src/js/page_archive.js?v=4222" type="text/javascript"></script>
     </div>
 </body>
 

@@ -37,8 +37,8 @@ class ProjectInfo
         foreach ($this->article as $index => &$section) {
             empty($section['headline']) ? $section['headline'] = 'Section ' . $index + 1 : null;
             $headlineId = strtolower(preg_replace('/[^a-z0-9]/i', '_', $section['headline'])); // Replace all special characters with underscores and lowercase
-            $headlineId = 'sec_' . ($index + 1) . '_' . $headlineId; 
-            $section['headlineId'] = $headlineId; 
+            $headlineId = 'sec_' . ($index + 1) . '_' . $headlineId;
+            $section['headlineId'] = $headlineId;
         }
     }
 
@@ -64,14 +64,14 @@ class ProjectInfo
         $seenIds = [];
 
         // Load all projects and handle duplicates
-        foreach (glob($directory . '/*.json') as $file) {
+        foreach (glob($directory . '/*.json') as $index => $file) {
             $project = new ProjectInfo(self::getProjectDataFromFile($file));
 
             // If the ID has been seen before, assign a unique ID based on the filename
             if (in_array($project->id, $seenIds)) {
                 $basenameId = basename($project->path) . "_" . crc32($project->path);
                 if (in_array($basenameId, $seenIds)) {
-                    $project->id = $basenameId . "_" . random_int(0, 9999) . "_" . md5($project->path); // Hash the full path if basename is also redundant
+                    $project->id = $index . "_" . $basenameId;
                 } else {
                     $project->id = $basenameId;
                 }
@@ -85,10 +85,14 @@ class ProjectInfo
         // Sort and return projects
         usort($projects, function ($a, $b) {
             if ($a->indexOrder == $b->indexOrder) {
-                return $a->id <=> $b->id; // Sort by ID
+                if ($a->id == $b->id) {
+                    return crc32($a->path) <=> crc32($b->path); // Fallback to crc32 of full path
+                }
+                return strcmp($a->id, $b->id); // Sort by ID
             }
-            return $a->indexOrder <=> $b->indexOrder; // Sort by indexOrder
+            return $a->indexOrder <=> $b->indexOrder; // Sort primarily by indexOrder
         });
+
         return $projects;
 
     }

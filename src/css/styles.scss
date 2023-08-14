@@ -87,6 +87,9 @@ body {
         opacity: 0;
     }
 
+    .bg_fade {
+        background-color: rgba($color: #000000, $alpha: 0.03);
+    }
     .bg_subtle {
         background-color: rgba($color: #000000, $alpha: 0.07);
     }
@@ -109,7 +112,7 @@ body {
 }
 
 .page_navbar {
-    transition: background-color 0.5s;
+    // transition: background-color 0.5s;
     flex-wrap: nowrap;
 
     &.home_page_navbar {}
@@ -124,17 +127,21 @@ body {
 
     .navbar-brand {
         overflow: hidden;
-        .site_title{
+
+        .site_title {
             white-space: nowrap;
-            .site_logo{
-            }
-            .site_name{
-            }
+
+            .site_logo {}
+
+            .site_name {}
         }
+
         .project_name {
             transition-property: opacity transform;
             transition-duration: 0.3s;
             vertical-align: center;
+            line-height: 26px;
+
             &.slideout {
                 opacity: 0;
                 transform: translateY(12px);
@@ -142,19 +149,21 @@ body {
             }
         }
     }
-    .navbar-toggler{
+
+    .navbar-toggler {
         // box-shadow:none;
     }
 
     .offcanvas {
-        transition: 0.3s;
-        
+        // transition: 0.3s;
+
         .offcanvas-body {
             ul.navbar-nav {
                 li {
                     a {
                         padding-left: calc($unit-4 + 1px);
                         border-left: 1px solid $color-gray-medium;
+
                         &.active {
                             padding-left: $unit-4;
                             border-left: 2px solid black;
@@ -168,6 +177,7 @@ body {
     &[data-bs-theme="dark"] {
         .navbar-brand {
             text-shadow: 1px 1px 3px rgba($color: #000000, $alpha: 0.2);
+
             .site_logo {
                 filter: invert(100%);
             }
@@ -176,17 +186,23 @@ body {
         .offcanvas {
             background-color: #0b0209;
             border-left: 1px solid #1b1019;
+
             .offcanvas-body {
                 ul.navbar-nav {
                     li {
                         a {
                             border-left: 1px solid $color-white-medium;
+
                             &.active {
                                 border-left: 2px solid white;
                             }
                         }
                     }
                 }
+            }
+
+            .text_subtle {
+                color: rgba($color: white, $alpha: 0.1);
             }
         }
     }

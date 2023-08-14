@@ -16,12 +16,16 @@
             </div>
         </div>
         <div class="row mb-1">
-            <div class="d-flex justify-content-center gap-2 gap-md-3 text-secondary">
+            <div class="d-flex justify-content-center gap-1 gap-md-3 text-secondary">
                 <div>
                     <a class="text-secondary text-decoration-none " href="mailto:<?php echo htmlspecialchars($siteInfo->information["myEmail"]); ?>">Email</a>
                 </div>|
+
                 <div>
                     <a class="text-secondary text-decoration-none " href="<?php echo htmlspecialchars($siteInfo->information["myLinkedin"]); ?>" target="_blank">LinkedIn</a>
+                </div>|
+                <div>
+                    <a class="text-secondary text-decoration-none " href="<?php echo $siteInfo->rootUrl . "?" . $siteInfo->pageKeys['archiveKey']; ?>" >Archive</a>
                 </div>|
                 <div>
                     <a class="text-secondary text-decoration-none " href="<?php echo htmlspecialchars($siteInfo->information["myGithub"]); ?>" target="_blank">GitHub</a>

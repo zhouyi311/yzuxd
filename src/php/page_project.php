@@ -71,7 +71,7 @@ $siteHeaderRenderer = new HeaderRenderer('project', $project, $isPasswordRequire
         ?>
 
         <!-- Main -->
-        <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -25%" data-bs-smooth-scroll="true">
+        <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -15%" data-bs-smooth-scroll="true">
             <article class="project_article" id="project_<?php echo $projectId ?>">
                 <header class="project_article_header" id="page_home">
                     <div class="container">

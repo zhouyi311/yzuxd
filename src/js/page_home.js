@@ -199,3 +199,6 @@ const canvasTarget = document.getElementById("canvas-bg");
 if (canvasTarget) {
     canvasDraw();
 }
+
+
+
