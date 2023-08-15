@@ -22,7 +22,7 @@ class SiteInfo
     }
     public static function loadInfo()
     {
-        $file = __DIR__ . '/../page_data/site_info.json'; // Adjusted to an absolute path
+        $file = __DIR__ . '/page_data/site_info.json'; // Adjusted to an absolute path
 
         if (!file_exists($file)) {
             throw new Exception("The site_info.json file does not exist.");
@@ -55,13 +55,11 @@ public function getSiteRootUrl() {
         
         return $protocol . $domainName . $basePath;
     }
-
     private function findBasePath($currentPath) {
         // Stop if we're at the root directory
         if ($currentPath == dirname($currentPath)) {
             return '';
         }
-
         // Check if index.php exists in the current directory
         if (file_exists($currentPath . '/index.php')) {
             // Remove the document root to get the relative path

@@ -227,7 +227,7 @@
                         "caption": "An iFrame example",
                         "cite": " - 'You've found it'",
                         "isEmbedVideo": true,
-                        "data": "embeds/embed-iframe-video.html"
+                        "data": "assets/embed-iframe-video.html"
                     },
                     {
                         "type": "html",
@@ -236,7 +236,7 @@
                         "headline": "HTML Code Direct Embed Example",
                         "caption": "A HTML Code Direct Embed Example",
                         "cite": " - 'Who else?'",
-                        "data": "embeds/embed-iframe-video.html"
+                        "data": "assets/embed-iframe-video.html"
                     }
                 ]
             }

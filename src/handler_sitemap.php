@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sitemap .= '</urlset>';
 
         // Save the sitemap to sitemap.xml
-        file_put_contents(__DIR__ . '../../../sitemap.xml', $sitemap);
+        file_put_contents(__DIR__ . '/../sitemap.xml', $sitemap);
 
         $message = "Success.<br>Sitemap generated!";
     } else {

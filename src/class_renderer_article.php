@@ -65,7 +65,7 @@ class ArticleContentRenderer
     private function findLargerImage($path, $filename)
     {
 
-        $dirPath = __DIR__ . '/../../' . $path;
+        $dirPath = $path;
         $info = pathinfo($filename);
         // $baseName = $info['filename'];
         $pathWithoutExtension = $info['dirname'] . '/' . $info['filename'];
@@ -415,7 +415,7 @@ class ArticleContentRenderer
 
     private function iframeBlockFormatter($sectionName, $block, $index)
     {
-        $dirPath = __DIR__ . '/../../' . $this->projPath;
+        $dirPath = $this->projPath;
         $isFluid = $this->fluidProcessor($block);
         $mainData = $this->sanitizeValue($block, 'data');
         $headline = $this->sanitizeValue($block, 'headline');
@@ -444,7 +444,7 @@ class ArticleContentRenderer
     }
     private function htmlBlockFormatter($sectionName, $block, $index)
     {
-        $dirPath = __DIR__ . '/../../' . $this->projPath;
+        $dirPath = $this->projPath;
         $isFluid = $this->fluidProcessor($block);
         $mainData = $this->sanitizeValue($block, 'data');
         $headline = $this->sanitizeValue($block, 'headline');

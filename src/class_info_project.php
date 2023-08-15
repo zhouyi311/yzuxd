@@ -60,7 +60,7 @@ class ProjectInfo
 
     public static function loadAll()
     {
-        $directory = __DIR__ . '/../page_data/pages/';
+        $directory = __DIR__ . '/page_data/pages/';
         $projects = [];
         $seenIds = [];
 
