@@ -13,11 +13,11 @@ class ProjectInfo
     public $article;
     public $last = null;
     public $next = null;
-    public function __construct($projectData)
+    public function __construct($projectData, $path)
     {
         $this->id = $projectData['id'];
         $this->lastModified = $projectData['lastModified'];
-        $this->path = 'src/page_data/projects/' . basename($projectData['file'], '.json');
+        $this->path = 'src/page_data/pages/' . $path;
 
         $this->indexOrder = $projectData['indexOrder'];
         if (!is_numeric($this->indexOrder)) {
@@ -43,17 +43,16 @@ class ProjectInfo
         }
     }
 
-    private static function getProjectDataFromFile($file)
+    private static function getProjectDataFromFile($file, $dirName)
     {
         $json = file_get_contents($file);
         $projectData = json_decode($json, true)[0];
-        
-        if (empty($projectData['id'])) { // Check if 'id' is not set or empty, and then assign a unique ID based on the file path
-            $projectData['id'] = basename($file) . "_" . crc32($file);
+
+        if (empty($projectData['id'])) {
+            $projectData['id'] = $dirName . "_" . crc32($file);
         }
-        
+
         $projectData['id'] = rawurlencode($projectData['id']);
-        
         $projectData['file'] = $file;
         $projectData['lastModified'] = filemtime($file);
         return $projectData;
@@ -61,42 +60,36 @@ class ProjectInfo
 
     public static function loadAll()
     {
-        $directory = __DIR__ . '/../page_data/projects';
+        $directory = __DIR__ . '/../page_data/pages/';
         $projects = [];
         $seenIds = [];
 
         // Load all projects and handle duplicates
-        foreach (glob($directory . '/*.json') as $index => $file) {
-            $project = new ProjectInfo(self::getProjectDataFromFile($file));
+        foreach (glob($directory . '/*', GLOB_ONLYDIR) as $dir) {
+            $jsonFile = $dir . '/page_data.json';
 
-            // If the ID has been seen before, assign a unique ID based on the filename
-            if (in_array($project->id, $seenIds)) {
-                $basenameId = basename($project->path) . "_" . crc32($project->path);
-                if (in_array($basenameId, $seenIds)) {
-                    $project->id = $index . "_" . $basenameId;
-                } else {
-                    $project->id = $basenameId;
+            if (file_exists($jsonFile)) {
+                $project = new ProjectInfo(self::getProjectDataFromFile($jsonFile, basename($dir)), basename($dir));
+
+                if (in_array($project->id, $seenIds)) { // If the ID has been seen before
+                    $project->id = basename($dir) . "_" . crc32($dir); // Guarantee uniqueness with crc32
                 }
-            }
-            $project->anchorId = 'p_' . substr(md5($project->id), 0, 8);
 
-            $seenIds[] = $project->id;
-            $projects[] = $project;
+                $project->anchorId = 'p_' . substr(md5($project->id), 0, 8);
+                $seenIds[] = $project->id;
+                $projects[] = $project;
+            }
         }
 
         // Sort and return projects
         usort($projects, function ($a, $b) {
             if ($a->indexOrder == $b->indexOrder) {
-                if ($a->id == $b->id) {
-                    return crc32($a->path) <=> crc32($b->path); // Fallback to crc32 of full path
-                }
-                return strcmp($a->id, $b->id); // Sort by ID
+                return strcmp($a->id, $b->id); // Sort by ID if indexOrder is the same
             }
             return $a->indexOrder <=> $b->indexOrder; // Sort primarily by indexOrder
         });
 
         return $projects;
-
     }
 
     public static function loadById($id)
