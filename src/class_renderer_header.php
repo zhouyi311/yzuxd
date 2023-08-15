@@ -87,7 +87,13 @@ class HeaderRenderer
                             <a class="h5 mb-0 no_deco site_title d-flex align-items-center gap-2" href="<?php echo $siteInfo->rootUrl; ?>">
                                 <img src="src/img/favicon/logo.svg" alt="logo" height="26" class='site_logo'>
                                 <span class="site_name">
-                                    <?php echo htmlspecialchars($siteInfo->sitename); ?>
+                                    <?php
+                                    if (isset($project->title)) {
+                                        echo htmlspecialchars($siteInfo->sitename);
+                                    } else {
+                                        echo htmlspecialchars($siteInfo->information['siteDisplayName']);
+                                    }
+                                    ?>
                                 </span>
                             </a>
                             <?php
@@ -170,7 +176,7 @@ class HeaderRenderer
             </h4>
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5" id="navbar_target">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home"><span class="h5 fw-bold">Introduction</span></a>
+                    <a class="nav-link" href="#home"><span class="h5 fw-bold">Overview</span></a>
                 </li>
                 <?php
                 if ($isAuthenticated || !$isPasswordRequired) {

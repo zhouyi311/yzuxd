@@ -1,15 +1,11 @@
 {
-    "sitename": "YZuxd",
-    "pageKeys": {
-        "projectKey": "page",
-        "archiveKey": "archive"
-    },
+    "sitename": "ShortName",
     "information": {
-        "siteDisplayname": "YZuxd.com",
-        "siteTitle": "Yzuxd.com - An Awesome Website",
-        "siteDescription": "Welcome to the Site, is a website that showing some web pages.",
-        "siteAddress": "yzuxd.com",
-        "siteSubAddress": "zhouyiwork.com/yzuxd - fill this only if your site is a subdomian or subdir",
+        "siteDisplayName": "LongerFullName",
+        "siteTitle": "Readable Title or Subsite Name...",
+        "siteDescription": "This is for metadata usage only - Welcome to the Site, is a website that showing some web pages.",
+        "siteAddress": "yzuxd.com - without http(s)",
+        "siteSubAddress": "zhouyiwork.com/yzuxd - LEAVE EMPTY if your site root is NOT at a subdir like this",
         "siteCopyright": "2012-2023 Yi Zhou",
         "siteGaTag": "G-XXXXXXXXXX",
         "myName": "Yi Zhou",
@@ -19,13 +15,17 @@
         "myGithub": "https://www.github.com/zhouyi311/",
         "myTwitter": "https://www.twitter.com/zhouyi311/"
     },
+    "pageKeys": {
+        "projectKey": "page",
+        "archiveKey": "archive"
+    },
     "frontPageContent": {
         "heroGreeting": "Greetings!!!",
         "heroHeadline": "Welcome To My Site",
         "heroIntroduction": "My name is Yi Zhou... a designer...",
         "heroParagraphsArray": [
-            "You are awesome to see this text here.",
-            "I'm glad you saw this."
+            "To start using this template",
+            "Duplicate '__site_info_example.josn' and name the new one to 'site_info.json'"
         ],
         "heroCallToAction": "View Works"
     }

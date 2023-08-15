@@ -26,7 +26,7 @@ class SiteInfo
         if (file_exists( __DIR__ . '/page_data/site_info.json')){
             $file = __DIR__ . '/page_data/site_info.json';
         }else{
-            $file = __DIR__ . '/page_data/site_info_initial.json';
+            $file = __DIR__ . '/page_data/__site_info_example.json';
         }
 
         if (!file_exists($file)) {

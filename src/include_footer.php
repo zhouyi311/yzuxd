@@ -7,7 +7,7 @@
                 <img class="mb-2" src="src/img/favicon/logo.svg" alt="footer logo" style="height:30px; filter: filter: contrast(10%);">
                 <div class="fw-bold text-uppercase fs-6">
                     <a class="text-dark text-decoration-none" href="<?php echo $siteInfo->rootUrl; ?>">
-                        <?php echo htmlspecialchars($siteInfo->sitename); ?>
+                        <?php echo htmlspecialchars($siteInfo->information['siteDisplayName']); ?>
                     </a>
                 </div>
                 <div class="fw-medium">
@@ -35,8 +35,6 @@
                 <div>
                     <a class="text-secondary text-decoration-none " href="<?php echo $siteInfo->rootUrl . '/sitemap.xml'; ?>">Sitemap</a>
                 </div>
-                
-                
             </div>
         </div>
         <div class="row text-secondary">
@@ -53,9 +51,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
 <script src="src/js/main.js?v=4907"></script>
-
 <?php
-$allowed_hosts = ['zhouyiwork.com', 'yzuxd.com'];
+$siteDomain = empty($siteInfo->information["siteAddress"]) ? null : $siteInfo->information["siteAddress"];
+$siteSubDomain = empty($siteInfo->information["siteSubAddress"]) ? null : $siteInfo->information["siteSubAddress"];
+$allowed_hosts = [$siteDomain, $siteSubDomain];
 $http_host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
 if (in_array($http_host, $allowed_hosts)): ?>
     <!-- Google tag (gtag.js) -->
@@ -64,7 +63,6 @@ if (in_array($http_host, $allowed_hosts)): ?>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', '<?php echo htmlspecialchars($siteInfo->information["siteGaTag"]); ?>');
     </script>
     <?php

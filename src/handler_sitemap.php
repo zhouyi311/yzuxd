@@ -30,15 +30,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Load site information
         $siteInfo = SiteInfo::loadInfo();
         $baseURL = $siteInfo->rootUrl;
-
-        $baseURL = $siteInfo->rootUrl;
         if (
             strpos($baseURL, 'localhost') !== false
             || preg_match('/^http:\/\/10\./', $baseURL)
             || preg_match('/^http:\/\/172\.(1[6-9]|2[0-9]|3[0-1])\./', $baseURL)
             || preg_match('/^http:\/\/192\.168\./', $baseURL)
         ) {
-            $baseURL = $siteInfo->information['siteAddress'];
+            $realUrl = $siteInfo->information['siteAddress'];
+            $realSubUrl = $siteInfo->information['siteSubAddress'];
+            $baseURL = empty($realSubUrl) ? 'http://' . $realUrl : 'http://' . $realSubUrl;
         }
 
         $archiveUrl = $baseURL . "?" . $siteInfo->pageKeys['archiveKey'];
