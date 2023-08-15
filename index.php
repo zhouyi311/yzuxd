@@ -1,12 +1,11 @@
 <?php
-// print error
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 // error_reporting(E_ALL & ~E_NOTICE);
 
 // include site info
-require __DIR__ . '/src/php/class_info_site.php';
+require_once __DIR__ . '/src/php/class_info_site.php';
 $siteInfo = SiteInfo::loadInfo();
 
 // Check if $_GET['project'] is set
@@ -15,6 +14,9 @@ $project = isset($_GET[$projectKey]) ? $_GET[$projectKey] : null;
 
 $archiveKey = $siteInfo->pageKeys['archiveKey'];
 $archive = isset($_GET[$archiveKey]) ?? null;
+
+$sitemapGenerator = 'sitemap_gen';
+$sitemap = isset($_GET[$sitemapGenerator]) ?? null;
 
 // set error handeler
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
@@ -38,7 +40,7 @@ try {
         } else {
             throw new Exception('The archive page error.');
         }
-    } elseif (isset($_GET['sitemap_xml'])) {
+    } elseif ($sitemap) {
         if (file_exists(__DIR__ . '/src/php/handler_sitemap.php')) {
             include __DIR__ . '/src/php/handler_sitemap.php';
         } else {

@@ -17,22 +17,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         {
             if ($indexOrder < 0) {
                 return 0.1; // Fixed low priority for negative numbers
-            }
-            else if ($indexOrder >= 0 && $indexOrder <= 9) {
+            } else if ($indexOrder >= 0 && $indexOrder <= 9) {
                 $priority = 0.9 - $indexOrder * 0.01;
                 return $priority;
-            }
-            else {
+            } else {
                 $decrement = 0.03; // The amount of decrement for each step
                 $priority = 0.81 - (($indexOrder - 10) * $decrement);
                 return max($priority, 0.5); // Ensures the returned priority doesn't go below 0.5
             }
         }
 
-
         // Load site information
         $siteInfo = SiteInfo::loadInfo();
         $baseURL = $siteInfo->rootUrl;
+
+        $baseURL = $siteInfo->rootUrl;
+        if (
+            strpos($baseURL, 'localhost') !== false
+            || preg_match('/^http:\/\/10\./', $baseURL)
+            || preg_match('/^http:\/\/172\.(1[6-9]|2[0-9]|3[0-1])\./', $baseURL)
+            || preg_match('/^http:\/\/192\.168\./', $baseURL)
+        ) {
+            $baseURL = $siteInfo->information['siteAddress'];
+        }
+
         $archiveUrl = $baseURL . "?" . $siteInfo->pageKeys['archiveKey'];
         $projectUrl = $baseURL . "?" . $siteInfo->pageKeys['projectKey'] . "=";
 
