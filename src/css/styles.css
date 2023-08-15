@@ -194,7 +194,7 @@
 }
 
 .project_article .project_article_header {
-  padding-top: 1.5rem;
+  padding-top: 0.5rem;
 }
 @media (max-width: 991px) {
   .project_article .project_article_header .project_intro_summary {
@@ -933,7 +933,8 @@ section.projects_section .projects_container .project_card.featured_card .card_i
     padding-left: 1.5rem;
   }
 }
-section.projects_section .archive_container .card_info .card_info_summary {
+
+.archive_container .card_info .card_info_summary {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -942,14 +943,15 @@ section.projects_section .archive_container .card_info .card_info_summary {
   max-height: 4.5rem;
 }
 @media (max-width: 767px) {
-  section.projects_section .archive_container .card_info .card_info_summary {
+  .archive_container .card_info .card_info_summary {
     max-height: 1.5rem;
   }
 }
-section.projects_section .card.archive_card {
+
+.card.archive_card {
   transition: background-color 0.3s, box-shadow 0.3s;
 }
-section.projects_section .card.archive_card:hover {
+.card.archive_card:hover {
   background-color: white !important;
   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2) !important;
 }

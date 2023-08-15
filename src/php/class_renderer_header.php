@@ -130,13 +130,13 @@ class HeaderRenderer
         <div class="drawer_top_group flex-grow-1">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="navbar_target">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home"><span class="h3 fw-bold">HOME</span></a>
+                    <a class="nav-link py-3" href="#home"><span class="h3 fw-bold">Home</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#projects"><span class="h3 fw-bold">PROJECTS</span></a>
+                    <a class="nav-link py-3" href="#projects"><span class="h3 fw-bold">Projects</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact"><span class="h3 fw-bold">CONTACT</span></a>
+                    <a class="nav-link py-3" href="#contact"><span class="h3 fw-bold">Contact</span></a>
                 </li>
             </ul>
         </div>
@@ -170,7 +170,7 @@ class HeaderRenderer
             </h4>
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5" id="navbar_target">
                 <li class="nav-item">
-                    <a class="nav-link" href="#page_home"><span class="h5 fw-bold">Introduction</span></a>
+                    <a class="nav-link" href="#home"><span class="h5 fw-bold">Introduction</span></a>
                 </li>
                 <?php
                 if ($isAuthenticated || !$isPasswordRequired) {
@@ -201,7 +201,7 @@ class HeaderRenderer
             </div>
             <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $siteInfo->rootUrl; ?>">
                 <i class="bi bi-arrow-left pe-2 align-middle"></i>
-                <span class="w-100">RETURN TO HOMEPAGE</span>
+                <span class="w-100">HOMEPAGE</span>
             </a>
         </div>
         <?php
@@ -217,11 +217,11 @@ class HeaderRenderer
         <div class="drawer_top_group flex-grow-1">
             <h4 class="list_title fw-medium text-body-secondary h6 mb-4" id="offcanvasNavbarLabel">
                 <i class='bi bi-list-ul pe-1 align-middle'></i>
-                Pages
+                Index
             </h4>
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="navbar_target">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home"><span class="h6">HOME</span></a>
+                    <a class="nav-link" href="#home"><span class="h6">Home</span></a>
                 </li>
                 <?php
 
@@ -251,7 +251,7 @@ class HeaderRenderer
             </div>
             <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $siteInfo->rootUrl; ?>">
                 <i class="bi bi-arrow-left pe-2 align-middle"></i>
-                <span class="w-100">RETURN TO HOMEPAGE</span>
+                <span class="w-100">HOMEPAGE</span>
             </a>
         </div>
         <?php

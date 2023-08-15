@@ -71,9 +71,9 @@ $siteHeaderRenderer = new HeaderRenderer('project', $project, $isPasswordRequire
         ?>
 
         <!-- Main -->
-        <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -15%" data-bs-smooth-scroll="true">
+        <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -25%" data-bs-smooth-scroll="true">
             <article class="project_article" id="project_<?php echo $projectId ?>">
-                <header class="project_article_header" id="page_home">
+                <header class="project_article_header" id="home">
                     <div class="container">
                         <div class="row">
                             <div class="col-12 project_header_container">
@@ -112,10 +112,10 @@ $siteHeaderRenderer = new HeaderRenderer('project', $project, $isPasswordRequire
                                             echo "<p class='text-body'>" . htmlspecialchars($textItem) . "</p>";
                                         }
                                         if (!empty($project->summary['demoLink'])) {
-                                            echo "<div class='d-flex gap-3 mt-4'>";
+                                            echo "<div class='d-flex gap-3 mt-5'>";
                                             $demo_link = ($project->summary['demoLink']);
                                             foreach ($demo_link as $name => $link) {
-                                                echo "<a class='btn btn-light bg_subtle rounded-pill px-4' href='{$link}'>{$name}</a>";
+                                                echo "<a class='btn btn-light bg_subtle rounded-pill px-4' target='_blank' href='{$link}'>{$name}</a>";
                                             }
                                             echo '</div>';
                                         }

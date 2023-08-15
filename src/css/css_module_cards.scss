@@ -187,33 +187,33 @@ section.projects_section {
         }
 
     }
+}
 
-    .archive_container {
-        .card_info {
-            .card_info_summary {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                max-height: calc(1.5rem * 3);
+.archive_container {
+    .card_info {
+        .card_info_summary {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            max-height: calc(1.5rem * 3);
 
-                @media (max-width: $bp-md) {
-                    max-height: calc(1.5rem * 1);
+            @media (max-width: $bp-md) {
+                max-height: calc(1.5rem * 1);
 
-                }
             }
         }
     }
+}
 
-    .card.archive_card {
+.card.archive_card {
 
-        transition: background-color 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
 
-        &:hover {
-            background-color: white !important;
-            box-shadow: 0 3px 10px 0 rgba($color: #000000, $alpha: 0.2) !important;
+    &:hover {
+        background-color: white !important;
+        box-shadow: 0 3px 10px 0 rgba($color: #000000, $alpha: 0.2) !important;
 
-        }
     }
 }

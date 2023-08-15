@@ -3,13 +3,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
 
         const navbar = document.getElementById('page_navbar');
+        const navOffset = navbar.offsetHeight;
 
         const href = this.getAttribute('href');
         const targetElement = document.querySelector(href);
 
         if (targetElement) {
-            const offset = navbar.offsetHeight; // Set your desired offset in pixels
-            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navOffset;
 
             window.scrollTo({
                 top: targetPosition,
@@ -18,6 +18,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', handleScrollForNavigation);
+window.addEventListener('scroll', handleScrollForNavigation);
+
+// main margin setup
+function offsetHeight() {
+    const sourceElement = document.getElementById('page_navbar');
+    const targetElement = document.getElementById('home');
+    const sourceHeight = sourceElement.offsetHeight;
+
+    // Set the top margin
+    if (targetElement) {
+        targetElement.style.paddingTop = `${sourceHeight + 8}px`; // Use backticks (`) here
+        // console.log('offsetHeight - Element is set.');
+    } else {
+        return;
+    }
+
+}
+document.addEventListener('DOMContentLoaded', offsetHeight);
 
 
 
@@ -59,25 +79,7 @@ function handleScrollForNavigation() {
 }
 
 
-document.addEventListener('DOMContentLoaded', handleScrollForNavigation);
-window.addEventListener('scroll', handleScrollForNavigation);
 
-// main margin setup
-function offsetHeight() {
-    const sourceElement = document.getElementById('page_navbar');
-    const targetElement = document.getElementById('page_home');
-    const sourceHeight = sourceElement.offsetHeight;
-
-    // Set the top margin
-    if (targetElement) {
-        targetElement.style.paddingTop = `${sourceHeight + 16}px`; // Use backticks (`) here
-        // console.log('offsetHeight - Element is set.');
-    } else {
-        return;
-    }
-
-}
-document.addEventListener('DOMContentLoaded', offsetHeight);
 
 
 let scrollTimeout; 
@@ -85,7 +87,7 @@ let scrollTimeout;
 function handleDrawer() {
     const offcanvasBody = document.getElementById('offcanvasNavbar');
 
-    console.log(offcanvasBody);
+    // console.log(offcanvasBody);
 
     offcanvasBody.style.transition = '0.6s'; 
     clearTimeout(scrollTimeout);

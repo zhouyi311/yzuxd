@@ -40,8 +40,8 @@ class ProjectCardsRenderer
 
         if ($inArchive) {
             $countProjs = 0;
-            echo "<div class='container projects_container archive_container' id='archive_container'>";
-            echo "<div class='row g-4 pt-5'>";
+            echo "<div class='container archive_container' id='showcase_container'>";
+            echo "<div class='row g-4 mb-5'>";
             echo "<h3 >Showcase Projects</h3>";
             foreach ($this->projects as $project) {
                 if ($project->indexOrder >= 0 && $project->indexOrder < 10) {
@@ -55,7 +55,11 @@ class ProjectCardsRenderer
             if ($countProjs === 0) {
                 echo "<div class='col'><p>Not enough projects, please check data</p></div>";
             }
+            echo "</div></div>";
+            echo "<div class='container archive_container' id='archive_container'>";
+            echo "<div class='row g-4 mb-5'>";
             echo "<h3 class='pt-4'>Archived Pages</h3>";
+            $countProjs = 0;
             foreach ($this->projects as $project) {
                 if ($project->indexOrder < 0) {
                     $this->createProjectList($project, false); // Render hidden projects, but not as featured
@@ -63,45 +67,12 @@ class ProjectCardsRenderer
                 }
             }
             if ($countProjs === 0) {
-                echo "<div class='col'><p>Not enough projects, please check data</p></div>";
+                echo "<div class='col'><p>No archived pages :)</p></div>";
             }
             echo "</div></div>";
         }
     }
 
-
-    private function createProjectList($project, $isFeatured)
-    {
-        // $projectPath = $project->path . "/";
-        $projKey = $this->siteInfo->pageKeys['projectKey'];
-        $projectLink = "?{$projKey}=" . htmlspecialchars($project->id);
-        $title = isset($project->title) ? htmlspecialchars($project->title) : "";
-        $subhead = isset($project->summary['subhead']) ? $project->summary['subhead'] : null;
-        $categories = isset($project->summary['categories']) ? $project->summary['categories'] : [];
-        // $thumbnailSrc = isset($project->summary['thumbnail']) ? htmlspecialchars($projectPath . $project->summary['thumbnail']) : "";
-        $summaryText = isset($project->summary['text']) ? $project->summary['text'] : [];
-
-        echo "<div class='col-md-6'><div class='card archive_card p-4 rounded-3 border-0 bg-light shadow-sm h-100' id='{$project->anchorId}'>";
-        echo "<h6 class='fw-medium mb-3'><a href='$projectLink' class='no_deco link stretched-link'><span class='me-3'>$title</span>";
-        if (!empty($categories)) {
-            foreach ($categories as $category) {
-                $category = htmlspecialchars($category);
-                echo "<span class='category-container badge bg_subtle rounded-pill text-secondary fw-normal ms-1 align-middle'>$category</span> ";
-            }
-        }
-        echo "</a></h6>";
-        if (!empty($subhead) && $isFeatured) {
-            echo "<p class='text-body-tertiary'>$subhead</p>";
-        }
-        echo "<div class='card_info'>";
-
-        echo "<div class='card_info_summary'>";
-        foreach ($summaryText as $textItem) {
-            echo "<p class='mb-1 text-body-secondary'>" . htmlspecialchars($textItem) . "</p>";
-        }
-        echo "</div></div>";
-        echo '</div></div>';
-    }
 
     private function createProjectCard($project, $isFeatured)
     {
@@ -148,6 +119,39 @@ class ProjectCardsRenderer
         echo "Learn More <i class='bi bi-arrow-right-short align-middle'></i>";
         echo "</a></div></div></div></div>";
 
+    }
+
+    private function createProjectList($project, $isFeatured)
+    {
+        // $projectPath = $project->path . "/";
+        $projKey = $this->siteInfo->pageKeys['projectKey'];
+        $projectLink = "?{$projKey}=" . htmlspecialchars($project->id);
+        $title = isset($project->title) ? htmlspecialchars($project->title) : "";
+        $subhead = isset($project->summary['subhead']) ? $project->summary['subhead'] : null;
+        $categories = isset($project->summary['categories']) ? $project->summary['categories'] : [];
+        // $thumbnailSrc = isset($project->summary['thumbnail']) ? htmlspecialchars($projectPath . $project->summary['thumbnail']) : "";
+        $summaryText = isset($project->summary['text']) ? $project->summary['text'] : [];
+
+        echo "<div class='col-md-6'><div class='card archive_card p-4 rounded-3 border-0 bg-light shadow-sm h-100' id='{$project->anchorId}'>";
+        echo "<h6 class='fw-medium mb-3'><a href='$projectLink' class='no_deco link stretched-link'><span class='me-3'>$title</span>";
+        if (!empty($categories)) {
+            foreach ($categories as $category) {
+                $category = htmlspecialchars($category);
+                echo "<span class='category-container badge bg_subtle rounded-pill text-secondary fw-normal ms-1 align-middle'>$category</span> ";
+            }
+        }
+        echo "</a></h6>";
+        if (!empty($subhead) && $isFeatured) {
+            echo "<p class='text-body-tertiary'>$subhead</p>";
+        }
+        echo "<div class='card_info'>";
+
+        echo "<div class='card_info_summary'>";
+        foreach ($summaryText as $textItem) {
+            echo "<p class='mb-1 text-body-secondary'>" . htmlspecialchars($textItem) . "</p>";
+        }
+        echo "</div></div>";
+        echo '</div></div>';
     }
 
 }

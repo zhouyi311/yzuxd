@@ -24,10 +24,10 @@ $projectCardsRenderer = new ProjectCardsRenderer();
         <!-- header -->
         <?php echo $siteHeaderRenderer->render(); ?>
         <!-- Main -->
-        <main id="home_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px 100px" data-bs-smooth-scroll="true">
+        <main id="home_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -100px" data-bs-smooth-scroll="true">
             <!-- hero -->
             <section class="homepage_home page_section" id="home">
-                <div class="container">
+                <div class="container py-4">
                     <div class="row">
                         <div class='col-12'>
                             <div class="hero_card px-4 py-4 px-md-0 py-md-0 rounded-5">

@@ -14,51 +14,31 @@
                 "Tags"
             ],
             "text": [
-                "This is a quick template json for start a new page. including all data and data_fields in a short placeholder stats",
+                "Short placeholder stats",
+                "Short placeholder stats",
+                "Short placeholder stats",
+                "Short placeholder stats",
+                "Short placeholder stats",
                 "Simply duplicate this json file and folder to start a new page."
             ],
             "demoLink": {
-                "Demo Links": "http://zhouyiwork.com",
-                "Are Optional": "http://yzuxd.com"
+                "Demo Link": "http://google.com",
+                "Optional": "http://yzuxd.com"
             }
         },
         "article": [
             {
-                "headline": "Section Headline",
-                "subhead": "optional subhead, must be string",
-                "subheadCaption": "caption is optinal, must be string",
-                "subheadList": [
-                    "subheadList is optional, and suppose to be an array",
-                    "put string in subheadList will be converted to an one element array",
-                    "First item in the list will be leading"
-                ],
-                "content": [
-                    {
-                        "type": "paragraph",
-                        "isFluid": false,
-                        "data": [
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci."
-
-                        ]
-                    }
-                ]
-            },
-            {
-                "headline": "Media Type Showcase",
                 "leadImgFixed": "",
                 "leadImgFixedHeight": null,
                 "leadImg": "images/thumb.jpg",
                 "leadImgBgColor": "pink",
-                "subhead": "With full optional stup enabled",
-                "subheadCaption": "This is a caption for the section title",
+                "headline": "Section Headline",
+                "subhead": "optional subhead",
+                "subheadCaption": "caption is optinal",
                 "subheadList": [
-                    "we want some text dont we",
-                    "First item in the list will be leading",
-                    "put string in subheadList will be converted to an one element array"
+                    "Short placeholder stats",
+                    "Short placeholder stats",
+                    "Short placeholder stats"
                 ],
                 "leftCol": null,
                 "rightCol": null,
@@ -74,11 +54,44 @@
                         "isFluidHeadline": false,
                         "leadCount": 2,
                         "data": [
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh.",
-                            "Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. ",
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            " Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. "
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats"
+                        ]
+                    }
+                ]
+            },
+            {
+                "leadImgFixed": "",
+                "leadImgFixedHeight": null,
+                "leadImg": "images/thumb.jpg",
+                "leadImgBgColor": "pink",
+                "headline": "Media Type Showcase",
+                "subhead": "",
+                "subheadCaption": "",
+                "subheadList": [],
+                "leftCol": null,
+                "rightCol": null,
+                "leftColUnfluid": false,
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "headline": "Paragraph Headline",
+                        "caption": "A paragraph caption",
+                        "cite": " - I dont want this",
+                        "isQuote": false,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
+                        "leadCount": 1,
+                        "data": [
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats"
                         ]
                     },
                     {
@@ -89,11 +102,11 @@
                         "isQuote": true,
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "leadCount": true,
+                        "leadCount": 0,
                         "data": [
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh.",
-                            "Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. "
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats"
                         ]
                     },
                     {
@@ -107,9 +120,14 @@
                         "isListGroup": false,
                         "leadCount": true,
                         "data": [
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
-                            "Vitae convallis pulvinar diam convallis dictum nunc diam non. Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh.",
-                            "Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci. Vitae convallis pulvinar diam convallis dictum nunc diam non. "
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats",
+                            "Short placeholder stats"
                         ]
                     },
                     {
@@ -187,7 +205,7 @@
                 ]
             },
             {
-                "leadImg": "images/bg-02.png",
+                "leadImg": "images/thumb.jpg",
                 "leadImgFixedHeight": "70vh",
                 "headline": "Direct Embed",
                 "content": [

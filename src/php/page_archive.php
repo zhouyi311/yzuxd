@@ -27,30 +27,37 @@ $projectCardsRendererWithHidden = new ProjectCardsRenderer(true);
         ?>
         </header>
         <!-- Main -->
-        <main id="archive_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -90%" data-bs-smooth-scroll="true">
+        <main id="archive_main" data-bs-spy="" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
             <!-- hero -->
-            <section class="archive_page_home bg-white pt-5" id="home">
+            <section class="archive_page_home bg-white" id="home">
                 <div class="container">
                     <div class="row">
                         <div class='col-12'>
-                            <h1 class="text-uppercase my-5">
-                                Site Archive
-                            </h1>
                             <img src="src/img/all-page-deco-01.png" alt="head banner decoration" class="w-100 rounded-4">
+                            <h1 class="text-uppercase my-5">
+                                Archive Library
+                            </h1>
                             <!-- <div class='col-12 text-body-tertiary'><hr></div> -->
                         </div>
                     </div>
                 </div>
             </section>
             <!-- projects -->
-            <section class="page_section projects_section archive_projects bg-white" id="projects" >
-                 <?php
+            <section class="archive_projects bg-white" id="projects">
+                <?php
                 $projectCardsRendererWithHidden->render();
                 ?>
-                <h6 class="text-center pt-5 mt-5 mx-5">
-                    Thanks for visiting my site, I hope you have a lovely day and evening.
-                </h6>
             </section>
+            <div class="contaner">
+                <div class="row">
+                    <div class="col">
+                        <h6 class="text-center m-5">
+                            Thanks for visiting my site, I hope you have a lovely day and evening.
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
             <!-- contact -->
         </main>
         <?php include __DIR__ . '/include_footer.php'; ?>
