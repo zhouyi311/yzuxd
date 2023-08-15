@@ -5,7 +5,7 @@ class ArticleContentRenderer
     private $project;
     private $projPath;
     public $colLeftRight = [" col-lg-3 ", " col-lg-9 "];
-    public $colFixer = [" col-lg-8 offset-lg-2 ", " col-12 "];
+    public $innerColFixer = [" col-lg-8 offset-lg-2 ", " col-12 "];
 
     public function __construct($project)
     {
@@ -43,8 +43,8 @@ class ArticleContentRenderer
     }
     private function fluidProcessor($data)
     {
-        $gutter = $this->colFixer[0];
-        $full = $this->colFixer[1];
+        $gutter = $this->innerColFixer[0];
+        $full = $this->innerColFixer[1];
 
         if (empty($data['isFluid'])) {
             $containerGrid = $gutter;
@@ -95,7 +95,7 @@ class ArticleContentRenderer
     private function reportMediaTypeError($sectionName, $block, $index)
     {
         $type = !empty($block['type']) ? strval($block['type']) : "empty";
-        echo "<div class='media_block {$this->colFixer[0]}'><div class='alert alert-dark' role='alert'>";
+        echo "<div class='media_block {$this->innerColFixer[0]}'><div class='alert alert-dark' role='alert'>";
         echo "<h5 class='mb-4'>Media Type Error - Wrong Media Type:</h5>";
         echo "<p class='lead'>{$sectionName} -> content[$index]</p>";
         echo "<p>[\"type\"] => \"$type\" is not a valid value</p><hr>";
@@ -106,7 +106,7 @@ class ArticleContentRenderer
         $mediaType = $block['type'] ?? 'empty';
         $data = $block['data'] ?? null;
         $dataType = gettype($data) ?? null;
-        echo "<div class='media_block {$this->colFixer[0]}'><div class='alert alert-secondary' role='alert'>";
+        echo "<div class='media_block {$this->innerColFixer[0]}'><div class='alert alert-secondary' role='alert'>";
         echo "<h5 class='mb-3'>Data Type Error - " . ($data ? "Wrong Data Type:" : "Empty Data Field") . "</h5>";
         echo "<p class='lead'>{$sectionName} -> content[$index]</p>";
         if ($data) {
@@ -124,7 +124,7 @@ class ArticleContentRenderer
 
     private function writeHeadline($headline, $isFluid, $htag = "h5")
     {
-        $isFluid ?? $isFluid = [$this->colFixer[0], $this->colFixer[1]];
+        $isFluid ?? $isFluid = [$this->innerColFixer[0], $this->innerColFixer[1]];
         if (!empty($headline)) {
             echo "<div class='row'><div class='$isFluid[1]'>";
             echo "<$htag class='block_headline'>$headline</$htag>";
@@ -494,7 +494,7 @@ class ArticleContentRenderer
 
         // left col --
         echo "<div class='section_headline $leftCol'>";
-        echo $leftColUnfluid ? "<div class='row'><div class='{$this->colFixer[0]}'>" : null;
+        echo $leftColUnfluid ? "<div class='row'><div class='{$this->innerColFixer[0]}'>" : null;
 
         if (isset($subhead)) {
             echo "<h6 class='text-secondary'>$subhead</h6>";
