@@ -221,7 +221,7 @@ class HeaderRenderer
             </h4>
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="navbar_target">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home"><span class="h6">Home</span></a>
+                    <a class="nav-link" href="#home"><span class="h6"><i class='bi bi-folder-fill me-2'></i>Archive Home</span></a>
                 </li>
                 <?php
 
@@ -230,7 +230,7 @@ class HeaderRenderer
                         $headline = htmlspecialchars($navitems->title);
                         $anchor = $navitems->anchorId;
                         echo "<li class='nav-item'>";
-                        echo "<a class='nav-link' href='#$anchor'><span class='h6'>$headline</span></a>";
+                        echo "<a class='nav-link' href='#$anchor'><i class='bi bi-files me-2'></i><span class='h6'>$headline</span></a>";
                         echo "</li>";
                     }
                 }
@@ -239,7 +239,7 @@ class HeaderRenderer
                         $headline = htmlspecialchars($navitems->title);
                         $anchor = $navitems->anchorId;
                         echo "<li class='nav-item'>";
-                        echo "<a class='nav-link' href='#$anchor'><span class='h6'>$headline";
+                        echo "<a class='nav-link' href='#$anchor'><i class='bi bi-files me-2'></i><span class='h6'>$headline";
                         echo "</span></a></li>";
                     }
                 }
@@ -257,10 +257,6 @@ class HeaderRenderer
         <?php
         return ob_get_clean();
     }
-
-
-
-
 }
 
 ?>

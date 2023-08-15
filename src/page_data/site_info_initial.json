@@ -1,0 +1,32 @@
+{
+    "sitename": "YZuxd",
+    "pageKeys": {
+        "projectKey": "page",
+        "archiveKey": "archive"
+    },
+    "information": {
+        "siteDisplayname": "YZuxd.com",
+        "siteTitle": "Yzuxd.com - An Awesome Website",
+        "siteDescription": "Welcome to the Site, is a website that showing some web pages.",
+        "siteAddress": "yzuxd.com",
+        "siteSubAddress": "zhouyiwork.com/yzuxd - fill this only if your site is a subdomian or subdir",
+        "siteCopyright": "2012-2023 Yi Zhou",
+        "siteGaTag": "G-XXXXXXXXXX",
+        "myName": "Yi Zhou",
+        "myLocation": "Seattle",
+        "myEmail": "hello@yzuxd.com",
+        "myLinkedin": "https://www.linkedin.com/in/yi-zhou-a2a0b196/",
+        "myGithub": "https://www.github.com/zhouyi311/",
+        "myTwitter": "https://www.twitter.com/zhouyi311/"
+    },
+    "frontPageContent": {
+        "heroGreeting": "Greetings!!!",
+        "heroHeadline": "Welcome To My Site",
+        "heroIntroduction": "My name is Yi Zhou... a designer...",
+        "heroParagraphsArray": [
+            "You are awesome to see this text here.",
+            "I'm glad you saw this."
+        ],
+        "heroCallToAction": "View Works"
+    }
+}

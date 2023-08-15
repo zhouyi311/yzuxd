@@ -30,11 +30,13 @@ $projectCardsRendererWithHidden = new ProjectCardsRenderer(true);
         <main id="archive_main" data-bs-spy="" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
             <!-- hero -->
             <section class="archive_page_home bg-white" id="home">
+                <div class="bg" style="height:300px; overflow:hidden; background-image: url('src/img/all-page-deco-01.png'); background-size: cover; background-position: center;">
+                    <!-- <img src="src/img/all-page-deco-01.png" alt="head banner decoration" class="w-100"> -->
+                </div>
                 <div class="container">
                     <div class="row">
                         <div class='col-12'>
-                            <img src="src/img/all-page-deco-01.png" alt="head banner decoration" class="w-100 rounded-4">
-                            <h1 class="text-uppercase my-5">
+                            <h1 class="text-uppercase my-5 py-4">
                                 Archive Library
                             </h1>
                             <!-- <div class='col-12 text-body-tertiary'><hr></div> -->
@@ -48,10 +50,10 @@ $projectCardsRendererWithHidden = new ProjectCardsRenderer(true);
                 $projectCardsRendererWithHidden->render();
                 ?>
             </section>
-            <div class="contaner">
+            <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h6 class="text-center m-5">
+                        <h6 class="text-center my-5 p-5">
                             Thanks for visiting my site, I hope you have a lovely day and evening.
                         </h6>
                     </div>

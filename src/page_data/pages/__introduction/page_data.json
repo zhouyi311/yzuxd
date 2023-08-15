@@ -3,7 +3,7 @@
         "id": 888,
         "indexOrder": -1,
         "password": "",
-        "title": "Phone Mobile UI Illustration - Featured Example Project",
+        "title": "Introduction and Example Project",
         "summary": {
             "thumbnail": "thumb.png",
             "summaryImage": "summary.png",
@@ -11,8 +11,8 @@
             "caption": "Optional / Date: 2023 / Award-winning",
             "categories": [
                 "Optinal",
-                "UX Design",
-                "Illustration"
+                "Tags",
+                "On the Fly"
             ],
             "text": [
                 "Notes: you have to structrue each project josn files by following following rules: ",

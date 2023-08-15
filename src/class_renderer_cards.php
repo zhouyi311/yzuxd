@@ -42,7 +42,7 @@ class ProjectCardsRenderer
             $countProjs = 0;
             echo "<div class='container archive_container' id='showcase_container'>";
             echo "<div class='row g-4 mb-5'>";
-            echo "<h3 >Showcase Projects</h3>";
+            echo "<h4 ><i class='bi bi-folder-fill me-3'></i>Showcase Pages</h4>";
             foreach ($this->projects as $project) {
                 if ($project->indexOrder >= 0 && $project->indexOrder < 10) {
                     $this->createProjectList($project, true);
@@ -53,12 +53,12 @@ class ProjectCardsRenderer
                 }
             }
             if ($countProjs === 0) {
-                echo "<div class='col'><p>Not enough projects, please check data</p></div>";
+                echo "<div class='col'><p>Not enough pages, please check data</p></div>";
             }
             echo "</div></div>";
             echo "<div class='container archive_container' id='archive_container'>";
             echo "<div class='row g-4 mb-5'>";
-            echo "<h3 class='pt-4'>Archived Pages</h3>";
+            echo "<h4 class=''><i class='bi bi-archive-fill me-3'></i>Storage Pages</h4>";
             $countProjs = 0;
             foreach ($this->projects as $project) {
                 if ($project->indexOrder < 0) {
@@ -67,7 +67,7 @@ class ProjectCardsRenderer
                 }
             }
             if ($countProjs === 0) {
-                echo "<div class='col'><p>No archived pages :)</p></div>";
+                echo "<div class='col'><p>Empty storage :)</p></div>";
             }
             echo "</div></div>";
         }

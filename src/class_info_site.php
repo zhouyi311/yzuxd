@@ -22,7 +22,12 @@ class SiteInfo
     }
     public static function loadInfo()
     {
-        $file = __DIR__ . '/page_data/site_info.json'; // Adjusted to an absolute path
+        
+        if (file_exists( __DIR__ . '/page_data/site_info.json')){
+            $file = __DIR__ . '/page_data/site_info.json';
+        }else{
+            $file = __DIR__ . '/page_data/site_info_initial.json';
+        }
 
         if (!file_exists($file)) {
             throw new Exception("The site_info.json file does not exist.");
