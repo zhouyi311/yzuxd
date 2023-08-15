@@ -15,7 +15,6 @@ class SiteInfo
         $this->pageKeys = $pageKeys;
         $this->frontPageContent = $frontPageContent; // This will be an associative array
         $this->rootUrl = $this->getSiteRootUrl(); // Set the rootUrl property
-
         // Ensure heroParagraphsArray is always an array
         if (isset($this->frontPageContent['heroParagraphsArray']) && !is_array($this->frontPageContent['heroParagraphsArray'])) {
             $this->frontPageContent['heroParagraphsArray'] = [$this->frontPageContent['heroParagraphsArray']];
@@ -49,18 +48,29 @@ class SiteInfo
         );
     }
 
-    public function getSiteRootUrl()
-    {
+public function getSiteRootUrl() {
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? "https://" : "http://";
         $domainName = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
-        $folderPath = isset($_SERVER['SCRIPT_NAME']) ? dirname($_SERVER['SCRIPT_NAME']) : '';
-
-        if ($folderPath === '/' || $folderPath === '\\') {
-            return $protocol . $domainName . '/';
-        }
-        return $protocol . $domainName . $folderPath . '/';
+        $basePath = $this->findBasePath(dirname($_SERVER['SCRIPT_FILENAME']));
+        
+        return $protocol . $domainName . $basePath;
     }
 
+    private function findBasePath($currentPath) {
+        // Stop if we're at the root directory
+        if ($currentPath == dirname($currentPath)) {
+            return '';
+        }
+
+        // Check if index.php exists in the current directory
+        if (file_exists($currentPath . '/index.php')) {
+            // Remove the document root to get the relative path
+            return str_replace($_SERVER['DOCUMENT_ROOT'], '', $currentPath);
+        } else {
+            // If not, go one directory up and try again
+            return $this->findBasePath(dirname($currentPath));
+        }
+    }
 }
 
 

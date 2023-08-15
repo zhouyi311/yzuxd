@@ -5,6 +5,7 @@ class ProjectInfo
     public $id;
     public $anchorId;
     public $path;
+    public $lastModified;
     public $indexOrder;
     public $password;
     public $title;
@@ -14,10 +15,10 @@ class ProjectInfo
     public $next = null;
     public function __construct($projectData)
     {
-        // $projectData = $this->sanitizeData($projectData);
-
         $this->id = $projectData['id'];
-        $this->path = '/src/page_data/projects/' . basename($projectData['file'], '.json');
+        $this->lastModified = $projectData['lastModified'];
+        $this->path = 'src/page_data/projects/' . basename($projectData['file'], '.json');
+
         $this->indexOrder = $projectData['indexOrder'];
         if (!is_numeric($this->indexOrder)) {
             $this->indexOrder = -1;
@@ -46,14 +47,15 @@ class ProjectInfo
     {
         $json = file_get_contents($file);
         $projectData = json_decode($json, true)[0];
-
+        
         if (empty($projectData['id'])) { // Check if 'id' is not set or empty, and then assign a unique ID based on the file path
             $projectData['id'] = basename($file) . "_" . crc32($file);
         }
-
+        
         $projectData['id'] = rawurlencode($projectData['id']);
-
+        
         $projectData['file'] = $file;
+        $projectData['lastModified'] = filemtime($file);
         return $projectData;
     }
 

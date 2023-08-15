@@ -43,13 +43,12 @@ Thumbs.db
 .vscode
 .php_tmp
 *.code-workspace
-/src/bootstrap-includes
 /src/img/example
 test.php
+robots.txt
+sitemap.xml
 
 # Project Data #
 /src/page_data/projects/*
-/src/static/html_includes/*
-/src/static/iframe_includes/*
 !/src/page_data/projects/__*/*
 !/src/page_data/projects/__*

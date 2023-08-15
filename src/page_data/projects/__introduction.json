@@ -66,8 +66,8 @@
                 "headline": "Media Type Showcase",
                 "leadImgFixed": "",
                 "leadImgFixedHeight": null,
-                "leadImg": "images/bg-01.png",
-                "leadImgBgColor": "pink",
+                "leadImg": "images/bg-01.jpg",
+                "leadImgBgColor": "darkblue",
                 "subhead": "With full optional stup enabled",
                 "subheadCaption": "This is a caption for the section title",
                 "subheadList": [

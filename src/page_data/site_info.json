@@ -1,5 +1,9 @@
 {
     "sitename": "YZuxd",
+    "pageKeys": {
+        "projectKey": "page",
+        "archiveKey": "archive"
+    },
     "information": {
         "siteDisplayname": "YZuxd.com",
         "siteTitle": "Yi Zhou's UX Design Portfolio",
@@ -13,10 +17,6 @@
         "myLinkedin": "https://www.linkedin.com/in/yi-zhou-a2a0b196/",
         "myGithub": "https://www.github.com/zhouyi311/",
         "myTwitter": "https://www.twitter.com/zhouyi311/"
-    },
-    "pageKeys": {
-        "projectKey": "page",
-        "archiveKey": "archive"
     },
     "frontPageContent": {
         "heroGreeting": "Oh là là!",

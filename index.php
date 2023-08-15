@@ -38,6 +38,12 @@ try {
         } else {
             throw new Exception('The archive page error.');
         }
+    } elseif (isset($_GET['sitemap_xml'])) {
+        if (file_exists(__DIR__ . '/src/php/handler_sitemap.php')) {
+            include __DIR__ . '/src/php/handler_sitemap.php';
+        } else {
+            throw new Exception('The archive page error.');
+        }
     } else {
         if (file_exists(__DIR__ . '/src/php/page_home.php')) {
             include __DIR__ . '/src/php/page_home.php';
