@@ -1,5 +1,68 @@
-.demo {
-  font-family: "Poppins", sans-serif;
-  font-family: "Roboto", sans-serif;
-  font-family: "Source Sans 3", sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.bg_red1 {
+  background-color: #ff0054;
+}
+
+.bg_red2 {
+  background-color: #dc003e;
+}
+
+.bg_magenta {
+  background-color: #FF008A;
+}
+
+.bg_blue {
+  background-color: #4909FE;
+}
+
+.bg_fade {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.bg_subtle {
+  background-color: rgba(0, 0, 0, 0.07);
+}
+
+.text_red1 {
+  color: #ff0054;
+}
+
+.text_red2 {
+  color: #dc003e;
+}
+
+.text_magenta {
+  color: #FF008A;
+}
+
+.text_blue {
+  color: #4909FE;
+}
+
+.text_fade {
+  color: rgba(0, 0, 0, 0.03);
+  text-decoration: none;
+}
+
+.text_subtle {
+  color: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
 }/*# sourceMappingURL=css_include.css.map */

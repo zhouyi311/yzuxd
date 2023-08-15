@@ -102,7 +102,7 @@ $siteHeaderRenderer = new HeaderRenderer('project', $project, $isPasswordRequire
                                             echo "<div class='article_category d-flex gap-2'>";
                                             foreach ($project->summary['categories'] as $category) {
                                                 $category = htmlspecialchars($category);
-                                                echo "<span class='category-container badge bg_subtle text-secondary rounded-pill '>$category</span> ";
+                                                echo "<span class='category-container badge fw-normal text-bg-light px-3 py-2 me-1 rounded-pill '>$category</span> ";
                                             }
                                             echo "</div>";
                                         }
@@ -115,7 +115,7 @@ $siteHeaderRenderer = new HeaderRenderer('project', $project, $isPasswordRequire
                                             echo "<div class='d-flex gap-3 mt-5'>";
                                             $demo_link = ($project->summary['demoLink']);
                                             foreach ($demo_link as $name => $link) {
-                                                echo "<a class='btn btn-light bg_subtle rounded-pill px-4' target='_blank' href='{$link}'>{$name}</a>";
+                                                echo "<a class='btn btn-light rounded-pill fw-bold px-4' target='_blank' href='{$link}'>{$name}</a>";
                                             }
                                             echo '</div>';
                                         }

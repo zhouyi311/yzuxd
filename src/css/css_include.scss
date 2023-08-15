@@ -10,6 +10,25 @@ Geneva,
 Tahoma,
 sans-serif;
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-head;
+    font-weight: 700;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: $font-head;
+}
+
 $bp-sm: 575px;
 $bp-md: 767px;
 $bp-lg: 991px;
@@ -22,25 +41,69 @@ $unit-3: 1rem;
 $unit-2: 0.5rem;
 $unit-1: 0.25rem;
 
-$color-gray-light: rgba(0, 0, 0, 0.03);
-$color-gray-silver: rgba(0, 0, 0, 0.1);
-$color-gray-ash: rgba(0, 0, 0, 0.3);
-$color-gray-medium: rgba(0, 0, 0, 0.5);
-$color-gray-medium-dark: rgba(0, 0, 0, 0.7);
-$color-white-light: rgba(255, 255, 255, 0.1);
-$color-white-silver: rgba(255, 255, 255, 0.2);
-$color-white-cream: rgba(255, 255, 255, 0.4);
-$color-white-medium: rgba(255, 255, 255, 0.6);
-$color-white-medium-bright: rgba(255, 255, 255, 0.8);
-$color-theme-red-1: #ff0054;
-$color-theme-red-2: #ff0049;
+$clr-gray-light: rgba(0, 0, 0, 0.03);
+$clr-gray-silver: rgba(0, 0, 0, 0.1);
+$clr-gray-ash: rgba(0, 0, 0, 0.3);
+$clr-gray-medium: rgba(0, 0, 0, 0.5);
+$clr-gray-medium-dark: rgba(0, 0, 0, 0.7);
 
+$clr-white-light: rgba(255, 255, 255, 0.1);
+$clr-white-silver: rgba(255, 255, 255, 0.2);
+$clr-white-cream: rgba(255, 255, 255, 0.4);
+$clr-white-medium: rgba(255, 255, 255, 0.6);
+$clr-white-medium-bright: rgba(255, 255, 255, 0.8);
 
-.demo {
-    font-family: 'Poppins',
-        sans-serif;
-    font-family: 'Roboto',
-        sans-serif;
-    font-family: 'Source Sans 3',
-        sans-serif;
+$clr-theme-magenta: #FF008A;
+$clr-theme-red1: #ff0054;
+$clr-theme-red2: #dc003e;
+$clr-theme-blue: #4909FE;
+
+.bg_red1 {
+    background-color: $clr-theme-red1;
+}
+
+.bg_red2 {
+    background-color: $clr-theme-red2;
+}
+
+.bg_magenta {
+    background-color: $clr-theme-magenta;
+}
+
+.bg_blue {
+    background-color: $clr-theme-blue;
+}
+
+.bg_fade {
+    background-color: rgba($color: #000000, $alpha: 0.03);
+}
+
+.bg_subtle {
+    background-color: rgba($color: #000000, $alpha: 0.07);
+}
+
+.text_red1 {
+    color: $clr-theme-red1;
+}
+
+.text_red2 {
+    color: $clr-theme-red2;
+}
+
+.text_magenta {
+    color: $clr-theme-magenta;
+}
+
+.text_blue {
+    color: $clr-theme-blue;
+}
+
+.text_fade {
+    color: rgba($color: #000000, $alpha: 0.03);
+    text-decoration: none;
+}
+
+.text_subtle {
+    color: rgba($color: #000000, $alpha: 0.1);
+    text-decoration: none;
 }

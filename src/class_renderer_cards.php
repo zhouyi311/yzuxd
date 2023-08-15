@@ -90,8 +90,8 @@ class ProjectCardsRenderer
         } else {
             echo "<div class='col-sm-6 col-lg-4'>";
         }
-        echo "<div class='project_card " . ($isFeatured ? "featured_card " : null);
-        echo " card border-0 overflow-hidden rounded-5 bg-white h-100' id='$project->anchorId'>";
+        echo "<div class='project_card card " . ($isFeatured ? "featured_card " : null);
+        echo " border-0 overflow-hidden rounded-5 bg-white h-100' id='$project->anchorId'>";
         echo "<a class='card_thumb_link' href='$projectLink'>";
         echo "<div class='card_thumbnail ratio ratio-1x1 rounded-5'>";
         echo "<img class='object-fit-cover' src='$thumbnailSrc' alt='$title thumbnail'>";
@@ -106,7 +106,7 @@ class ProjectCardsRenderer
         if (!empty($categories)) {
             foreach ($categories as $category) {
                 $category = htmlspecialchars($category);
-                echo "<span class='category-container badge rounded-pill text-body-secondary fw-normal'>$category</span> ";
+                echo "<span class='category-container badge text-bg-light px-3 py-2 rounded-pill fw-normal me-2'>$category</span> ";
             }
         }
         echo "</div><div class='card_info_summary'>";

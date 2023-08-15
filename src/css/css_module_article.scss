@@ -16,8 +16,8 @@
 
         .project_intro_summary {
             @media (max-width:$bp-lg) {
-                // background-color: $color-gray-light;
-                box-shadow: 0 calc(($unit-3) * -1) $unit-3 calc(($unit-4) * -1) $color-gray-ash;
+                // background-color: $clr-gray-light;
+                box-shadow: 0 calc(($unit-3) * -1) $unit-3 calc(($unit-4) * -1) $clr-gray-ash;
             }
         }
 
@@ -75,7 +75,7 @@
 
     .article_section {
         &:nth-child(even) {
-            background-color: $color-gray-light;
+            background-color: $clr-gray-light;
         }
 
         .subhead_list {
@@ -98,7 +98,7 @@
                     margin-right: $unit-2;
                     left: 0;
                     top: 0.25em;
-                    color: $color-gray-medium-dark;
+                    color: $clr-gray-medium-dark;
                 }
 
                 &:first-child {
@@ -114,12 +114,12 @@
 
         // media block..........................................
         .media_block {
-            margin-bottom: $unit-5;
+            margin-bottom: $unit-4;
             overflow: hidden;
 
             blockquote.quote_container {
                 visibility: visible;
-                background-color: $color-gray-light;
+                background-color: $clr-gray-light;
             }
 
             .block_headline {
@@ -128,7 +128,7 @@
 
             .block_caption {
                 margin-top: $unit-2;
-                color: $color-gray-medium-dark;
+                color: $clr-gray-medium-dark;
                 font-size: 0.9em;
             }
 
@@ -137,7 +137,7 @@
                 width: 100%;
 
                 figcaption {
-                    color: $color-gray-ash;
+                    color: $clr-gray-ash;
                     font-weight: 500;
 
                     // text-align: center;
@@ -147,9 +147,9 @@
                         content: '\F4C9';
                         font-size: 0.8em;
                         vertical-align: baseline;
-                        // color: $color-gray-ash;
+                        // color: $clr-gray-ash;
                         // line-height: 100%;
-                        // color: $color-gray-silver;
+                        // color: $clr-gray-silver;
                     }
                 }
             }
@@ -198,7 +198,7 @@
                                 vertical-align: baseline;
                                 margin-right: $unit-2;
                                 left: 0;
-                                color: $color-gray-medium;
+                                color: $clr-gray-medium;
                                 // line-height: 100%;
                                 // top: 0.25em;
                                 // font-size: 1em;
@@ -291,7 +291,7 @@
                     min-height: 400px;
                     aspect-ratio: 3/2;
                     overflow: hidden;
-                    // border: 1px solid $color-gray-silver;
+                    // border: 1px solid $clr-gray-silver;
 
                     iframe {
                         padding: 0;
@@ -321,7 +321,7 @@
 
     .last_next_selector {
         justify-content: space-between;
-        // background-color: $color-gray-light;
+        // background-color: $clr-gray-light;
         display: grid;
         grid-template-columns: 1fr 1fr;
         // user-select: none;
@@ -334,7 +334,7 @@
             transition: background-color 0.3s, color 0.3s;
 
             &:hover {
-                background-color: $color-gray-light;
+                background-color: $clr-gray-light;
                 color: black;
             }
 
@@ -351,7 +351,7 @@
 
         a.disabled {
             .cta {
-                color: $color-gray-ash;
+                color: $clr-gray-ash;
             }
 
             user-select: none;
@@ -390,7 +390,7 @@
 
         button {
             font-size: small;
-            background-color: $color-white-medium;
+            background-color: $clr-white-medium;
             backdrop-filter: blur($unit-3);
 
             &:hover {
@@ -405,7 +405,7 @@
         height: 50px;
         top: 10px;
         right: 10px;
-        background-color: $color-white-medium-bright;
+        background-color: $clr-white-medium-bright;
         border: none;
         border-radius: 50%;
         cursor: pointer;

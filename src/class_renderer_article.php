@@ -504,10 +504,10 @@ class ArticleContentRenderer
             echo "<p class='text-body-tertiary'>$subheadCaption</p>";
         }
         if (isset($subheadList)) {
-            echo "<ul class='subhead_list'>";
+            echo "<ul class='subhead_list mt-4'>";
             foreach ($subheadList as $i => $item) {
                 // echo $i === 0 ? "<li class='fw-bold'> $item</li>" : "<li class=''>$item</li>";
-                echo "<li class=''>$item</li>";
+                echo "<li class='mt-3' id='$headlineId-list-$i'>$item</li>";
             }
             echo "</ul>";
         }
