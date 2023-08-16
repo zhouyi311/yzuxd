@@ -71,7 +71,7 @@ $siteHeaderRenderer = new HeaderRenderer('project', $project, $isPasswordRequire
         ?>
 
         <!-- Main -->
-        <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -25%" data-bs-smooth-scroll="true">
+        <main id="project_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -25%" data-bs-smooth-scroll="false">
             <article class="project_article" id="project_<?php echo $projectId ?>">
                 <header class="project_article_header" id="home">
                     <div class="container">
@@ -102,14 +102,17 @@ $siteHeaderRenderer = new HeaderRenderer('project', $project, $isPasswordRequire
                                             echo "<div class='article_category d-flex gap-2'>";
                                             foreach ($project->summary['categories'] as $category) {
                                                 $category = htmlspecialchars($category);
-                                                echo "<span class='category-container badge fw-normal text-bg-light px-3 py-2 me-1 rounded-pill '>$category</span> ";
+                                                echo "<span class='category-container badge fw-nordal text-bg-light px-3 py-2 me-1 rounded-pill '>$category</span> ";
                                             }
                                             echo "</div>";
                                         }
                                         echo '</div>';
-                                        $summaryText = isset($project->summary['text']) ? $project->summary['text'] : [];
-                                        foreach ($summaryText as $textItem) {
-                                            echo "<p class='text-body'>" . htmlspecialchars($textItem) . "</p>";
+                                        $summaryText = isset($project->summary['text']) ? $project->summary['text'] : null;
+                                        if (!empty($summaryText)) {
+                                            echo "<div class='p_wrapper text-body-secondary markdown'";
+                                            foreach ($summaryText as $textItem) {
+                                                echo "<p class='article_summary_paragraph'>" . htmlspecialchars($textItem) . "</p>";
+                                            }
                                         }
                                         if (!empty($project->summary['demoLink'])) {
                                             echo "<div class='d-flex gap-3 mt-5'>";

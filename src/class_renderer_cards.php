@@ -112,7 +112,7 @@ class ProjectCardsRenderer
         echo "</div><div class='card_info_summary'>";
         echo "<div class='summary_content'>";
         foreach ($summaryText as $textItem) {
-            echo "<p class='mb-1 text-body-secondary'>" . htmlspecialchars($textItem) . "</p>";
+            echo "<p class='mb-1 text-body-secondary article_summary_paragraph markdown'>" . htmlspecialchars($textItem) . "</p>";
         }
         echo "</div></div><div class='card_info_cta mt-1 mb-2'>";
         echo "<a class='btn btn-dark rounded-pill px-4 fw-medium' href='$projectLink'>";
@@ -148,7 +148,7 @@ class ProjectCardsRenderer
 
         echo "<div class='card_info_summary'>";
         foreach ($summaryText as $textItem) {
-            echo "<p class='mb-1 text-body-secondary'>" . htmlspecialchars($textItem) . "</p>";
+            echo "<p class='mb-1 text-body-secondary article_summary_paragraph markdown'>" . htmlspecialchars($textItem) . "</p>";
         }
         echo "</div></div>";
         echo '</div></div>';

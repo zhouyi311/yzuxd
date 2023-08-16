@@ -7,19 +7,19 @@
         "summary": {
             "thumbnail": "images/thumb.jpg",
             "summaryImage": "images/demo.jpg",
-            "subhead": "",
-            "caption": "",
+            "subhead": "Simply duplicate kickstarter folder and rename it to start a new page.",
+            "caption": "This is a template contains most of the useful format that helps starting a new blank page",
             "categories": [
                 "Optinal",
                 "Tags"
             ],
             "text": [
-                "Short placeholder stats",
-                "Short placeholder stats",
-                "Short placeholder stats",
-                "Short placeholder stats",
-                "Short placeholder stats",
-                "Simply duplicate this json file and folder to start a new page."
+                "Simply duplicate kickstarter folder and rename it to start a new page.",
+                "Simply duplicate kickstarter folder and rename it to start a new page.",
+                "Simply duplicate kickstarter folder and rename it to start a new page.",
+                "Simply duplicate kickstarter folder and rename it to start a new page.",
+                "Simply duplicate kickstarter folder and rename it to start a new page.",
+                "Simply duplicate kickstarter folder and rename it to start a new page."
             ],
             "demoLink": {
                 "Demo Link": "http://google.com",
@@ -30,8 +30,8 @@
             {
                 "leadImgFixed": "",
                 "leadImgFixedHeight": null,
-                "leadImg": "images/thumb.jpg",
-                "leadImgBgColor": "pink",
+                "leadImg": "",
+                "leadImgBgColor": "",
                 "headline": "Section Headline",
                 "subhead": "optional subhead",
                 "subheadCaption": "caption is optinal",
@@ -47,21 +47,41 @@
                     {
                         "type": "paragraph",
                         "headline": "Paragraph Headline",
+                        "caption": "",
+                        "cite": "",
+                        "isQuote": false,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
+                        "leadCount": 3,
+                        "data": [
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page."
+                        ]
+                    },
+                    {
+                        "type": "list",
+                        "headline": "Paragraph Headline",
                         "caption": "A paragraph caption",
                         "cite": " - I dont want this",
                         "isQuote": false,
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "leadCount": 2,
+                        "leadCount": 3,
                         "data": [
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats"
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page."
                         ]
                     }
                 ]
@@ -71,7 +91,7 @@
                 "leadImgFixedHeight": null,
                 "leadImg": "images/thumb.jpg",
                 "leadImgBgColor": "pink",
-                "headline": "Media Type Showcase",
+                "headline": "Gallery Showcase",
                 "subhead": "",
                 "subheadCaption": "",
                 "subheadList": [],
@@ -79,57 +99,6 @@
                 "rightCol": null,
                 "leftColUnfluid": false,
                 "content": [
-                    {
-                        "type": "paragraph",
-                        "headline": "Paragraph Headline",
-                        "caption": "A paragraph caption",
-                        "cite": " - I dont want this",
-                        "isQuote": false,
-                        "isFluid": false,
-                        "isFluidHeadline": false,
-                        "leadCount": 1,
-                        "data": [
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats"
-                        ]
-                    },
-                    {
-                        "type": "paragraph",
-                        "headline": "Paragraph Headline 2",
-                        "caption": "- Caption here",
-                        "cite": "",
-                        "isQuote": true,
-                        "isFluid": false,
-                        "isFluidHeadline": false,
-                        "leadCount": 0,
-                        "data": [
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats"
-                        ]
-                    },
-                    {
-                        "type": "List",
-                        "headline": "List headline",
-                        "caption": "Some Caption here",
-                        "cite": " I like myself",
-                        "isQuote": false,
-                        "isFluid": false,
-                        "isFluidHeadline": false,
-                        "isListGroup": false,
-                        "leadCount": true,
-                        "data": [
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats",
-                            "Short placeholder stats"
-                        ]
-                    },
                     {
                         "type": "image",
                         "headline": "A Nice Image Grid Example",
@@ -190,25 +159,18 @@
                         "isFluid": false,
                         "isFluidHeadline": false,
                         "headline": "An Awesome Local Video Example",
-                        "caption": "An iFrame example",
-                        "cite": " - 'An awesome book'",
+                        "caption": "",
+                        "cite": "",
                         "isControls": false,
                         "isAutoPlay": true,
                         "isLoop": true,
                         "figCaption": [
-                            "first video"
+                            ""
                         ],
                         "data": [
                             "videos/v5.mp4"
                         ]
-                    }
-                ]
-            },
-            {
-                "leadImg": "images/thumb.jpg",
-                "leadImgFixedHeight": "70vh",
-                "headline": "Direct Embed",
-                "content": [
+                    },
                     {
                         "type": "iframe",
                         "isFluid": false,
@@ -236,7 +198,7 @@
                         "headline": "HTML Code Direct Embed Example",
                         "caption": "A HTML Code Direct Embed Example",
                         "cite": " - 'Who else?'",
-                        "data": "assets/embed-iframe-video.html"
+                        "data": "assets/embed-html.html"
                     }
                 ]
             }

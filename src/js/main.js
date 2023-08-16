@@ -1,28 +1,16 @@
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+// Markdown library -> credit: https://marked.js.org/
+window.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.markdown');
 
-        const navbar = document.getElementById('page_navbar');
-        const navOffset = navbar.offsetHeight;
-
-        const href = this.getAttribute('href');
-        const targetElement = document.querySelector(href);
-
-        if (targetElement) {
-            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navOffset;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
+    elements.forEach((element) => {
+        const markdownText = element.innerHTML;
+        element.innerHTML = marked.parse(markdownText); // Use marked.parse here
     });
 });
 
-document.addEventListener('DOMContentLoaded', handleScrollForNavigation);
-window.addEventListener('scroll', handleScrollForNavigation);
 
-// main margin setup
+
+// main margin top offest
 function offsetHeight() {
     const sourceElement = document.getElementById('page_navbar');
     const targetElement = document.getElementById('home');
@@ -32,7 +20,7 @@ function offsetHeight() {
     if (targetElement) {
         targetElement.style.paddingTop = `${sourceHeight + 8}px`; // Use backticks (`) here
         // console.log('offsetHeight - Element is set.');
-    } else {
+    } else {d
         return;
     }
 
@@ -40,7 +28,7 @@ function offsetHeight() {
 document.addEventListener('DOMContentLoaded', offsetHeight);
 
 
-
+//nav bar background and shadow change
 function handleScrollForNavigation() {
     const pageNavbar = document.getElementById('page_navbar');
     const homeNavList = document.querySelectorAll('.home_page_navbar');
@@ -78,12 +66,8 @@ function handleScrollForNavigation() {
     }
 }
 
-
-
-
-
+// offcanvas transition
 let scrollTimeout; 
-
 function handleDrawer() {
     const offcanvasBody = document.getElementById('offcanvasNavbar');
 
@@ -96,10 +80,30 @@ function handleDrawer() {
         offcanvasBody.style.transition = '';  
     }, 100); 
 }
-
 document.addEventListener('scroll', handleDrawer);
 
+//scrolling behavior
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
+        const navbar = document.getElementById('page_navbar');
+        const navOffset = navbar.offsetHeight;
 
+        const href = this.getAttribute('href');
+        const targetElement = document.querySelector(href);
 
+        if (targetElement) {
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navOffset;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', handleScrollForNavigation);
+window.addEventListener('scroll', handleScrollForNavigation);
 

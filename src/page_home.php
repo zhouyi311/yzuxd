@@ -24,7 +24,7 @@ $projectCardsRenderer = new ProjectCardsRenderer();
         <!-- header -->
         <?php echo $siteHeaderRenderer->render(); ?>
         <!-- Main -->
-        <main id="home_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -100px" data-bs-smooth-scroll="true">
+        <main id="home_main" data-bs-spy="scroll" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -100px" data-bs-smooth-scroll="false">
             <!-- hero -->
             <section class="homepage_home page_section" id="home">
                 <div class="container py-4">

@@ -338,16 +338,24 @@ h6 {
   top: 0.25em;
   color: rgba(0, 0, 0, 0.7);
 }
+.project_article .article_section .sec_content_col > .sec_content_row {
+  margin-bottom: 3rem;
+}
+.project_article .article_section .sec_content_col > .sec_content_row:last-child {
+  margin-bottom: 0;
+}
 .project_article .article_section .media_block {
-  margin-bottom: 1.5rem;
   overflow: hidden;
+}
+.project_article .article_section .media_block :last-child {
+  margin-bottom: 0;
 }
 .project_article .article_section .media_block blockquote.quote_container {
   visibility: visible;
   background-color: rgba(0, 0, 0, 0.03);
 }
 .project_article .article_section .media_block .block_headline {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .project_article .article_section .media_block .block_caption {
   margin-top: 0.5rem;

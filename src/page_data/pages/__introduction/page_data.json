@@ -15,10 +15,11 @@
                 "On the Fly"
             ],
             "text": [
-                "Notes: you have to structrue each project josn files by following following rules: ",
-                "1) 'id' is for url querty selector, and will be shown in the url address, could be int or string. (Normally, id should be unique - but we handle duplicated and missing id cases by assign them temp ids)",
-                "2) For projects that do not want password protection, you can either set 'password' key to any empty values like null, '', or set to string 'no'",
-                "3) Projects have indexOrder 0-9 will be shown as featured project card on the home page. Negative indexOrder will hide project from navigation and card list (accessable by URL). Projects have same indexOrder will sort by filename"
+                "Notes: you **have to** structrue each project josn files by following following rules:",
+                "'id' is for url querty selector, and will be shown in the url address, could be int or string. (Normally, id should be unique - but we handle duplicated and missing id cases by assign them temp ids)",
+                "For projects that do not want password protection, you can either set 'password' key to any empty values like null, \"\", or set to string 'no'",
+                "Projects have indexOrder 0-9 will be shown as featured project card on the home page. Negative indexOrder will hide project from navigation and card list (accessable by URL). Projects have same indexOrder will sort by filename",
+                "Markdown reverence: https://github.com/markedjs/marked/ - not fully supported but works in some way"
             ],
             "demoLink": {
                 "Demo Links": "http://zhouyiwork.com",
@@ -45,7 +46,7 @@
                         "type": "paragraph",
                         "isFluid": true,
                         "data": [
-                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "**Lorem ipsum** dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
                             "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",

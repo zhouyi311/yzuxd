@@ -113,9 +113,18 @@
         }
 
         // media block..........................................
+        .sec_content_col>.sec_content_row{
+            margin-bottom: 3rem;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
         .media_block {
-            margin-bottom: $unit-4;
             overflow: hidden;
+
+            :last-child{
+                margin-bottom: 0;
+            }
 
             blockquote.quote_container {
                 visibility: visible;
@@ -123,7 +132,7 @@
             }
 
             .block_headline {
-                margin-bottom: $unit-3;
+                margin-bottom: $unit-4;
             }
 
             .block_caption {
