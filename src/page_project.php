@@ -87,13 +87,13 @@ $siteHeaderRenderer = new HeaderRenderer('project', $project, $isPasswordRequire
                                 }
                                 ?>
                                 <div class="row">
-                                    <div class="col-lg-6 order-lg-2 col-xl-4 offset-xl-1 pt-3">
+                                    <div class="col-lg-7 order-lg-2 col-xl-4 offset-xl-1 pt-3">
                                         <div class="project_intro_image none_select">
                                             <img class="intro_image none_select" src="<?php echo $project->path . "/" . htmlspecialchars($project->summary['summaryImage']); ?>"
                                                 alt="<?php echo htmlspecialchars($project->title); ?> headline image">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 project_intro_summary py-5 pt-lg-3 mb-4 mb-lg-5">
+                                    <div class="col-lg-5 project_intro_summary py-5 pt-lg-3 mb-2">
                                         <!-- <div class="project_intro_summary_wrapper "> -->
                                         <?php
                                         echo '<div class="text-body-tertiary d-flex flex-wrap align-items-center gap-3 mb-4 mb-lg-5">';

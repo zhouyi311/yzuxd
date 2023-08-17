@@ -46,8 +46,7 @@ class ArticleContentRenderer
     ////////////////////////////////////////////////////////////////////
     private function renderSection($section)
     {
-        // logic for rendering the section
-        // $projPath = $this->projPath . "/";
+        // Extract values from the section array
         $headline = UtilityClass::sanitizeValue($section['headline'] ?? null);
         $headlineId = UtilityClass::sanitizeValue($section['headlineId'] ?? null);
         $subhead = UtilityClass::sanitizeValue($section['subhead'] ?? null);
@@ -56,18 +55,25 @@ class ArticleContentRenderer
         $leftCol = UtilityClass::sanitizeValue($section['leftCol'] ?? null);
         $rightCol = UtilityClass::sanitizeValue($section['rightCol'] ?? null);
         $leftColUnfluid = isset($section['leftColUnfluid']) ? $section['leftColUnfluid'] : null;
-        $leftCol + $rightCol > 12 ? $leftCol = $rightCol = 12 : null;
-        // $leftCol > 0 && $leftCol < 12 ? $leftCol .= " pe-lg-4" : null;
-        $leftCol = $leftCol ? "col-lg-$leftCol" : $this->colLeftRight[0];
-        $rightCol = $rightCol ? "col-lg-$rightCol" : $this->colLeftRight[1];
 
-        // section container
+        // Ensure left and right column values don't exceed 12
+        if ($leftCol + $rightCol > 12) {
+            $leftCol = $rightCol = 12;
+        }
+
+        // Determine column classes based on left and right columns
+        $leftColClass = $leftCol ? "col-lg-$leftCol" : $this->colLeftRight[0];
+        $rightColClass = $rightCol ? "col-lg-$rightCol" : $this->colLeftRight[1];
+
+        // Output section container and row
         echo "<section class='page_section article_section' id='{$headlineId}'>";
         echo "<div class='container'><div class='row gx-5'>";
 
-        // left col --
-        echo "<div class='section_headline $leftCol'>";
-        echo $leftColUnfluid ? "<div class='row'><div class='{$this->innerColWidth[0]}'>" : null;
+        // Output left column
+        echo "<div class='section_headline $leftColClass'>";
+        if ($leftColUnfluid) {
+            echo "<div class='row'><div class='{$this->innerColWidth[0]}'>";
+        }
 
         if (isset($subhead)) {
             echo "<h6 class='text-secondary'>$subhead</h6>";
@@ -79,18 +85,18 @@ class ArticleContentRenderer
         if (isset($subheadList)) {
             echo "<ul class='subhead_list mt-4'>";
             foreach ($subheadList as $i => $item) {
-                // echo $i === 0 ? "<li class='fw-bold'> $item</li>" : "<li class=''>$item</li>";
                 echo "<li class='mt-3' id='$headlineId-list-$i'>$item</li>";
             }
             echo "</ul>";
         }
 
-        echo $leftColUnfluid ? "</div></div>" : null;
+        if ($leftColUnfluid) {
+            echo "</div></div>";
+        }
         echo "</div>";
 
-        // Right Col --
-        echo "<div class='$rightCol sec_content_col'>";
-        // Depending on the content type, call the respective method
+        // Output right column
+        echo "<div class='$rightColClass sec_content_col'>";
         foreach ($section['content'] as $index => $block) {
             $type = !empty($block['type']) ? strval($block['type']) : null;
             if ($type == "1" || $type == "p") {
@@ -98,19 +104,16 @@ class ArticleContentRenderer
             }
 
             echo "<div class='row sec_content_row'>";
-
             if (method_exists($this, "{$type}BlockFormatter")) {
                 $this->{"{$type}BlockFormatter"}($section['headline'], $block, $index);
             } else {
                 $this->reportMediaTypeError($section['headline'], $block, $index);
             }
-
             echo "</div>";
-
         }
         echo "</div>";
 
-        // end section container
+        // Close section container and row
         echo "</div></div>";
         echo "</section>";
     }
@@ -119,16 +122,19 @@ class ArticleContentRenderer
     private static function writeHeadline($headline, $isFluid, $htag = "h4")
     {
         if (!empty($headline)) {
-            echo "<div class='row'><div class='$isFluid[1]'>";
-            echo "<$htag class='block_headline text-body-secondary'>$headline</$htag>";
-            echo "</div></div>";
+            echo "<div class='row'>";
+            echo "<div class='text-body-secondary $isFluid[1]'>";
+            echo "<$htag class='block_headline'>$headline</$htag>";
+            echo "</div>";
+            echo "</div>";
         }
     }
+
     private static function writeCaption($caption, $isFluid, $cite)
     {
         if (!empty($caption) || !empty($cite)) {
-            echo "<div class='block_caption $isFluid[1]'>";
-            echo "<p class='text-body-secondary'>$caption<cite>$cite</cite></p>";
+            echo "<div class='block_caption text-body-secondary $isFluid[1]'>";
+            echo "<p class='markdown'>$caption<cite>$cite</cite></p>";
             echo "</div>";
         }
     }
@@ -136,7 +142,9 @@ class ArticleContentRenderer
     private static function writefigCaption($figCaption, $index)
     {
         if (!empty($figCaption[$index])) {
-            echo "<figcaption class='figure-caption mt-2'>{$figCaption[$index]}</figcaption>";
+            echo "<figcaption class='figure-caption mt-2'>";
+            echo "<p class='markdown'>{$figCaption[$index]}</p>";
+            echo "</figcaption>";
         }
     }
 
@@ -159,6 +167,7 @@ class ArticleContentRenderer
             echo "</div></div>";
         }
     }
+
 
     ////////////////////////////////////////////////////////////////////
     private function paragraphBlockFormatter($sectionName, $block, $index)
@@ -265,7 +274,8 @@ class ArticleContentRenderer
                     echo "<div class='image_wrapper col-12'>";
                 }
                 echo "<figure class='figure $isMaintainSize'>";
-                echo "<div class='media_size_fixer'><img src='{$projPath}/{$image}' alt='" . ($figCaption[$index] ?? "An article image") . ": ";
+                echo "<div class='media_size_fixer'>";
+                echo "<img src='{$projPath}/{$image}' alt='" . ($figCaption[$index] ?? "An article image") . ": ";
                 echo $sectionName . " - " . ($headline ? "$headline - " : "progress - ") . ($caption ? "$caption " : "showcase ") . "image";
                 echo "' class='article_image rounded-2 $isMaintainSize ";
                 if (!empty($isLightbox)) {
@@ -277,8 +287,9 @@ class ArticleContentRenderer
                         echo " lightbox-enabled' data-larger-src='" . $largerImage . "'>";
                     }
                 } else {
-                    echo "'></div>";
+                    echo "'>";
                 }
+                echo "</div>";
 
                 $this->writefigCaption($figCaption, $index);
                 echo "</figure>";
@@ -404,7 +415,8 @@ class ArticleContentRenderer
             foreach ($mainData as $index => $video) {
                 echo "<div class='col-12 video_wrapper'>";
                 $videoCrcId = crc32($video);
-                echo "<figure class='figure'><div class='media_size_fixer'><video preload='auto' class='article_video rounded-2' id='article_video_{$videoCrcId}' $isAutoPlay $isControls $isLoop>";
+                echo "<figure class='figure'>";
+                echo "<div class='media_size_fixer'><video preload='auto' class='article_video rounded-2' id='article_video_{$videoCrcId}' $isAutoPlay $isControls $isLoop>";
                 echo "<source src='{$projPath}/{$video}' type='video/mp4'> Please Update Your Browser.</video></div>";
                 $this->writefigCaption($figCaption, $index);
                 echo "</figure>";
