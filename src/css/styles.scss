@@ -5,13 +5,11 @@
 @import 'css_module_cards';
 
 html {
-    margin: 0;
-    padding: 0;
     font-size: 16px;
-
 }
 body {
     font-family: $font-normal;
+    overflow-y: scroll;
 
     .page_wrapper {
         display: flex;
@@ -176,7 +174,7 @@ body {
 // sections #####
 
 section.page_section {
-    padding: 5rem 0;
+    padding: 5rem 0 6rem 0;
     position: relative;
     overflow-x: hidden;
 

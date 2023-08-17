@@ -44,16 +44,12 @@ class UtilityClass
 
     public static function findLargerImage($path, $filename)
     {
-
-        $dirPath = $path;
         $info = pathinfo($filename);
-        // $baseName = $info['filename'];
+        $extension = $info['extension'];
         $pathWithoutExtension = $info['dirname'] . '/' . $info['filename'];
-        echo $pathWithoutExtension;
-        // $extension = $info['extension'];
 
-        // Construct the pattern to search for originalname@something.something
-        $pattern = $dirPath . '/' . $pathWithoutExtension . '@*.*';
+        // Construct the pattern to search for originalname@something.extension
+        $pattern = $path . '/' . $pathWithoutExtension . '@*.' . $extension;
         $matchingFiles = glob($pattern);
 
         if (!$matchingFiles) {
@@ -71,6 +67,8 @@ class UtilityClass
         }
         return htmlspecialchars(basename($largestFile));
     }
+
+
 }
 
 ?>

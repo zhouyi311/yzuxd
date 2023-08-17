@@ -113,16 +113,18 @@
         }
 
         // media block..........................................
-        .sec_content_col>.sec_content_row{
+        .sec_content_col>.sec_content_row {
             margin-bottom: 3rem;
-            &:last-child{
+
+            &:last-child {
                 margin-bottom: 0;
             }
         }
+
         .media_block {
             overflow: hidden;
 
-            :last-child{
+            :last-child {
                 margin-bottom: 0;
             }
 
@@ -230,10 +232,18 @@
                     &.maintain_size {
                         max-width: 100%;
                         width: fit-content;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        img.maintain_size {
+                            width: 50%;
+                        }
 
                         figcaption {
                             text-align: center;
-
+                            overflow: hidden;
+                            width: 50%;
                             &::before {
                                 content: none;
                             }
@@ -246,12 +256,12 @@
 
                     &.lightbox-enabled {
                         cursor: pointer;
-                        transition-property: box-shadow transform;
+                        transition-property: box-shadow;
                         transition-duration: 0.3s;
 
                         &:hover {
                             box-shadow: var(--bs-box-shadow);
-                            transform: scale(101%);
+                            // transform: scale(101%);
                         }
                     }
                 }

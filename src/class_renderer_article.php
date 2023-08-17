@@ -136,7 +136,7 @@ class ArticleContentRenderer
     private static function writefigCaption($figCaption, $index)
     {
         if (!empty($figCaption[$index])) {
-            echo "<figcaption class='figure-caption mt-1'>{$figCaption[$index]}</figcaption>";
+            echo "<figcaption class='figure-caption mt-2'>{$figCaption[$index]}</figcaption>";
         }
     }
 
@@ -178,7 +178,7 @@ class ArticleContentRenderer
             echo $isQuote ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-4'>" : null;
 
             $this->writeHeadline($headline, $isFluid, 'h3');
-            
+
             foreach ($mainData as $index => $paragraph) {
                 if (is_array($paragraph)) {
                     UtilityClass::textWithNestingList($paragraph);
@@ -246,7 +246,7 @@ class ArticleContentRenderer
         $headline = UtilityClass::sanitizeValue($block['headline'] ?? null);
         $caption = UtilityClass::sanitizeValue($block['caption'] ?? null);
         $cite = UtilityClass::sanitizeValue($block['cite'] ?? null);
-        $isLightbox = UtilityClass::sanitizeValue($block['isLightbox'] ?? null);
+        $isLightbox = $block['isLightbox'] ?? null;
         $isQuote = !empty($block['isQuote']);
         $isMaintainSize = !empty($block['isMaintainSize']) ? 'maintain_size' : null;
 
@@ -265,17 +265,21 @@ class ArticleContentRenderer
                     echo "<div class='image_wrapper col-12'>";
                 }
                 echo "<figure class='figure $isMaintainSize'>";
-                echo "<img src='{$projPath}/{$image}' alt='" . ($figCaption[$index] ?? "An article image") . ": ";
+                echo "<div class='media_size_fixer'><img src='{$projPath}/{$image}' alt='" . ($figCaption[$index] ?? "An article image") . ": ";
                 echo $sectionName . " - " . ($headline ? "$headline - " : "progress - ") . ($caption ? "$caption " : "showcase ") . "image";
-                echo "' class='article_image rounded-2  ";
-                if (isset($isLightbox) && is_string($isLightbox)) {
-                    echo " isLightbox-enabled' data-larger-src='$isLightbox'>";
-                } elseif (isset($isLightbox)) {
-                    $largerImage = UtilityClass::findLargerImage($projPath, $image);
-                    echo " lightbox-enabled' data-larger-src='$largerImage'>";
+                echo "' class='article_image rounded-2 $isMaintainSize ";
+                if (!empty($isLightbox)) {
+                    if (preg_match("/^[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/", $isLightbox)) {
+                        echo " lightbox-enabled' data-larger-src='$isLightbox'>";
+                    } else {
+                        $largerImage = UtilityClass::findLargerImage($projPath, $image);
+                        $largerImage = $largerImage ?? "original";
+                        echo " lightbox-enabled' data-larger-src='" . $largerImage . "'>";
+                    }
                 } else {
-                    echo "'>";
+                    echo "'></div>";
                 }
+
                 $this->writefigCaption($figCaption, $index);
                 echo "</figure>";
                 echo "</div>";
@@ -303,7 +307,7 @@ class ArticleContentRenderer
         $headline = UtilityClass::sanitizeValue($block['headline'] ?? null);
         $caption = UtilityClass::sanitizeValue($block['caption'] ?? null);
         $cite = UtilityClass::sanitizeValue($block['cite'] ?? null);
-        $isLightbox = UtilityClass::sanitizeValue($block['isLightbox'] ?? null);
+        $isLightbox = $block['isLightbox'] ?? null;
         $isQuote = !empty($block['isQuote']);
         $isIndicators = !empty($block['isIndicators']);
         $isControls = !empty($block['isControls']);
@@ -336,7 +340,7 @@ class ArticleContentRenderer
                 echo $sectionName . " - " . ($headline ? "$headline - " : "progress - ") . ($caption ? "$caption " : "showcase ") . "image";
                 echo "' class='carousel_image d-block w-100 ";
                 if (isset($isLightbox) && is_string($isLightbox)) {
-                    echo " isLightbox-enabled' data-larger-src='$isLightbox'>";
+                    echo " lightbox-enabled' data-larger-src='$isLightbox'>";
                 } elseif (isset($isLightbox)) {
                     $largerImage = UtilityClass::findLargerImage($projPath, $image);
                     echo " lightbox-enabled' data-larger-src='$largerImage'>";
@@ -400,8 +404,8 @@ class ArticleContentRenderer
             foreach ($mainData as $index => $video) {
                 echo "<div class='col-12 video_wrapper'>";
                 $videoCrcId = crc32($video);
-                echo "<figure class='figure'><video preload='auto' class='article_video rounded-2' id='article_video_{$videoCrcId}' $isAutoPlay $isControls $isLoop>";
-                echo "<source src='{$projPath}/{$video}' type='video/mp4'> Please Update Your Browser.</video>";
+                echo "<figure class='figure'><div class='media_size_fixer'><video preload='auto' class='article_video rounded-2' id='article_video_{$videoCrcId}' $isAutoPlay $isControls $isLoop>";
+                echo "<source src='{$projPath}/{$video}' type='video/mp4'> Please Update Your Browser.</video></div>";
                 $this->writefigCaption($figCaption, $index);
                 echo "</figure>";
                 echo "</div>";

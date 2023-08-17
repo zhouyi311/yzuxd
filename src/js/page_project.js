@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
+
 // light box
 document.addEventListener('DOMContentLoaded', function () {
     const state = {
@@ -62,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         lightboxImage.addEventListener('mousedown', startDrag);
         window.addEventListener('mousemove', dragImage);
-        window.addEventListener('mouseup', function () { 
+        window.addEventListener('mouseup', function () {
             if (state.isDragging) {
                 lightboxImage.style.transitionProperty = 'left, top, transform';
             }
@@ -92,20 +94,18 @@ document.addEventListener('DOMContentLoaded', function () {
         void lightboxOverlay.offsetWidth;
         lightboxOverlay.style.opacity = '1';
         lightboxImage.src = 'src/img/local_icons/circle-loading.gif'; // Clear the current image
-        lightboxImage.alt = 'Loading...'; // You can also add a spinner or loading graphic here
 
         lightboxOverlay.addEventListener('transitionend', function onEnd() {
             lightboxOverlay.removeEventListener('transitionend', onEnd);
-
         })
 
         const defaultSrc = img.src;
         const largerImageFilename = img.getAttribute('data-larger-src');
 
-        // If there's no data-larger-src attribute, just use the default source
-        if (!largerImageFilename) {
+        // If the data-larger-src attribute is "original" or doesn't exist, just use the default source
+        if (!largerImageFilename || largerImageFilename === "original") {
             lightboxImage.src = defaultSrc;
-            console.log('default')
+            // console.log('default')
             return;
         }
 
@@ -120,10 +120,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     lightboxImage.src = fullLargerImageSrc;
                     lightboxImage.alt = ''; // Clear the loading text
-                    console.log('found')
+                    // console.log('found')
                 } else {
                     lightboxImage.src = defaultSrc;
-                    console.log('not found')
+                    // console.log('not found')
                 }
             })
             .catch(error => {
@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log('error throw')
             });
     }
+
 
 
     function closeLightbox() {
@@ -218,3 +219,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// // image handler
+
+// window.addEventListener('DOMContentLoaded', () => {
+//     const images = document.querySelectorAll('img.maintain_size');
+
+//     images.forEach((image) => {
+//         const naturalWidth = image.naturalWidth;
+//         const naturalHeight = image.naturalHeight;
+
+//         image.style.width = (naturalWidth / 2) + 'px';
+//         image.style.height = (naturalHeight / 2) + 'px';
+//     });
+// });
