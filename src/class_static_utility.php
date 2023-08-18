@@ -29,13 +29,15 @@ class UtilityClass
         } elseif (is_array($inputData)) {
             echo "<ul class='indent_list'>";
             foreach ($inputData as $listitem) {
-                echo "<li>";
+
                 if (is_array($listitem)) {
                     self::textWithNestingList($listitem);
                 } else {
+                    echo "<li class='markdown'>";
                     echo strval($listitem);
+                    echo "</li>";
                 }
-                echo "</li>";
+
             }
             echo "</ul>";
         }

@@ -75,10 +75,11 @@ class ArticleContentRenderer
             echo "<div class='row'><div class='{$this->innerColWidth[0]}'>";
         }
 
+
+        echo "<h2 id='{$headlineId}' class='mb-3 text-black'>{$headline}</h2>";
         if (isset($subhead)) {
             echo "<h6 class='text-secondary'>$subhead</h6>";
         }
-        echo "<h2 id='{$headlineId}' class='mb-3 text-black'>{$headline}</h2>";
         if (isset($subheadCaption)) {
             echo "<p class='text-body-tertiary'>$subheadCaption</p>";
         }
@@ -123,7 +124,7 @@ class ArticleContentRenderer
     {
         if (!empty($headline)) {
             echo "<div class='row'>";
-            echo "<div class='text-body-secondary $isFluid[1]'>";
+            echo "<div class='text-body $isFluid[1]'>";
             echo "<$htag class='block_headline'>$headline</$htag>";
             echo "</div>";
             echo "</div>";
@@ -186,7 +187,7 @@ class ArticleContentRenderer
             echo "<div class='media_block article_paragraphs {$isFluid[0]}'>";
             echo $isQuote ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-4'>" : null;
 
-            $this->writeHeadline($headline, $isFluid, 'h3');
+            $this->writeHeadline($headline, $isFluid, ($isQuote ? 'h5' : 'h4'));
 
             foreach ($mainData as $index => $paragraph) {
                 if (is_array($paragraph)) {
@@ -223,13 +224,13 @@ class ArticleContentRenderer
             echo "<div class='media_block article_lists {$isFluid[0]}'>";
             echo $isQuote ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-4'>" : null;
 
-            $this->writeHeadline($headline, $isFluid, "h4");
+            $this->writeHeadline($headline, $isFluid, ($isQuote ? 'h5' : 'h4'));
             echo "<ul class='article_list rounded-2 $isListGroup'>";
             foreach ($mainData as $index => $listChild) {
                 if (is_array($listChild)) {
                     UtilityClass::textWithNestingList($listChild);
                 } else {
-                    echo "<li class='$isListGroup-item $isListGroup-item-light artile_list_item" . ($index < $leadCount ? "lead" : null) . "'>$listChild</li>";
+                    echo "<li class='$isListGroup-item $isListGroup-item-light artile_list_item markdown " . ($index < $leadCount ? "lead " : null) . "'>$listChild</li>";
                 }
             }
             echo "</ul>";
@@ -263,7 +264,7 @@ class ArticleContentRenderer
 
             echo "<div class='media_block article_images $isFluid[0]'>";
             echo $isQuote ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-4'>" : null;
-            $this->writeHeadline($headline, $isFluid, "h4");
+            $this->writeHeadline($headline, $isFluid, ($isQuote ? 'h5' : 'h4'));
             echo "<div class='row g-3'>";
             foreach ($mainData as $index => $image) {
                 if (count($mainData) % 2 == 0 && count($mainData) <= 4) {
@@ -330,7 +331,7 @@ class ArticleContentRenderer
 
             echo "<div class='media_block article_carousel $isFluid[0]'>";
             echo $isQuote ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-4'>" : null;
-            $this->writeHeadline($headline, $isFluid, "h4");
+            $this->writeHeadline($headline, $isFluid, ($isQuote ? 'h5' : 'h4'));
             ///
             echo "<div id='carousel_$carouselCrcId' class='carousel slide' $isAutoPlay>";
             if ($isIndicators) {
@@ -410,7 +411,7 @@ class ArticleContentRenderer
         if (!empty($mainData)) {
             echo "<div class='media_block article_videos $isFluid[0]'>";
             echo !empty($isQuote) ? "<blockquote class='blockquote quote_container text-body-secondary p-5 rounded-4'>" : null;
-            $this->writeHeadline($headline, $isFluid, "h4");
+            $this->writeHeadline($headline, $isFluid, ($isQuote ? 'h5' : 'h4'));
             echo "<div class='row g-3'>";
             foreach ($mainData as $index => $video) {
                 echo "<div class='col-12 video_wrapper'>";
@@ -444,7 +445,7 @@ class ArticleContentRenderer
         if (isset($mainData)) {
             $iFrameCrcId = crc32($mainData);
             echo "<div class='media_block iframe_container {$isFluid[0]}'>";
-            $this->writeHeadline($headline, $isFluid, "h4");
+            $this->writeHeadline($headline, $isFluid, 'h4');
             echo "<div class='iframe_wrapper rounded-2 overflow-hidden' id='wrapper_{$iFrameCrcId}'>";
 
             if ($isEmbedVideo) {
@@ -473,7 +474,7 @@ class ArticleContentRenderer
         if (isset($mainData)) {
             $htmlBlockCrcId = crc32($mainData);
             echo "<div class='media_block html_container {$isFluid[0]}'>";
-            $this->writeHeadline($headline, $isFluid, "h4");
+            $this->writeHeadline($headline, $isFluid, 'h4');
 
             echo "<div class='html_wrapper rounded-2' id='wrapper_{$htmlBlockCrcId}'>";
             @include $dirPath . '/' . $mainData;

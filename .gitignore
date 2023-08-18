@@ -49,6 +49,6 @@ robots.txt
 sitemap.xml
 
 # Project Data #
-/src/page_data/*
-!/src/page_data/__*
-!/src/page_data/pages/__*/*
+/src/site_data/*
+!/src/site_data/__*
+!/src/site_data/pages/__*/*

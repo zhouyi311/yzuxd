@@ -1,15 +1,3 @@
-// Markdown library -> credit: https://marked.js.org/
-window.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.markdown');
-
-    elements.forEach((element) => {
-        const markdownText = element.innerHTML;
-        element.innerHTML = marked.parse(markdownText); // Use marked.parse here
-    });
-});
-
-
-
 // main margin top offest
 function offsetHeight() {
     const sourceElement = document.getElementById('page_navbar');
@@ -20,12 +8,23 @@ function offsetHeight() {
     if (targetElement) {
         targetElement.style.paddingTop = `${sourceHeight + 8}px`; // Use backticks (`) here
         // console.log('offsetHeight - Element is set.');
-    } else {d
+    } else {
+        d
         return;
     }
 
 }
 document.addEventListener('DOMContentLoaded', offsetHeight);
+
+// Markdown library -> credit: https://marked.js.org/
+window.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.markdown');
+
+    elements.forEach((element) => {
+        const markdownText = element.innerHTML;
+        element.innerHTML = marked.parse(markdownText); // Use marked.parse here
+    });
+});
 
 
 //nav bar background and shadow change

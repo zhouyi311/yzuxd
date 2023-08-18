@@ -27,9 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
-
-
 // light box
 document.addEventListener('DOMContentLoaded', function () {
     const state = {

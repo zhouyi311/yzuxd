@@ -123,6 +123,10 @@
 
         .media_block {
             overflow: hidden;
+            
+            .lead{
+                font-weight: 400;
+            }
 
             :last-child {
                 margin-bottom: 0;
@@ -172,14 +176,18 @@
 
                 .article_paragraph {
                     line-height: 1.6em;
+                    img {
+                        width: 100%;
+                        text-align: center;
+                    }
                 }
 
                 .block_caption {
                     // font-weight: 500;
                 }
 
-                ul{
-                    li{
+                ul {
+                    li {
                         margin-bottom: $unit-2;
                     }
                 }
@@ -191,23 +199,28 @@
                     margin-bottom: $unit-4;
                 }
 
-                .article_list {
+                ul.article_list {
                     &.regular {
                         padding: 0;
+                        padding-left: $unit-5;
 
-                        .regular-item {
+                        li.regular-item {
                             &.lead {
+                                margin-bottom: $unit-3;
                                 &::before {
-                                    content: '\F46C';
+                                    content: '\F1A2';
+                                    font-size: 0.8em;
+                                    top: 0.2em;
+
                                 }
                             }
 
                             position: relative;
                             list-style: none;
-                            padding-left: 2rem;
                             margin-bottom: $unit-2;
 
                             &::before {
+                                margin-left: - $unit-5;
                                 position: absolute;
                                 content: '\F5C8';
                                 font-family: 'Bootstrap-icons';
@@ -220,6 +233,15 @@
                                 // top: 0.25em;
                                 // font-size: 1em;
                             }
+                        }
+                    }
+
+                    ul.indent_list {
+                        padding-left: $unit-3;
+
+                        li {
+                            padding-top: $unit-1;
+                            padding-bottom: $unit-1;
                         }
                     }
                 }
@@ -240,7 +262,7 @@
                         display: flex;
                         flex-direction: column;
                         align-items: center;
-                        
+
                         .media_size_fixer {
                             display: flex;
                             flex-direction: column;
@@ -257,6 +279,7 @@
                         figcaption {
                             text-align: center;
                             overflow: hidden;
+
                             &::before {
                                 content: none;
                             }
@@ -467,6 +490,8 @@
         transform-origin: center center;
         user-select: none;
         user-zoom: none;
+
+        box-shadow: var(--bs-box-shadow);
 
     }
 

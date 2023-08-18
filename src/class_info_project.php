@@ -17,7 +17,7 @@ class ProjectInfo
     {
         $this->id = $projectData['id'];
         $this->lastModified = $projectData['lastModified'];
-        $this->path = 'src/page_data/pages/' . $path;
+        $this->path = 'src/site_data/pages/' . $path;
 
         $this->indexOrder = $projectData['indexOrder'];
         if (!is_numeric($this->indexOrder)) {
@@ -60,7 +60,7 @@ class ProjectInfo
 
     public static function loadAll()
     {
-        $directory = __DIR__ . '/page_data/pages/';
+        $directory = __DIR__ . '/site_data/pages/';
         $projects = [];
         $seenIds = [];
 

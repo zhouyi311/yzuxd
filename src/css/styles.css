@@ -347,6 +347,9 @@ h6 {
 .project_article .article_section .media_block {
   overflow: hidden;
 }
+.project_article .article_section .media_block .lead {
+  font-weight: 400;
+}
 .project_article .article_section .media_block :last-child {
   margin-bottom: 0;
 }
@@ -376,25 +379,34 @@ h6 {
 .project_article .article_section .media_block.article_paragraphs .article_paragraph {
   line-height: 1.6em;
 }
+.project_article .article_section .media_block.article_paragraphs .article_paragraph img {
+  width: 100%;
+}
 .project_article .article_section .media_block.article_paragraphs ul li {
   margin-bottom: 0.5rem;
 }
 .project_article .article_section .media_block.article_lists .block_headline {
   margin-bottom: 1.5rem;
 }
-.project_article .article_section .media_block.article_lists .article_list.regular {
+.project_article .article_section .media_block.article_lists ul.article_list.regular {
   padding: 0;
+  padding-left: 2rem;
 }
-.project_article .article_section .media_block.article_lists .article_list.regular .regular-item {
+.project_article .article_section .media_block.article_lists ul.article_list.regular li.regular-item {
   position: relative;
   list-style: none;
-  padding-left: 2rem;
   margin-bottom: 0.5rem;
 }
-.project_article .article_section .media_block.article_lists .article_list.regular .regular-item.lead::before {
-  content: "\f46c";
+.project_article .article_section .media_block.article_lists ul.article_list.regular li.regular-item.lead {
+  margin-bottom: 1rem;
 }
-.project_article .article_section .media_block.article_lists .article_list.regular .regular-item::before {
+.project_article .article_section .media_block.article_lists ul.article_list.regular li.regular-item.lead::before {
+  content: "\f1a2";
+  font-size: 0.8em;
+  top: 0.2em;
+}
+.project_article .article_section .media_block.article_lists ul.article_list.regular li.regular-item::before {
+  margin-left: -2rem;
   position: absolute;
   content: "\f5c8";
   font-family: "Bootstrap-icons";
@@ -403,6 +415,13 @@ h6 {
   margin-right: 0.5rem;
   left: 0;
   color: rgba(0, 0, 0, 0.5);
+}
+.project_article .article_section .media_block.article_lists ul.article_list ul.indent_list {
+  padding-left: 1rem;
+}
+.project_article .article_section .media_block.article_lists ul.article_list ul.indent_list li {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 .project_article .article_section .media_block.article_images .image_wrapper {
   display: flex;
@@ -582,6 +601,7 @@ h6 {
      -moz-user-select: none;
           user-select: none;
   user-zoom: none;
+  box-shadow: var(--bs-box-shadow);
 }
 
 section.homepage_home {
@@ -958,7 +978,7 @@ section.projects_section .projects_container .project_card.featured_card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: fit-content(0);
-  gap: 3rem;
+  gap: 2rem;
 }
 section.projects_section .projects_container .project_card.featured_card a.card_thumb_link .card_thumbnail {
   overflow: hidden;
@@ -1039,7 +1059,6 @@ html {
 
 body {
   font-family: "Roboto", "Source Sans 3", Helvetica, Arial, sans-serif;
-  overflow-y: scroll;
 }
 body .page_wrapper {
   display: flex;
@@ -1144,7 +1163,7 @@ body a.no_deco {
   border-left: 1px solid rgba(255, 255, 255, 0.6);
 }
 .page_navbar[data-bs-theme=dark] .offcanvas .offcanvas-body ul.navbar-nav li a.active {
-  border-left: 2px solid white;
+  border-left: 1px solid white;
 }
 .page_navbar[data-bs-theme=dark] .offcanvas .text_subtle {
   color: rgba(255, 255, 255, 0.1);
