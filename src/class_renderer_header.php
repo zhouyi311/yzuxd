@@ -111,9 +111,16 @@ class HeaderRenderer
                         </button>
                         <!-- drawer -->
                         <div class="offcanvas offcanvas-end px-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                            <div class="offcanvas-header mb-4">
+                            <div class="offcanvas-header">
                                 <h3 class="offcanvas-title text-body-tertiary h6" id="offcanvasNavbarLabel">
-                                    <?php echo htmlspecialchars($siteInfo->information['siteTitle']); ?>
+                                    <?php
+                                    if (isset($project->title)) {
+                                        echo "<i class='bi bi-folder2-open pe-2 align-middle'></i>";
+                                        echo htmlspecialchars($project->title);
+                                    } else {
+                                        echo htmlspecialchars($siteInfo->information['siteTitle']);
+                                    }
+                                    ?>
                                 </h3>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
@@ -167,16 +174,13 @@ class HeaderRenderer
         $isAuthenticated = $this->isAuthenticated;
         $isPasswordRequired = $this->isPasswordRequired;
         $projectKey = $this->siteInfo->pageKeys['projectKey'];
+        $spanClass = count($project->article) > 8 ? "h6 fw-bold" : "h5 fw-bold";
         ob_start();
         ?>
         <div class="drawer_top_group flex-grow-1">
-            <h4 class="list_title fw-medium text-body-secondary h6 mb-4" id="offcanvasNavbarLabel">
-                <i class='bi bi-list-ul pe-1 align-middle'></i>
-                <?php echo $project->title ? htmlspecialchars($project->title) : htmlspecialchars($siteInfo->information['siteTitle']); ?>
-            </h4>
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5" id="navbar_target">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home"><span class="h5 fw-bold">Overview</span></a>
+                    <a class="nav-link" href="#home"><span class="<?php echo $spanClass ?>">Overview</span></a>
                 </li>
                 <?php
                 if ($isAuthenticated || !$isPasswordRequired) {
@@ -184,7 +188,8 @@ class HeaderRenderer
                         $headline = htmlspecialchars($section['headline']);
                         $headlineId = htmlspecialchars($section['headlineId']);
                         echo '<li class="nav-item">';
-                        echo '<a class="nav-link" href="#' . $headlineId . '"><span class="h5 fw-bold">' . $headline . '</span></a>';
+                        echo '<a class="nav-link" href="#' . $headlineId . '">';
+                        echo "<span class='$spanClass'>" . $headline . '</span></a>';
                     }
                 } else {
                     echo '<li class="nav-item"><a class="nav-link" href="#enter_password"><span class="h5 fw-bold">Enter Password</span></a></li>';

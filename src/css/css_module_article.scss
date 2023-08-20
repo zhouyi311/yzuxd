@@ -122,9 +122,9 @@
         }
 
         .media_block {
-            overflow: hidden;
-            
-            .lead{
+            // overflow: hidden;
+
+            .lead {
                 font-weight: 400;
             }
 
@@ -134,7 +134,14 @@
 
             blockquote.quote_container {
                 visibility: visible;
-                background-color: $clr-gray-light;
+                background-color: rgba(37, 19, 74, 0.03);
+                padding: $unit-5;
+                padding-top: $unit-6;
+                // padding-bottom: $unit-4;
+                // font-size: 1em;
+                figcaption{
+                    font-size: 0.75em;
+                }
             }
 
             .block_headline {
@@ -154,18 +161,6 @@
                 figcaption {
                     color: $clr-gray-ash;
                     font-weight: 500;
-
-                    // text-align: center;
-                    &::before {
-                        // margin: 0 $unit-1;
-                        // font-family: 'Bootstrap-icons';
-                        // content: '\F4C9';
-                        // font-size: 0.8em;
-                        // vertical-align: baseline;
-                        // color: $clr-gray-ash;
-                        // line-height: 100%;
-                        // color: $clr-gray-silver;
-                    }
                 }
             }
 
@@ -176,6 +171,7 @@
 
                 .article_paragraph {
                     line-height: 1.6em;
+
                     img {
                         width: 100%;
                         text-align: center;
@@ -199,6 +195,7 @@
                     margin-bottom: $unit-4;
                 }
 
+
                 ul.article_list {
                     &.regular {
                         padding: 0;
@@ -207,6 +204,7 @@
                         li.regular-item {
                             &.lead {
                                 margin-bottom: $unit-3;
+
                                 &::before {
                                     content: '\F1A2';
                                     font-size: 0.8em;
@@ -249,6 +247,11 @@
 
 
             &.article_images {
+
+                .image_block_intro {
+                    margin-bottom: $unit-4;
+                }
+
                 .image_wrapper {
                     display: flex;
                     flex-direction: column;
@@ -256,7 +259,17 @@
                     align-items: center;
                 }
 
+
                 figure {
+                    figcaption {
+                        text-align: center;
+                        overflow: hidden;
+
+                        &::before {
+                            content: none;
+                        }
+                    }
+
                     &.maintain_size {
                         max-width: 100%;
                         display: flex;
@@ -272,18 +285,13 @@
                         }
 
                         img.maintain_size {
-                            width: 50%;
-
-                        }
-
-                        figcaption {
-                            text-align: center;
-                            overflow: hidden;
-
-                            &::before {
-                                content: none;
+                            width: 60%;
+                            @media (max-width:$bp-md) {
+                                width: 84%;
                             }
                         }
+
+
                     }
                 }
 
@@ -292,11 +300,12 @@
 
                     &.lightbox-enabled {
                         cursor: pointer;
-                        transition-property: box-shadow;
+                        transition-property: filter;
                         transition-duration: 0.3s;
 
                         &:hover {
-                            box-shadow: var(--bs-box-shadow);
+                            filter: drop-shadow(var(--bs-box-shadow-sm));
+                            // box-shadow:;
                             // transform: scale(101%);
                         }
                     }
@@ -491,7 +500,7 @@
         user-select: none;
         user-zoom: none;
 
-        box-shadow: var(--bs-box-shadow);
+        // box-shadow: var(--bs-box-shadow);
 
     }
 

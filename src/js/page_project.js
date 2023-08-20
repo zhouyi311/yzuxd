@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 video.style.opacity = 1;
             } else {
                 video.pause();
-                video.style.opacity = 0.9;
+                video.style.opacity = 0.8;
             }
         });
     });

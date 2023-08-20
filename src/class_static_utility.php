@@ -22,25 +22,27 @@ class UtilityClass
     }
     public static function textWithNestingList($inputData)
     {
+        $r = null;
         if (empty($inputData)) {
             return;
         } elseif (!is_array($inputData)) {
-            echo strval($inputData);
+            $r .= strval($inputData);
         } elseif (is_array($inputData)) {
-            echo "<ul class='indent_list'>";
+            $r .= "<ul class='indent_list'>";
             foreach ($inputData as $listitem) {
 
                 if (is_array($listitem)) {
                     self::textWithNestingList($listitem);
                 } else {
-                    echo "<li class='markdown'>";
-                    echo strval($listitem);
-                    echo "</li>";
+                     $r .=  "<li class='markdown'>";
+                     $r .=  strval($listitem);
+                     $r .=  "</li>";
                 }
 
             }
-            echo "</ul>";
+             $r .=  "</ul>";
         }
+        return $r;
     }
 
 
