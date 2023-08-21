@@ -1,0 +1,207 @@
+@import 'css_keyframes';
+@import 'css_include';
+@import 'css_module_article';
+@import 'css_module_banners';
+@import 'css_module_cards';
+
+html {
+    font-size: 16px;
+}
+body {
+    font-family: $font-normal;
+    // overflow-y: scroll;
+
+    .page_wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+        position: relative;
+
+        main#project_main {
+            flex-grow: 1;
+        }
+
+    }
+
+    .text_hero {
+        font-size: 6rem;
+
+        @media (max-width: $bp-xl) {
+            font-size: 4rem;
+        }
+
+        @media (max-width: 575px) {
+            font-size: 3rem;
+        }
+    }
+
+    .text_hero2 {
+        font-size: 3rem;
+
+        @media (max-width: $bp-xl) {
+            font-size: 2.5rem;
+        }
+
+        @media (max-width: $bp-sm) {
+            font-size: 2rem;
+        }
+    }
+
+    // utility class
+
+    .none_select {
+        user-select: none;
+        user-zoom: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        pointer-events: none;
+    }
+
+    .hidden {
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    a.no_deco {
+        text-decoration: none;
+    }
+
+}
+// nav ##################################################################
+.page_navbar {
+    // transition: background-color 0.5s;
+    flex-wrap: nowrap;
+
+    &.home_page_navbar {}
+
+    &.project_page_navbar {
+        background-color: rgba($color: #fff, $alpha: 0.8);
+    }
+
+    &.archive_page_navbar {
+        background-color: rgba($color: #fff, $alpha: 0.8);
+    }
+
+    .navbar-brand {
+        overflow: hidden;
+
+        .site_title {
+            white-space: nowrap;
+
+            .site_logo {}
+
+            .site_name {}
+        }
+
+        .project_name {
+            transition-property: opacity transform;
+            transition-duration: 0.3s;
+            vertical-align: center;
+            line-height: 26px;
+
+            &.slideout {
+                opacity: 0;
+                transform: translateY(12px);
+                user-select: none;
+            }
+        }
+    }
+
+    .navbar-toggler {
+        // box-shadow:none;
+    }
+
+    .offcanvas {
+        // transition: 0.3s;
+        .offcanvas-body {
+            ul.navbar-nav {
+                li {
+                    a {
+                        padding-left: calc($unit-4 + 1px);
+                        border-left: 1px solid $clr-gray-medium;
+
+                        &.active {
+                            padding-left: $unit-4;
+                            border-left: 2px solid black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &[data-bs-theme="dark"] {
+        .navbar-brand {
+            text-shadow: 1px 1px 3px rgba($color: #000000, $alpha: 0.2);
+
+            .site_logo {
+                filter: invert(100%);
+            }
+        }
+
+        .offcanvas {
+            background-color: #0b0209;
+            border-left: 1px solid #1b1019;
+
+            .offcanvas-body {
+                ul.navbar-nav {
+                    li {
+                        a {
+                            border-left: 1px solid $clr-white-medium;
+
+                            &.active {
+                                border-left: 2px solid white;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .text_subtle {
+                color: rgba($color: white, $alpha: 0.1);
+            }
+        }
+    }
+}
+
+// main{
+//     padding-top: 4rem;
+// }
+
+// sections #####
+
+section.page_section {
+    padding: 5rem 0 6rem 0;
+    position: relative;
+    overflow-x: hidden;
+
+    .section_headline {
+        margin-bottom: 3rem;
+    }
+
+    @media (max-width: $bp-lg) {
+        padding: 3rem 0 4rem 0;
+
+        .section_headline {
+            margin-bottom: 2rem;
+        }
+    }
+
+    .bg_container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// footer #############
+footer {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    font-size: 0.8em;
+}

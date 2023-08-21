@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Example Page</title>
+	<meta name="Author" content="Yi Zhou" />
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	<style>
+		@keyframes swing {
+			20% {
+				transform: rotate3d(0, 0, 1, 0deg);
+			}
+
+			21% {
+				transform: rotate3d(0, 0, 1, 15deg);
+			}
+
+			22% {
+				transform: rotate3d(0, 0, 1, -10deg);
+			}
+
+			23% {
+				transform: rotate3d(0, 0, 1, 5deg);
+			}
+
+			24% {
+
+				transform: rotate3d(0, 0, 1, -5deg);
+			}
+
+			25% {
+				transform: rotate3d(0, 0, 1, 0deg);
+			}
+		}
+
+		.swing {
+			transform-origin: top center;
+			animation-name: swing;
+			animation-duration: 10s;
+			animation-iteration-count: infinite;
+			animation-delay: 0s;
+		}
+
+		@keyframes bounce {
+			0% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(-10px);
+			}
+
+			100% {
+				transform: translateY(0);
+			}
+		}
+
+		.bounce {
+			animation: bounce 1s;
+		}
+
+		@keyframes shake {
+			0% {
+				transform: translateX(0);
+			}
+
+			10% {
+				transform: translateX(10px);
+			}
+
+			20% {
+				transform: translateX(-10px);
+			}
+
+			30% {
+				transform: translateX(10px);
+			}
+
+			40% {
+				transform: translateX(-10px);
+			}
+
+			50% {
+				transform: translateX(0);
+			}
+		}
+
+		.shake {
+			animation: shake 1s;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+
+		body {
+			background: linear-gradient(225deg, #322626 0%, #403338 100%);
+			color: #fafafa;
+			font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			/* justify-items: stretch; */
+		}
+
+		section {
+			text-align: center;
+			flex: 1 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+		}
+
+		section .container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			max-width: 80%;
+		}
+
+		section .container h1 {
+			font-size: 40px;
+			font-weight: 300;
+			margin-bottom: 0;
+		}
+
+		section .container a {
+			padding: 10px 20px;
+			color: rgb(255, 255, 255);
+			background-color: rgb(255, 68, 111);
+			/* border-radius: 8px; */
+			font-weight: 700;
+			text-decoration: none;
+			display: inline-block;
+			transition: 0.5s;
+			margin: 0 10px;
+			border: 1px solid transparent;
+		}
+
+		section .container a.secondary {
+			background-color: unset;
+			border: 1px solid rgb(255, 68, 111);
+		}
+
+		section .container a:hover {
+			color: rgb(255, 0, 144);
+			background-color: rgb(247, 242, 242);
+			border: 1px solid transparent;
+		}
+
+		section .container p {
+			line-height: 1.5em;
+			max-width: 600px;
+		}
+
+
+		div#logo-border {
+			width: 64px;
+			height: 64px;
+		}
+
+		div#logo-border img {
+			width: 100%;
+			overflow: hidden;
+			margin-top: 20px;
+			/* border-radius: 8px; */
+		}
+
+		.footer {
+			bottom: 0;
+			text-align: center;
+			margin-top: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<section>
+		<div class="container">
+			<div id="logo-border">
+				<img src="demo1.png" alt="logo" class="swing">
+			</div>
+			<h1>This is a Demo Page</h1>
+			<p>We know that you have the potential to do great things, and we
+				want to help you achieve your goals. We are here to support you every step of the way. 😊</p>
+			<p>
+				<a href="#">
+					Small Button!
+				</a>
+				<a class="secondary" href="#">
+					Giant Button!
+				</a>
+			</p>
+		</div>
+	</section>
+</body>
+
+<script>
+	var headline = document.querySelector("h1");
+	var text = document.querySelector("p");
+
+	var leftButton = document.querySelector("a");
+	var rightButton = document.querySelector("a.secondary");
+
+	leftButton.onclick = function () {
+		headline.classList.add("bounce");
+		setTimeout(function () {
+			headline.classList.remove("bounce");
+		}, 1000);
+	};
+
+	rightButton.onclick = function () {
+		text.classList.add("shake");
+		setTimeout(function () {
+			text.classList.remove("shake");
+		}, 1000);
+	};
+
+	leftButton.addEventListener("click", function (event) {
+		event.preventDefault();
+	});
+
+	rightButton.addEventListener("click", function (event) {
+		event.preventDefault();
+	});
+</script>
+
+</html>

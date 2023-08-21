@@ -1,0 +1,35 @@
+<svg width="1200" height="960" viewBox="0 0 1200 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1030_4370)">
+        <rect y="-2880" width="4800" height="3840" fill="url(#paint0_linear_1030_4370)">
+            <animate attributeName="y" values="-2880;0;0;-2880;-2880" begin="0s" dur="15.7s"
+                repeatCount="indefinite" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" />
+            <animate attributeName="x" values="0;0;-3600;-3600;0" begin="0s" dur="15.7s"
+                repeatCount="indefinite" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" />
+        </rect>
+    </g>
+    <defs>
+        <linearGradient id="paint0_linear_1030_4370" x1="862" y1="959.841" x2="3079.47"
+            y2="-3334.81" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#031A3C" />
+            <stop offset="0.197917" stop-color="#27006F" />
+            <stop offset="0.395833" stop-color="#4A086B" />
+            <stop offset="0.612016" stop-color="#650258" />
+            <stop offset="0.831926" stop-color="#6E0727" />
+            <stop offset="1" stop-color="#561703" />
+
+
+            <animate attributeName="y1" values="959.841;3839.84;3839.84;959.841;959.841" begin="0s"
+                dur="15.7s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" />
+            <animate attributeName="y2" values="-3334.81;-454.807;-454.807;-3334.81;-3334.81"
+                begin="0s" dur="15.7s" repeatCount="indefinite" calcMode="linear"
+                keyTimes="0;0.25;0.5;0.75;1" />
+            <animate attributeName="x1" values="862;862;-2738;-2738;862" begin="0s" dur="15.7s"
+                repeatCount="indefinite" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" />
+            <animate attributeName="x2" values="3079.47;3079.47;-520.53;-520.53;3079.47" begin="0s"
+                dur="15.7s" repeatCount="indefinite" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" />
+        </linearGradient>
+        <clipPath id="clip0_1030_4370">
+            <rect width="1200" height="960" fill="white" />
+        </clipPath>
+    </defs>
+</svg>
