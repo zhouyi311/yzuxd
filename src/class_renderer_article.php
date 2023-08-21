@@ -191,17 +191,19 @@ class ArticleContentRenderer
         $projPath = $this->projPath;
         $headline = UtilityClass::sanitizeValue($section['headline'] ?? null);
         $leadImg = UtilityClass::sanitizeValue($section['leadImg'] ?? null);
+        $leadImgParallax = empty($section['leadImgParallax']) ?  null : 'parallax';
         $leadImgBgColor = UtilityClass::sanitizeValue($section['leadImgBgColor'] ?? null);
         $leadImgBgColor = $leadImgBgColor ? $leadImgBgColor : null;
         $leadImgFixed = UtilityClass::sanitizeValue($section['leadImgFixed'] ?? null);
         $leadImgFixedHeight = UtilityClass::sanitizeValue($section['leadImgFixedHeight'] ?? null);
 
         if (!empty($leadImgFixed)) {
-            echo "<div style='background-image: url({$projPath}/{$leadImgFixed}); background-color:{$leadImgBgColor}; height: {$leadImgFixedHeight}'";
-            echo " class='article_section_leading bg_attach'></div>";
+            echo "<div class='article_section_leading bg_attach none_select' style='background-color:{$leadImgBgColor}; height:{$leadImgFixedHeight}'>";
+            echo "<div class='bg_attached $leadImgParallax' style='background-image: url({$projPath}/{$leadImgFixed})'>";
+            echo "</div></div>";
         } elseif (!empty($leadImg)) {
-            echo "<div class='article_section_leading none_select' style='background-color:$leadImgBgColor'>";
-            echo "<div class='image_wrapper none_select'><img class='leading_image none_select' src='{$projPath}/{$leadImg}' alt='section: {$headline} - leading image'>";
+            echo "<div class='article_section_leading none_select' style='background-color:$leadImgBgColor'><div class='image_wrapper none_select'>";
+            echo "<img class='leading_image none_select $leadImgParallax' src='{$projPath}/{$leadImg}' alt='section: {$headline} - leading image'>";
             echo "</div></div>";
         }
     }

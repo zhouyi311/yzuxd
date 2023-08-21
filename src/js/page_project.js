@@ -1,3 +1,40 @@
+window.addEventListener('scroll', function () {
+    var windowHeight = window.innerHeight;
+    document.querySelectorAll('.bg_attach').forEach(function (wrapper) {
+        var element = wrapper.querySelector('.parallax');
+        if (!element) return;
+        var elementTop = element.getBoundingClientRect().top;
+        var elementHeight = element.offsetHeight;
+        var centerPosition = windowHeight / 2 - elementHeight / 2;
+        var positionDiff = elementTop - centerPosition;
+
+        // Range from -50% to 50% when the element goes from the top to the bottom of the viewport
+        var backgroundPositionY = (- positionDiff / (windowHeight + elementHeight) * 100 + 50) + '%';
+
+        element.style.backgroundPosition = 'center ' + backgroundPositionY;
+    });
+
+    document.querySelectorAll('.image_wrapper').forEach(function (wrapper) {
+        var image = wrapper.querySelector('.parallax');
+
+        if (!image) return; // If no image inside the wrapper, skip to the next iteration.
+        var wrapperTop = wrapper.getBoundingClientRect().top;
+        var wrapperHeight = wrapper.offsetHeight;
+        var imageHeight = image.offsetHeight;
+
+        var moveDistance = wrapperTop * -0.3 + image.offsetHeight / 10;
+
+        image.style.transform = 'translateY(' + moveDistance + 'px)';
+
+        console.log("wrapperTop:", wrapperTop);
+        console.log("wrapperHeight:", wrapperHeight);
+        console.log("imageHeight:", imageHeight);
+        console.log("moveDistance:", moveDistance);
+    });
+});
+
+
+
 // autoplay videos 
 document.addEventListener('DOMContentLoaded', function () {
 
