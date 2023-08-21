@@ -1,3 +1,25 @@
+window.onload = () => {
+    const wrappers = document.querySelectorAll('.iframe_wrapper');
+
+    wrappers.forEach(wrapper => {
+        const button = wrapper.querySelector('.load_iframe');
+        const iframe = wrapper.querySelector('.on_demand');
+
+        button.addEventListener('click', () => {
+            wrapper.style.minHeight = wrapper.dataset.targetHeight;
+            iframe.src = iframe.dataset.iframeSrc;
+            iframe.classList.remove('on_demand');
+            button.classList.add('disabled');
+            button.style.zIndex = -1;
+            button.innerHTML = "<span class='spinner-border spinner-border-sm me-2' aria-hidden='true'></span><span role='status'>Loading...</span>";
+            iframe.addEventListener('load', () => {
+                button.classList.add('hidden');
+            });
+        });
+    });
+};
+
+
 window.addEventListener('scroll', function () {
     var windowHeight = window.innerHeight;
     document.querySelectorAll('.bg_attach').forEach(function (wrapper) {

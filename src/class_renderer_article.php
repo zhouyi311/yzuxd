@@ -191,7 +191,7 @@ class ArticleContentRenderer
         $projPath = $this->projPath;
         $headline = UtilityClass::sanitizeValue($section['headline'] ?? null);
         $leadImg = UtilityClass::sanitizeValue($section['leadImg'] ?? null);
-        $leadImgParallax = empty($section['leadImgParallax']) ?  null : 'parallax';
+        $leadImgParallax = empty($section['leadImgParallax']) ? null : 'parallax';
         $leadImgBgColor = UtilityClass::sanitizeValue($section['leadImgBgColor'] ?? null);
         $leadImgBgColor = $leadImgBgColor ? $leadImgBgColor : null;
         $leadImgFixed = UtilityClass::sanitizeValue($section['leadImgFixed'] ?? null);
@@ -489,16 +489,22 @@ class ArticleContentRenderer
         $headline = UtilityClass::sanitizeValue($block['headline'] ?? null);
         $caption = UtilityClass::sanitizeValue($block['caption'] ?? null);
         $cite = UtilityClass::sanitizeValue($block['cite'] ?? null);
+        $isOnDemand = empty($block['isOnDemand']) ? null : true;
         $isEmbedVideo = UtilityClass::sanitizeValue($block['isEmbedVideo'] ?? null);
+        $iframeHeight = UtilityClass::sanitizeValue($block['iframeHeight'] ?? null);
 
         if (isset($mainData)) {
             $iFrameCrcId = crc32($mainData);
             echo "<div class='media_block iframe_container {$isFluid[0]}'>";
             echo $this->writeHeadline($headline, $isFluid, 'h4');
-            echo "<div class='iframe_wrapper rounded-2 overflow-hidden' id='wrapper_{$iFrameCrcId}'>";
+            echo "<div class='iframe_wrapper rounded-2 overflow-hidden' id='wrapper_{$iFrameCrcId}' ";
+            echo $isOnDemand ? "data-target-height='$iframeHeight'>" : "style='height:$iframeHeight'>";
 
             if ($isEmbedVideo) {
                 @include $dirPath . '/' . $mainData;
+            } elseif ($isOnDemand) {
+                echo "<button class='load_iframe btn btn-lg btn-danger px-4'>Load Content</button>";
+                echo "<iframe class='on_demand' width='100%' height='100%' data-iframe-src='$mainData' src='' id='iframe_$iFrameCrcId'></iframe>";
             } else {
                 echo "<iframe class='' width='100%' height='100%' src='$mainData' id='iframe_$iFrameCrcId'></iframe>";
             }

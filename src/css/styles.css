@@ -386,6 +386,8 @@ h6 {
 .project_article .article_section .media_block figure figcaption {
   color: rgba(0, 0, 0, 0.3);
   font-weight: 500;
+  text-align: center;
+  overflow: hidden;
 }
 .project_article .article_section .media_block.article_paragraphs .block_headline {
   margin-bottom: 1.5rem;
@@ -447,13 +449,6 @@ h6 {
   justify-content: center;
   align-items: center;
 }
-.project_article .article_section .media_block.article_images figure figcaption {
-  text-align: center;
-  overflow: hidden;
-}
-.project_article .article_section .media_block.article_images figure figcaption::before {
-  content: none;
-}
 .project_article .article_section .media_block.article_images figure.maintain_size {
   max-width: 100%;
   display: flex;
@@ -509,12 +504,25 @@ h6 {
   min-height: 400px;
   aspect-ratio: 3/2;
   overflow: hidden;
+  position: relative;
+  transition: min-height 0.6s;
+}
+.project_article .article_section .media_block.iframe_container .iframe_wrapper .load_iframe {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .project_article .article_section .media_block.iframe_container .iframe_wrapper iframe {
   padding: 0;
   margin: 0;
   height: 100%;
   width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  transition: background-color 0.6s;
+}
+.project_article .article_section .media_block.iframe_container .iframe_wrapper iframe.on_demand {
+  background-color: #333333;
 }
 .project_article .article_section .media_block.html_container .html_wrapper {
   width: 100%;
