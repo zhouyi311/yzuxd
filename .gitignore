@@ -49,7 +49,7 @@ robots.txt
 sitemap.xml
 
 # Project Data #
-/src/site_data/*
-!/src/site_data/__*
+/src/site_data/site_info.json
+/src/site_data/pages/*
 !/src/site_data/pages/__*/
 !/src/site_data/pages/__*/*
