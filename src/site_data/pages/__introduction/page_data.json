@@ -13,11 +13,11 @@
                 "Instruction"
             ],
             "text": [
-                "Notes: you **have to** structrue each project josn files by following following rules:",
-                "'id' is for url querty selector, and will be shown in the url address, could be int or string. (Normally, id should be unique - but we handle duplicated and missing id cases by assign them temp ids)",
-                "For projects that do not want password protection, you can either set 'password' key to any empty values like null, \"\", or set to string 'no'",
-                "Projects have indexOrder 0-9 will be shown as featured project card on the home page. Negative indexOrder will hide project from navigation and card list (accessable by URL). Projects have same indexOrder will sort by filename",
-                "Markdown reverence: https://github.com/markedjs/marked/ - not fully supported but works in some way"
+                "**Notes:** Each project path should be safe for web, avoid using special charaters within path; **'id'** is for url querty of the page, and will be shown in the url address, could be int or string. (Normally, id should be unique - but we handle duplicated and missing id by assigning them temp ids, therefore you could set id to anything you want, the site will work but you will not able to know what exactly the ID will be)",
+                "**indexOrder:** Projects have indexOrder 0-9 will be shown as featured project on the home page. Negative or missing indexOrder will hide the page from homepage (but still accessable from the archive or by URL). Projects have same indexOrder will sort by filename",
+                "**Password:** For projects that do not want password protection, you can either delete the 'password' key and value, or set 'password' value to any empty values like null, false, int 0, empty string \"\". (set password to string 'no' will also consider to be no password)",
+                "You **have to** structrue each project josn by rules, CMS not yet developed.",
+                "Markdown reverence: https://github.com/markedjs/marked/ - only paragraphs support markdown - and not fully supported but works in basic way such as bold, italic, inline-image, etc."
             ],
             "demoLink": {
                 "Demo Links": "http://zhouyiwork.com",
@@ -62,9 +62,81 @@
                 ]
             },
             {
+                "headline": "Data Guidence",
+                "subhead": "subhead is optional, and has to be string",
+                "subheadCaption": "subheadCaption is optinal, and has to be string",
+                "subheadList": [
+                    "subheadList is optional, and suppose to be an array",
+                    "put string in subheadList will be converted to an one element array",
+                    "First item in the list will be leading",
+                    "leadImgFixed / leadImg / leadImgBgColor are optinal and should all be string",
+                    "leadImgFixed / leadImg should be file name or path as string",
+                    "enter only file name is targeting [current project]'s resource foler",
+                    "a relative path is allowd, any path will be  relative to current project folder",
+                    "leadImgBgColor should be a valid html color code (hex, rgb, hsl, etc.) as string"
+                ],
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "isFluid": true,
+                        "data": [
+                            "**Lorem ipsum** dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci."
+                        ]
+                    }
+                ]
+            },
+            {
+                "headline": "Data Guidence",
+                "subhead": "subhead is optional, and has to be string",
+                "subheadCaption": "subheadCaption is optinal, and has to be string",
+                "subheadList": [
+                    "subheadList is optional, and suppose to be an array",
+                    "put string in subheadList will be converted to an one element array",
+                    "First item in the list will be leading",
+                    "leadImgFixed / leadImg / leadImgBgColor are optinal and should all be string",
+                    "leadImgFixed / leadImg should be file name or path as string",
+                    "enter only file name is targeting [current project]'s resource foler",
+                    "a relative path is allowd, any path will be  relative to current project folder",
+                    "leadImgBgColor should be a valid html color code (hex, rgb, hsl, etc.) as string"
+                ],
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "isFluid": true,
+                        "data": [
+                            "**Lorem ipsum** dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci.",
+                            "Lorem ipsum dolor sit amet consectetur. At urna sed nisl amet fermentum ultrices id nibh. Aenean enim cursus sagittis congue at et dictum. Maecenas duis et non amet orci."
+                        ]
+                    }
+                ]
+            },
+            {
                 "headline": "Media Type Showcase",
                 "leadImgFixed": "",
-                "leadImgFixedHeight": null,
+                "leadImgHeight": null,
                 "leadImg": "images/bg-01.jpg",
                 "leadImgBgColor": "darkblue",
                 "subhead": "With full optional stup enabled",
@@ -204,7 +276,7 @@
             },
             {
                 "leadImg": "images/bg-02.png",
-                "leadImgFixedHeight": "70vh",
+                "leadImgHeight": "70vh",
                 "headline": "Direct Embed",
                 "content": [
                     {
@@ -240,7 +312,7 @@
             },
             {
                 "leadImgFixed": "images/bg-01.jpg",
-                "leadImgFixedHeight": "70vh",
+                "leadImgHeight": "70vh",
                 "headline": "Edge Testing",
                 "content": [
                     {

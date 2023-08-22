@@ -1,3 +1,5 @@
+// on demand iframe
+
 window.onload = () => {
     const wrappers = document.querySelectorAll('.iframe_wrapper');
 
@@ -5,20 +7,24 @@ window.onload = () => {
         const button = wrapper.querySelector('.load_iframe');
         const iframe = wrapper.querySelector('.on_demand');
 
-        button.addEventListener('click', () => {
-            wrapper.style.minHeight = wrapper.dataset.targetHeight;
-            iframe.src = iframe.dataset.iframeSrc;
-            iframe.classList.remove('on_demand');
-            button.classList.add('disabled');
-            button.style.zIndex = -1;
-            button.innerHTML = "<span class='spinner-border spinner-border-sm me-2' aria-hidden='true'></span><span role='status'>Loading...</span>";
-            iframe.addEventListener('load', () => {
-                button.classList.add('hidden');
+        if (button) {
+            button.addEventListener('click', () => {
+                wrapper.style.minHeight = wrapper.dataset.targetHeight;
+                iframe.src = iframe.dataset.iframeSrc;
+                iframe.classList.remove('on_demand');
+                button.classList.add('disabled');
+                button.style.zIndex = -1;
+                button.innerHTML = "<span class='spinner-border spinner-border-sm me-2' aria-hidden='true'></span><span role='status'>Loading...</span>";
+                iframe.addEventListener('load', () => {
+                    button.classList.add('hidden');
+                });
             });
-        });
+        }
     });
 };
 
+
+// parallax
 
 window.addEventListener('scroll', function () {
     var windowHeight = window.innerHeight;
@@ -44,7 +50,8 @@ window.addEventListener('scroll', function () {
         var wrapperHeight = wrapper.offsetHeight;
         var imageHeight = image.offsetHeight;
 
-        var moveDistance = wrapperTop * -0.3 + image.offsetHeight / 10;
+        var moveDistance = wrapperTop * -0.3 + 30;
+            // image.offsetHeight / 10;
 
         image.style.transform = 'translateY(' + moveDistance + 'px)';
 

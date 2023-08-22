@@ -25,9 +25,69 @@
         "article": [
             {
                 "leadImgFixed": "",
-                "leadImgFixedHeight": null,
+                "leadImgHeight": null,
                 "leadImg": "",
                 "leadImgBgColor": "",
+                "leadImgParallax": null,
+                "headline": "Simple Section",
+                "subhead": "optional subhead",
+                "subheadCaption": "",
+                "subheadList": [],
+                "leftCol": null,
+                "rightCol": null,
+                "leftColUnfluid": false,
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "headline": "Paragraph Headline",
+                        "caption": "",
+                        "cite": "",
+                        "isQuote": false,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
+                        "leadCount": 0,
+                        "data": [
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page."
+                        ]
+                    },
+                    {
+                        "type": "image",
+                        "headline": "An Image",
+                        "caption": "",
+                        "cite": "",
+                        "isQuote": "",
+                        "isFluid": false,
+                        "isFluidHeadline": false,
+                        "isMaintainSize": false,
+                        "isLightbox": false,
+                        "figCaption": [],
+                        "data": [
+                            "images/demo.jpg"
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "headline": "Paragraph Headline",
+                        "caption": "",
+                        "cite": "",
+                        "isQuote": false,
+                        "isFluid": false,
+                        "isFluidHeadline": false,
+                        "leadCount": 0,
+                        "data": [
+                            "Simply duplicate kickstarter folder and rename it to start a new page.",
+                            "Simply duplicate kickstarter folder and rename it to start a new page."
+                        ]
+                    }
+                ]
+            },
+            {
+                "leadImgFixed": "",
+                "leadImgHeight": null,
+                "leadImg": "",
+                "leadImgBgColor": "",
+                "leadImgParallax": null,
                 "headline": "Section Headline",
                 "subhead": "optional subhead",
                 "subheadCaption": "caption is optinal",
@@ -84,9 +144,10 @@
             },
             {
                 "leadImgFixed": "",
-                "leadImgFixedHeight": null,
+                "leadImgHeight": null,
                 "leadImg": "images/thumb.jpg",
                 "leadImgBgColor": "pink",
+                "leadImgParallax": true,
                 "headline": "Gallery Showcase",
                 "subhead": "",
                 "subheadCaption": "",

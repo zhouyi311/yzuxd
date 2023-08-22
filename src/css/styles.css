@@ -1008,7 +1008,7 @@ section.projects_section .projects_container .project_card.featured_card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: fit-content(0);
-  gap: 2rem;
+  gap: 3rem;
 }
 section.projects_section .projects_container .project_card.featured_card a.card_thumb_link .card_thumbnail {
   overflow: hidden;
