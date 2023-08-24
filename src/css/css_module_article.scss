@@ -179,6 +179,10 @@
                 }
             }
 
+            ul>li:has(> ul) {
+                list-style-type: none;
+            }
+
             &.article_paragraphs {
                 .block_headline {
                     margin-bottom: $unit-4;

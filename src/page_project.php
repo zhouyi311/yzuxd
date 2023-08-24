@@ -96,16 +96,17 @@ $siteHeaderRenderer = new HeaderRenderer('project', $project, $isPasswordRequire
                                     <div class="col-lg-5 py-5 pt-lg-3 mb-2 project_intro_summary">
                                         <!-- <div class="project_intro_summary_wrapper "> -->
                                         <?php
-                                        echo '<div class="text-body-tertiary d-flex flex-wrap align-items-center gap-3 mb-4 mb-lg-5">';
-                                        echo !empty($project->summary['caption']) ? '<div class="fst-italic">' . htmlspecialchars($project->summary['caption']) . '</div>' : "";
+                                        echo '<div class="text-body-tertiary mb-4">';
+
                                         if (!empty($project->summary['categories'])) {
-                                            echo "<div class='article_category d-flex gap-2'>";
+                                            echo "<div class='article_category d-flex flex-wrap gap-2'>";
                                             foreach ($project->summary['categories'] as $category) {
                                                 $category = htmlspecialchars($category);
                                                 echo "<span class='category-container badge fw-nordal text-bg-light px-3 py-2 me-1 rounded-pill '>$category</span> ";
                                             }
                                             echo "</div>";
                                         }
+                                        echo !empty($project->summary['caption']) ? '<div class="fst-italic mt-5">' . htmlspecialchars($project->summary['caption']) . '</div>' : "";
                                         echo '</div>';
                                         $summaryText = isset($project->summary['text']) ? $project->summary['text'] : null;
                                         if (!empty($summaryText)) {

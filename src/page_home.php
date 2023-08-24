@@ -189,10 +189,11 @@ $projectCardsRenderer = new ProjectCardsRenderer();
                                         <div class="contact_self_tilting">
                                             <div class="contact_tilting_group">
                                                 <img class="contact_decoration none_select base_layer" src="src/img/phone-base.png?v=z021" alt="image decoration" aria-hidden="true">
-                                                <img class="contact_decoration none_select extra_layer extra_rise_btn" src="src/img/phone-btn.png?v=z021" alt="image decoration" aria-hidden="true">
+                                                <img class="contact_decoration none_select extra_layer extra_rise_btm" src="src/img/phone-btn.png?v=z021" alt="image decoration" aria-hidden="true">
                                                 <img class="contact_decoration none_select extra_layer extra_rise_0" src="src/img/phone-face.svg?v=z021" alt="image decoration" aria-hidden="true">
                                                 <img class="contact_decoration none_select extra_layer extra_rise_1 " src="src/img/phone-icon.png?v=z021" alt="image decoration" aria-hidden="true">
-                                                <img class="contact_decoration none_select extra_layer extra_rise_2 " src="src/img/phone-icon-1.svg?v=z021" alt="image decoration" aria-hidden="true">
+                                                <img class="contact_decoration none_select extra_layer extra_rise_2" src="src/img/phone-face-2.svg?v=z021" alt="image decoration" aria-hidden="true" id="contact_spin_item">
+                                                <img class="contact_decoration none_select extra_layer extra_rise_3 " src="src/img/phone-icon-1.svg?v=z021" alt="image decoration" aria-hidden="true" id="contact_delay_item">
                                             </div>
                                         </div>
                                     </div>

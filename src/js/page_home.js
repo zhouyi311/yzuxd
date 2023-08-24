@@ -26,6 +26,19 @@ function applyInteractiveDecoration(e) {
 document.addEventListener('mousemove', applyInteractiveDecoration);
 
 
+// Create a listener for the `.extra_rise_2` element to fully load
+document.getElementById("contact_spin_item").addEventListener("load", function () {
+    const targetObject = document.getElementById("contact_delay_item");
+    const originalSrc = targetObject.getAttribute("src");
+    targetObject.setAttribute("style", "opacity: 0");
+
+    setTimeout(function () {
+        targetObject.removeAttribute("src");
+        targetObject.setAttribute("src", originalSrc);
+        targetObject.setAttribute("style", "opacity: 1");
+    }, 900);
+});
+
 // check card summary size with gradient blur fade out
 function applyGradientForLargeHeight() {
     const cardInfoSummaries = document.querySelectorAll('.card_info_summary');
@@ -88,11 +101,11 @@ function canvasDraw() {
     }
 
     const opts = {
-        particleColor: "rgb(152,0,50)",
+        particleColor: "#B97B7B",
         lineColor: "rgb(100,0,14)",
-        particleAmount: 15,
-        defaultSpeed: 0.2,
-        variantSpeed: 0.2,
+        particleAmount: 25,
+        defaultSpeed: 0.4,
+        variantSpeed: 0.4,
         defaultRadius: 1,
         variantRadius: 2,
         linkRadius: 200,

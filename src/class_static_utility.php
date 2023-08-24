@@ -23,6 +23,7 @@ class UtilityClass
     public static function textWithNestingList($inputData)
     {
         $r = null;
+
         if (empty($inputData)) {
             return;
         } elseif (!is_array($inputData)) {
@@ -30,20 +31,22 @@ class UtilityClass
         } elseif (is_array($inputData)) {
             $r .= "<ul class='indent_list'>";
             foreach ($inputData as $listitem) {
+                $r .= "<li class='markdown'>";
 
                 if (is_array($listitem)) {
-                    self::textWithNestingList($listitem);
+                    $r .= self::textWithNestingList($listitem);
                 } else {
-                     $r .=  "<li class='markdown'>";
-                     $r .=  strval($listitem);
-                     $r .=  "</li>";
+                    $r .= strval($listitem);
                 }
 
+                $r .= "</li>";
             }
-             $r .=  "</ul>";
+            $r .= "</ul>";
         }
+
         return $r;
     }
+
 
 
     public static function findLargerImage($path, $filename)

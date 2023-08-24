@@ -180,6 +180,14 @@
     transform: translateZ(130px);
   }
 }
+@keyframes ztrans-b3 {
+  from {
+    transform: translateZ(130px);
+  }
+  to {
+    transform: translateZ(150px);
+  }
+}
 h1,
 h2,
 h3,
@@ -388,6 +396,9 @@ h6 {
   font-weight: 500;
   text-align: center;
   overflow: hidden;
+}
+.project_article .article_section .media_block ul > li:has(> ul) {
+  list-style-type: none;
 }
 .project_article .article_section .media_block.article_paragraphs .block_headline {
   margin-bottom: 1.5rem;
@@ -703,7 +714,7 @@ section.homepage_home .bg_container .hero_decoration_container canvas {
   height: 100%;
   top: 0;
   left: 0;
-  background-image: linear-gradient(317deg, #120512 0%, #3F001E 100%);
+  background-image: linear-gradient(317deg, #000000 0%, #060017 30%, #1c001b 60%, #270013 100%);
   position: absolute;
   z-index: -2;
 }
@@ -896,7 +907,7 @@ section.page_section#contact .contact_decoration_container #contact_moveable .co
   top: 0;
   left: 0;
 }
-section.page_section#contact .contact_decoration_container #contact_moveable .contact_self_tilting .contact_tilting_group .contact_decoration.extra_rise_btn {
+section.page_section#contact .contact_decoration_container #contact_moveable .contact_self_tilting .contact_tilting_group .contact_decoration.extra_rise_btm {
   transform-origin: 25.1% 50%;
   transform: rotateY(-90deg);
 }
@@ -908,8 +919,11 @@ section.page_section#contact .contact_decoration_container #contact_moveable .co
   animation: ztrans-b1 4.7s infinite alternate ease-in-out;
 }
 section.page_section#contact .contact_decoration_container #contact_moveable .contact_self_tilting .contact_tilting_group .contact_decoration.extra_rise_2 {
-  transform: translateZ(130px);
   animation: ztrans-b2 4.7s infinite alternate ease-in-out;
+}
+section.page_section#contact .contact_decoration_container #contact_moveable .contact_self_tilting .contact_tilting_group .contact_decoration.extra_rise_3 {
+  transform: translateZ(130px);
+  animation: ztrans-b3 4.7s infinite alternate ease-in-out;
 }
 
 section.projects_section {
@@ -983,6 +997,12 @@ section.projects_section .projects_container .project_card .card_info .card_info
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   max-height: 4.5rem;
+}
+section.projects_section .projects_container .project_card .card_info .card_info_summary .summary_content .article_summary_paragraph {
+  margin-bottom: 0.5rem;
+}
+section.projects_section .projects_container .project_card .card_info .card_info_summary .summary_content .article_summary_paragraph p {
+  margin-bottom: 0;
 }
 section.projects_section .projects_container .project_card .card_info .p_a_summary_link {
   text-decoration: none;
