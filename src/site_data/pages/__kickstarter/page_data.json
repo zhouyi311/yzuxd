@@ -143,6 +143,7 @@
                 ]
             },
             {
+                "isHidden": true,
                 "leadImgFixed": "",
                 "leadImgHeight": null,
                 "leadImg": "images/thumb.jpg",
@@ -240,17 +241,16 @@
                         "data": "http://example.net"
                     },
                     {
-                        "type": "iframe",
+                        "type": "iframeEmbed",
                         "isFluid": false,
                         "isFluidHeadline": false,
                         "headline": "Embad iFrame Video Example",
                         "caption": "An iFrame example",
                         "cite": " - 'You've found it'",
-                        "isEmbedVideo": true,
                         "data": "assets/embed-iframe-video.html"
                     },
                     {
-                        "type": "html",
+                        "type": "htmlEmbed",
                         "isFluid": false,
                         "isFluidHeadline": false,
                         "headline": "HTML Code Direct Embed Example",

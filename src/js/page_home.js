@@ -36,7 +36,7 @@ document.getElementById("contact_spin_item").addEventListener("load", function (
         targetObject.removeAttribute("src");
         targetObject.setAttribute("src", originalSrc);
         targetObject.setAttribute("style", "opacity: 1");
-    }, 900);
+    }, 1300);
 });
 
 // check card summary size with gradient blur fade out

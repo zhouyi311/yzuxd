@@ -1,17 +1,17 @@
 // on demand iframe
 
 window.onload = () => {
-    const wrappers = document.querySelectorAll('.iframe_wrapper');
+    const wrappers = document.querySelectorAll('.iframe_wrapper.on_demand');
 
     wrappers.forEach(wrapper => {
         const button = wrapper.querySelector('.load_iframe');
-        const iframe = wrapper.querySelector('.on_demand');
+        const iframe = wrapper.querySelector('iframe');
 
         if (button) {
             button.addEventListener('click', () => {
                 wrapper.style.minHeight = wrapper.dataset.targetHeight;
-                iframe.src = iframe.dataset.iframeSrc;
-                iframe.classList.remove('on_demand');
+                wrapper.classList.remove('on_demand');
+                iframe.src = wrapper.dataset.iframeSrc;
                 button.classList.add('disabled');
                 button.style.zIndex = -1;
                 button.innerHTML = "<span class='spinner-border spinner-border-sm me-2' aria-hidden='true'></span><span role='status'>Loading...</span>";
@@ -225,7 +225,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function zoomImage(event) {
-        event.preventDefault();
+        
+        // event.preventDefault();
 
         // // Get mouse position relative to the image
         // const offsetX = event.clientX / 2;

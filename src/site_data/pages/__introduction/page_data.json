@@ -290,17 +290,17 @@
                         "data": "/src/static/demos/demo1.html"
                     },
                     {
-                        "type": "iframe",
+                        "type": "iframeEmbed",
                         "isFluid": false,
                         "isFluidHeadline": false,
                         "headline": "Embad iFrame Video Example",
                         "caption": "An iFrame example",
                         "cite": " - 'You've found it'",
-                        "isEmbedVideo": true,
+                        
                         "data": "embeds/embed-video.html"
                     },
                     {
-                        "type": "html",
+                        "type": "htmlEmbed",
                         "isFluid": false,
                         "isFluidHeadline": false,
                         "headline": "HTML Code Direct Embed Example",
