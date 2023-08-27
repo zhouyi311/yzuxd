@@ -287,7 +287,7 @@ class ArticleContentRenderer
         $cite = UtilityClass::sanitizeValue($block['cite'] ?? null);
         $isLightbox = $block['isLightbox'] ?? null;
         $isQuote = !empty($block['isQuote']);
-        $isMaintainSize = !empty($block['isMaintainSize']) ? 'maintain_size' : null;
+        $isCompact = !empty($block['isCompact']) ? 'maintain_size' : null;
 
         $html = '';
 
@@ -307,17 +307,17 @@ class ArticleContentRenderer
             $html .= "<div class='row g-3'>";
             foreach ($mainData as $index => $image) {
                 if (count($mainData) % 2 == 0 && count($mainData) <= 4) {
-                    $html .= "<div class='image_wrapper col-6'>";
+                    $html .= "<div class='image_wrapper col-12 col-sm-6'>";
                 } elseif (count($mainData) == 3 || count($mainData) > 4) {
-                    $html .= "<div class='image_wrapper col-6 col-lg-4 '>";
+                    $html .= "<div class='image_wrapper col-12 col-sm-4 '>";
                 } else {
                     $html .= "<div class='image_wrapper col-12'>";
                 }
-                $html .= "<figure class='figure $isMaintainSize'>";
+                $html .= "<figure class='figure $isCompact'>";
                 $html .= "<div class='media_size_fixer'>";
                 $html .= "<img src='{$projPath}/{$image}' alt='" . ($figCaption[$index] ?? "An article image") . ": ";
                 $html .= ($headline ? "$headline - " : "$sectionName - ") . ($caption ? "$caption " : "showcase ") . "image";
-                $html .= "' class='article_image rounded-2 $isMaintainSize ";
+                $html .= "' class='article_image rounded-2 $isCompact ";
                 if (!empty($isLightbox)) {
                     if (preg_match("/^[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/", $isLightbox)) {
                         $html .= " lightbox-enabled' data-larger-src='$isLightbox'>";

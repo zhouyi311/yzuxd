@@ -206,7 +206,7 @@
                         "isQuote": "",
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "isMaintainSize": false,
+                        "isCompact": false,
                         "isLightbox": true,
                         "figCaption": [
                             "first image",
@@ -229,7 +229,7 @@
                         "isQuote": "",
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "isMaintainSize": false,
+                        "isCompact": false,
                         "isLightbox": true,
                         "isIndicators": true,
                         "isControls": true,
@@ -322,7 +322,7 @@
                         "figCaption": "figCaption here",
                         "isLightbox": true,
                         "isQuote": true,
-                        "isMaintainSize": true,
+                        "isCompact": true,
                         "data": "images/example-a1.png"
                     },
                     {
@@ -331,7 +331,7 @@
                         "caption": 0,
                         "figCaption": 0,
                         "isQuote": true,
-                        "isMaintainSize": true,
+                        "isCompact": true,
                         "data": "images/example-a1.png"
                     },
                     {

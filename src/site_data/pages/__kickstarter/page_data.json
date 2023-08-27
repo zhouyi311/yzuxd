@@ -59,7 +59,7 @@
                         "isQuote": "",
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "isMaintainSize": false,
+                        "isCompact": false,
                         "isLightbox": false,
                         "figCaption": [],
                         "data": [
@@ -165,7 +165,7 @@
                         "isQuote": "",
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "isMaintainSize": false,
+                        "isCompact": false,
                         "isLightbox": true,
                         "figCaption": [
                             "first image",
@@ -188,7 +188,7 @@
                         "isQuote": "",
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "isMaintainSize": false,
+                        "isCompact": false,
                         "isLightbox": true,
                         "isIndicators": true,
                         "isControls": true,

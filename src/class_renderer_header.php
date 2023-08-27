@@ -167,58 +167,6 @@ class HeaderRenderer
     }
 
 
-    private function projectDrawer()
-    {
-        $siteInfo = $this->siteInfo;
-        $project = $this->projects;
-        $isAuthenticated = $this->isAuthenticated;
-        $isPasswordRequired = $this->isPasswordRequired;
-        $projectKey = $this->siteInfo->pageKeys['projectKey'];
-        $spanClass = count($project->article) > 8 ? "h6 fw-bold" : "h5 fw-bold";
-        ob_start();
-        ?>
-        <div class="drawer_top_group flex-grow-1">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5" id="navbar_target">
-                <li class="nav-item">
-                    <a class="nav-link" href="#home"><span class="<?php echo $spanClass ?>">Overview</span></a>
-                </li>
-                <?php
-                if ($isAuthenticated || !$isPasswordRequired) {
-                    foreach ($project->article as $section) {
-                        $headline = htmlspecialchars($section['headline']);
-                        $headlineId = htmlspecialchars($section['headlineId']);
-                        echo '<li class="nav-item">';
-                        echo '<a class="nav-link" href="#' . $headlineId . '">';
-                        echo "<span class='$spanClass'>" . $headline . '</span></a>';
-                    }
-                } else {
-                    echo '<li class="nav-item"><a class="nav-link" href="#enter_password"><span class="h5 fw-bold">Enter Password</span></a></li>';
-                }
-                ?>
-            </ul>
-        </div>
-        <div class="drawer_btm_group d-flex flex-column gap-4 pb-5">
-            <div class="btn-group rounded-pill fw-bold overflow-hidden" role="group">
-                <?php
-                $existLastProject = !empty($project->last->id);
-                $existNextProject = !empty($project->next->id);
-                if ($existLastProject) {
-                    echo "<a class='btn btn-light text-truncate px-4' href='?$projectKey={$project->last->id}'><span class='fw-bold me-1'>Prev:</span><span class='inner_text fw-normal w-100'>{$project->last->title}</span></a>";
-                }
-                if ($existNextProject) {
-                    echo "<a class='btn btn-light text-truncate px-4' href='?$projectKey={$project->next->id}'><span class='fw-bold me-1'>Next:</span><span class='inner_text fw-normal w-100'>{$project->next->title}</span></a>";
-                }
-                ?>
-            </div>
-            <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $siteInfo->rootUrl; ?>">
-                <i class="bi bi-arrow-left pe-2 align-middle"></i>
-                <span class="w-100">HOMEPAGE</span>
-            </a>
-        </div>
-        <?php
-        return ob_get_clean();
-    }
-
     private function archiveDrawer()
     {
         $siteInfo = $this->siteInfo;
@@ -259,6 +207,61 @@ class HeaderRenderer
         </div>
         <div class="drawer_btm_group d-flex flex-column gap-4 pb-5">
             <div class="btn-group rounded-pill fw-bold overflow-hidden" role="group">
+            </div>
+            <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $siteInfo->rootUrl; ?>">
+                <i class="bi bi-arrow-left pe-2 align-middle"></i>
+                <span class="w-100">HOMEPAGE</span>
+            </a>
+        </div>
+        <?php
+        return ob_get_clean();
+    }
+
+
+    private function projectDrawer()
+    {
+        $siteInfo = $this->siteInfo;
+        $project = $this->projects;
+        $isAuthenticated = $this->isAuthenticated;
+        $isPasswordRequired = $this->isPasswordRequired;
+        $projectKey = $this->siteInfo->pageKeys['projectKey'];
+        $spanClass = count($project->article) > 8 ? "h6 fw-bold" : "h5 fw-bold";
+        ob_start();
+        ?>
+        <div class="drawer_top_group flex-grow-1">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-5" id="navbar_target">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home"><span class="<?php echo $spanClass ?>">Overview</span></a>
+                </li>
+                <?php
+                if ($isAuthenticated || !$isPasswordRequired) {
+                    foreach ($project->article as $section) {
+                        if (empty($section['isHidden'])) {
+                            $headline = htmlspecialchars($section['headline']);
+                            $headlineId = htmlspecialchars($section['headlineId']);
+                            echo '<li class="nav-item">';
+                            echo '<a class="nav-link" href="#' . $headlineId . '">';
+                            echo "<span class='$spanClass'>" . $headline . '</span></a>';
+                        }
+                    }
+                } else {
+                    echo '<li class="nav-item"><a class="nav-link" href="#enter_password"><span class="h5 fw-bold">Enter Password</span></a></li>';
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="drawer_btm_group d-flex flex-column gap-4 pb-5">
+            <div class="btn-group rounded-pill fw-bold overflow-hidden" role="group">
+                <?php
+                $existLastProject = !empty($project->last->id);
+                $existNextProject = !empty($project->next->id);
+                if ($existLastProject) {
+                    echo "<a class='btn btn-light text-truncate px-4' href='?$projectKey={$project->last->id}'><span class='fw-bold me-1'>Prev:</span><span class='inner_text fw-normal w-100'>{$project->last->title}</span></a>";
+                }
+                if ($existNextProject) {
+                    echo "<a class='btn btn-light text-truncate px-4' href='?$projectKey={$project->next->id}'><span class='fw-bold me-1'>Next:</span><span class='inner_text fw-normal w-100'>{$project->next->title}</span></a>";
+                }
+                ?>
             </div>
             <a class="btn btn-dark rounded-pill px-4 fw-bold d-flex justify-content-between" href="<?php echo $siteInfo->rootUrl; ?>">
                 <i class="bi bi-arrow-left pe-2 align-middle"></i>
