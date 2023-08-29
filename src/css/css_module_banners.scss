@@ -55,7 +55,8 @@ section.homepage_home {
         background-repeat: no-repeat, no-repeat;
         background-position: 50%, 50%;
         background-attachment: fixed;
-        background-image: linear-gradient(317deg, #120512 0%, #3F001E 100%);
+        background-color: #0d1117;
+        // background-image: linear-gradient(317deg, #120512 0%, #3F001E 100%);
 
         @media (max-width: 1200px) {
             min-width: 100%;
@@ -78,7 +79,8 @@ section.homepage_home {
                 left: 0;
                 // position: fixed;
                 // background-color: #000;
-                background-image: linear-gradient(317deg, #000000 0%, #060017 30%, #1c001b 60%, #270013 100%);
+                background: linear-gradient(149deg, rgba(12, 10, 26, 0.80) 0%, rgba(4, 3, 11, 0.80) 100%),
+                    #0D1117;
                 position: absolute;
                 z-index: -2;
             }
@@ -212,6 +214,35 @@ section.homepage_home {
     }
 }
 
+[data-bs-theme="dark"] {
+    section.page_section#contact {
+        .bg_container {
+            background-image: url('../img/bg-contact-gradient-4.webp?v=1');
+        }
+
+        .contact_card {
+            background-color: rgba($color: #0a0c0f, $alpha: .3);
+
+            .contact_form {
+                .form-control {
+                    background-color: rgba(0, 0, 0, 0.087);
+
+                    &:focus {
+                        background-color: rgba(0, 0, 0, 0.2);
+                    }
+                }
+
+                .submit_btn {
+                    color: black;
+                    background-color: #f6f6f6;
+                }
+            }
+        }
+
+    }
+}
+
+
 section.page_section#contact {
     overflow: hidden;
 
@@ -249,6 +280,15 @@ section.page_section#contact {
                 &:focus {
                     background-color: rgba(255, 255, 255, 0.6);
                     border: none;
+                }
+            }
+
+            .submit_btn {
+                color: white;
+                background-color: #111;
+                transition: 0.3s;
+                &:hover {
+                    opacity: 0.9;
                 }
             }
 
@@ -336,8 +376,8 @@ section.page_section#contact {
 
                         &.extra_rise_2 {
                             // transform: translateZ(24px);
-                             animation: ztrans-b2 4.7s infinite alternate ease-in-out;
-                            
+                            animation: ztrans-b2 4.7s infinite alternate ease-in-out;
+
                         }
 
                         &.extra_rise_3 {
@@ -349,7 +389,4 @@ section.page_section#contact {
             }
         }
     }
-
-
-
 }

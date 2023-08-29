@@ -1,3 +1,82 @@
+// movement card
+document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll("#projects .project_card");
+    const body = document.querySelector("body");
+    
+
+    cards.forEach(function (card) {
+        const wrapper = card.closest('.project_card_wrapper'); // Find closest parent that matches the selector
+
+        card.addEventListener("mousemove", function (e) {
+
+            const ratio = 3;
+            const maxTilt = 0.4; // Set maximum tilt angle
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const deltaX = x - centerX;
+            const deltaY = y - centerY;
+
+            let tiltX = (deltaY / centerY) * ratio;
+            let tiltY = -(deltaX / centerX) * ratio;
+
+            // Constrain tiltX and tiltY to the maximum value
+            tiltX = Math.min(Math.max(tiltX, -maxTilt), maxTilt);
+            tiltY = Math.min(Math.max(tiltY, -maxTilt), maxTilt);
+            
+            var currentTheme = body.getAttribute("data-bs-theme");
+            if (currentTheme == 'dark') {
+                // Add perspective to the wrapper
+                if (wrapper) {
+                    wrapper.style.perspective = '1000px';
+                }
+                card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+
+                // Move the card_flare element
+                const flare = card.querySelector('.card_flare');
+                if (flare) {
+                    flare.style.opacity = '0.05';
+                    const flareRect = flare.getBoundingClientRect();
+                    const flareHalfWidth = flareRect.width / 2;
+                    const flareHalfHeight = flareRect.height / 2;
+                    flare.style.left = `${x - flareHalfWidth}px`;
+                    flare.style.top = `${y - flareHalfHeight}px`;
+                }
+            }
+        });
+
+        card.addEventListener("mouseout", function () {
+
+            var currentTheme = body.getAttribute("data-bs-theme");
+
+            if (currentTheme == 'dark') { 
+                card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            } else {
+                card.style.transform = '';
+            }
+
+            // Remove perspective from the wrapper
+            if (wrapper) {
+                wrapper.style.perspective = '';
+            }
+
+            // Reset the position of card_flare on mouseout
+            const flare = card.querySelector('.card_flare');
+            if (flare) {
+                flare.style.opacity = '0';
+            }
+        });
+    });
+});
+
+
+
+
+
 // interactive decoration
 function applyInteractiveDecoration(e) {
     const scale = 80; // movement scale, larger -> smaller movement
@@ -22,7 +101,6 @@ function applyInteractiveDecoration(e) {
         }
     }
 }
-
 document.addEventListener('mousemove', applyInteractiveDecoration);
 
 
@@ -90,8 +168,7 @@ function submitFormOnEvent(formID, emailInputID, messageInputID, outputElementID
         console.log('Thank you for checking here :)')
     }
 }
-
-submitFormOnEvent('contactForm', 'msg_submit_email', 'msg_submit_content', 'formOutput', 'src/php/handler_contact_form.php');
+submitFormOnEvent('contactForm', 'msg_submit_email', 'msg_submit_content', 'formOutput', 'src/handler_contact_form.php');
 
 
 function canvasDraw() {
@@ -101,14 +178,14 @@ function canvasDraw() {
     }
 
     const opts = {
-        particleColor: "#B97B7B",
-        lineColor: "rgb(100,0,14)",
-        particleAmount: 25,
-        defaultSpeed: 0.4,
-        variantSpeed: 0.4,
+        particleColor: "#750023",
+        lineColor: "rgb(40,40,40)",
+        particleAmount: 30,
+        defaultSpeed: 0.2,
+        variantSpeed: 0.3,
         defaultRadius: 1,
-        variantRadius: 2,
-        linkRadius: 200,
+        variantRadius: 1,
+        linkRadius: 100,
     };
 
     window.addEventListener("resize", function () {

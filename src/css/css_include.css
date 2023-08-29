@@ -65,4 +65,29 @@ h6 {
 .text_subtle {
   color: rgba(0, 0, 0, 0.1);
   text-decoration: none;
+}
+
+.bg_dark {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+[data-bs-theme=dark] .btn_dark {
+  background-color: rgba(0, 0, 0, 0.2666666667);
+}
+[data-bs-theme=dark] .btn_dark:hover {
+  background-color: black;
+}
+[data-bs-theme=dark] .bg_fade {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+[data-bs-theme=dark] .bg_subtle {
+  background-color: rgba(255, 255, 255, 0.17);
+}
+[data-bs-theme=dark] .text_fade {
+  color: rgba(255, 255, 255, 0.13);
+  text-decoration: none;
+}
+[data-bs-theme=dark] .text_subtle {
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
 }/*# sourceMappingURL=css_include.css.map */

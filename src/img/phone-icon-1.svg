@@ -25,7 +25,7 @@
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill"
-                    values="white;white;white;white;white;white;white;white;white;white;white;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9"
+                    values="white;white;white;white;white;white;white;white;white;white;white;#474751;#474751;#474751;#474751;#474751;#474751"
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill-opacity"
@@ -46,7 +46,7 @@
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill"
-                    values="white;white;white;white;white;white;white;white;white;white;white;white;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9"
+                    values="white;white;white;white;white;white;white;white;white;white;white;white;#474751;#474751;#474751;#474751;#474751"
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill-opacity"
@@ -114,7 +114,7 @@
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill"
-                    values="white;white;white;white;white;white;white;white;white;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9"
+                    values="white;white;white;white;white;white;white;white;white;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751"
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill-opacity"
@@ -135,7 +135,7 @@
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill"
-                    values="white;white;white;white;white;white;white;white;white;white;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9"
+                    values="white;white;white;white;white;white;white;white;white;white;#474751;#474751;#474751;#474751;#474751;#474751;#474751"
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill-opacity"
@@ -195,7 +195,7 @@
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill"
-                    values="white;white;white;white;white;white;white;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9"
+                    values="white;white;white;white;white;white;white;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751"
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill-opacity"
@@ -216,7 +216,7 @@
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill"
-                    values="white;white;white;white;white;white;white;white;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9"
+                    values="white;white;white;white;white;white;white;white;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751"
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill-opacity"
@@ -276,7 +276,7 @@
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill"
-                    values="white;white;white;white;white;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9"
+                    values="white;white;white;white;white;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751"
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill-opacity"
@@ -297,7 +297,7 @@
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill"
-                    values="white;white;white;white;white;white;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9;#FFBDC9"
+                    values="white;white;white;white;white;white;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751;#474751"
                     begin="0s" dur="4.7s" repeatCount="indefinite" calcMode="linear"
                     keyTimes="0;0.063;0.125;0.188;0.25;0.313;0.375;0.438;0.5;0.563;0.625;0.688;0.75;0.813;0.875;0.938;1" />
                 <animate attributeName="fill-opacity"

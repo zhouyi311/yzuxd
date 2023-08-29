@@ -36,7 +36,7 @@ class ProjectInfo
 
         $this->article = $projectData['article'];
         foreach ($this->article as $index => &$section) {
-            empty($section['headline']) ? $section['headline'] = 'Section ' . $index + 1 : null;
+            empty($section['headline']) ? $section['headline'] = 'Section ' . ($index + 1) : null;
             $headlineId = strtolower(preg_replace('/[^a-z0-9]/i', '_', $section['headline'])); // Replace all special characters with underscores and lowercase
             $headlineId = 'sec_' . ($index + 1) . '_' . $headlineId;
             $section['headlineId'] = $headlineId;

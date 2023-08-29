@@ -112,3 +112,32 @@ $clr-theme-blue: #4909FE;
     color: rgba($color: #000000, $alpha: 0.1);
     text-decoration: none;
 }
+
+.bg_dark {
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    // backdrop-filter: blur(3rem);
+}
+
+[data-bs-theme="dark"] {
+    .btn_dark {
+        background-color: #00000044;
+    }
+    .btn_dark:hover {
+        background-color: #000000ff;
+    }
+    
+    .bg_fade {
+        background-color: rgba($color: #ffffff, $alpha: 0.05);
+    }
+    .bg_subtle {
+        background-color: rgba($color: #ffffff, $alpha: 0.17);
+    }
+    .text_fade {
+        color: rgba($color: #ffffff, $alpha: 0.13);
+        text-decoration: none;
+    }
+    .text_subtle {
+        color: rgba($color: #ffffff, $alpha: 0.4);
+        text-decoration: none;
+    }
+}

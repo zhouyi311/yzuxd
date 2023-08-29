@@ -85,13 +85,15 @@ class ProjectCardsRenderer
         $thumbnailSrc = isset($project->summary['thumbnail']) ? htmlspecialchars($projectPath . $project->summary['thumbnail']) : "";
         $summaryText = isset($project->summary['text']) ? $project->summary['text'] : [];
 
+
         if ($isFeatured) {
             echo "<div class='col-12'>";
         } else {
             echo "<div class='col-sm-6 col-lg-4'>";
         }
+        echo "<div class='project_card_wrapper'>";
         echo "<div class='project_card card " . ($isFeatured ? "featured_card " : null);
-        echo " border-0 overflow-hidden rounded-5 bg-white h-100' id='$project->anchorId'>";
+        echo " border-0 overflow-hidden rounded-5 h-100' id='$project->anchorId'>";
         echo "<a class='card_thumb_link' href='$projectLink'>";
         echo "<div class='card_thumbnail ratio ratio-1x1 rounded-5'>";
         echo "<img class='object-fit-cover' src='$thumbnailSrc' alt='$title thumbnail'>";
@@ -106,7 +108,7 @@ class ProjectCardsRenderer
         if (!empty($categories)) {
             foreach ($categories as $category) {
                 $category = htmlspecialchars($category);
-                echo "<span class='category-container badge text-bg-light px-3 py-2 rounded-pill fw-normal me-2'>$category</span> ";
+                echo "<span class='category-container badge bg_fade text-secondary px-3 py-2 rounded-pill fw-normal me-2'>$category</span> ";
             }
         }
         echo "</div><div class='card_info_summary'>";
@@ -115,9 +117,10 @@ class ProjectCardsRenderer
             echo "<p class='text-body-secondary article_summary_paragraph markdown'>" . htmlspecialchars($textItem) . "</p>";
         }
         echo "</div></div><div class='card_info_cta mt-1 mb-2'>";
-        echo "<a class='btn btn-dark rounded-pill px-4 fw-medium' href='$projectLink'>";
+        echo "<a class='btn btn-dark border-0 rounded-pill px-4 fw-medium' href='$projectLink'>";
         echo "Learn More <i class='bi bi-arrow-right-short align-middle'></i>";
-        echo "</a></div></div></div></div>";
+        echo "</a></div></div><div class='card_flare'></div></div></div>";
+        echo "</div>";
 
     }
 

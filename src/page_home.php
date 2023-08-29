@@ -19,7 +19,7 @@ $projectCardsRenderer = new ProjectCardsRenderer();
 <html lang="en">
 <?php include __DIR__ . '/include_head.php'; ?>
 
-<body id="home_page_root">
+<body id="home_page_root" data-bs-theme="light">
     <div id="home_page_wrapper" class="page_wrapper">
         <!-- header -->
         <?php echo $siteHeaderRenderer->render(); ?>
@@ -104,11 +104,11 @@ $projectCardsRenderer = new ProjectCardsRenderer();
             </section>
             <!-- projects -->
             <?php /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ?>
-            <section class="page_section projects_section bg-white" id="projects">
+            <section class="page_section projects_section" id="projects">
                 <div class="container">
                     <div class="row">
                         <div class="section_headline">
-                            <h2 class=" text-uppercase text-black">Projects</h2>
+                            <h2 class="text-uppercase">Projects</h2>
                         </div>
                     </div>
                 </div>
@@ -122,25 +122,25 @@ $projectCardsRenderer = new ProjectCardsRenderer();
                 <div class="container">
                     <div class="row gy-5">
                         <div class="col-xl-6 offset-xl-1 col-lg-7 order-2 ">
-                            <div class="contact_card rounded-5 text-dark p-5 shadow-lg-5">
-                                <h2 class="text-black text_hero2 mb-3">What's up!</h2>
-                                <h2 class="text-black">Let's Make Some Noise Together!</h2>
-                                <form id="contactForm" class="contact_form my-5 text-dark fw-medium">
-                                    <div class="form-floating mb-2 fw-light">
-                                        <input id="msg_submit_email" class="form-control border-2 rounded-4 border-secondary fw-light" type="email" name="fromEmail" placeholder="Your email" required>
+                            <div class="contact_card rounded-5 text-body p-5 shadow-lg-5">
+                                <h2 class="text-body text_hero2 mb-3">Hola!</h2>
+                                <h2 class="text-body">Let's Make Some Noise Together!</h2>
+                                <form id="contactForm" class="contact_form my-5 text-body fw-medium" data-bs-theme="">
+                                    <div class="form-floating mb-3 fw-light ">
+                                        <input id="msg_submit_email" class="form-control border-2 rounded-4 border-secondary fw-light focus-ring focus-ring-secondary" type="email" name="fromEmail" placeholder="Your email" required>
                                         <label class="floatingInput border-0 bg-transparent" for="msg_submit_email">Your
                                             Email</label>
                                     </div>
                                     <div class="form-floating fw-light">
-                                        <textarea id="msg_submit_content" class="form-control border-2 rounded-4 border-secondary fw-light" name="message" placeholder="Your message" style="height: 6rem" required></textarea>
+                                        <textarea id="msg_submit_content" class="form-control border-2 rounded-4 border-secondary fw-light focus-ring focus-ring-secondary" name="message" placeholder="Your message" style="height: 6rem" required></textarea>
                                         <label class="floatingInput border-0 bg-transparent" for="msg_submit_content">Your
                                             Message</label>
                                     </div>
 
-                                    <div id="formOutput" class="text-dark my-3"></div>
+                                    <div id="formOutput" class="text-body my-3"></div>
 
                                     <div class="d-grid gap-2">
-                                        <button class="btn btn-dark rounded-pill fw-bold" type="submit">
+                                        <button class="btn rounded-pill fw-bold submit_btn" type="submit">
                                             Send Message
                                         </button>
                                     </div>
@@ -149,32 +149,32 @@ $projectCardsRenderer = new ProjectCardsRenderer();
                                 <h3 class="section_headline text-uppercase visually-hidden">Contact</h3>
                                 <div class="contact_sheet text-nowrap">
 
-                                    <h4>EMAIL</h4>
+                                    <h4 class="mb-2">EMAIL</h4>
                                     <div class="mb-4">
-                                        <a class="text-dark link-offset-3 text-decoration-none" href="mailto:<?php echo htmlspecialchars($siteInfo->information['myEmail']); ?>">
+                                        <a class="text-body link-offset-3 text-decoration-none" href="mailto:<?php echo htmlspecialchars($siteInfo->information['myEmail']); ?>">
                                             <?php echo htmlspecialchars($siteInfo->information['myEmail']); ?>
                                         </a>
                                     </div>
 
-                                    <h4>LOCATION</h4>
+                                    <h4 class="mb-2">LOCATION</h4>
                                     <div class="mb-4">
                                         <?php echo htmlspecialchars($siteInfo->information['myLocation']); ?>
                                     </div>
 
-                                    <h4>SOCIAL NETWORK</h4>
+                                    <h4 class="mb-2">SOCIAL NETWORK</h4>
                                     <div class="d-flex gap-4 mb-3">
                                         <div>
-                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($siteInfo->information['myLinkedin']); ?>">
+                                            <a class="text-body link-offset-3" target="_blank" href="<?php echo htmlspecialchars($siteInfo->information['myLinkedin']); ?>">
                                                 <i class=" bi bi-linkedin align-middle" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>
                                         <div>
-                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($siteInfo->information['myGithub']); ?>">
+                                            <a class="text-body link-offset-3" target="_blank" href="<?php echo htmlspecialchars($siteInfo->information['myGithub']); ?>">
                                                 <i class=" bi bi-github align-middle" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>
                                         <div>
-                                            <a class="text-dark link-offset-3" target="_blank" href="<?php echo htmlspecialchars($siteInfo->information['myTwitter']); ?>">
+                                            <a class="text-body link-offset-3" target="_blank" href="<?php echo htmlspecialchars($siteInfo->information['myTwitter']); ?>">
                                                 <i class=" bi bi-twitter align-middle" style="font-size: 1.5rem;"></i>
                                             </a>
                                         </div>

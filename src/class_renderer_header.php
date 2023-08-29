@@ -76,15 +76,16 @@ class HeaderRenderer
         $type = $this->type;
         $siteInfo = $this->siteInfo;
         $project = $this->projects;
+        $isDark = $type == 'home' ? "dark" : null;
         ?>
         <header class="<?php echo $type; ?>_page_header">
             <div class="container-fluid">
                 <div class="row">
                     <!-- nav bar -->
-                    <nav class="page_navbar <?php echo $type; ?>_page_navbar navbar fixed-top px-4" id="page_navbar">
+                    <nav class="page_navbar <?php echo $type; ?>_page_navbar navbar fixed-top px-4" id="page_navbar" data-bs-theme="<?php echo $isDark; ?>">
                         <!-- nav logo -->
-                        <div class="navbar-brand d-flex align-items-center gap-2">
-                            <a class="h5 mb-0 no_deco site_title d-flex align-items-center gap-2" href="<?php echo $siteInfo->rootUrl; ?>">
+                        <div class="navbar-brand d-flex align-items-center gap-3">
+                            <a class="h5 mb-0 no_deco site_title d-flex align-items-center gap-3" href="<?php echo $siteInfo->rootUrl; ?>">
                                 <img src="src/img/favicon/logo.svg" alt="logo" height="26" class='site_logo'>
                                 <span class="site_name">
                                     <?php
@@ -106,9 +107,16 @@ class HeaderRenderer
                             ?>
                         </div>
                         <!-- nav btn -->
-                        <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                        <div class="d-flex gap-2">
+                            <?php if ($type == 'home') {
+                                echo '<button class="btn" id="light_switch">';
+                                echo '<i class="bi bi-sun-fill"></i>';
+                                echo '</button>';
+                            } ?>
+                            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
                         <!-- drawer -->
                         <div class="offcanvas offcanvas-end px-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                             <div class="offcanvas-header">

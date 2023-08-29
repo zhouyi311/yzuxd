@@ -47,18 +47,18 @@ window.addEventListener('scroll', function () {
 
         if (!image) return; // If no image inside the wrapper, skip to the next iteration.
         var wrapperTop = wrapper.getBoundingClientRect().top;
-        var wrapperHeight = wrapper.offsetHeight;
-        var imageHeight = image.offsetHeight;
+        // var wrapperHeight = wrapper.offsetHeight;
+        // var imageHeight = image.offsetHeight;
 
         var moveDistance = wrapperTop * -0.3 + 30;
             // image.offsetHeight / 10;
 
         image.style.transform = 'translateY(' + moveDistance + 'px)';
 
-        console.log("wrapperTop:", wrapperTop);
-        console.log("wrapperHeight:", wrapperHeight);
-        console.log("imageHeight:", imageHeight);
-        console.log("moveDistance:", moveDistance);
+        // console.log("wrapperTop:", wrapperTop);
+        // console.log("wrapperHeight:", wrapperHeight);
+        // console.log("imageHeight:", imageHeight);
+        // console.log("moveDistance:", moveDistance);
     });
 });
 
