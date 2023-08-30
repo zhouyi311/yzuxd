@@ -114,7 +114,7 @@ section.homepage_home {
                         left: 0%;
                         width: 100%;
                         height: 100%;
-                        background-image: url(../img/ui-dec-bg.svg);
+                        background-image: url(../img/ui-dec-bg.webp);
                         // background-attachment: fixed;
                         background-size: contain;
                         background-position: center;
@@ -214,34 +214,6 @@ section.homepage_home {
     }
 }
 
-[data-bs-theme="dark"] {
-    section.page_section#contact {
-        .bg_container {
-            background-image: url('../img/bg-contact-gradient-4.webp?v=1');
-        }
-
-        .contact_card {
-            background-color: rgba($color: #0a0c0f, $alpha: .3);
-
-            .contact_form {
-                .form-control {
-                    background-color: rgba(0, 0, 0, 0.087);
-
-                    &:focus {
-                        background-color: rgba(0, 0, 0, 0.2);
-                    }
-                }
-
-                .submit_btn {
-                    color: black;
-                    background-color: #f6f6f6;
-                }
-            }
-        }
-
-    }
-}
-
 
 section.page_section#contact {
     overflow: hidden;
@@ -249,13 +221,14 @@ section.page_section#contact {
     .bg_container {
         background-image:
             url('../img/bg-contact-gradient-4.jpg?v=1');
-        background-size: 100% 100%;
+        // background-size: 100% 100%;
+        background-size: cover;
         background-repeat: no-repeat, no-repeat;
         background-position: 50%, 50%;
         background-attachment: fixed;
 
-        animation: bgGradient2 5s infinite linear;
-        animation-direction: alternate;
+        // animation: bgGradient2 5s infinite linear;
+        // animation-direction: alternate;
 
         @media (max-width: 1200px) {
             width: 1200px;
@@ -268,7 +241,7 @@ section.page_section#contact {
         position: relative;
 
         background-color: rgba($color: #fff, $alpha: .1);
-        backdrop-filter: blur(4rem);
+        backdrop-filter: blur(2rem);
         box-shadow: 0 0 1rem 0.25rem rgba($color: #000000, $alpha: 0.02);
 
         .contact_form {
@@ -388,5 +361,38 @@ section.page_section#contact {
                 }
             }
         }
+    }
+}
+
+[data-bs-theme="dark"] {
+    section.page_section#contact {
+        .bg_container {
+            background-image: url('../img/bg-contact-gradient-2-dark.webp?v=1');
+        }
+
+        .contact_decoration_container {
+            filter: drop-shadow(36px -64px 134px rgba(139, 176, 255, 0.14));
+
+        }
+
+        .contact_card {
+            background-color: rgba($color: #0a0c0f, $alpha: .3);
+
+            .contact_form {
+                .form-control {
+                    background-color: rgba(0, 0, 0, 0.087);
+
+                    &:focus {
+                        background-color: rgba(0, 0, 0, 0.2);
+                    }
+                }
+
+                .submit_btn {
+                    color: black;
+                    background-color: #f6f6f6;
+                }
+            }
+        }
+
     }
 }

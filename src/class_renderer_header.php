@@ -109,8 +109,12 @@ class HeaderRenderer
                         <!-- nav btn -->
                         <div class="d-flex gap-2">
                             <?php if ($type == 'home') {
-                                echo '<button class="btn" id="light_switch">';
-                                echo '<i class="bi bi-sun-fill"></i>';
+                                echo '<button class="btn border-0" id="light_switch">';
+                                if ($siteInfo->frontPageContent['theme'] == 'dark') {
+                                    echo '<i class="bi bi-moon-stars-fill"></i>';
+                                } else {
+                                    echo '<i class="bi bi-sun-fill"></i>';
+                                }
                                 echo '</button>';
                             } ?>
                             <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -118,25 +122,25 @@ class HeaderRenderer
                             </button>
                         </div>
                         <!-- drawer -->
-                        <div class="offcanvas offcanvas-end px-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                            <div class="offcanvas-header">
-                                <h3 class="offcanvas-title text-body-tertiary h6" id="offcanvasNavbarLabel">
-                                    <?php
-                                    if (isset($project->title)) {
-                                        echo "<i class='bi bi-folder2-open pe-2 align-middle'></i>";
-                                        echo htmlspecialchars($project->title);
-                                    } else {
-                                        echo htmlspecialchars($siteInfo->information['siteTitle']);
-                                    }
-                                    ?>
-                                </h3>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body d-flex flex-column justify-content-between">
-                                <?php echo $drawer_content; ?>
-                            </div>
-                        </div>
                     </nav>
+                    <div class="offcanvas offcanvas-end px-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h3 class="offcanvas-title text-body-tertiary h6" id="offcanvasNavbarLabel">
+                                <?php
+                                if (isset($project->title)) {
+                                    echo "<i class='bi bi-folder2-open pe-2 align-middle'></i>";
+                                    echo htmlspecialchars($project->title);
+                                } else {
+                                    echo htmlspecialchars($siteInfo->information['siteTitle']);
+                                }
+                                ?>
+                            </h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body d-flex flex-column justify-content-between">
+                            <?php echo $drawer_content; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -151,13 +155,13 @@ class HeaderRenderer
         <div class="drawer_top_group flex-grow-1">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="navbar_target">
                 <li class="nav-item">
-                    <a class="nav-link py-3" href="#home"><span class="h3 fw-bold">Home</span></a>
+                    <a class="nav-link py-3" href="#home" id="nav_home"><span class="h3 fw-bold">Home</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-3" href="#projects"><span class="h3 fw-bold">Projects</span></a>
+                    <a class="nav-link py-3" href="#projects" id="nav_project"><span class="h3 fw-bold">Projects</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-3" href="#contact"><span class="h3 fw-bold">Contact</span></a>
+                    <a class="nav-link py-3" href="#contact" id="nav_contact"><span class="h3 fw-bold">Contact</span></a>
                 </li>
             </ul>
         </div>

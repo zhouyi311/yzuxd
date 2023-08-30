@@ -19,7 +19,7 @@ section.projects_section {
 
     .project_card {
         position: relative;
-        transition: box-shadow 0.6s ease-in-out, transform 0.6s ease-out;
+        transition: box-shadow 0.1s ease-in-out, transform 0.4s ease-out;
         box-shadow: 0 2px 12px 0 rgba($color: #000000, $alpha: 0.08);
         overflow: hidden;
 
@@ -229,7 +229,7 @@ section.projects_section {
                 width: 1300px;
                 // opacity: 0.03;
                 transition: 0.2s ease-out;
-                background: radial-gradient(50% 50.00% at 50% 50.00%, #D9D9D9 0%, rgba(217, 217, 217, 0.00) 100%);
+                background: radial-gradient(50% 50.00% at 50% 50.00%, #ffffff 0%, #00000000 100%);
             }
 
             .card_info {
@@ -244,7 +244,7 @@ section.projects_section {
                     }
                 }
                 .card_info_cta {
-                    // text-align: right;
+                    text-align: right;
 
                     a {
                         color: #ffffffbb;

@@ -20,6 +20,7 @@
         "archiveKey": "archive"
     },
     "frontPageContent": {
+        "theme": "light",
         "heroGreeting": "Greetings!!!",
         "heroHeadline": "Welcome To My Site",
         "heroIntroduction": "My name is Yi Zhou... a designer...",

@@ -30,7 +30,7 @@ $projectCardsRendererWithHidden = new ProjectCardsRenderer(true);
         <main id="archive_main" data-bs-spy="" data-bs-target="#navbar_target" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true">
             <!-- hero -->
             <section class="archive_page_home bg-white" id="home">
-                <div class="bg" style="height:300px; overflow:hidden; background-image: url('src/img/all-page-deco-01.png'); background-size: cover; background-position: center;">
+                <div class="bg" style="height:300px; overflow:hidden; background-image: url('src/img/all-page-deco-01.webp'); background-size: cover; background-position: center;">
                     <!-- <img src="src/img/all-page-deco-01.png" alt="head banner decoration" class="w-100"> -->
                 </div>
                 <div class="container">

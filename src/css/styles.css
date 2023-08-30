@@ -1,3 +1,17 @@
+@keyframes moveInAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.movein {
+  animation: moveInAnimation 0.4s ease-in-out;
+}
+
 @keyframes fadeInAnimation {
   from {
     opacity: 0;
@@ -6,6 +20,10 @@
     opacity: 1;
   }
 }
+.fadein {
+  animation: fadeInAnimation 0.4s ease-in-out;
+}
+
 @keyframes bgGradient {
   0% {
     background-position: 0% 50%;
@@ -771,7 +789,7 @@ section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .b
   left: 0%;
   width: 100%;
   height: 100%;
-  background-image: url(../img/ui-dec-bg.svg);
+  background-image: url(../img/ui-dec-bg.webp);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -850,34 +868,15 @@ section.homepage_home .bg_container .hero_decoration_container .extra_wrapper .b
   animation-delay: 0s;
 }
 
-[data-bs-theme=dark] section.page_section#contact .bg_container {
-  background-image: url("../img/bg-contact-gradient-4.webp?v=1");
-}
-[data-bs-theme=dark] section.page_section#contact .contact_card {
-  background-color: rgba(10, 12, 15, 0.3);
-}
-[data-bs-theme=dark] section.page_section#contact .contact_card .contact_form .form-control {
-  background-color: rgba(0, 0, 0, 0.087);
-}
-[data-bs-theme=dark] section.page_section#contact .contact_card .contact_form .form-control:focus {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-[data-bs-theme=dark] section.page_section#contact .contact_card .contact_form .submit_btn {
-  color: black;
-  background-color: #f6f6f6;
-}
-
 section.page_section#contact {
   overflow: hidden;
 }
 section.page_section#contact .bg_container {
   background-image: url("../img/bg-contact-gradient-4.jpg?v=1");
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat, no-repeat;
   background-position: 50%, 50%;
   background-attachment: fixed;
-  animation: bgGradient2 5s infinite linear;
-  animation-direction: alternate;
 }
 @media (max-width: 1200px) {
   section.page_section#contact .bg_container {
@@ -889,8 +888,8 @@ section.page_section#contact .bg_container {
 section.page_section#contact .contact_card {
   position: relative;
   background-color: rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(4rem);
-          backdrop-filter: blur(4rem);
+  -webkit-backdrop-filter: blur(2rem);
+          backdrop-filter: blur(2rem);
   box-shadow: 0 0 1rem 0.25rem rgba(0, 0, 0, 0.02);
 }
 section.page_section#contact .contact_card .contact_form .form-control {
@@ -976,6 +975,26 @@ section.page_section#contact .contact_decoration_container #contact_moveable .co
   animation: ztrans-b3 4.7s infinite alternate ease-in-out;
 }
 
+[data-bs-theme=dark] section.page_section#contact .bg_container {
+  background-image: url("../img/bg-contact-gradient-2-dark.webp?v=1");
+}
+[data-bs-theme=dark] section.page_section#contact .contact_decoration_container {
+  filter: drop-shadow(36px -64px 134px rgba(139, 176, 255, 0.14));
+}
+[data-bs-theme=dark] section.page_section#contact .contact_card {
+  background-color: rgba(10, 12, 15, 0.3);
+}
+[data-bs-theme=dark] section.page_section#contact .contact_card .contact_form .form-control {
+  background-color: rgba(0, 0, 0, 0.087);
+}
+[data-bs-theme=dark] section.page_section#contact .contact_card .contact_form .form-control:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+[data-bs-theme=dark] section.page_section#contact .contact_card .contact_form .submit_btn {
+  color: black;
+  background-color: #f6f6f6;
+}
+
 section.projects_section {
   padding-bottom: 7rem;
 }
@@ -987,7 +1006,7 @@ section.projects_section {
 
 .projects_container .project_card {
   position: relative;
-  transition: box-shadow 0.6s ease-in-out, transform 0.6s ease-out;
+  transition: box-shadow 0.1s ease-in-out, transform 0.4s ease-out;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
@@ -1149,13 +1168,16 @@ section.projects_section {
   height: 1300px;
   width: 1300px;
   transition: 0.2s ease-out;
-  background: radial-gradient(50% 50% at 50% 50%, #D9D9D9 0%, rgba(217, 217, 217, 0) 100%);
+  background: radial-gradient(50% 50% at 50% 50%, #ffffff 0%, rgba(0, 0, 0, 0) 100%);
 }
 [data-bs-theme=dark] .projects_container .project_card .card_info .card_info_headline a {
   color: white;
 }
 [data-bs-theme=dark] .projects_container .project_card .card_info .card_info_summary::before {
   background: linear-gradient(to bottom, transparent, #17191b);
+}
+[data-bs-theme=dark] .projects_container .project_card .card_info .card_info_cta {
+  text-align: right;
 }
 [data-bs-theme=dark] .projects_container .project_card .card_info .card_info_cta a {
   color: rgba(255, 255, 255, 0.7333333333);
@@ -1235,9 +1257,13 @@ body .none_select {
   pointer-events: none;
 }
 body .hidden {
-  display: none;
-  visibility: hidden;
-  opacity: 0;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+body .hidden_soft {
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 body a.no_deco {
   text-decoration: none;
@@ -1248,13 +1274,19 @@ body a.no_deco {
   flex-wrap: nowrap;
 }
 .page_navbar.nav_bg {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
 }
 .page_navbar.project_page_navbar {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
 }
 .page_navbar.archive_page_navbar {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
 }
 .page_navbar .navbar-brand {
   overflow: hidden;
@@ -1275,36 +1307,17 @@ body a.no_deco {
      -moz-user-select: none;
           user-select: none;
 }
-.page_navbar .offcanvas .offcanvas-body ul.navbar-nav li a {
+.page_navbar .navbar-toggler {
+  box-shadow: none;
+}
+
+.offcanvas .offcanvas-body ul.navbar-nav li a {
   padding-left: calc(1.5rem + 1px);
   border-left: 1px solid rgba(0, 0, 0, 0.5);
 }
-.page_navbar .offcanvas .offcanvas-body ul.navbar-nav li a.active {
+.offcanvas .offcanvas-body ul.navbar-nav li a.active {
   padding-left: 1.5rem;
   border-left: 2px solid black;
-}
-
-[data-bs-theme=dark] .page_navbar.nav_bg {
-  background-color: rgba(7, 8, 11, 0.9);
-}
-[data-bs-theme=dark] .navbar-brand {
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
-[data-bs-theme=dark] .navbar-brand .site_logo {
-  filter: invert(100%);
-}
-[data-bs-theme=dark] .offcanvas {
-  background-color: #0a0a0a;
-  border-left: 1px solid #1b1019;
-}
-[data-bs-theme=dark] .offcanvas .offcanvas-body ul.navbar-nav li a {
-  border-left: 1px solid rgba(255, 255, 255, 0.6);
-}
-[data-bs-theme=dark] .offcanvas .offcanvas-body ul.navbar-nav li a.active {
-  border-left: 2px solid white;
-}
-[data-bs-theme=dark] .offcanvas .text_subtle {
-  color: rgba(255, 255, 255, 0.1);
 }
 
 section.page_section {
@@ -1340,15 +1353,6 @@ section#projects .section_headline h2 {
   color: black;
 }
 
-[data-bs-theme=dark] section#projects {
-  background-color: #0a0c0f;
-  -webkit-backdrop-filter: blur(4rem);
-          backdrop-filter: blur(4rem);
-}
-[data-bs-theme=dark] section#projects .section_headline h2 {
-  color: white;
-}
-
 footer {
   position: relative;
   width: 100%;
@@ -1357,9 +1361,47 @@ footer {
   background-color: white;
 }
 
-body[data-bs-theme=dark] footer#page_footer {
-  background-color: #0a0c0f;
+[data-bs-theme=light] .dark_theme {
+  display: none;
 }
-body[data-bs-theme=dark] footer#page_footer img.footer_logo {
+
+[data-bs-theme=dark] .light_theme {
+  display: none;
+}
+[data-bs-theme=dark] .page_navbar.nav_bg {
+  background-color: rgba(23, 25, 27, 0.9);
+  border-bottom: 1px solid rgba(83, 83, 83, 0.2);
+}
+[data-bs-theme=dark] .navbar-brand {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+[data-bs-theme=dark] .navbar-brand .site_logo {
+  filter: invert(100%);
+}
+[data-bs-theme=dark] .offcanvas {
+  background-color: #17191b;
+  border-left: 1px solid rgba(83, 83, 83, 0.2);
+}
+[data-bs-theme=dark] .offcanvas .offcanvas-body ul.navbar-nav li a {
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+}
+[data-bs-theme=dark] .offcanvas .offcanvas-body ul.navbar-nav li a.active {
+  border-left: 2px solid white;
+}
+[data-bs-theme=dark] .offcanvas .text_subtle {
+  color: rgba(255, 255, 255, 0.1);
+}
+[data-bs-theme=dark] section#projects {
+  background-color: rgb(16, 17, 19);
+  -webkit-backdrop-filter: blur(4rem);
+          backdrop-filter: blur(4rem);
+}
+[data-bs-theme=dark] section#projects .section_headline h2 {
+  color: white;
+}
+[data-bs-theme=dark] footer#page_footer {
+  background-color: #17191b;
+}
+[data-bs-theme=dark] footer#page_footer img.footer_logo {
   filter: invert(100%);
 }/*# sourceMappingURL=styles.css.map */

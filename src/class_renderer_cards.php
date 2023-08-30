@@ -100,7 +100,7 @@ class ProjectCardsRenderer
         echo "</div></a>";
         echo "<div class='card_info h-100'>";
         echo "<div class='card_info_headline text-nowrap text-truncate'>";
-        echo "<a href='$projectLink'><h4>$title</h4>";
+        echo "<a href='$projectLink' class=''><h4>$title</h4>";
         if (isset($subhead) && $isFeatured) {
             echo "<p class='h6 text-body-tertiary'>$subhead</p>";
         }
@@ -117,7 +117,7 @@ class ProjectCardsRenderer
             echo "<p class='text-body-secondary article_summary_paragraph markdown'>" . htmlspecialchars($textItem) . "</p>";
         }
         echo "</div></div><div class='card_info_cta mt-1 mb-2'>";
-        echo "<a class='btn btn-dark border-0 rounded-pill px-4 fw-medium' href='$projectLink'>";
+        echo "<a class='btn btn-dark border-0 rounded-pill px-4 fw-medium stretched-link' href='$projectLink'>";
         echo "Learn More <i class='bi bi-arrow-right-short align-middle'></i>";
         echo "</a></div></div><div class='card_flare'></div></div></div>";
         echo "</div>";
