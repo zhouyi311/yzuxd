@@ -1,70 +1,130 @@
-// movement card
+// Function to monitor elements and apply changes to target elements
 document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll("#projects .project_card");
-    const body = document.querySelector("body");
-    
+    const homeTarget = document.getElementById('home_target');
+    const projectContainer = document.getElementById('projects_container');
+    const projectChildren = projectContainer.querySelectorAll('.project_card_wrapper');
+    const contactTarget = document.getElementById('contact_target');
+    const projectsElement = document.getElementById('projects');
 
-    cards.forEach(function (card) {
-        const wrapper = card.closest('.project_card_wrapper'); // Find closest parent that matches the selector
+    let lastScrollPosition = window.scrollY;
 
-        card.addEventListener("mousemove", function (e) {
+    function isProjectsTopInViewport() {
+        const rect = projectsElement.getBoundingClientRect();
+        return (rect.top <= 0);
+    }
 
-            const ratio = 3;
-            const maxTilt = 0.4; // Set maximum tilt angle
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+    function isInViewport(element, extraHeight = 0) {
+        const rect = element.getBoundingClientRect();
+        return (rect.top <= window.innerHeight && rect.bottom + extraHeight >= 0);
+    }
 
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
 
-            const deltaX = x - centerX;
-            const deltaY = y - centerY;
+    function handleVisibility() {
+        const currentScrollPosition = window.scrollY;
+        const scrollingDown = currentScrollPosition > lastScrollPosition;
+        lastScrollPosition = currentScrollPosition;
 
-            let tiltX = (deltaY / centerY) * ratio;
-            let tiltY = -(deltaX / centerX) * ratio;
+        if (!isProjectsTopInViewport()) {
+            homeTarget.classList.remove('hidden_soft');
+            homeTarget.classList.add('fadein');
+        } else {
+            homeTarget.classList.add('hidden_soft');
+            homeTarget.classList.remove('fadein');
+        }
 
-            // Constrain tiltX and tiltY to the maximum value
-            tiltX = Math.min(Math.max(tiltX, -maxTilt), maxTilt);
-            tiltY = Math.min(Math.max(tiltY, -maxTilt), maxTilt);
-            
-            var currentTheme = body.getAttribute("data-bs-theme");
-            if (currentTheme == 'dark') {
-                // Add perspective to the wrapper
-                if (wrapper) {
-                    wrapper.style.perspective = '1000px';
-                }
-                card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-
-                // Move the card_flare element
-                const flare = card.querySelector('.card_flare');
-                if (flare) {
-                    flare.style.opacity = '0.05';
-                    const flareRect = flare.getBoundingClientRect();
-                    const flareHalfWidth = flareRect.width / 2;
-                    const flareHalfHeight = flareRect.height / 2;
-                    flare.style.left = `${x - flareHalfWidth}px`;
-                    flare.style.top = `${y - flareHalfHeight}px`;
-                }
+        // Inside your handleVisibility function
+        projectChildren.forEach(child => {
+            if (isInViewport(child, 600)) { // 200px extra virtual height
+                child.classList.remove('hidden_soft');
+                child.classList.add('movein');
+            } else {
+                child.classList.add('hidden_soft');
+                child.classList.remove('movein');
             }
         });
 
-        card.addEventListener("mouseout", function () {
 
-            var currentTheme = body.getAttribute("data-bs-theme");
+        if (isInViewport(contactTarget, 200)) {
+            contactTarget.classList.remove('hidden_soft');
+            contactTarget.classList.add('movein');
+        } else {
+            contactTarget.classList.add('hidden_soft');
+            contactTarget.classList.remove('movein');
+        }
+    }
 
-            if (currentTheme == 'dark') { 
-                card.style.transform = 'rotateX(0deg) rotateY(0deg)';
-            } else {
-                card.style.transform = '';
+    // Check on load
+    handleVisibility();
+
+    // Check on scroll
+    window.addEventListener('scroll', handleVisibility);
+});
+
+
+// tilt project card
+document.addEventListener("DOMContentLoaded", function () {
+    let lastTime = 0; // To store the last time the mousemove event was handled
+    const delay = 100; // Minimum delay between each mousemove event in milliseconds
+    const body = document.querySelector("body"); // Cache the body element for reusability
+    const cards = document.querySelectorAll("#projects .project_card"); // Select all the project cards
+
+    function updateCard(e, card, wrapper) {
+        const currentTime = Date.now();
+        if (currentTime - lastTime < delay) {
+            return; // Skip if the delay has not been met
+        }
+        lastTime = currentTime;
+
+        const ratio = 3;
+        const maxTilt = 0.4;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const deltaX = x - centerX;
+        const deltaY = y - centerY;
+
+        let tiltX = (deltaY / centerY) * ratio;
+        let tiltY = -(deltaX / centerX) * ratio;
+
+        tiltX = Math.min(Math.max(tiltX, -maxTilt), maxTilt);
+        tiltY = Math.min(Math.max(tiltY, -maxTilt), maxTilt);
+
+        const currentTheme = body.getAttribute("data-bs-theme");
+        if (currentTheme === 'dark') {
+            if (wrapper) {
+                wrapper.style.perspective = '1000px';
             }
+            card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
 
-            // Remove perspective from the wrapper
+            const flare = card.querySelector('.card_flare');
+            if (flare) {
+                flare.style.opacity = '0.05';
+                const flareRect = flare.getBoundingClientRect();
+                const flareHalfWidth = flareRect.width / 2;
+                const flareHalfHeight = flareRect.height / 2;
+                flare.style.left = `${x - flareHalfWidth}px`;
+                flare.style.top = `${y - flareHalfHeight}px`;
+            }
+        }
+    }
+
+    cards.forEach(function (card) {
+        const wrapper = card.closest('.project_card_wrapper');
+
+        card.addEventListener("mousemove", function (e) {
+            requestAnimationFrame(() => updateCard(e, card, wrapper));
+        });
+
+        card.addEventListener("mouseout", function () {
+            const currentTheme = body.getAttribute("data-bs-theme");
+            card.style.transform = currentTheme === 'dark' ? 'rotateX(0deg) rotateY(0deg)' : '';
+
             if (wrapper) {
                 wrapper.style.perspective = '';
             }
 
-            // Reset the position of card_flare on mouseout
             const flare = card.querySelector('.card_flare');
             if (flare) {
                 flare.style.opacity = '0';
@@ -75,10 +135,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
 // interactive decoration
 function applyInteractiveDecoration(e) {
+    let lastTime = 0; // To store the last time the mousemove event was handled
+    const delay = 100; // Minimum delay between each mousemove event in milliseconds
+    const currentTime = Date.now();
+    if (currentTime - lastTime < delay) {
+        return; // Skip if the delay has not been met
+    }
+    lastTime = currentTime;
+
     const scale = 80; // movement scale, larger -> smaller movement
     const maxRotation = 15; // maximum rotation in degrees
 
@@ -101,21 +167,12 @@ function applyInteractiveDecoration(e) {
         }
     }
 }
-document.addEventListener('mousemove', applyInteractiveDecoration);
 
-
-// Create a listener for the `.extra_rise_2` element to fully load
-document.getElementById("contact_spin_item").addEventListener("load", function () {
-    const targetObject = document.getElementById("contact_delay_item");
-    const originalSrc = targetObject.getAttribute("src");
-    targetObject.setAttribute("style", "opacity: 0");
-
-    setTimeout(function () {
-        targetObject.removeAttribute("src");
-        targetObject.setAttribute("src", originalSrc);
-        targetObject.setAttribute("style", "opacity: 1");
-    }, 1300);
+document.addEventListener('mousemove', function (e) {
+    requestAnimationFrame(() => applyInteractiveDecoration(e));
 });
+
+
 
 // check card summary size with gradient blur fade out
 function applyGradientForLargeHeight() {
@@ -291,4 +348,15 @@ if (canvasTarget) {
 }
 
 
+// Create a listener for the `.extra_rise_2` element to fully load
+// document.getElementById("contact_spin_item").addEventListener("load", function () {
+//     const targetObject = document.querySelectorAll("contact_delay_item");
+//     const originalSrc = targetObject.getAttribute("src");
+//     targetObject.setAttribute("style", "opacity: 0");
 
+//     setTimeout(function () {
+//         targetObject.removeAttribute("src");
+//         targetObject.setAttribute("src", originalSrc);
+//         targetObject.setAttribute("style", "opacity: 1");
+//     }, 1300);
+// });
