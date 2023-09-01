@@ -340,28 +340,43 @@ h6 {
   }
 }
 .project_article .article_section_leading {
-  background-color: #333;
+  background-color: #252525;
   overflow: hidden;
   position: relative;
   z-index: -1;
+  width: 100vw;
 }
 .project_article .article_section_leading.bg_attach {
+  width: 100%;
   min-height: 300px;
 }
 .project_article .article_section_leading.bg_attach .bg_attached {
+  background-image: linear-gradient(135deg, #D9D9D9 0%, #6D6D6D 100%);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+}
+@media (max-width: 767px) {
+  .project_article .article_section_leading.bg_attach .bg_attached {
+    background-attachment: local;
+    background-size: contain;
+  }
+}
+@media (max-width: 575px) {
+  .project_article .article_section_leading.bg_attach .bg_attached {
+    background-size: contain;
+  }
 }
 .project_article .article_section_leading .image_wrapper {
   margin: 0 auto;
   max-width: 1300px;
   overflow: hidden;
   position: relative;
+  z-index: -1;
 }
 .project_article .article_section_leading .image_wrapper .leading_image {
   height: 100%;
@@ -503,23 +518,23 @@ h6 {
   justify-content: center;
   align-items: center;
 }
-.project_article .article_section .media_block.article_images figure.maintain_size {
+.project_article .article_section .media_block.article_images figure.compact_size {
   max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.project_article .article_section .media_block.article_images figure.maintain_size .media_size_fixer {
+.project_article .article_section .media_block.article_images figure.compact_size .media_size_fixer {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
 }
-.project_article .article_section .media_block.article_images figure.maintain_size img.maintain_size {
+.project_article .article_section .media_block.article_images figure.compact_size img.compact_size {
   width: 60%;
 }
 @media (max-width: 767px) {
-  .project_article .article_section .media_block.article_images figure.maintain_size img.maintain_size {
+  .project_article .article_section .media_block.article_images figure.compact_size img.compact_size {
     width: 84%;
   }
 }
@@ -549,14 +564,17 @@ h6 {
 .project_article .article_section .media_block.article_videos .video_wrapper .article_video {
   width: 100%;
   display: block;
+  background-image: url("../img/local_icons/videobg.webp");
+  background-size: cover;
+  background-position: center center;
   transition: opacity 0.3s;
 }
 .project_article .article_section .media_block.iframe_container .iframe_wrapper {
   padding: 0;
   margin: 0;
   width: 100%;
-  min-height: 400px;
-  aspect-ratio: 3/2;
+  min-height: 200px;
+  aspect-ratio: 16/9;
   overflow: hidden;
   position: relative;
   transition: min-height 0.6s;
@@ -1176,33 +1194,32 @@ section.projects_section {
 [data-bs-theme=dark] .projects_container .project_card .card_info .card_info_summary::before {
   background: linear-gradient(to bottom, transparent, #17191b);
 }
-[data-bs-theme=dark] .projects_container .project_card .card_info .card_info_cta {
-  text-align: right;
-}
 [data-bs-theme=dark] .projects_container .project_card .card_info .card_info_cta a {
   color: rgba(255, 255, 255, 0.7333333333);
 }
 
-.archive_container .card_info .card_info_summary {
+.archive_container .card.archive_card {
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.archive_container .card.archive_card:hover {
+  background-color: white !important;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2) !important;
+}
+.archive_container .card.archive_card h6 {
+  line-height: 180%;
+}
+.archive_container .card.archive_card .card_info .card_info_summary {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  max-height: 4.5rem;
+  max-height: 3rem;
 }
 @media (max-width: 767px) {
-  .archive_container .card_info .card_info_summary {
-    max-height: 1.5rem;
+  .archive_container .card.archive_card .card_info .card_info_summary {
+    max-height: 3rem;
   }
-}
-
-.card.archive_card {
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-.card.archive_card:hover {
-  background-color: white !important;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2) !important;
 }
 
 html {

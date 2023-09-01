@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // // image handler
 
 // window.addEventListener('DOMContentLoaded', () => {
-//     const images = document.querySelectorAll('img.maintain_size');
+//     const images = document.querySelectorAll('img.compact_size');
 
 //     images.forEach((image) => {
 //         const naturalWidth = image.naturalWidth;

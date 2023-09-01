@@ -287,7 +287,7 @@ class ArticleContentRenderer
         $cite = UtilityClass::sanitizeValue($block['cite'] ?? null);
         $isLightbox = $block['isLightbox'] ?? null;
         $isQuote = !empty($block['isQuote']);
-        $isCompact = !empty($block['isCompact']) ? 'maintain_size' : null;
+        $isCompact = !empty($block['isCompact']) ? 'compact_size' : null;
 
         $html = '';
 

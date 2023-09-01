@@ -3,7 +3,7 @@
         "id": 999,
         "indexOrder": -3,
         "password": "",
-        "title": "Kick Starter Template",
+        "title": "Kickstarter Template",
         "summary": {
             "thumbnail": "images/thumb.jpg",
             "summaryImage": "images/demo.jpg",
@@ -24,13 +24,14 @@
         },
         "article": [
             {
+                "isHidden": false,
                 "leadImgFixed": "",
                 "leadImgHeight": null,
                 "leadImg": "",
                 "leadImgBgColor": "",
                 "leadImgParallax": null,
                 "headline": "Simple Section",
-                "subhead": "optional subhead",
+                "subhead": "",
                 "subheadCaption": "",
                 "subheadList": [],
                 "leftCol": null,
@@ -83,19 +84,16 @@
                 ]
             },
             {
+                "isHidden": false,
                 "leadImgFixed": "",
-                "leadImgHeight": null,
-                "leadImg": "",
-                "leadImgBgColor": "",
-                "leadImgParallax": null,
+                "leadImgHeight": "300px",
+                "leadImg": "images/thumb.jpg",
+                "leadImgBgColor": "pink",
+                "leadImgParallax": false,
                 "headline": "Section Headline",
-                "subhead": "optional subhead",
-                "subheadCaption": "caption is optinal",
-                "subheadList": [
-                    "Short placeholder stats",
-                    "Short placeholder stats",
-                    "Short placeholder stats"
-                ],
+                "subhead": "",
+                "subheadCaption": "",
+                "subheadList": [],
                 "leftCol": null,
                 "rightCol": null,
                 "leftColUnfluid": false,
@@ -108,34 +106,21 @@
                         "isQuote": false,
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "leadCount": 3,
+                        "leadCount": 0,
                         "data": [
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
                             "Simply duplicate kickstarter folder and rename it to start a new page."
                         ]
                     },
                     {
-                        "type": "list",
-                        "headline": "Paragraph Headline",
-                        "caption": "A paragraph caption",
-                        "cite": " - I dont want this",
+                        "type": "paragraph",
+                        "headline": "",
+                        "caption": "",
+                        "cite": "",
                         "isQuote": false,
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "leadCount": 3,
+                        "leadCount": 0,
                         "data": [
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
-                            "Simply duplicate kickstarter folder and rename it to start a new page.",
                             "Simply duplicate kickstarter folder and rename it to start a new page.",
                             "Simply duplicate kickstarter folder and rename it to start a new page."
                         ]
@@ -143,10 +128,10 @@
                 ]
             },
             {
-                "isHidden": true,
+                "isHidden": false,
                 "leadImgFixed": "",
-                "leadImgHeight": null,
-                "leadImg": "images/thumb.jpg",
+                "leadImgHeight": "",
+                "leadImg": "",
                 "leadImgBgColor": "pink",
                 "leadImgParallax": true,
                 "headline": "Gallery Showcase",
@@ -236,6 +221,7 @@
                         "headline": "iFrame Example",
                         "caption": "An iFrame example",
                         "cite": " - 'I said so'",
+                        "iframeHeight": "600px",
                         "isOnDemand": true,
                         "isEmbedVideo": false,
                         "data": "http://example.net"
@@ -247,7 +233,9 @@
                         "headline": "Embad iFrame Video Example",
                         "caption": "An iFrame example",
                         "cite": " - 'You've found it'",
-                        "data": "assets/embed-iframe-video.html"
+                        "iframeHeight": "600px",
+                        "isOnDemand": true,
+                        "data": "embeds/embed-iframe-video.html"
                     },
                     {
                         "type": "htmlEmbed",
@@ -256,7 +244,7 @@
                         "headline": "HTML Code Direct Embed Example",
                         "caption": "A HTML Code Direct Embed Example",
                         "cite": " - 'Who else?'",
-                        "data": "assets/embed-html.html"
+                        "data": "embeds/embed-html.html"
                     }
                 ]
             }

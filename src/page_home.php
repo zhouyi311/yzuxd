@@ -85,12 +85,15 @@ $projectCardsRenderer = new ProjectCardsRenderer();
                                                     <div class="hero_tilting_group">
                                                         <img class="hero_decoration ztrans_0" src="src/img/ui-dec-00.webp?v=h_3" alt="banner decoration image"></img>
                                                         <img class="hero_decoration extra_layer ztrans_1" src="src/img/ui-dec-01.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
-                                                        <img class="hero_decoration extra_layer ztrans_2" src="src/img/ui-dec-02.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
-                                                        <img class="hero_decoration extra_layer ztrans_3" src="src/img/ui-dec-03.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
-                                                        <img class="hero_decoration extra_layer ztrans_4" src="src/img/ui-dec-04.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
-                                                        <img class="hero_decoration extra_layer ztrans_5" src="src/img/ui-dec-05.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
-                                                        <img class="hero_decoration extra_layer ztrans_6" src="src/img/ui-dec-06.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
-                                                        <img class="hero_decoration extra_layer ztrans_7" src="src/img/ui-dec-07.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
+                                                        <img class="hero_decoration extra_layer ztrans_7" src="src/img/ui-dec-08.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
+                                                        <?php
+                                                        // <img class="hero_decoration extra_layer ztrans_2" src="src/img/ui-dec-02.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
+                                                        // <img class="hero_decoration extra_layer ztrans_3" src="src/img/ui-dec-03.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
+                                                        // <img class="hero_decoration extra_layer ztrans_4" src="src/img/ui-dec-04.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
+                                                        // <img class="hero_decoration extra_layer ztrans_5" src="src/img/ui-dec-05.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
+                                                        // <img class="hero_decoration extra_layer ztrans_6" src="src/img/ui-dec-06.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img>
+                                                        // <img class="hero_decoration extra_layer ztrans_7" src="src/img/ui-dec-07.webp?v=h_3" alt="banner decoration image" aria-hidden="true"></img> 
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -103,7 +106,6 @@ $projectCardsRenderer = new ProjectCardsRenderer();
                 </div>
             </section>
             <!-- projects -->
-            <?php /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ?>
             <section class="page_section projects_section" id="projects">
                 <div class="container">
                     <div class="row">
@@ -185,7 +187,7 @@ $projectCardsRenderer = new ProjectCardsRenderer();
                         </div>
                         <div class="col-lg-5 d-none d-lg-block">
                             <div class="contact_dec_flex_wrap h-100 d-flex flex-column justify-content-center align-items-center">
-                                <div class="contact_decoration_container none_select"  id="contact_target">
+                                <div class="contact_decoration_container none_select" id="contact_target">
                                     <div id="contact_moveable">
                                         <div class="contact_self_tilting">
                                             <div class="contact_tilting_group light_theme">

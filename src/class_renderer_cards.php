@@ -136,16 +136,18 @@ class ProjectCardsRenderer
         $summaryText = isset($project->summary['text']) ? $project->summary['text'] : [];
 
         echo "<div class='col-md-6'><div class='card archive_card p-4 rounded-3 border-0 bg-light shadow-sm h-100' id='{$project->anchorId}'>";
-        echo "<h6 class='fw-medium mb-3'><a href='$projectLink' class='no_deco link stretched-link'><span class='me-3'>$title</span>";
+        echo "<h6 class='fw-medium mb-3 text-truncate'><a href='$projectLink' class='no_deco link stretched-link'><span class='me-3'>$title</span>";
+        echo "</a></h6>";
+        echo "<div class='tags mb-3 text-truncate'>";
         if (!empty($categories)) {
             foreach ($categories as $category) {
                 $category = htmlspecialchars($category);
                 echo "<span class='category-container badge bg_subtle rounded-pill text-secondary fw-normal ms-1 align-middle'>$category</span> ";
             }
         }
-        echo "</a></h6>";
+        echo "</div>";
         if (!empty($subhead) && $isFeatured) {
-            echo "<p class='text-body-tertiary'>$subhead</p>";
+            // echo "<p class='text-body-tertiary'>$subhead</p>";
         }
         echo "<div class='card_info'>";
 
