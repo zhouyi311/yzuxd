@@ -344,7 +344,7 @@ h6 {
   overflow: hidden;
   position: relative;
   z-index: -1;
-  width: 100vw;
+  width: 100%;
 }
 .project_article .article_section_leading.bg_attach {
   width: 100%;
@@ -997,7 +997,7 @@ section.page_section#contact .contact_decoration_container #contact_moveable .co
   background-image: url("../img/bg-contact-gradient-2-dark.webp?v=1");
 }
 [data-bs-theme=dark] section.page_section#contact .contact_decoration_container {
-  filter: drop-shadow(36px -64px 134px rgba(139, 176, 255, 0.14));
+  filter: drop-shadow(36px -34px 134px rgba(139, 176, 255, 0.24));
 }
 [data-bs-theme=dark] section.page_section#contact .contact_card {
   background-color: rgba(10, 12, 15, 0.3);

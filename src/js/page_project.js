@@ -37,7 +37,7 @@ window.addEventListener('scroll', function () {
         var positionDiff = elementTop - centerPosition;
 
         // Range from -50% to 50% when the element goes from the top to the bottom of the viewport
-        var backgroundPositionY = (- positionDiff / (windowHeight + elementHeight) * 100 + 50) + '%';
+        var backgroundPositionY = (- positionDiff / (windowHeight + elementHeight) * 100) + '%';
 
         element.style.backgroundPosition = 'center ' + backgroundPositionY;
     });
@@ -50,8 +50,8 @@ window.addEventListener('scroll', function () {
         // var wrapperHeight = wrapper.offsetHeight;
         // var imageHeight = image.offsetHeight;
 
-        var moveDistance = wrapperTop * -0.3 + 30;
-            // image.offsetHeight / 10;
+        var moveDistance = wrapperTop * -0.3;
+        // image.offsetHeight / 10;
 
         image.style.transform = 'translateY(' + moveDistance + 'px)';
 
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function zoomImage(event) {
-        
+
         // event.preventDefault();
 
         // // Get mouse position relative to the image

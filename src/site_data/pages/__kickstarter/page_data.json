@@ -5,17 +5,17 @@
         "password": "",
         "title": "Kickstarter Template",
         "summary": {
-            "thumbnail": "images/thumb.jpg",
-            "summaryImage": "images/demo.jpg",
-            "subhead": "To start a new project page, simply duplicate kickstarter folder and rename it.",
-            "caption": "This is a template contains most of the useful format that helps starting a new blank page",
+            "thumbnail": "images/thumbnail.webp",
+            "summaryImage": "images/summary.webp",
+            "subhead": "This is an empty template contains most of the useful format that helps starting a new blank page",
+            "caption": "Date: N/A",
             "categories": [
-                "Optinal",
-                "Tags"
+                "Tags are",
+                "Optinal"
             ],
             "text": [
-                "Just **duplicate kickstarter folder** and (and rename the entier folder) to start a new page. Just duplicate kickstarter folder to start a new page. Just duplicate kickstarter folder to start a new page. Just duplicate kickstarter folder to start a new page.",
-                "Just duplicate kickstarter folder and rename it to start a new page. Just duplicate kickstarter folder and rename it to start a new page. Just duplicate kickstarter folder and rename it to start a new page. Just duplicate kickstarter folder and rename it to start a new page. "
+                "This is a template not a page. Just **duplicate kickstarter folder** and (and rename the entier folder) to start a new page. Just duplicate kickstarter folder to start a new page. Just duplicate kickstarter folder to start a new page. Just duplicate kickstarter folder to start a new page.",
+                "Just **duplicate kickstarter folder** and rename it to start a new page. Just duplicate kickstarter folder and rename it to start a new page. Just duplicate kickstarter folder and rename it to start a new page. Just duplicate kickstarter folder and rename it to start a new page. "
             ],
             "demoLink": {
                 "Demo Link": "http://google.com",
@@ -30,7 +30,7 @@
                 "leadImg": "",
                 "leadImgBgColor": "",
                 "leadImgParallax": null,
-                "headline": "Simple Section",
+                "headline": "Section-Title",
                 "subhead": "",
                 "subheadCaption": "",
                 "subheadList": [],
@@ -40,7 +40,7 @@
                 "content": [
                     {
                         "type": "paragraph",
-                        "headline": "Paragraph Headline",
+                        "headline": "Paragraph-Headline",
                         "caption": "",
                         "cite": "",
                         "isQuote": false,
@@ -54,7 +54,7 @@
                     },
                     {
                         "type": "image",
-                        "headline": "An Image",
+                        "headline": "Image",
                         "caption": "",
                         "cite": "",
                         "isQuote": "",
@@ -64,12 +64,13 @@
                         "isLightbox": false,
                         "figCaption": [],
                         "data": [
-                            "images/demo.jpg"
+                            "images/img-1.webp",
+                            "images/img-1.webp"
                         ]
                     },
                     {
                         "type": "paragraph",
-                        "headline": "Paragraph Headline",
+                        "headline": "Paragraph-Headline",
                         "caption": "",
                         "cite": "",
                         "isQuote": false,
@@ -86,11 +87,11 @@
             {
                 "isHidden": false,
                 "leadImgFixed": "",
-                "leadImgHeight": "300px",
-                "leadImg": "images/thumb.jpg",
-                "leadImgBgColor": "pink",
+                "leadImgHeight": "",
+                "leadImg": "images/img-1.webp",
+                "leadImgBgColor": "#000F19",
                 "leadImgParallax": false,
-                "headline": "Section Headline",
+                "headline": "Section2-Title",
                 "subhead": "",
                 "subheadCaption": "",
                 "subheadList": [],
@@ -100,7 +101,7 @@
                 "content": [
                     {
                         "type": "paragraph",
-                        "headline": "Paragraph Headline",
+                        "headline": "Paragraph-Headline",
                         "caption": "",
                         "cite": "",
                         "isQuote": false,
@@ -134,7 +135,7 @@
                 "leadImg": "",
                 "leadImgBgColor": "pink",
                 "leadImgParallax": true,
-                "headline": "Gallery Showcase",
+                "headline": "Media-Type-Gallery",
                 "subhead": "",
                 "subheadCaption": "",
                 "subheadList": [],
@@ -159,10 +160,10 @@
                             "forth image"
                         ],
                         "data": [
-                            "images/demo.jpg",
-                            "images/demo.jpg",
-                            "images/demo.jpg",
-                            "images/demo.jpg"
+                            "images/img-1.webp",
+                            "images/img-1.webp",
+                            "images/img-1.webp",
+                            "images/img-1.webp"
                         ]
                     },
                     {
@@ -191,17 +192,17 @@
                             "Forth image is interesting and great"
                         ],
                         "data": [
-                            "images/demo.jpg",
-                            "images/demo.jpg",
-                            "images/demo.jpg",
-                            "images/demo.jpg"
+                            "images/img-1.webp",
+                            "images/img-1.webp",
+                            "images/img-1.webp",
+                            "images/img-1.webp"
                         ]
                     },
                     {
                         "type": "video",
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "headline": "An Awesome Local Video Example",
+                        "headline": "Local Video Example",
                         "caption": "",
                         "cite": "",
                         "isControls": false,
@@ -221,7 +222,7 @@
                         "headline": "iFrame Example",
                         "caption": "An iFrame example",
                         "cite": " - 'I said so'",
-                        "iframeHeight": "600px",
+                        "iframeHeight": "400px",
                         "isOnDemand": true,
                         "isEmbedVideo": false,
                         "data": "http://example.net"
@@ -230,9 +231,9 @@
                         "type": "iframeEmbed",
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "headline": "Embad iFrame Video Example",
+                        "headline": "iFrame Embad Video Example (embed file)",
                         "caption": "An iFrame example",
-                        "cite": " - 'You've found it'",
+                        "cite": "",
                         "iframeHeight": "600px",
                         "isOnDemand": true,
                         "data": "embeds/embed-iframe-video.html"
@@ -241,9 +242,9 @@
                         "type": "htmlEmbed",
                         "isFluid": false,
                         "isFluidHeadline": false,
-                        "headline": "HTML Code Direct Embed Example",
+                        "headline": "HTML Code Direct Embed Example (embed file)",
                         "caption": "A HTML Code Direct Embed Example",
-                        "cite": " - 'Who else?'",
+                        "cite": " - 'You've found it'",
                         "data": "embeds/embed-html.html"
                     }
                 ]
