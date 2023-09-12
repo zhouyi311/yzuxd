@@ -199,10 +199,10 @@ $projectCardsRenderer = new ProjectCardsRenderer();
                                                 <img class="contact_decoration none_select extra_layer extra_rise_3 contact_delay_item" src="src/img/phone-icon-2.svg?v=az" alt="image decoration" aria-hidden="true">
                                             </div>
                                             <div class="contact_tilting_group dark_theme">
-                                                <img class="contact_decoration none_select base_layer" src="src/img/phone-base-dark.webp?v=az" alt="image decoration" aria-hidden="true">
+                                                <img class="contact_decoration none_select base_layer" src="src/img/phone-base-dark.png?v=az" alt="image decoration" aria-hidden="true">
                                                 <img class="contact_decoration none_select extra_layer extra_rise_btm" src="src/img/phone-btn-dark.webp?v=az" alt="image decoration" aria-hidden="true">
-                                                <img class="contact_decoration none_select extra_layer extra_rise_0" src="src/img/phone-face-dark.webp?v=az" alt="image decoration" aria-hidden="true">
-                                                <img class="contact_decoration none_select extra_layer extra_rise_1" src="src/img/phone-icon-dark.webp?v=az" alt="image decoration" aria-hidden="true">
+                                                <img class="contact_decoration none_select extra_layer extra_rise_0" src="src/img/phone-face-dark.png?v=az" alt="image decoration" aria-hidden="true">
+                                                <img class="contact_decoration none_select extra_layer extra_rise_1" src="src/img/phone-icon-dark.png?v=az" alt="image decoration" aria-hidden="true">
                                                 <!-- <img class="contact_decoration none_select extra_layer extra_rise_2 contact_spin_item" src="src/img/phone-face-2.svg?v=az" alt="image decoration" aria-hidden="true"> -->
                                                 <img class="contact_decoration none_select extra_layer extra_rise_3 contact_delay_item" src="src/img/phone-icon-2-dark.svg?v=az" alt="image decoration" aria-hidden="true">
                                             </div>

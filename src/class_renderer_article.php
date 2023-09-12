@@ -390,8 +390,8 @@ class ArticleContentRenderer
             foreach ($mainData as $index => $image) {
                 $html .= "<div class='carousel-item" . ($index == 0 ? " active" : null) . "'>";
 
-                $html .= "<img src='{$projPath}/{$image}' alt='" . ($imgCaptions[$index] ?? "A carousel image") . ": ";
-                $html .= ($headline ? "$headline - " : "$sectionName - ") . ($imgCaptions[$index] ? null : ($caption ? "$caption " : "showcase ")) . "image";
+                $html .= "<img src='{$projPath}/{$image}' alt='" . ($imgCaptions[$index] ?? "An article image") . ": ";
+                $html .= ($headline ? "$headline - " : "$sectionName - ") . ($caption ? "$caption " : "showcase ") . "image";
                 $html .= "' class='carousel_image d-block w-100 ";
                 if (isset($isLightbox) && is_string($isLightbox)) {
                     $html .= " lightbox-enabled' data-larger-src='$isLightbox'>";
